@@ -16,21 +16,21 @@ namespace DogShowTracker
         private void PopulateDogsList()
         {
             string sql = "SELECT [DogID], [Name] FROM Dogs;";
-            DataTable dt = DatabaseHelper.GetData(sql);
+            DataTable dt = DatabaseHelper.GetDataTable(sql);
             UIMethods.FillListControl(lstDogs, "Name", "DogID", dt);
         }
 
         private void PopulateBreedsList()
         {
             string sql = "SELECT [BreedID], [Breed] FROM Breeds;";
-            DataTable dt = DatabaseHelper.GetData(sql);
+            DataTable dt = DatabaseHelper.GetDataTable(sql);
             UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", dt);
         }
 
         private void PopulateOwnersList()
         {
             string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners;";
-            DataTable dt = DatabaseHelper.GetData(sql);
+            DataTable dt = DatabaseHelper.GetDataTable(sql);
             UIMethods.FillListControl(cmbOwner, "OwnerName", "OwnerID", dt);
         }
 
@@ -49,22 +49,26 @@ namespace DogShowTracker
         {
             int id = Convert.ToInt32(lstDogs.SelectedValue);
             string sql = $"SELECT * FROM Dogs WHERE DogID = {id};";
-            DataRow row = DatabaseHelper.GetData(sql).Rows[0];
+            DataRow row = DatabaseHelper.GetDataRow(sql);
 
             string name = row["Name"].ToString();
             bool isMale = Convert.ToBoolean(row["Sex"]);
             double weight = Convert.ToDouble(row["Weight"]);
             double height = Convert.ToDouble(row["Height"]);
             DateTime dob = Convert.ToDateTime(row["DOB"]);
+
             DateTime? dateOfRetirement = null;
             if (row["DateOfRetirement"] != DBNull.Value) dateOfRetirement = Convert.ToDateTime(row["DateOfRetirement"]);
             bool retired = Convert.ToBoolean(row["Retired"]);
+
             bool champion = Convert.ToBoolean(row["Champion"]);
             DateTime? dateOfChampionship = null;
             if (row["DateOfChampionship"] != DBNull.Value) dateOfChampionship = Convert.ToDateTime(row["DateOfChampionship"]);
+
             bool banned = Convert.ToBoolean(row["PermanentlyDisqualified"]);
             DateTime? dateOfDisqualification = null;
             if (row["DateOfDisqualification"] != DBNull.Value) dateOfDisqualification = Convert.ToDateTime(row["DateOfDisqualification"]);
+
             int breedID = Convert.ToInt32(row["Breed"]);
             int ownerID = GetCurrentOwner(id);
 

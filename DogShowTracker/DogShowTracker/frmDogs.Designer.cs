@@ -42,6 +42,8 @@
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.txtHeight = new System.Windows.Forms.TextBox();
             this.grpDogInfo = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.dtChampionshipDate = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.dtDateBanned = new System.Windows.Forms.DateTimePicker();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -51,6 +53,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.chkRetired = new System.Windows.Forms.CheckBox();
+            this.cmbOwner = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbBreed = new System.Windows.Forms.ComboBox();
             this.dtDateOfRetirement = new System.Windows.Forms.DateTimePicker();
@@ -84,10 +87,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lstDogs = new System.Windows.Forms.ListBox();
             this.btnNewDog = new System.Windows.Forms.Button();
-            this.btnReloadDogs = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
-            this.dtChampionshipDate = new System.Windows.Forms.DateTimePicker();
-            this.cmbOwner = new System.Windows.Forms.ComboBox();
+            this.btnRefreshList = new System.Windows.Forms.Button();
             this.grpSex.SuspendLayout();
             this.grpDogInfo.SuspendLayout();
             this.grpSearch.SuspendLayout();
@@ -201,25 +201,25 @@
             // 
             // txtID
             // 
-            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(115, 31);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(132, 20);
             this.txtID.TabIndex = 10;
             // 
             // txtWeight
             // 
-            this.txtWeight.Enabled = false;
             this.txtWeight.Location = new System.Drawing.Point(115, 168);
             this.txtWeight.Name = "txtWeight";
+            this.txtWeight.ReadOnly = true;
             this.txtWeight.Size = new System.Drawing.Size(132, 20);
             this.txtWeight.TabIndex = 11;
             // 
             // txtHeight
             // 
-            this.txtHeight.Enabled = false;
             this.txtHeight.Location = new System.Drawing.Point(115, 214);
             this.txtHeight.Name = "txtHeight";
+            this.txtHeight.ReadOnly = true;
             this.txtHeight.Size = new System.Drawing.Size(132, 20);
             this.txtHeight.TabIndex = 12;
             // 
@@ -259,6 +259,26 @@
             this.grpDogInfo.TabStop = false;
             this.grpDogInfo.Text = "Dog Information";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(7, 528);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(102, 13);
+            this.label21.TabIndex = 31;
+            this.label21.Text = "Championship Date:";
+            // 
+            // dtChampionshipDate
+            // 
+            this.dtChampionshipDate.Checked = false;
+            this.dtChampionshipDate.CustomFormat = " ";
+            this.dtChampionshipDate.Enabled = false;
+            this.dtChampionshipDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtChampionshipDate.Location = new System.Drawing.Point(115, 522);
+            this.dtChampionshipDate.Name = "dtChampionshipDate";
+            this.dtChampionshipDate.Size = new System.Drawing.Size(132, 20);
+            this.dtChampionshipDate.TabIndex = 30;
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -281,9 +301,9 @@
             // 
             // txtName
             // 
-            this.txtName.Enabled = false;
             this.txtName.Location = new System.Drawing.Point(115, 63);
             this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(132, 20);
             this.txtName.TabIndex = 27;
             // 
@@ -343,6 +363,15 @@
             this.chkRetired.Size = new System.Drawing.Size(15, 14);
             this.chkRetired.TabIndex = 21;
             this.chkRetired.UseVisualStyleBackColor = true;
+            // 
+            // cmbOwner
+            // 
+            this.cmbOwner.Enabled = false;
+            this.cmbOwner.FormattingEnabled = true;
+            this.cmbOwner.Location = new System.Drawing.Point(115, 444);
+            this.cmbOwner.Name = "cmbOwner";
+            this.cmbOwner.Size = new System.Drawing.Size(132, 21);
+            this.cmbOwner.TabIndex = 20;
             // 
             // label9
             // 
@@ -663,51 +692,22 @@
             this.btnNewDog.UseVisualStyleBackColor = true;
             this.btnNewDog.Click += new System.EventHandler(this.btnNewDog_Click);
             // 
-            // btnReloadDogs
+            // btnRefreshList
             // 
-            this.btnReloadDogs.Location = new System.Drawing.Point(94, 13);
-            this.btnReloadDogs.Name = "btnReloadDogs";
-            this.btnReloadDogs.Size = new System.Drawing.Size(85, 23);
-            this.btnReloadDogs.TabIndex = 28;
-            this.btnReloadDogs.Text = "Refresh";
-            this.btnReloadDogs.UseVisualStyleBackColor = true;
-            this.btnReloadDogs.Click += new System.EventHandler(this.btnReloadDogs_Click);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(7, 528);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(102, 13);
-            this.label21.TabIndex = 31;
-            this.label21.Text = "Championship Date:";
-            // 
-            // dtChampionshipDate
-            // 
-            this.dtChampionshipDate.Checked = false;
-            this.dtChampionshipDate.CustomFormat = " ";
-            this.dtChampionshipDate.Enabled = false;
-            this.dtChampionshipDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtChampionshipDate.Location = new System.Drawing.Point(115, 522);
-            this.dtChampionshipDate.Name = "dtChampionshipDate";
-            this.dtChampionshipDate.Size = new System.Drawing.Size(132, 20);
-            this.dtChampionshipDate.TabIndex = 30;
-            // 
-            // cmbOwner
-            // 
-            this.cmbOwner.Enabled = false;
-            this.cmbOwner.FormattingEnabled = true;
-            this.cmbOwner.Location = new System.Drawing.Point(115, 444);
-            this.cmbOwner.Name = "cmbOwner";
-            this.cmbOwner.Size = new System.Drawing.Size(132, 21);
-            this.cmbOwner.TabIndex = 20;
+            this.btnRefreshList.Location = new System.Drawing.Point(93, 12);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Size = new System.Drawing.Size(85, 23);
+            this.btnRefreshList.TabIndex = 28;
+            this.btnRefreshList.Text = "Refresh";
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnReloadDogs_Click);
             // 
             // frmDogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 746);
-            this.Controls.Add(this.btnReloadDogs);
+            this.Controls.Add(this.btnRefreshList);
             this.Controls.Add(this.btnNewDog);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -792,7 +792,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ListBox lstDogs;
         private System.Windows.Forms.Button btnNewDog;
-        private System.Windows.Forms.Button btnReloadDogs;
+        private System.Windows.Forms.Button btnRefreshList;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.DateTimePicker dtDateBanned;

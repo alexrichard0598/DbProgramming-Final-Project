@@ -14,12 +14,12 @@ namespace DogShowTrackerCL
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbConnection"].ConnectionString;
 
         /// <summary>
-        /// Gets the data from the MusicDB database 
+        /// Gets the data from the database 
         /// using the sql string and return with a DataTable
         /// </summary>
         /// <param name="sql">The sql string to querry with</param>
         /// <returns></returns>
-        public static DataTable GetData(string sql)
+        public static DataTable GetDataTable(string sql)
         {
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(connectionString);
@@ -36,7 +36,7 @@ namespace DogShowTrackerCL
         }
 
         /// <summary>
-        /// Gets the data from the Music DB database
+        /// Gets the data from the database
         /// using the sql string and return an object
         /// form the first row and column returned
         /// </summary>
@@ -55,6 +55,17 @@ namespace DogShowTrackerCL
             }
 
             return obj;
+        }
+
+        /// <summary>
+        /// Returns the first row returned from the database
+        /// when querried using the sql string provided
+        /// </summary>
+        /// <param name="sql">The sql string to querry with</param>
+        /// <returns></returns>
+        public static DataRow GetDataRow(string sql)
+        {
+           return GetDataTable(sql).Rows[0];
         }
     }
 }

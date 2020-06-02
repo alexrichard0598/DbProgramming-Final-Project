@@ -6,11 +6,21 @@ namespace DogShowTrackerCL
 {
     public static class UIMethods
     {
+        /// <summary>
+        /// Display a messagebox that shows the details of the error provided
+        /// </summary>
+        /// <param name="ex">The error to display details of</param>
         public static void ErrorHandler(Exception ex)
         {
             MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        /// <summary>
+        /// Opens a form in the MDIparent provided or
+        /// if a form of that type is already open brin it to the front
+        /// </summary>
+        /// <param name="mdiParent">The MDIparent to bind the form to</param>
+        /// <param name="newForm">The new form to create</param>
         public static void OpenForm(Form mdiParent, Form newForm)
         {
             foreach (Form siblingForm in mdiParent.MdiChildren)

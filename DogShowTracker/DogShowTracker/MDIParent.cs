@@ -109,5 +109,15 @@ namespace DogShowTracker
         {
             UIMethods.OpenForm(this, new frmDogs());
         }
+
+        private void ownerInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UIMethods.OpenForm(this, new frmOwners());
+        }
+
+        private void dogShowInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UIMethods.OpenForm(this, new frmDogShows());
+        }
     }
 }
