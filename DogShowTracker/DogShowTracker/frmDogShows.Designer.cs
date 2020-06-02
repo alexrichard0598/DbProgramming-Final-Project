@@ -30,13 +30,13 @@
         {
             this.cmbDogShows = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtEndDate = new System.Windows.Forms.DateTimePicker();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lstDogs = new System.Windows.Forms.ListBox();
+            this.btnRefreshList = new System.Windows.Forms.Button();
+            this.btnNewShow = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -47,28 +47,18 @@
             this.cmbDogShows.FormattingEnabled = true;
             this.cmbDogShows.Location = new System.Drawing.Point(6, 19);
             this.cmbDogShows.Name = "cmbDogShows";
-            this.cmbDogShows.Size = new System.Drawing.Size(208, 21);
+            this.cmbDogShows.Size = new System.Drawing.Size(312, 21);
             this.cmbDogShows.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dtStartDate);
-            this.groupBox1.Location = new System.Drawing.Point(12, 71);
+            this.groupBox1.Location = new System.Drawing.Point(12, 100);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(161, 55);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Start Date";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dtEndDate);
-            this.groupBox2.Location = new System.Drawing.Point(232, 71);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(165, 55);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "End Date";
             // 
             // dtStartDate
             // 
@@ -77,6 +67,16 @@
             this.dtStartDate.Size = new System.Drawing.Size(145, 20);
             this.dtStartDate.TabIndex = 0;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dtEndDate);
+            this.groupBox2.Location = new System.Drawing.Point(179, 100);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(165, 55);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "End Date";
+            // 
             // dtEndDate
             // 
             this.dtEndDate.Location = new System.Drawing.Point(6, 19);
@@ -84,32 +84,12 @@
             this.dtEndDate.Size = new System.Drawing.Size(145, 20);
             this.dtEndDate.TabIndex = 1;
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(301, 17);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 3;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(220, 17);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add Show";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cmbDogShows);
-            this.groupBox3.Controls.Add(this.btnRefresh);
-            this.groupBox3.Controls.Add(this.btnAdd);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Location = new System.Drawing.Point(12, 41);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(385, 53);
+            this.groupBox3.Size = new System.Drawing.Size(332, 53);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dog Shows";
@@ -117,16 +97,38 @@
             // lstDogs
             // 
             this.lstDogs.FormattingEnabled = true;
-            this.lstDogs.Location = new System.Drawing.Point(12, 132);
+            this.lstDogs.Location = new System.Drawing.Point(12, 161);
             this.lstDogs.Name = "lstDogs";
-            this.lstDogs.Size = new System.Drawing.Size(385, 212);
+            this.lstDogs.Size = new System.Drawing.Size(332, 212);
             this.lstDogs.TabIndex = 6;
+            // 
+            // btnRefreshList
+            // 
+            this.btnRefreshList.Location = new System.Drawing.Point(114, 12);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Size = new System.Drawing.Size(96, 23);
+            this.btnRefreshList.TabIndex = 32;
+            this.btnRefreshList.Text = "Refresh";
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            // 
+            // btnNewShow
+            // 
+            this.btnNewShow.Location = new System.Drawing.Point(12, 12);
+            this.btnNewShow.Name = "btnNewShow";
+            this.btnNewShow.Size = new System.Drawing.Size(96, 23);
+            this.btnNewShow.TabIndex = 31;
+            this.btnNewShow.Text = "New Dog Show";
+            this.btnNewShow.UseVisualStyleBackColor = true;
             // 
             // frmDogShows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 352);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(359, 396);
+            this.Controls.Add(this.btnRefreshList);
+            this.Controls.Add(this.btnNewShow);
             this.Controls.Add(this.lstDogs);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -147,9 +149,9 @@
         private System.Windows.Forms.DateTimePicker dtStartDate;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker dtEndDate;
-        private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox lstDogs;
+        private System.Windows.Forms.Button btnRefreshList;
+        private System.Windows.Forms.Button btnNewShow;
     }
 }

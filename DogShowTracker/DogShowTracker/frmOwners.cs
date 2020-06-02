@@ -18,18 +18,31 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        private int currentID = 1;
+
         #region
+
         private void PopulateOwnersList()
         {
-            string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners;";
+            string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners ORDER BY LastName;";
             DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(lstOwners, "OwnerName", "OwnerID", dt);
+            UIMethods.FillListControl(cmbSelectOwner, "OwnerName", "OwnerID", dt);
+        }
+
+        private void GetOwnership()
+        {
+            string sql = $@"SELECT	Dogs.[Name], StartOfOwnership, EndOfOwnership FROM DogOwnership
+	                            LEFT JOIN Dogs
+		                            ON Dogs.DogID = DogOwnership.DogID
+	                             WHERE OwnerID = {currentID}
+                                 ORDER BY StartOfOwnership;";
+            DataTable dt = DatabaseHelper.GetDataTable(sql);
+            dgOwnership.DataSource = dt;
         }
 
         private void LoadOwnerDetails()
         {
-            int id = Convert.ToInt32(lstOwners.SelectedValue);
-            string sql = $"SELECT FirstName, COALESCE(MiddleName + ' ', '') AS MiddleName, LastName, DOB, DateOfRetirement, Retired FROM Owners WHERE OwnerID = {id};";
+            string sql = $"SELECT FirstName, COALESCE(MiddleName + ' ', '') AS MiddleName, LastName, DOB, DateOfRetirement, Retired FROM Owners WHERE OwnerID = {currentID};";
             DataRow row = DatabaseHelper.GetDataRow(sql);
 
             string fName = row["FirstName"].ToString();
@@ -56,6 +69,24 @@ namespace DogShowTracker
                 dtDateOfRetirement.Format = DateTimePickerFormat.Long;
             }
 
+            GetOwnership();
+        }
+
+        /// <summary>
+        /// Returns a DataRow with the first, previous, current, next, and last owner ids
+        /// </summary>
+        /// <returns></returns>
+        private DataRow OwnerNavigation()
+        {
+            int[] previousNext;
+            string sql = $@"SELECT * FROM ( 
+	                                        SELECT	(SELECT TOP(1) OwnerID FROM Owners ORDER BY LastName) AS FirstID,
+			                                        COALESCE(LAG(OwnerID) OVER (ORDER BY LastName), -1) AS [PreviousID],
+			                                        OwnerID AS CurrentID, 
+			                                        COALESCE(LEAD(OwnerID) OVER (ORDER BY LastName), -1) AS [NextID],
+			                                        (SELECT TOP(1) OwnerID FROM Owners ORDER BY LastName DESC) AS LastID FROM Owners 
+                                          ) AS q WHERE CurrentID = {currentID};";
+            return DatabaseHelper.GetDataRow(sql);
         }
         #endregion
 
@@ -64,25 +95,14 @@ namespace DogShowTracker
             try
             {
                 PopulateOwnersList();
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-            
-        }
-
-        private void lstOwners_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
+                currentID = Convert.ToInt32(OwnerNavigation()["FirstID"]);
                 LoadOwnerDetails();
             }
             catch (Exception ex)
             {
                 UIMethods.ErrorHandler(ex);
             }
-            
+
         }
 
         private void btnNewOwner_Click(object sender, EventArgs e)
@@ -90,6 +110,61 @@ namespace DogShowTracker
             try
             {
                 UIMethods.OpenForm(this.MdiParent, new frmAddOwner());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int nextId = Convert.ToInt32(OwnerNavigation()["NextID"]);
+                if (nextId != -1)
+                {
+                    currentID = nextId;
+                }
+                else
+                {
+                    currentID = Convert.ToInt32(OwnerNavigation()["FirstID"]);
+                }
+                cmbSelectOwner.SelectedValue = currentID;
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int previousID = Convert.ToInt32(OwnerNavigation()["PreviousID"]);
+                if (previousID != -1)
+                {
+                    currentID = previousID;
+                }
+                else
+                {
+                    currentID = Convert.ToInt32(OwnerNavigation()["LastID"]);
+                }
+                cmbSelectOwner.SelectedValue = currentID;
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void cmbSelectOwner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentID = Convert.ToInt32(cmbSelectOwner.SelectedValue);
+                LoadOwnerDetails();
             }
             catch (Exception ex)
             {

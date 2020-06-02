@@ -42,13 +42,18 @@
             this.txtMName = new System.Windows.Forms.TextBox();
             this.txtFName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lstOwners = new System.Windows.Forms.ListBox();
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.btnNewOwner = new System.Windows.Forms.Button();
+            this.dgOwnership = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbSelectOwner = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgOwnership)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -172,6 +177,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnNext);
+            this.groupBox2.Controls.Add(this.btnPrev);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.txtFName);
@@ -183,29 +190,42 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(12, 44);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(281, 217);
+            this.groupBox2.Size = new System.Drawing.Size(281, 250);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Owner Info";
             // 
+            // btnNext
+            // 
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Location = new System.Drawing.Point(187, 209);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 35);
+            this.btnNext.TabIndex = 21;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrev.Location = new System.Drawing.Point(7, 209);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(75, 35);
+            this.btnPrev.TabIndex = 20;
+            this.btnPrev.Text = "<";
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.lstOwners);
+            this.groupBox3.Controls.Add(this.dgOwnership);
             this.groupBox3.Location = new System.Drawing.Point(314, 44);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(474, 217);
+            this.groupBox3.Size = new System.Drawing.Size(352, 250);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "List Of Owners";
-            // 
-            // lstOwners
-            // 
-            this.lstOwners.FormattingEnabled = true;
-            this.lstOwners.Location = new System.Drawing.Point(6, 18);
-            this.lstOwners.Name = "lstOwners";
-            this.lstOwners.Size = new System.Drawing.Size(462, 186);
-            this.lstOwners.TabIndex = 0;
-            this.lstOwners.SelectedIndexChanged += new System.EventHandler(this.lstOwners_SelectedIndexChanged);
+            this.groupBox3.Text = "Ownership";
             // 
             // btnRefreshList
             // 
@@ -226,11 +246,48 @@
             this.btnNewOwner.UseVisualStyleBackColor = true;
             this.btnNewOwner.Click += new System.EventHandler(this.btnNewOwner_Click);
             // 
+            // dgOwnership
+            // 
+            this.dgOwnership.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.dgOwnership.AllowUserToAddRows = false;
+            this.dgOwnership.AllowUserToDeleteRows = false;
+            this.dgOwnership.AllowUserToResizeColumns = false;
+            this.dgOwnership.AllowUserToResizeRows = false;
+            this.dgOwnership.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgOwnership.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgOwnership.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgOwnership.Location = new System.Drawing.Point(6, 19);
+            this.dgOwnership.Name = "dgOwnership";
+            this.dgOwnership.Size = new System.Drawing.Size(338, 225);
+            this.dgOwnership.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(317, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Select Owner:";
+            // 
+            // cmbSelectOwner
+            // 
+            this.cmbSelectOwner.FormattingEnabled = true;
+            this.cmbSelectOwner.Location = new System.Drawing.Point(397, 14);
+            this.cmbSelectOwner.Name = "cmbSelectOwner";
+            this.cmbSelectOwner.Size = new System.Drawing.Size(261, 21);
+            this.cmbSelectOwner.TabIndex = 34;
+            this.cmbSelectOwner.SelectedIndexChanged += new System.EventHandler(this.cmbSelectOwner_SelectedIndexChanged);
+            // 
             // frmOwners
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 279);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(677, 304);
+            this.Controls.Add(this.cmbSelectOwner);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnRefreshList);
             this.Controls.Add(this.btnNewOwner);
             this.Controls.Add(this.groupBox3);
@@ -243,7 +300,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgOwnership)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -263,8 +322,12 @@
         private System.Windows.Forms.TextBox txtFName;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListBox lstOwners;
         private System.Windows.Forms.Button btnRefreshList;
         private System.Windows.Forms.Button btnNewOwner;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.DataGridView dgOwnership;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmbSelectOwner;
     }
 }

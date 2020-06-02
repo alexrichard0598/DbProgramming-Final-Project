@@ -72,6 +72,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dogInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ownerInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dogShowInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -84,8 +86,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.ownerInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dogShowInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -104,7 +104,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1141, 24);
+            this.menuStrip.Size = new System.Drawing.Size(984, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -445,9 +445,23 @@
             // dogInformationToolStripMenuItem
             // 
             this.dogInformationToolStripMenuItem.Name = "dogInformationToolStripMenuItem";
-            this.dogInformationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dogInformationToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.dogInformationToolStripMenuItem.Text = "Dog Information";
             this.dogInformationToolStripMenuItem.Click += new System.EventHandler(this.dogInformationToolStripMenuItem_Click);
+            // 
+            // ownerInformationToolStripMenuItem
+            // 
+            this.ownerInformationToolStripMenuItem.Name = "ownerInformationToolStripMenuItem";
+            this.ownerInformationToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.ownerInformationToolStripMenuItem.Text = "Owner Information";
+            this.ownerInformationToolStripMenuItem.Click += new System.EventHandler(this.ownerInformationToolStripMenuItem_Click);
+            // 
+            // dogShowInformationToolStripMenuItem
+            // 
+            this.dogShowInformationToolStripMenuItem.Name = "dogShowInformationToolStripMenuItem";
+            this.dogShowInformationToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.dogShowInformationToolStripMenuItem.Text = "Dog Show Information";
+            this.dogShowInformationToolStripMenuItem.Click += new System.EventHandler(this.dogShowInformationToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -462,7 +476,7 @@
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1141, 25);
+            this.toolStrip.Size = new System.Drawing.Size(984, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -536,9 +550,9 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 745);
+            this.statusStrip.Location = new System.Drawing.Point(0, 939);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1141, 22);
+            this.statusStrip.Size = new System.Drawing.Size(984, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -548,25 +562,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // ownerInformationToolStripMenuItem
-            // 
-            this.ownerInformationToolStripMenuItem.Name = "ownerInformationToolStripMenuItem";
-            this.ownerInformationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ownerInformationToolStripMenuItem.Text = "Owner Information";
-            this.ownerInformationToolStripMenuItem.Click += new System.EventHandler(this.ownerInformationToolStripMenuItem_Click);
-            // 
-            // dogShowInformationToolStripMenuItem
-            // 
-            this.dogShowInformationToolStripMenuItem.Name = "dogShowInformationToolStripMenuItem";
-            this.dogShowInformationToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.dogShowInformationToolStripMenuItem.Text = "Dog Show Information";
-            this.dogShowInformationToolStripMenuItem.Click += new System.EventHandler(this.dogShowInformationToolStripMenuItem_Click);
-            // 
             // MDIParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 767);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(984, 961);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -575,6 +576,7 @@
             this.Name = "MDIParent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dog Show Tracker";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
