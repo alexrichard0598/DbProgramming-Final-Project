@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DogShowTrackerCL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -106,10 +107,7 @@ namespace DogShowTracker
 
         private void dogInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form childForm = new frmDogs();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
+            UIMethods.OpenForm(this, new frmDogs());
         }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbName = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,7 +42,15 @@
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.txtHeight = new System.Windows.Forms.TextBox();
             this.grpDogInfo = new System.Windows.Forms.GroupBox();
-            this.cmbOwner = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.dtDateBanned = new System.Windows.Forms.DateTimePicker();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.chkChampion = new System.Windows.Forms.CheckBox();
+            this.chkBanned = new System.Windows.Forms.CheckBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.chkRetired = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbBreed = new System.Windows.Forms.ComboBox();
             this.dtDateOfRetirement = new System.Windows.Forms.DateTimePicker();
@@ -51,8 +58,8 @@
             this.grpSearch = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.txtSearchName = new System.Windows.Forms.TextBox();
             this.txtSearchOwner = new System.Windows.Forms.TextBox();
+            this.txtSearchName = new System.Windows.Forms.TextBox();
             this.cmbSearchBreed = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.nudMaxHeight = new System.Windows.Forms.NumericUpDown();
@@ -73,13 +80,14 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.chkRetired = new System.Windows.Forms.CheckBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.chkBanned = new System.Windows.Forms.CheckBox();
-            this.chkChampion = new System.Windows.Forms.CheckBox();
+            this.lstCompetition = new System.Windows.Forms.ListBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lstDogs = new System.Windows.Forms.ListBox();
+            this.btnNewDog = new System.Windows.Forms.Button();
+            this.btnReloadDogs = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.dtChampionshipDate = new System.Windows.Forms.DateTimePicker();
+            this.cmbOwner = new System.Windows.Forms.ComboBox();
             this.grpSex.SuspendLayout();
             this.grpDogInfo.SuspendLayout();
             this.grpSearch.SuspendLayout();
@@ -91,20 +99,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudMinWeight)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cmbName
-            // 
-            this.cmbName.FormattingEnabled = true;
-            this.cmbName.Location = new System.Drawing.Point(101, 60);
-            this.cmbName.Name = "cmbName";
-            this.cmbName.Size = new System.Drawing.Size(132, 21);
-            this.cmbName.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 31);
+            this.label1.Location = new System.Drawing.Point(88, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 13);
             this.label1.TabIndex = 1;
@@ -113,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 63);
+            this.label2.Location = new System.Drawing.Point(71, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 2;
@@ -122,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(51, 168);
+            this.label4.Location = new System.Drawing.Point(65, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 4;
@@ -131,7 +132,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 214);
+            this.label5.Location = new System.Drawing.Point(68, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 5;
@@ -140,7 +141,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(26, 264);
+            this.label6.Location = new System.Drawing.Point(40, 267);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 6;
@@ -149,7 +150,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(51, 318);
+            this.label7.Location = new System.Drawing.Point(65, 321);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 7;
@@ -158,7 +159,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(57, 407);
+            this.label8.Location = new System.Drawing.Point(71, 410);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 8;
@@ -169,7 +170,7 @@
             this.grpSex.Controls.Add(this.rdoFemale);
             this.grpSex.Controls.Add(this.rdoMale);
             this.grpSex.Enabled = false;
-            this.grpSex.Location = new System.Drawing.Point(101, 99);
+            this.grpSex.Location = new System.Drawing.Point(115, 102);
             this.grpSex.Name = "grpSex";
             this.grpSex.Size = new System.Drawing.Size(132, 50);
             this.grpSex.TabIndex = 9;
@@ -201,7 +202,7 @@
             // txtID
             // 
             this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(101, 28);
+            this.txtID.Location = new System.Drawing.Point(115, 31);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(132, 20);
             this.txtID.TabIndex = 10;
@@ -209,7 +210,7 @@
             // txtWeight
             // 
             this.txtWeight.Enabled = false;
-            this.txtWeight.Location = new System.Drawing.Point(101, 165);
+            this.txtWeight.Location = new System.Drawing.Point(115, 168);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(132, 20);
             this.txtWeight.TabIndex = 11;
@@ -217,13 +218,18 @@
             // txtHeight
             // 
             this.txtHeight.Enabled = false;
-            this.txtHeight.Location = new System.Drawing.Point(101, 211);
+            this.txtHeight.Location = new System.Drawing.Point(115, 214);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(132, 20);
             this.txtHeight.TabIndex = 12;
             // 
             // grpDogInfo
             // 
+            this.grpDogInfo.Controls.Add(this.label21);
+            this.grpDogInfo.Controls.Add(this.dtChampionshipDate);
+            this.grpDogInfo.Controls.Add(this.label20);
+            this.grpDogInfo.Controls.Add(this.dtDateBanned);
+            this.grpDogInfo.Controls.Add(this.txtName);
             this.grpDogInfo.Controls.Add(this.chkChampion);
             this.grpDogInfo.Controls.Add(this.chkBanned);
             this.grpDogInfo.Controls.Add(this.label19);
@@ -236,7 +242,6 @@
             this.grpDogInfo.Controls.Add(this.dtDateOfRetirement);
             this.grpDogInfo.Controls.Add(this.dtDateOfBirth);
             this.grpDogInfo.Controls.Add(this.label1);
-            this.grpDogInfo.Controls.Add(this.cmbName);
             this.grpDogInfo.Controls.Add(this.label2);
             this.grpDogInfo.Controls.Add(this.label4);
             this.grpDogInfo.Controls.Add(this.txtHeight);
@@ -247,26 +252,102 @@
             this.grpDogInfo.Controls.Add(this.label7);
             this.grpDogInfo.Controls.Add(this.grpSex);
             this.grpDogInfo.Controls.Add(this.label8);
-            this.grpDogInfo.Location = new System.Drawing.Point(12, 12);
+            this.grpDogInfo.Location = new System.Drawing.Point(12, 52);
             this.grpDogInfo.Name = "grpDogInfo";
-            this.grpDogInfo.Size = new System.Drawing.Size(249, 553);
+            this.grpDogInfo.Size = new System.Drawing.Size(275, 674);
             this.grpDogInfo.TabIndex = 16;
             this.grpDogInfo.TabStop = false;
             this.grpDogInfo.Text = "Dog Information";
             // 
-            // cmbOwner
+            // label20
             // 
-            this.cmbOwner.Enabled = false;
-            this.cmbOwner.FormattingEnabled = true;
-            this.cmbOwner.Location = new System.Drawing.Point(101, 441);
-            this.cmbOwner.Name = "cmbOwner";
-            this.cmbOwner.Size = new System.Drawing.Size(132, 21);
-            this.cmbOwner.TabIndex = 20;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(36, 598);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(73, 13);
+            this.label20.TabIndex = 29;
+            this.label20.Text = "Date Banned:";
+            // 
+            // dtDateBanned
+            // 
+            this.dtDateBanned.Checked = false;
+            this.dtDateBanned.CustomFormat = " ";
+            this.dtDateBanned.Enabled = false;
+            this.dtDateBanned.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtDateBanned.Location = new System.Drawing.Point(115, 592);
+            this.dtDateBanned.Name = "dtDateBanned";
+            this.dtDateBanned.Size = new System.Drawing.Size(132, 20);
+            this.dtDateBanned.TabIndex = 28;
+            // 
+            // txtName
+            // 
+            this.txtName.Enabled = false;
+            this.txtName.Location = new System.Drawing.Point(115, 63);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(132, 20);
+            this.txtName.TabIndex = 27;
+            // 
+            // chkChampion
+            // 
+            this.chkChampion.AutoSize = true;
+            this.chkChampion.Enabled = false;
+            this.chkChampion.Location = new System.Drawing.Point(115, 493);
+            this.chkChampion.Name = "chkChampion";
+            this.chkChampion.Size = new System.Drawing.Size(15, 14);
+            this.chkChampion.TabIndex = 26;
+            this.chkChampion.UseVisualStyleBackColor = true;
+            // 
+            // chkBanned
+            // 
+            this.chkBanned.AutoSize = true;
+            this.chkBanned.Enabled = false;
+            this.chkBanned.Location = new System.Drawing.Point(115, 558);
+            this.chkBanned.Name = "chkBanned";
+            this.chkBanned.Size = new System.Drawing.Size(15, 14);
+            this.chkBanned.TabIndex = 25;
+            this.chkBanned.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(62, 558);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(47, 13);
+            this.label19.TabIndex = 24;
+            this.label19.Text = "Banned:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(52, 493);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(57, 13);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Champion:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(22, 365);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(87, 13);
+            this.label17.TabIndex = 22;
+            this.label17.Text = "Retirement Date:";
+            // 
+            // chkRetired
+            // 
+            this.chkRetired.AutoSize = true;
+            this.chkRetired.Enabled = false;
+            this.chkRetired.Location = new System.Drawing.Point(115, 321);
+            this.chkRetired.Name = "chkRetired";
+            this.chkRetired.Size = new System.Drawing.Size(15, 14);
+            this.chkRetired.TabIndex = 21;
+            this.chkRetired.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 444);
+            this.label9.Location = new System.Drawing.Point(31, 447);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 13);
             this.label9.TabIndex = 19;
@@ -276,7 +357,7 @@
             // 
             this.cmbBreed.Enabled = false;
             this.cmbBreed.FormattingEnabled = true;
-            this.cmbBreed.Location = new System.Drawing.Point(101, 404);
+            this.cmbBreed.Location = new System.Drawing.Point(115, 407);
             this.cmbBreed.Name = "cmbBreed";
             this.cmbBreed.Size = new System.Drawing.Size(132, 21);
             this.cmbBreed.TabIndex = 18;
@@ -287,7 +368,7 @@
             this.dtDateOfRetirement.CustomFormat = " ";
             this.dtDateOfRetirement.Enabled = false;
             this.dtDateOfRetirement.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDateOfRetirement.Location = new System.Drawing.Point(101, 356);
+            this.dtDateOfRetirement.Location = new System.Drawing.Point(115, 359);
             this.dtDateOfRetirement.Name = "dtDateOfRetirement";
             this.dtDateOfRetirement.Size = new System.Drawing.Size(132, 20);
             this.dtDateOfRetirement.TabIndex = 17;
@@ -295,7 +376,7 @@
             // dtDateOfBirth
             // 
             this.dtDateOfBirth.Enabled = false;
-            this.dtDateOfBirth.Location = new System.Drawing.Point(101, 257);
+            this.dtDateOfBirth.Location = new System.Drawing.Point(115, 260);
             this.dtDateOfBirth.Name = "dtDateOfBirth";
             this.dtDateOfBirth.Size = new System.Drawing.Size(132, 20);
             this.dtDateOfBirth.TabIndex = 16;
@@ -314,12 +395,12 @@
             this.grpSearch.Controls.Add(this.label13);
             this.grpSearch.Controls.Add(this.label12);
             this.grpSearch.Controls.Add(this.label10);
-            this.grpSearch.Location = new System.Drawing.Point(276, 12);
+            this.grpSearch.Location = new System.Drawing.Point(306, 52);
             this.grpSearch.Name = "grpSearch";
             this.grpSearch.Size = new System.Drawing.Size(431, 252);
             this.grpSearch.TabIndex = 17;
             this.grpSearch.TabStop = false;
-            this.grpSearch.Text = "Search Dogs";
+            this.grpSearch.Text = "Filter Dogs";
             // 
             // btnReset
             // 
@@ -336,15 +417,8 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 34;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "Filter";
             this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // txtSearchName
-            // 
-            this.txtSearchName.Location = new System.Drawing.Point(70, 31);
-            this.txtSearchName.Name = "txtSearchName";
-            this.txtSearchName.Size = new System.Drawing.Size(132, 20);
-            this.txtSearchName.TabIndex = 33;
             // 
             // txtSearchOwner
             // 
@@ -352,6 +426,13 @@
             this.txtSearchOwner.Name = "txtSearchOwner";
             this.txtSearchOwner.Size = new System.Drawing.Size(132, 20);
             this.txtSearchOwner.TabIndex = 32;
+            // 
+            // txtSearchName
+            // 
+            this.txtSearchName.Location = new System.Drawing.Point(70, 31);
+            this.txtSearchName.Name = "txtSearchName";
+            this.txtSearchName.Size = new System.Drawing.Size(132, 20);
+            this.txtSearchName.TabIndex = 33;
             // 
             // cmbSearchBreed
             // 
@@ -471,12 +552,12 @@
             // 
             this.rdoSexUnknown.AutoSize = true;
             this.rdoSexUnknown.Checked = true;
-            this.rdoSexUnknown.Location = new System.Drawing.Point(29, 42);
+            this.rdoSexUnknown.Location = new System.Drawing.Point(34, 42);
             this.rdoSexUnknown.Name = "rdoSexUnknown";
-            this.rdoSexUnknown.Size = new System.Drawing.Size(71, 17);
+            this.rdoSexUnknown.Size = new System.Drawing.Size(52, 17);
             this.rdoSexUnknown.TabIndex = 2;
             this.rdoSexUnknown.TabStop = true;
-            this.rdoSexUnknown.Text = "Unknown";
+            this.rdoSexUnknown.Text = "Either";
             this.rdoSexUnknown.UseVisualStyleBackColor = true;
             // 
             // rdoSearchFemale
@@ -537,89 +618,104 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.listBox1);
-            this.groupBox4.Location = new System.Drawing.Point(276, 275);
+            this.groupBox4.Controls.Add(this.lstCompetition);
+            this.groupBox4.Location = new System.Drawing.Point(306, 524);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(431, 290);
+            this.groupBox4.Size = new System.Drawing.Size(431, 202);
             this.groupBox4.TabIndex = 18;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Competitions";
             // 
-            // listBox1
+            // lstCompetition
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(419, 264);
-            this.listBox1.TabIndex = 19;
+            this.lstCompetition.FormattingEnabled = true;
+            this.lstCompetition.Location = new System.Drawing.Point(6, 12);
+            this.lstCompetition.Name = "lstCompetition";
+            this.lstCompetition.Size = new System.Drawing.Size(419, 186);
+            this.lstCompetition.TabIndex = 19;
             // 
-            // chkRetired
+            // groupBox5
             // 
-            this.chkRetired.AutoSize = true;
-            this.chkRetired.Enabled = false;
-            this.chkRetired.Location = new System.Drawing.Point(101, 318);
-            this.chkRetired.Name = "chkRetired";
-            this.chkRetired.Size = new System.Drawing.Size(15, 14);
-            this.chkRetired.TabIndex = 21;
-            this.chkRetired.UseVisualStyleBackColor = true;
+            this.groupBox5.Controls.Add(this.lstDogs);
+            this.groupBox5.Location = new System.Drawing.Point(308, 310);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(429, 202);
+            this.groupBox5.TabIndex = 19;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Dogs";
             // 
-            // label17
+            // lstDogs
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(8, 362);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(87, 13);
-            this.label17.TabIndex = 22;
-            this.label17.Text = "Retirement Date:";
+            this.lstDogs.FormattingEnabled = true;
+            this.lstDogs.Location = new System.Drawing.Point(6, 19);
+            this.lstDogs.Name = "lstDogs";
+            this.lstDogs.Size = new System.Drawing.Size(417, 173);
+            this.lstDogs.TabIndex = 0;
+            this.lstDogs.SelectedIndexChanged += new System.EventHandler(this.lstDogs_SelectedIndexChanged);
             // 
-            // label18
+            // btnNewDog
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(38, 490);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 13);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Champion:";
+            this.btnNewDog.Location = new System.Drawing.Point(12, 12);
+            this.btnNewDog.Name = "btnNewDog";
+            this.btnNewDog.Size = new System.Drawing.Size(75, 23);
+            this.btnNewDog.TabIndex = 27;
+            this.btnNewDog.Text = "New Dog";
+            this.btnNewDog.UseVisualStyleBackColor = true;
+            this.btnNewDog.Click += new System.EventHandler(this.btnNewDog_Click);
             // 
-            // label19
+            // btnReloadDogs
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(48, 523);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(47, 13);
-            this.label19.TabIndex = 24;
-            this.label19.Text = "Banned:";
+            this.btnReloadDogs.Location = new System.Drawing.Point(94, 13);
+            this.btnReloadDogs.Name = "btnReloadDogs";
+            this.btnReloadDogs.Size = new System.Drawing.Size(85, 23);
+            this.btnReloadDogs.TabIndex = 28;
+            this.btnReloadDogs.Text = "Refresh";
+            this.btnReloadDogs.UseVisualStyleBackColor = true;
+            this.btnReloadDogs.Click += new System.EventHandler(this.btnReloadDogs_Click);
             // 
-            // chkBanned
+            // label21
             // 
-            this.chkBanned.AutoSize = true;
-            this.chkBanned.Enabled = false;
-            this.chkBanned.Location = new System.Drawing.Point(101, 523);
-            this.chkBanned.Name = "chkBanned";
-            this.chkBanned.Size = new System.Drawing.Size(15, 14);
-            this.chkBanned.TabIndex = 25;
-            this.chkBanned.UseVisualStyleBackColor = true;
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(7, 528);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(102, 13);
+            this.label21.TabIndex = 31;
+            this.label21.Text = "Championship Date:";
             // 
-            // chkChampion
+            // dtChampionshipDate
             // 
-            this.chkChampion.AutoSize = true;
-            this.chkChampion.Enabled = false;
-            this.chkChampion.Location = new System.Drawing.Point(101, 490);
-            this.chkChampion.Name = "chkChampion";
-            this.chkChampion.Size = new System.Drawing.Size(15, 14);
-            this.chkChampion.TabIndex = 26;
-            this.chkChampion.UseVisualStyleBackColor = true;
+            this.dtChampionshipDate.Checked = false;
+            this.dtChampionshipDate.CustomFormat = " ";
+            this.dtChampionshipDate.Enabled = false;
+            this.dtChampionshipDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtChampionshipDate.Location = new System.Drawing.Point(115, 522);
+            this.dtChampionshipDate.Name = "dtChampionshipDate";
+            this.dtChampionshipDate.Size = new System.Drawing.Size(132, 20);
+            this.dtChampionshipDate.TabIndex = 30;
+            // 
+            // cmbOwner
+            // 
+            this.cmbOwner.Enabled = false;
+            this.cmbOwner.FormattingEnabled = true;
+            this.cmbOwner.Location = new System.Drawing.Point(115, 444);
+            this.cmbOwner.Name = "cmbOwner";
+            this.cmbOwner.Size = new System.Drawing.Size(132, 21);
+            this.cmbOwner.TabIndex = 20;
             // 
             // frmDogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 577);
+            this.ClientSize = new System.Drawing.Size(756, 746);
+            this.Controls.Add(this.btnReloadDogs);
+            this.Controls.Add(this.btnNewDog);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.grpSearch);
             this.Controls.Add(this.grpDogInfo);
             this.Name = "frmDogs";
             this.Text = "Dog Info";
+            this.Load += new System.EventHandler(this.frmDogs_Load);
             this.grpSex.ResumeLayout(false);
             this.grpSex.PerformLayout();
             this.grpDogInfo.ResumeLayout(false);
@@ -637,13 +733,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cmbName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
@@ -662,7 +757,6 @@
         private System.Windows.Forms.DateTimePicker dtDateOfBirth;
         private System.Windows.Forms.GroupBox grpSearch;
         private System.Windows.Forms.ComboBox cmbBreed;
-        private System.Windows.Forms.ComboBox cmbOwner;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnSearch;
@@ -694,7 +788,17 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox chkRetired;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstCompetition;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ListBox lstDogs;
+        private System.Windows.Forms.Button btnNewDog;
+        private System.Windows.Forms.Button btnReloadDogs;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DateTimePicker dtDateBanned;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.DateTimePicker dtChampionshipDate;
+        private System.Windows.Forms.ComboBox cmbOwner;
     }
 }
 

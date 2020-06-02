@@ -13,8 +13,10 @@ SELECT	BreedID, Breed, Class,
 
 
 
-SELECT * FROM Classes;
-SELECT * FROM Colours;
+SELECT ClassID, Class FROM Classes;
+
+
+SELECT ColourID, Colour FROM Colours;
 
 
 
@@ -35,12 +37,10 @@ SELECT	[Name], (CASE Sex WHEN 1 THEN 'Male' ELSE 'Female' END) AS Sex,
 	LEFT JOIN Breeds
 		ON Dogs.Breed = BreedID;
 
+SELECT DogShowID, [Name], StartDate, EndDate, NumDogs FROM DogShows;
 
 
-SELECT * FROM DogShows;
-
-
-SELECT * FROM Owners;
+SELECT OwnerID, FirstName, MiddleName, LastName, DOB, DateOfRetirement, Retired FROM Owners;
 
 SELECT	Dogs.[Name] AS DogName, DogShows.[Name] AS DogShowName,  
 		COALESCE(CAST([Rank] AS VARCHAR), '-') + '/' + CAST(DogShows.NumDogs AS VARCHAR) AS Placed, 

@@ -8,3 +8,12 @@ C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgrammi
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.csproj.GenerateResource.cache
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.exe
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.pdb
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddClass.resources
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddColour.resources
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddDogBreed.resources
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddOwner.resources
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmOwners.resources
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmDogShows.resources
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTrackerCL.dll
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTrackerCL.pdb
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.csproj.CopyComplete

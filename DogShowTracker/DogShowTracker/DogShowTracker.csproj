@@ -46,11 +46,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddClass.Designer.cs">
+      <DependentUpon>AddClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddColour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddColour.Designer.cs">
+      <DependentUpon>frmAddColour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddDog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddDog.Designer.cs">
+      <DependentUpon>frmAddDog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddDogBreed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddDogBreed.Designer.cs">
+      <DependentUpon>frmAddDogBreed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddOwner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddOwner.Designer.cs">
+      <DependentUpon>frmAddOwner.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDogs.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDogs.Designer.cs">
       <DependentUpon>frmDogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDogShows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDogShows.Designer.cs">
+      <DependentUpon>frmDogShows.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOwners.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOwners.Designer.cs">
+      <DependentUpon>frmOwners.cs</DependentUpon>
     </Compile>
     <Compile Include="MDIParent.cs">
       <SubType>Form</SubType>
@@ -60,8 +102,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddClass.resx">
+      <DependentUpon>AddClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddColour.resx">
+      <DependentUpon>frmAddColour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddDogBreed.resx">
+      <DependentUpon>frmAddDogBreed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddOwner.resx">
+      <DependentUpon>frmAddOwner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDogs.resx">
       <DependentUpon>frmDogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDogShows.resx">
+      <DependentUpon>frmDogShows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOwners.resx">
+      <DependentUpon>frmOwners.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
@@ -87,6 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DogShowTrackerCL\DogShowTrackerCL.csproj">
+      <Project>{0fdaae49-fe72-4820-9492-d88f4a8e0078}</Project>
+      <Name>DogShowTrackerCL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
