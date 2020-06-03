@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DogShowTrackerCL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,7 @@ using System.Windows.Forms;
 
 namespace DogShowTracker
 { 
-    public partial class frmUpdateDog : Form
+    public partial class frmUpdateDog : DogShowForm
     {
         public frmUpdateDog()
         {

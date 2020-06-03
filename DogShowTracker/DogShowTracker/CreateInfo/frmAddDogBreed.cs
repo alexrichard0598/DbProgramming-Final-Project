@@ -1,13 +1,6 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 /*
     Alex Richard
@@ -17,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DogShowTracker
 {
-    public partial class frmAddDogBreed : Form
+    public partial class frmAddDogBreed : DogShowForm
     {
         public frmAddDogBreed()
         {
@@ -27,7 +20,7 @@ namespace DogShowTracker
         /// <summary>
         /// Load all form info
         /// </summary>
-        public void Reload()
+        public new void Reload()
         {
             LoadClasses();
             LoadColours();
@@ -73,36 +66,39 @@ namespace DogShowTracker
 	                        ('{breedName}', {primaryId}, {secondaryId}, {classId});";
             DatabaseHelper.SendData(sql);
         }
+
+        private bool ValidateFields()
+        {
+            errorProvider.Clear();
+            bool isValid = true;
+            if (txtBreedName.Text == "")
+            {
+                errorProvider.SetError(txtBreedName, "Breed Name cannot be empty");
+                isValid = false;
+            }
+            if (cmbPrimaryCoat.SelectedIndex == 0)
+            {
+                errorProvider.SetError(cmbPrimaryCoat, "Breed must have a primary coat colour selected");
+                isValid = false;
+            }
+            if (cmbClass.SelectedIndex == 0)
+            {
+                errorProvider.SetError(cmbClass, "Breed must have a class");
+                isValid = false;
+            }
+            return isValid;
+        }
         #endregion
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                bool dataMissing = false;
-                errorProvider.Clear();
-                if (txtBreedName.Text == "")
-                {
-                    errorProvider.SetError(txtBreedName, "Breed Name cannot be empty");
-                    dataMissing = true;
-                }
-                if (cmbPrimaryCoat.SelectedIndex == 0)
-                {
-                    errorProvider.SetError(cmbPrimaryCoat, "Breed must have a primary coat colour selected");
-                    dataMissing = true;
-                }
-                if (cmbClass.SelectedIndex == 0)
-                {
-                    errorProvider.SetError(cmbClass, "Breed must have a class");
-                    dataMissing = true;
-                }
-
-                if (!dataMissing)
+                if (ValidateFields())
                 {
                     AddBreed();
+                    Close();
                 }
-
-
             }
             catch (Exception ex)
             {

@@ -1,12 +1,5 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*
@@ -17,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DogShowTracker
 {
-    public partial class frmAddColour : Form
+    public partial class frmAddColour : DogShowForm
     {
         public frmAddColour()
         {
@@ -37,17 +30,23 @@ namespace DogShowTracker
             DatabaseHelper.SendData(sql);
         }
 
+        private bool ValidateFields()
+        {
+            errorProvider.Clear();
+            bool isValid = true;
+            if (txtColour.Text == "")
+            {
+                errorProvider.SetError(txtColour, "Colour Name cannot be blank");
+                isValid = false;
+            }
+            return isValid;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                errorProvider.Clear();
-
-                if (txtColour.Text == "")
-                {
-                    errorProvider.SetError(txtColour, "Colour Name cannot be blank");
-                }
-                else
+                if(ValidateFields())
                 {
                     InsertNewColour();
                     colourAdded = true;

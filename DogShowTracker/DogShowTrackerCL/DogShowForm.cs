@@ -8,19 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/*
-    Alex Richard
-    Dog Show Tracker
-    2020-06-03
-*/
-
-namespace DogShowTracker
+namespace DogShowTrackerCL
 {
-    public partial class frmAddDog : Form
+    public partial class DogShowForm : Form
     {
-        public frmAddDog()
+        public DogShowForm()
         {
             InitializeComponent();
+        }
+
+        public void Reload()
+        {
+
         }
     }
 }

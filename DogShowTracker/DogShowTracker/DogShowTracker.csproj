@@ -46,40 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddInfo\frmAddClass.cs">
+    <Compile Include="CreateInfo\frmAddClass.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddInfo\frmAddClass.Designer.cs">
+    <Compile Include="CreateInfo\frmAddClass.Designer.cs">
       <DependentUpon>frmAddClass.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddInfo\frmAddColour.cs">
+    <Compile Include="CreateInfo\frmAddColour.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddInfo\frmAddColour.Designer.cs">
+    <Compile Include="CreateInfo\frmAddColour.Designer.cs">
       <DependentUpon>frmAddColour.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddInfo\frmAddDog.cs">
+    <Compile Include="CreateInfo\frmAddDog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddInfo\frmAddDog.Designer.cs">
+    <Compile Include="CreateInfo\frmAddDog.Designer.cs">
       <DependentUpon>frmAddDog.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddInfo\frmAddDogBreed.cs">
+    <Compile Include="CreateInfo\frmAddDogBreed.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddInfo\frmAddDogBreed.Designer.cs">
+    <Compile Include="CreateInfo\frmAddDogBreed.Designer.cs">
       <DependentUpon>frmAddDogBreed.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddInfo\frmAddDogShow.cs">
+    <Compile Include="CreateInfo\frmAddDogShow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddInfo\frmAddDogShow.Designer.cs">
+    <Compile Include="CreateInfo\frmAddDogShow.Designer.cs">
       <DependentUpon>frmAddDogShow.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddInfo\frmAddOwner.cs">
+    <Compile Include="CreateInfo\frmAddOwner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddInfo\frmAddOwner.Designer.cs">
+    <Compile Include="CreateInfo\frmAddOwner.Designer.cs">
       <DependentUpon>frmAddOwner.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateInfo\frmChangeDogShowDogs.cs">
@@ -106,28 +106,28 @@
     <Compile Include="UpdateInfo\frmUpdateDog.Designer.cs">
       <DependentUpon>frmUpdateDog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewInfo\frmBreeds.cs">
+    <Compile Include="ReadInfo\frmBreeds.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewInfo\frmBreeds.Designer.cs">
+    <Compile Include="ReadInfo\frmBreeds.Designer.cs">
       <DependentUpon>frmBreeds.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewInfo\frmDogs.cs">
+    <Compile Include="ReadInfo\frmDogs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewInfo\frmDogs.Designer.cs">
+    <Compile Include="ReadInfo\frmDogs.Designer.cs">
       <DependentUpon>frmDogs.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewInfo\frmDogShows.cs">
+    <Compile Include="ReadInfo\frmDogShows.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewInfo\frmDogShows.Designer.cs">
+    <Compile Include="ReadInfo\frmDogShows.Designer.cs">
       <DependentUpon>frmDogShows.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewInfo\frmOwners.cs">
+    <Compile Include="ReadInfo\frmOwners.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewInfo\frmOwners.Designer.cs">
+    <Compile Include="ReadInfo\frmOwners.Designer.cs">
       <DependentUpon>frmOwners.cs</DependentUpon>
     </Compile>
     <Compile Include="MDIParent.cs">
@@ -138,28 +138,28 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddInfo\frmAddClass.resx">
+    <EmbeddedResource Include="CreateInfo\frmAddClass.resx">
       <DependentUpon>frmAddClass.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddInfo\frmAddColour.resx">
+    <EmbeddedResource Include="CreateInfo\frmAddColour.resx">
       <DependentUpon>frmAddColour.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddInfo\frmAddDogBreed.resx">
+    <EmbeddedResource Include="CreateInfo\frmAddDogBreed.resx">
       <DependentUpon>frmAddDogBreed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddInfo\frmAddOwner.resx">
+    <EmbeddedResource Include="CreateInfo\frmAddOwner.resx">
       <DependentUpon>frmAddOwner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewInfo\frmBreeds.resx">
+    <EmbeddedResource Include="ReadInfo\frmBreeds.resx">
       <DependentUpon>frmBreeds.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewInfo\frmDogs.resx">
+    <EmbeddedResource Include="ReadInfo\frmDogs.resx">
       <DependentUpon>frmDogs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewInfo\frmDogShows.resx">
+    <EmbeddedResource Include="ReadInfo\frmDogShows.resx">
       <DependentUpon>frmDogShows.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewInfo\frmOwners.resx">
+    <EmbeddedResource Include="ReadInfo\frmOwners.resx">
       <DependentUpon>frmOwners.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParent.resx">
@@ -196,6 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Reload_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DeleteInfo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

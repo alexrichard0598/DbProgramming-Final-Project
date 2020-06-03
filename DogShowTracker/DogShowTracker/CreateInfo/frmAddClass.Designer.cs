@@ -88,6 +88,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmAddClass";
             this.Text = "Add Class";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddClass_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

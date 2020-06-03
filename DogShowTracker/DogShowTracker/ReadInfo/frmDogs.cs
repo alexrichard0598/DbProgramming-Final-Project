@@ -11,7 +11,7 @@ using DogShowTrackerCL;
 
 namespace DogShowTracker
 {
-    public partial class frmDogs : Form
+    public partial class frmDogs : DogShowForm
     {
         public frmDogs()
         {
@@ -22,7 +22,7 @@ namespace DogShowTracker
         /// <summary>
         /// Load all form info
         /// </summary>
-        public void Reload()
+        public new void Reload()
         {
             PopulateBreedsList();
             PopulateOwnersList();

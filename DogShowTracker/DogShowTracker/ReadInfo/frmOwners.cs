@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DogShowTracker
 {
-    public partial class frmOwners : Form
+    public partial class frmOwners : DogShowForm
     {
         public frmOwners()
         {
@@ -24,7 +24,7 @@ namespace DogShowTracker
         /// <summary>
         /// Load all form info
         /// </summary>
-        public void Reload()
+        public new void Reload()
         {
             PopulateOwnersList();
             currentID = Convert.ToInt32(OwnerNavigation()["FirstID"]);

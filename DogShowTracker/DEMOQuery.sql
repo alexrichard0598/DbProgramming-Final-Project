@@ -1,8 +1,8 @@
 ﻿
 BEGIN TRAN
-INSERT INTO Breeds
-	(Breed, [Classification], PrimaryCoatColour, SecondaryCoatColour)
-	Values
-	('Demo', 5, 5, 5);
-SELECT * FROM Breeds;
+INSERT INTO Classes
+                            (Class)
+                            VALUES
+                            ('{className}');
+SELECT * FROM Classes;
 ROLLBACK

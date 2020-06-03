@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtMiddleName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
@@ -43,7 +44,9 @@
             this.chkRetired = new System.Windows.Forms.CheckBox();
             this.btnAddOwner = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -134,6 +137,7 @@
             // 
             // dtpDateOfRetirement
             // 
+            this.dtpDateOfRetirement.Enabled = false;
             this.dtpDateOfRetirement.Location = new System.Drawing.Point(110, 19);
             this.dtpDateOfRetirement.Name = "dtpDateOfRetirement";
             this.dtpDateOfRetirement.Size = new System.Drawing.Size(131, 20);
@@ -156,6 +160,7 @@
             this.chkRetired.Size = new System.Drawing.Size(15, 14);
             this.chkRetired.TabIndex = 0;
             this.chkRetired.UseVisualStyleBackColor = true;
+            this.chkRetired.CheckedChanged += new System.EventHandler(this.chkRetired_CheckedChanged);
             // 
             // btnAddOwner
             // 
@@ -177,6 +182,10 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmAddOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,6 +206,7 @@
             this.Text = "Add Owner";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +229,6 @@
         private System.Windows.Forms.CheckBox chkRetired;
         private System.Windows.Forms.Button btnAddOwner;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

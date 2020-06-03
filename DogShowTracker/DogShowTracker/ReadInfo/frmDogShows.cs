@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DogShowTracker
 {
-    public partial class frmDogShows : Form
+    public partial class frmDogShows : DogShowForm
     {
         public frmDogShows()
         {
@@ -22,7 +22,7 @@ namespace DogShowTracker
         /// <summary>
         /// Load all form info
         /// </summary>
-        public void Reload()
+        public new void Reload()
         {
             PopulateDogShows();
         }

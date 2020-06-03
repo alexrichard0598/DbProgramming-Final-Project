@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace DogShowTracker
 {
-    public partial class frmBreeds : Form
+    public partial class frmBreeds : DogShowForm
     {
         public frmBreeds()
         {
@@ -23,7 +23,7 @@ namespace DogShowTracker
         /// <summary>
         /// Load all form info
         /// </summary>
-        public void Reload()
+        public new void Reload()
         {
             LoadBreeds();
             LoadClasses();

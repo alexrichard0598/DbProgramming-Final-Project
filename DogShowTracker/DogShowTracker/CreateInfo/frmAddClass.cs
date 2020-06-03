@@ -1,12 +1,5 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*
@@ -17,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DogShowTracker
 {
-    public partial class frmAddClass : Form
+    public partial class frmAddClass : DogShowForm
     {
         public frmAddClass()
         {
@@ -30,11 +23,23 @@ namespace DogShowTracker
         {
             string className = txtClass.Text;
             string sql = $@"
-                        INSERT INTO Class
+                        INSERT INTO Classes
                             (Class)
                             VALUES
                             ('{className}');";
             DatabaseHelper.SendData(sql);
+        }
+
+        private bool ValidateFields()
+        {
+            bool isValid = true;
+            errorProvider.Clear();
+            if (txtClass.Text == "")
+            {
+                errorProvider.SetError(txtClass, "Colour Name cannot be blank");
+                isValid = false;
+            }
+            return isValid;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -53,13 +58,7 @@ namespace DogShowTracker
         {
             try
             {
-                errorProvider.Clear();
-
-                if (txtClass.Text == "")
-                {
-                    errorProvider.SetError(txtClass, "Colour Name cannot be blank");
-                }
-                else
+                if(ValidateFields())
                 {
                     InsertNewColour();
                     classAdded = true;
@@ -72,7 +71,7 @@ namespace DogShowTracker
             }
         }
 
-        private void frmAddColour_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmAddClass_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (classAdded) MessageBox.Show("Class Added");
         }
