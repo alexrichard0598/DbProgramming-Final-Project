@@ -24,7 +24,7 @@ namespace DogShowTracker
         /// <summary>
         /// Load all form info
         /// </summary>
-        public new void Reload()
+        public override void Reload()
         {
             PopulateOwnersList();
             currentID = Convert.ToInt32(OwnerNavigation()["FirstID"]);

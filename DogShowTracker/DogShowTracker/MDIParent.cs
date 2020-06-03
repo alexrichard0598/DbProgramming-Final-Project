@@ -75,23 +75,11 @@ namespace DogShowTracker
         {
             try
             {
-                foreach (Form childFrom in MdiChildren)
+                foreach (Form childForm in MdiChildren)
                 {
-                    if(childFrom is frmBreeds)
+                    if(childForm.GetType().IsSubclassOf(typeof(DogShowForm)))
                     {
-                        ((frmBreeds)childFrom).Reload();
-                    }
-                    if (childFrom is frmDogs)
-                    {
-                        ((frmDogs)childFrom).Reload();
-                    }
-                    if (childFrom is frmDogShows)
-                    {
-                        ((frmDogShows)childFrom).Reload();
-                    }
-                    if (childFrom is frmOwners)
-                    {
-                        ((frmOwners)childFrom).Reload();
+                        ((DogShowForm)childForm).Reload();
                     }
                 }
             }

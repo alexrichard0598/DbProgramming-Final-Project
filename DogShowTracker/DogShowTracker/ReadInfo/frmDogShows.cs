@@ -22,7 +22,7 @@ namespace DogShowTracker
         /// <summary>
         /// Load all form info
         /// </summary>
-        public new void Reload()
+        public override void Reload()
         {
             PopulateDogShows();
         }

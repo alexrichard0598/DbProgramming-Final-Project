@@ -17,9 +17,6 @@ namespace DogShowTrackerCL
             InitializeComponent();
         }
 
-        public void Reload()
-        {
-
-        }
+        public virtual void Reload() { }
     }
 }
