@@ -21,19 +21,20 @@ namespace DogShowTrackerCL
         /// </summary>
         /// <param name="mdiParent">The MDIparent to bind the form to</param>
         /// <param name="newForm">The new form to create</param>
-        public static void OpenForm(Form mdiParent, Form newForm)
+        public static Form OpenForm(Form mdiParent, Form newForm)
         {
             foreach (Form siblingForm in mdiParent.MdiChildren)
             {
                 if (siblingForm.GetType() == newForm.GetType())
                 {
                     siblingForm.Activate();
-                    return;
+                    return siblingForm;
                 }
             }
 
             newForm.MdiParent = mdiParent;
             newForm.Show();
+            return newForm;
         }
 
         /// <summary>

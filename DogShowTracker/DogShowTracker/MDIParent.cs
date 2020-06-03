@@ -13,111 +13,92 @@ namespace DogShowTracker
 {
     public partial class MDIParent : Form
     {
-        private int childFormNumber = 0;
 
         public MDIParent()
         {
             InitializeComponent();
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
-        }
-
-        private void OpenFile(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
-            }
-        }
-
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
-        }
-
-        private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            statusStrip.Visible = statusBarToolStripMenuItem.Checked;
-        }
-
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
-        }
-
         private void dogInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UIMethods.OpenForm(this, new frmDogs());
+
+            try
+            {
+                UIMethods.OpenForm(this, new frmDogs());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
 
         private void ownerInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UIMethods.OpenForm(this, new frmOwners());
+
+            try
+            {
+                UIMethods.OpenForm(this, new frmOwners());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
 
         private void dogShowInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UIMethods.OpenForm(this, new frmDogShows());
+
+            try
+            {
+                UIMethods.OpenForm(this, new frmDogShows());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void dogBreedInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                UIMethods.OpenForm(this, new frmBreeds());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnReloadForm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (Form childFrom in MdiChildren)
+                {
+                    if(childFrom is frmBreeds)
+                    {
+                        ((frmBreeds)childFrom).Reload();
+                    }
+                    if (childFrom is frmDogs)
+                    {
+                        ((frmDogs)childFrom).Reload();
+                    }
+                    if (childFrom is frmDogShows)
+                    {
+                        ((frmDogShows)childFrom).Reload();
+                    }
+                    if (childFrom is frmOwners)
+                    {
+                        ((frmOwners)childFrom).Reload();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
     }
 }

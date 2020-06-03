@@ -1,0 +1,376 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows.Forms;
+using DogShowTrackerCL;
+
+namespace DogShowTracker
+{
+    public partial class frmDogs : Form
+    {
+        public frmDogs()
+        {
+            InitializeComponent();
+        }
+
+        #region Helper Methods
+        public void Reload()
+        {
+            PopulateBreedsList();
+            PopulateOwnersList();
+            PopulateDogsList();
+        }
+
+        private void PopulateDogsList()
+        {
+            string sql = "SELECT [DogID], [Name] FROM Dogs ORDER BY [Name];";
+            DataTable dt = DatabaseHelper.GetDataTable(sql);
+            UIMethods.FillListControl(lstDogs, "Name", "DogID", dt);
+        }
+
+        private void PopulateBreedsList()
+        {
+            string sql = "SELECT [BreedID], [Breed] FROM Breeds ORDER BY [Breed];";
+            DataTable dt = DatabaseHelper.GetDataTable(sql);
+            UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", dt);
+
+            DataTable dt2 = DatabaseHelper.GetDataTable(sql);
+            UIMethods.FillListControl(cmbSearchBreed, "Breed", "BreedID", dt2, true);
+            cmbSearchBreed.SelectedIndex = -1;
+        }
+
+        private void PopulateOwnersList()
+        {
+            string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners;";
+            DataTable dt = DatabaseHelper.GetDataTable(sql);
+            UIMethods.FillListControl(cmbOwner, "OwnerName", "OwnerID", dt);
+        }
+
+        private int GetCurrentOwner(int id)
+        {
+            int ownerID;
+
+            string sql = $"SELECT OwnerID FROM DogOwnership WHERE DogID = {id} AND EndOfOwnership IS NULL;";
+            ownerID = Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
+
+            return ownerID;
+        }
+
+        private void PopulateDogShows()
+        {
+            int id = Convert.ToInt32(lstDogs.SelectedValue);
+            string sql = $@"SELECT DogShows.DogShowID AS ID, [Name], Disqualified, 
+                                    COALESCE(CAST([Rank] AS VARCHAR), '-') + '/' + 
+                                    CAST(DogShows.NumDogs AS VARCHAR) AS Placed FROM DogShowDetails
+	                            LEFT JOIN DogShows
+		                            ON DogShowDetails.DogShowID = DogShows.DogShowID
+	                            WHERE DogID = {id};";
+            DataTable dt = DatabaseHelper.GetDataTable(sql);
+            dgCompetitions.DataSource = dt;
+        }
+
+        private void GetDogDetails()
+        {
+            int id = Convert.ToInt32(lstDogs.SelectedValue);
+            string sql = $"SELECT * FROM Dogs WHERE DogID = {id};";
+            DataRow row = DatabaseHelper.GetDataRow(sql);
+
+            string name = row["Name"].ToString();
+            bool isMale = Convert.ToBoolean(row["Sex"]);
+            double weight = Convert.ToDouble(row["Weight"]);
+            double height = Convert.ToDouble(row["Height"]);
+            DateTime dob = Convert.ToDateTime(row["DOB"]);
+
+            DateTime? dateOfRetirement = null;
+            if (row["DateOfRetirement"] != DBNull.Value) dateOfRetirement = Convert.ToDateTime(row["DateOfRetirement"]);
+            bool retired = Convert.ToBoolean(row["Retired"]);
+
+            bool champion = Convert.ToBoolean(row["Champion"]);
+            DateTime? dateOfChampionship = null;
+            if (row["DateOfChampionship"] != DBNull.Value) dateOfChampionship = Convert.ToDateTime(row["DateOfChampionship"]);
+
+            bool banned = Convert.ToBoolean(row["PermanentlyDisqualified"]);
+            DateTime? dateOfDisqualification = null;
+            if (row["DateOfDisqualification"] != DBNull.Value) dateOfDisqualification = Convert.ToDateTime(row["DateOfDisqualification"]);
+
+            int breedID = Convert.ToInt32(row["Breed"]);
+            int ownerID = GetCurrentOwner(id);
+
+            txtID.Text = id.ToString();
+            txtName.Text = name.ToString();
+            rdoMale.Checked = isMale;
+            rdoFemale.Checked = !isMale;
+            txtWeight.Text = weight.ToString("N1");
+            txtHeight.Text = height.ToString("N1");
+            dtDateOfBirth.Value = dob;
+
+
+            chkRetired.Checked = retired;
+            if (dateOfRetirement == null)
+            {
+                dtDateOfRetirement.Format = DateTimePickerFormat.Custom;
+            }
+            else
+            {
+                dtDateOfRetirement.Value = Convert.ToDateTime(dateOfRetirement);
+                dtDateOfRetirement.Format = DateTimePickerFormat.Long;
+            }
+
+            chkChampion.Checked = champion;
+            if (dateOfChampionship == null)
+            {
+                dtChampionshipDate.Format = DateTimePickerFormat.Custom;
+            }
+            else
+            {
+                dtChampionshipDate.Value = Convert.ToDateTime(dateOfChampionship);
+                dtChampionshipDate.Format = DateTimePickerFormat.Long;
+            }
+
+            chkBanned.Checked = banned;
+            if (dateOfDisqualification == null)
+            {
+                dtDateBanned.Format = DateTimePickerFormat.Custom;
+            }
+            else
+            {
+                dtDateBanned.Value = Convert.ToDateTime(dateOfDisqualification);
+                dtDateBanned.Format = DateTimePickerFormat.Long;
+            }
+
+            cmbBreed.SelectedValue = breedID;
+            cmbOwner.SelectedValue = ownerID;
+
+            PopulateDogShows();
+        }
+
+        private void QuerryDogs()
+        {
+            string dogName = txtSearchName.Text;
+            string breedID = cmbSearchBreed.SelectedIndex <= 0 ? "%%" : cmbSearchBreed.SelectedValue.ToString();
+            string sex = rdoSearchMale.Checked ? "1" : rdoSearchFemale.Checked ? "0" : "1, 0";
+            string ownerName = txtSearchOwner.Text;
+            decimal maxWeight = nudMaxWeight.Value == 0 ? 999 : nudMaxWeight.Value;
+            decimal minWeight = nudMinWeight.Value;
+            decimal minHeight = nudMinHeight.Value;
+            decimal maxHeight = nudMaxHeight.Value == 0 ? 999 : nudMaxHeight.Value;
+
+            string sql = $@"SELECT DISTINCT Dogs.DogID, [Name] FROM Dogs 
+	                            LEFT JOIN DogOwnership
+		                            ON Dogs.DogID = DogOwnership.DogID
+	                            LEFT JOIN Owners
+		                            ON DogOwnership.OwnerID = Owners.OwnerID
+	                            WHERE	Dogs.[Name] LIKE '%{dogName}%' AND
+			                            Breed LIKE '{breedID}' AND
+			                            SEX IN({sex}) AND
+			                            FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName LIKE '%{ownerName}%' AND
+			                            {minHeight} < Height AND Height < {maxHeight} AND
+			                            {minWeight} < [Weight] AND [Weight] < {maxWeight}
+                                ORDER BY [Name];";
+            DataTable dt = DatabaseHelper.GetDataTable(sql);
+            UIMethods.FillListControl(lstDogs, "Name", "DogID", dt);
+        }
+
+        private void OpenDogShowInfo()
+        {
+            int rowIndex = dgCompetitions.SelectedCells[0].RowIndex;
+            int id = Convert.ToInt32(dgCompetitions.Rows[rowIndex].Cells["ID"].Value);
+            int dogId = Convert.ToInt32(lstDogs.SelectedValue);
+
+            Form form = UIMethods.OpenForm(this.MdiParent, new frmDogShows());
+            foreach (Control ctrl in form.Controls)
+            {
+                if (ctrl.Name == "grpDogShows")
+                {
+                    ((ComboBox)ctrl.Controls["cmbDogShows"]).SelectedValue = id;
+                    break;
+                }
+
+            }
+            foreach (Control ctrl in form.Controls)
+            {
+                if (ctrl.Name == "lstDogs")
+                {
+                    ((ListBox)ctrl).SelectedValue = dogId;
+                    break;
+                }
+            }
+        }
+
+        private void OpenOwnerInfo()
+        {
+            int id = Convert.ToInt32(cmbOwner.SelectedValue);
+
+            Form form = UIMethods.OpenForm(this.MdiParent, new frmOwners());
+            foreach (Control ctrl in form.Controls)
+            {
+                if (ctrl.Name == "cmbSelectOwner")
+                {
+                    ((ComboBox)ctrl).SelectedValue = id;
+                    break;
+                }
+            }
+
+        }
+
+        private void OpenBreedInfo()
+        {
+            int id = Convert.ToInt32(cmbBreed.SelectedValue);
+
+            Form form = UIMethods.OpenForm(this.MdiParent, new frmBreeds());
+            foreach (Control ctrl in form.Controls)
+            {
+                if (ctrl.Name == "grpBreeds")
+                {
+                    ((ListBox)ctrl.Controls["lstBreeds"]).SelectedValue = id;
+                    break;
+                }
+            }
+        }
+        #endregion
+
+        #region Event Handlers
+        private void frmDogs_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                PopulateBreedsList();
+                PopulateOwnersList();
+                PopulateDogsList();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+
+        private void btnNewDog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UIMethods.OpenForm(this.MdiParent, new frmAddDog());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+        private void lstDogs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GetDogDetails();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+
+        }
+
+        private void btnReloadDogs_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PopulateBreedsList();
+                PopulateOwnersList();
+                PopulateDogsList();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            foreach (Control ctrl in grpSearch.Controls)
+            {
+                if (ctrl is TextBox)
+                {
+                    ctrl.Text = "";
+                }
+                if (ctrl is ComboBox)
+                {
+                    ((ComboBox)ctrl).SelectedIndex = 0;
+                }
+                if (ctrl is GroupBox)
+                {
+                    foreach (Control subCtrl in ctrl.Controls)
+                    {
+                        if (subCtrl is RadioButton)
+                        {
+                            if (subCtrl.Name == "rdoSexEither") ((RadioButton)subCtrl).Checked = true;
+                        }
+                        if (subCtrl is NumericUpDown)
+                        {
+                            ((NumericUpDown)subCtrl).Value = 0;
+                        }
+                    }
+                }
+            }
+            PopulateDogsList();
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                QuerryDogs();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void dgCompetitions_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenDogShowInfo();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnViewOwner_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenOwnerInfo();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+        #endregion
+
+        private void btnViewBreed_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenBreedInfo();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UIMethods.OpenForm(MdiParent, new frmUpdateDog());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+    }
+}
