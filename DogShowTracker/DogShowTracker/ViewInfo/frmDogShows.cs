@@ -1,13 +1,13 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+/*
+    Alex Richard
+    Dog Show Tracker
+    2020-06-03
+*/
 
 namespace DogShowTracker
 {
@@ -18,6 +18,18 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        #region Helper Methods
+        /// <summary>
+        /// Load all form info
+        /// </summary>
+        public void Reload()
+        {
+            PopulateDogShows();
+        }
+
+        /// <summary>
+        /// Fill the dogshows combobox
+        /// </summary>
         private void PopulateDogShows()
         {
             string sql = "SELECT DogShowID, [Name] FROM DogShows ORDER BY [Name];";
@@ -25,6 +37,9 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbDogShows, "Name", "DogShowID", dt);
         }
 
+        /// <summary>
+        /// Fill the number of dogs textbox with the number of dogs competed in the current dog show
+        /// </summary>
         private void GetNumDogs()
         {
             int id = Convert.ToInt32(cmbDogShows.SelectedValue);
@@ -32,11 +47,9 @@ namespace DogShowTracker
             txtNumDogs.Text = DatabaseHelper.ExecuteScaler(sql).ToString();
         }
 
-        public void Reload()
-        {
-            PopulateDogShows();
-        }
-
+        /// <summary>
+        /// Fill the dogs list with the dogs that competed in the selected dog show
+        /// </summary>
         private void GetDogs()
         {
             int id = Convert.ToInt32(cmbDogShows.SelectedValue);
@@ -53,6 +66,9 @@ namespace DogShowTracker
             UIMethods.FillListControl(lstDogs, "Dog", "DogID", dt);
         }
 
+        /// <summary>
+        /// Get the start and end dates to the dog show
+        /// </summary>
         private void GetDates()
         {
             int id = Convert.ToInt32(cmbDogShows.SelectedValue);
@@ -64,6 +80,9 @@ namespace DogShowTracker
             dtEndDate.Value = endDate;
         }
 
+        /// <summary>
+        /// Open the info on the dog that  is currently selected in the dogs list
+        /// </summary>
         private void OpenDogInfo()
         {
             try
@@ -83,6 +102,7 @@ namespace DogShowTracker
                 UIMethods.ErrorHandler(ex);
             }
         }
+        #endregion
 
         private void frmDogShows_Load(object sender, EventArgs e)
         {

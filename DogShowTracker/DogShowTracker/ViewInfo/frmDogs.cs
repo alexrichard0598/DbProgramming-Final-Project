@@ -1,8 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using DogShowTrackerCL;
+
+/*
+    Alex Richard
+    Dog Show Tracker
+    2020-06-03
+*/
 
 namespace DogShowTracker
 {
@@ -14,6 +19,9 @@ namespace DogShowTracker
         }
 
         #region Helper Methods
+        /// <summary>
+        /// Load all form info
+        /// </summary>
         public void Reload()
         {
             PopulateBreedsList();
@@ -21,6 +29,9 @@ namespace DogShowTracker
             PopulateDogsList();
         }
 
+        /// <summary>
+        /// Fill the Dogs listbox
+        /// </summary>
         private void PopulateDogsList()
         {
             string sql = "SELECT [DogID], [Name] FROM Dogs ORDER BY [Name];";
@@ -28,6 +39,9 @@ namespace DogShowTracker
             UIMethods.FillListControl(lstDogs, "Name", "DogID", dt);
         }
 
+        /// <summary>
+        /// Fill the breed and search breed comboboxes
+        /// </summary>
         private void PopulateBreedsList()
         {
             string sql = "SELECT [BreedID], [Breed] FROM Breeds ORDER BY [Breed];";
@@ -39,6 +53,9 @@ namespace DogShowTracker
             cmbSearchBreed.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// Fill the owners combobox
+        /// </summary>
         private void PopulateOwnersList()
         {
             string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners;";
@@ -46,16 +63,20 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbOwner, "OwnerName", "OwnerID", dt);
         }
 
-        private int GetCurrentOwner(int id)
+        /// <summary>
+        /// Gets the id of the current owner of the selected dog
+        /// </summary>
+        /// <returns></returns>
+        private int GetCurrentOwner()
         {
-            int ownerID;
-
+            int id = Convert.ToInt32(lstDogs.SelectedValue);
             string sql = $"SELECT OwnerID FROM DogOwnership WHERE DogID = {id} AND EndOfOwnership IS NULL;";
-            ownerID = Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
-
-            return ownerID;
+            return Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
         }
 
+        /// <summary>
+        /// Fills the datagrid of competions with competitions the selected dog has done
+        /// </summary>
         private void PopulateDogShows()
         {
             int id = Convert.ToInt32(lstDogs.SelectedValue);
@@ -69,6 +90,9 @@ namespace DogShowTracker
             dgCompetitions.DataSource = dt;
         }
 
+        /// <summary>
+        /// Get the information on the selected dog
+        /// </summary>
         private void GetDogDetails()
         {
             int id = Convert.ToInt32(lstDogs.SelectedValue);
@@ -81,20 +105,18 @@ namespace DogShowTracker
             double height = Convert.ToDouble(row["Height"]);
             DateTime dob = Convert.ToDateTime(row["DOB"]);
 
-            DateTime? dateOfRetirement = null;
-            if (row["DateOfRetirement"] != DBNull.Value) dateOfRetirement = Convert.ToDateTime(row["DateOfRetirement"]);
+
+            UIMethods.PickDateTimePicker(dtDateOfRetirement, row["DateOfRetirement"]);
             bool retired = Convert.ToBoolean(row["Retired"]);
 
             bool champion = Convert.ToBoolean(row["Champion"]);
-            DateTime? dateOfChampionship = null;
-            if (row["DateOfChampionship"] != DBNull.Value) dateOfChampionship = Convert.ToDateTime(row["DateOfChampionship"]);
+            UIMethods.PickDateTimePicker(dtChampionshipDate, row["DateOfChampionship"]);
 
             bool banned = Convert.ToBoolean(row["PermanentlyDisqualified"]);
-            DateTime? dateOfDisqualification = null;
-            if (row["DateOfDisqualification"] != DBNull.Value) dateOfDisqualification = Convert.ToDateTime(row["DateOfDisqualification"]);
+            UIMethods.PickDateTimePicker(dtDateBanned, row["DateOfDisqualification"]);
 
             int breedID = Convert.ToInt32(row["Breed"]);
-            int ownerID = GetCurrentOwner(id);
+            int ownerID = GetCurrentOwner();
 
             txtID.Text = id.ToString();
             txtName.Text = name.ToString();
@@ -103,57 +125,37 @@ namespace DogShowTracker
             txtWeight.Text = weight.ToString("N1");
             txtHeight.Text = height.ToString("N1");
             dtDateOfBirth.Value = dob;
-
-
             chkRetired.Checked = retired;
-            if (dateOfRetirement == null)
-            {
-                dtDateOfRetirement.Format = DateTimePickerFormat.Custom;
-            }
-            else
-            {
-                dtDateOfRetirement.Value = Convert.ToDateTime(dateOfRetirement);
-                dtDateOfRetirement.Format = DateTimePickerFormat.Long;
-            }
-
             chkChampion.Checked = champion;
-            if (dateOfChampionship == null)
-            {
-                dtChampionshipDate.Format = DateTimePickerFormat.Custom;
-            }
-            else
-            {
-                dtChampionshipDate.Value = Convert.ToDateTime(dateOfChampionship);
-                dtChampionshipDate.Format = DateTimePickerFormat.Long;
-            }
-
             chkBanned.Checked = banned;
-            if (dateOfDisqualification == null)
-            {
-                dtDateBanned.Format = DateTimePickerFormat.Custom;
-            }
-            else
-            {
-                dtDateBanned.Value = Convert.ToDateTime(dateOfDisqualification);
-                dtDateBanned.Format = DateTimePickerFormat.Long;
-            }
-
             cmbBreed.SelectedValue = breedID;
             cmbOwner.SelectedValue = ownerID;
 
             PopulateDogShows();
         }
 
+        /// <summary>
+        /// Search the dogs using any of the provided search terms.
+        /// If a search term is blank will filter that field by all possiblites
+        /// </summary>
         private void QuerryDogs()
         {
             string dogName = txtSearchName.Text;
+
+            //If no breed is selected set to a wild card
             string breedID = cmbSearchBreed.SelectedIndex <= 0 ? "%%" : cmbSearchBreed.SelectedValue.ToString();
+
+            //If the rdo male is check set a 1 if rdo female is checked set to 0 else set to 1, 0 which will show both
             string sex = rdoSearchMale.Checked ? "1" : rdoSearchFemale.Checked ? "0" : "1, 0";
             string ownerName = txtSearchOwner.Text;
+
+            //If max weight is 0 set to filter max by 999
             decimal maxWeight = nudMaxWeight.Value == 0 ? 999 : nudMaxWeight.Value;
             decimal minWeight = nudMinWeight.Value;
-            decimal minHeight = nudMinHeight.Value;
+
+            //If max height is 0 set to filter max by 999
             decimal maxHeight = nudMaxHeight.Value == 0 ? 999 : nudMaxHeight.Value;
+            decimal minHeight = nudMinHeight.Value;
 
             string sql = $@"SELECT DISTINCT Dogs.DogID, [Name] FROM Dogs 
 	                            LEFT JOIN DogOwnership
@@ -171,8 +173,12 @@ namespace DogShowTracker
             UIMethods.FillListControl(lstDogs, "Name", "DogID", dt);
         }
 
+        /// <summary>
+        /// Open the info of the currently selected dog show (if any)
+        /// </summary>
         private void OpenDogShowInfo()
         {
+            if (dgCompetitions.SelectedCells.Count == 0) return;
             int rowIndex = dgCompetitions.SelectedCells[0].RowIndex;
             int id = Convert.ToInt32(dgCompetitions.Rows[rowIndex].Cells["ID"].Value);
             int dogId = Convert.ToInt32(lstDogs.SelectedValue);
@@ -197,6 +203,9 @@ namespace DogShowTracker
             }
         }
 
+        /// <summary>
+        /// Open the info on the current owner of the selected dog
+        /// </summary>
         private void OpenOwnerInfo()
         {
             int id = Convert.ToInt32(cmbOwner.SelectedValue);
@@ -213,6 +222,9 @@ namespace DogShowTracker
 
         }
 
+        /// <summary>
+        /// Open the info on the breed of the selected dog
+        /// </summary>
         private void OpenBreedInfo()
         {
             int id = Convert.ToInt32(cmbBreed.SelectedValue);

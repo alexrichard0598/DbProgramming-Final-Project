@@ -1,13 +1,13 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+/*
+    Alex Richard
+    Dog Show Tracker
+    2020-06-03
+*/
 
 namespace DogShowTracker
 {
@@ -21,7 +21,9 @@ namespace DogShowTracker
         private int currentID = 1;
 
         #region Helper Methods
-
+        /// <summary>
+        /// Load all form info
+        /// </summary>
         public void Reload()
         {
             PopulateOwnersList();
@@ -29,6 +31,9 @@ namespace DogShowTracker
             LoadOwnerDetails();
         }
 
+        /// <summary>
+        /// Fill the selected owner combobox
+        /// </summary>
         private void PopulateOwnersList()
         {
             string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners ORDER BY LastName;";
@@ -36,6 +41,9 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbSelectOwner, "OwnerName", "OwnerID", dt);
         }
 
+        /// <summary>
+        /// Fill the ownership datagrid
+        /// </summary>
         private void GetOwnership()
         {
             string sql = $@"SELECT	Dogs.DogID AS ID, Dogs.[Name], StartOfOwnership, EndOfOwnership FROM DogOwnership
@@ -47,6 +55,9 @@ namespace DogShowTracker
             dgOwnership.DataSource = dt;
         }
 
+        /// <summary>
+        /// Load the info on the selected owner
+        /// </summary>
         private void LoadOwnerDetails()
         {
             string sql = $"SELECT FirstName, COALESCE(MiddleName + ' ', '') AS MiddleName, LastName, DOB, DateOfRetirement, Retired FROM Owners WHERE OwnerID = {currentID};";
@@ -56,8 +67,7 @@ namespace DogShowTracker
             string mName = row["MiddleName"].ToString();
             string lName = row["LastName"].ToString();
             DateTime dob = Convert.ToDateTime(row["DOB"]);
-            DateTime? dateOfRetirement = null;
-            if (row["DateOfRetirement"] != DBNull.Value) dateOfRetirement = Convert.ToDateTime(row["DateOfRetirement"]);
+            UIMethods.PickDateTimePicker(dtDateOfRetirement, row["DateOfRetirement"]);
             bool retired = Convert.ToBoolean(row["Retired"]);
 
             txtFName.Text = fName;
@@ -65,16 +75,6 @@ namespace DogShowTracker
             txtLName.Text = lName;
             dtDOB.Value = dob;
             chkRetired.Checked = retired;
-
-            if (dateOfRetirement == null)
-            {
-                dtDateOfRetirement.Format = DateTimePickerFormat.Custom;
-            }
-            else
-            {
-                dtDateOfRetirement.Value = Convert.ToDateTime(dateOfRetirement);
-                dtDateOfRetirement.Format = DateTimePickerFormat.Long;
-            }
 
             GetOwnership();
         }
@@ -97,6 +97,9 @@ namespace DogShowTracker
             return DatabaseHelper.GetDataRow(sql);
         }
 
+        /// <summary>
+        /// Open the info on the currently selected dog
+        /// </summary>
         private void OpenDogInfo()
         {
             try
@@ -154,14 +157,7 @@ namespace DogShowTracker
             try
             {
                 int nextId = Convert.ToInt32(OwnerNavigation()["NextID"]);
-                if (nextId != -1)
-                {
-                    currentID = nextId;
-                }
-                else
-                {
-                    currentID = Convert.ToInt32(OwnerNavigation()["FirstID"]);
-                }
+                currentID = nextId != -1 ? nextId : Convert.ToInt32(OwnerNavigation()["FirstID"]);
                 cmbSelectOwner.SelectedValue = currentID;
             }
             catch (Exception ex)
@@ -175,14 +171,7 @@ namespace DogShowTracker
             try
             {
                 int previousID = Convert.ToInt32(OwnerNavigation()["PreviousID"]);
-                if (previousID != -1)
-                {
-                    currentID = previousID;
-                }
-                else
-                {
-                    currentID = Convert.ToInt32(OwnerNavigation()["LastID"]);
-                }
+                currentID = previousID != -1 ? previousID : Convert.ToInt32(OwnerNavigation()["LastID"]);
                 cmbSelectOwner.SelectedValue = currentID;
             }
             catch (Exception ex)
@@ -209,7 +198,7 @@ namespace DogShowTracker
             OpenDogInfo();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnChangeOwnership_Click(object sender, EventArgs e)
         {
             try
             {

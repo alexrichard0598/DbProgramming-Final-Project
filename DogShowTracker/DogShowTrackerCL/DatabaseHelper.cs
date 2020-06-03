@@ -7,6 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+    Alex Richard
+    Dog Show Tracker
+    2020-06-03
+*/
+
 namespace DogShowTrackerCL
 {
     public static class DatabaseHelper

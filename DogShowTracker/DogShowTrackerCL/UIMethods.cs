@@ -2,6 +2,12 @@
 using System.Data;
 using System.Windows.Forms;
 
+/*
+    Alex Richard
+    Dog Show Tracker
+    2020-06-03
+*/
+
 namespace DogShowTrackerCL
 {
     public static class UIMethods
@@ -59,6 +65,29 @@ namespace DogShowTrackerCL
             ctrl.DisplayMember = displayMember;
             ctrl.ValueMember = valueMember;
             ctrl.DataSource = dt;
+        }
+
+        /// <summary>
+        /// Tries to set the value of a DateTimePicker to the value of the object passed through.
+        /// If it can't, it instead sets the DateTimePicker to display empty
+        /// </summary>
+        /// <param name="dateTimePicker">The DateTimePicker to set</param>
+        /// <param name="dateObject">The object to set the DateTimePicker to</param>
+        public static void PickDateTimePicker(DateTimePicker dateTimePicker, object dateObject)
+        {
+            
+
+            if (DateTime.TryParse(dateObject.ToString(), out DateTime date))
+            {
+                dateTimePicker.Value = Convert.ToDateTime(date);
+                dateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+            else
+            {
+                dateTimePicker.Value = DateTime.Now;
+                dateTimePicker.CustomFormat = " ";
+                dateTimePicker.Format = DateTimePickerFormat.Custom;
+            }
         }
     }
 }

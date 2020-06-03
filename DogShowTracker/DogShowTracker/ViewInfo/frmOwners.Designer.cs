@@ -49,7 +49,7 @@
             this.btnNewOwner = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbSelectOwner = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnChangeOwnership = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -273,15 +273,15 @@
             this.cmbSelectOwner.TabIndex = 34;
             this.cmbSelectOwner.SelectedIndexChanged += new System.EventHandler(this.cmbSelectOwner_SelectedIndexChanged);
             // 
-            // button1
+            // btnChangeOwnership
             // 
-            this.button1.Location = new System.Drawing.Point(93, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 23);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Change Ownership";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnChangeOwnership.Location = new System.Drawing.Point(93, 12);
+            this.btnChangeOwnership.Name = "btnChangeOwnership";
+            this.btnChangeOwnership.Size = new System.Drawing.Size(106, 23);
+            this.btnChangeOwnership.TabIndex = 35;
+            this.btnChangeOwnership.Text = "Change Ownership";
+            this.btnChangeOwnership.UseVisualStyleBackColor = true;
+            this.btnChangeOwnership.Click += new System.EventHandler(this.btnChangeOwnership_Click);
             // 
             // frmOwners
             // 
@@ -290,7 +290,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(745, 304);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnChangeOwnership);
             this.Controls.Add(this.cmbSelectOwner);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnNewOwner);
@@ -332,6 +332,6 @@
         private System.Windows.Forms.DataGridView dgOwnership;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbSelectOwner;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChangeOwnership;
     }
 }

@@ -1,13 +1,14 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+/*
+    Alex Richard
+    Dog Show Tracker
+    2020-06-03
+*/
+
 
 namespace DogShowTracker
 {
@@ -18,6 +19,10 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        #region Helper Methods
+        /// <summary>
+        /// Load all form info
+        /// </summary>
         public void Reload()
         {
             LoadBreeds();
@@ -25,6 +30,9 @@ namespace DogShowTracker
             LoadColours();
         }
 
+        /// <summary>
+        /// Fill the breeds listbox
+        /// </summary>
         private void LoadBreeds()
         {
             string sql = "SELECT BreedID, Breed FROM Breeds ORDER BY Breed;";
@@ -33,6 +41,9 @@ namespace DogShowTracker
             UIMethods.FillListControl(lstBreeds, "Breed", "BreedID", dt);
         }
 
+        /// <summary>
+        /// Fill the classification combobox
+        /// </summary>
         private void LoadClasses()
         {
             string sql = "SELECT ClassID, Class FROM Classes;";
@@ -41,6 +52,9 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbClass, "Class", "ClassID", dt);
         }
 
+        /// <summary>
+        /// Fill the primary and secondary coat colour comboboxes
+        /// </summary>
         private void LoadColours()
         {
             string sql = "SELECT ColourID, Colour FROM Colours;";
@@ -52,6 +66,9 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbSecondary, "Colour", "ColourID", dt2);
         }
 
+        /// <summary>
+        /// Load the specific information on the breed
+        /// </summary>
         private void LoadBreedInfo()
         {
             int breedID = Convert.ToInt32(lstBreeds.SelectedValue);
@@ -70,6 +87,7 @@ namespace DogShowTracker
             cmbSecondary.SelectedValue = secondaryColourID;
 
         }
+        #endregion
 
         private void frmBreeds_Load(object sender, EventArgs e)
         {
