@@ -32,7 +32,7 @@ namespace DogShowTracker
         /// </summary>
         private void PopulateDogShows()
         {
-            string sql = "SELECT DogShowID, [Name] FROM DogShows ORDER BY [Name];";
+            string sql = "SELECT DogShowID, CAST(StartDate AS VARCHAR) + ' '+ CHAR(151) +' ' + [Name] AS [Name] FROM DogShows ORDER BY [Name];";
             DataTable dt = DatabaseHelper.GetDataTable(sql);
             UIMethods.FillListControl(cmbDogShows, "Name", "DogShowID", dt);
         }
