@@ -30,9 +30,9 @@
         {
             this.cmbDogShows = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.grpDogShows = new System.Windows.Forms.GroupBox();
             this.lstDogs = new System.Windows.Forms.ListBox();
             this.btnNewShow = new System.Windows.Forms.Button();
@@ -56,7 +56,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dtStartDate);
+            this.groupBox1.Controls.Add(this.dtpStartDate);
             this.groupBox1.Location = new System.Drawing.Point(12, 100);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(161, 55);
@@ -64,17 +64,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Start Date";
             // 
-            // dtStartDate
+            // dtpStartDate
             // 
-            this.dtStartDate.Enabled = false;
-            this.dtStartDate.Location = new System.Drawing.Point(6, 19);
-            this.dtStartDate.Name = "dtStartDate";
-            this.dtStartDate.Size = new System.Drawing.Size(145, 20);
-            this.dtStartDate.TabIndex = 0;
+            this.dtpStartDate.Enabled = false;
+            this.dtpStartDate.Location = new System.Drawing.Point(6, 19);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(145, 20);
+            this.dtpStartDate.TabIndex = 0;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dtEndDate);
+            this.groupBox2.Controls.Add(this.dtpEndDate);
             this.groupBox2.Location = new System.Drawing.Point(179, 100);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(165, 55);
@@ -82,13 +82,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "End Date";
             // 
-            // dtEndDate
+            // dtpEndDate
             // 
-            this.dtEndDate.Enabled = false;
-            this.dtEndDate.Location = new System.Drawing.Point(6, 19);
-            this.dtEndDate.Name = "dtEndDate";
-            this.dtEndDate.Size = new System.Drawing.Size(145, 20);
-            this.dtEndDate.TabIndex = 1;
+            this.dtpEndDate.Enabled = false;
+            this.dtpEndDate.Location = new System.Drawing.Point(6, 19);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(145, 20);
+            this.dtpEndDate.TabIndex = 1;
             // 
             // grpDogShows
             // 
@@ -176,9 +176,9 @@
 
         private System.Windows.Forms.ComboBox cmbDogShows;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dtStartDate;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DateTimePicker dtEndDate;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.GroupBox grpDogShows;
         private System.Windows.Forms.ListBox lstDogs;
         private System.Windows.Forms.Button btnNewShow;

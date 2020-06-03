@@ -28,48 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.components = new System.ComponentModel.Container();
+            this.txtBreedName = new System.Windows.Forms.TextBox();
+            this.cmbPrimaryCoat = new System.Windows.Forms.ComboBox();
+            this.cmbSecondaryCoat = new System.Windows.Forms.ComboBox();
+            this.cmbClass = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtBreedName
             // 
-            this.textBox1.Location = new System.Drawing.Point(134, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(126, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtBreedName.Location = new System.Drawing.Point(134, 6);
+            this.txtBreedName.Name = "txtBreedName";
+            this.txtBreedName.Size = new System.Drawing.Size(126, 20);
+            this.txtBreedName.TabIndex = 0;
             // 
-            // comboBox1
+            // cmbPrimaryCoat
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(134, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(126, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cmbPrimaryCoat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPrimaryCoat.FormattingEnabled = true;
+            this.cmbPrimaryCoat.Location = new System.Drawing.Point(134, 32);
+            this.cmbPrimaryCoat.Name = "cmbPrimaryCoat";
+            this.cmbPrimaryCoat.Size = new System.Drawing.Size(126, 21);
+            this.cmbPrimaryCoat.TabIndex = 1;
             // 
-            // comboBox2
+            // cmbSecondaryCoat
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(134, 59);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(126, 21);
-            this.comboBox2.TabIndex = 2;
+            this.cmbSecondaryCoat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSecondaryCoat.FormattingEnabled = true;
+            this.cmbSecondaryCoat.Location = new System.Drawing.Point(134, 59);
+            this.cmbSecondaryCoat.Name = "cmbSecondaryCoat";
+            this.cmbSecondaryCoat.Size = new System.Drawing.Size(126, 21);
+            this.cmbSecondaryCoat.TabIndex = 2;
             // 
-            // comboBox3
+            // cmbClass
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(134, 86);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(126, 21);
-            this.comboBox3.TabIndex = 3;
+            this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbClass.FormattingEnabled = true;
+            this.cmbClass.Location = new System.Drawing.Point(134, 86);
+            this.cmbClass.Name = "cmbClass";
+            this.cmbClass.Size = new System.Drawing.Size(126, 21);
+            this.cmbClass.TabIndex = 3;
             // 
             // label1
             // 
@@ -115,6 +121,7 @@
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCancel
             // 
@@ -124,6 +131,11 @@
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frmAddDogBreed
             // 
@@ -136,12 +148,14 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cmbClass);
+            this.Controls.Add(this.cmbSecondaryCoat);
+            this.Controls.Add(this.cmbPrimaryCoat);
+            this.Controls.Add(this.txtBreedName);
             this.Name = "frmAddDogBreed";
             this.Text = "Add Dog Breed";
+            this.Load += new System.EventHandler(this.frmAddDogBreed_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,15 +163,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.TextBox txtBreedName;
+        private System.Windows.Forms.ComboBox cmbPrimaryCoat;
+        private System.Windows.Forms.ComboBox cmbSecondaryCoat;
+        private System.Windows.Forms.ComboBox cmbClass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddInfo\frmAddBreed.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddInfo\frmAddBreed.Designer.cs">
-      <DependentUpon>frmAddBreed.cs</DependentUpon>
-    </Compile>
     <Compile Include="AddInfo\frmAddClass.cs">
       <SubType>Form</SubType>
     </Compile>

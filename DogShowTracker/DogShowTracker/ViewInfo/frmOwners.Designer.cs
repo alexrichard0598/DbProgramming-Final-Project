@@ -34,7 +34,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.chkRetired = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dtDOB = new System.Windows.Forms.DateTimePicker();
+            this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -116,13 +116,13 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Date of Birth:";
             // 
-            // dtDOB
+            // dtpDOB
             // 
-            this.dtDOB.Enabled = false;
-            this.dtDOB.Location = new System.Drawing.Point(117, 97);
-            this.dtDOB.Name = "dtDOB";
-            this.dtDOB.Size = new System.Drawing.Size(131, 20);
-            this.dtDOB.TabIndex = 17;
+            this.dtpDOB.Enabled = false;
+            this.dtpDOB.Location = new System.Drawing.Point(117, 97);
+            this.dtpDOB.Name = "dtpDOB";
+            this.dtpDOB.Size = new System.Drawing.Size(131, 20);
+            this.dtpDOB.TabIndex = 17;
             // 
             // label3
             // 
@@ -184,7 +184,7 @@
             this.groupBox2.Controls.Add(this.txtFName);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtMName);
-            this.groupBox2.Controls.Add(this.dtDOB);
+            this.groupBox2.Controls.Add(this.dtpDOB);
             this.groupBox2.Controls.Add(this.txtLName);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
@@ -317,7 +317,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkRetired;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtDOB;
+        private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

@@ -45,9 +45,9 @@
             this.btnViewBreed = new System.Windows.Forms.Button();
             this.btnViewOwner = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.dtChampionshipDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpChampionshipDate = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
-            this.dtDateBanned = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateBanned = new System.Windows.Forms.DateTimePicker();
             this.txtName = new System.Windows.Forms.TextBox();
             this.chkChampion = new System.Windows.Forms.CheckBox();
             this.chkBanned = new System.Windows.Forms.CheckBox();
@@ -58,8 +58,8 @@
             this.cmbOwner = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbBreed = new System.Windows.Forms.ComboBox();
-            this.dtDateOfRetirement = new System.Windows.Forms.DateTimePicker();
-            this.dtDateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateOfRetirement = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.grpSearch = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -231,9 +231,9 @@
             this.grpDogInfo.Controls.Add(this.btnViewBreed);
             this.grpDogInfo.Controls.Add(this.btnViewOwner);
             this.grpDogInfo.Controls.Add(this.label21);
-            this.grpDogInfo.Controls.Add(this.dtChampionshipDate);
+            this.grpDogInfo.Controls.Add(this.dtpChampionshipDate);
             this.grpDogInfo.Controls.Add(this.label20);
-            this.grpDogInfo.Controls.Add(this.dtDateBanned);
+            this.grpDogInfo.Controls.Add(this.dtpDateBanned);
             this.grpDogInfo.Controls.Add(this.txtName);
             this.grpDogInfo.Controls.Add(this.chkChampion);
             this.grpDogInfo.Controls.Add(this.chkBanned);
@@ -244,8 +244,8 @@
             this.grpDogInfo.Controls.Add(this.cmbOwner);
             this.grpDogInfo.Controls.Add(this.label9);
             this.grpDogInfo.Controls.Add(this.cmbBreed);
-            this.grpDogInfo.Controls.Add(this.dtDateOfRetirement);
-            this.grpDogInfo.Controls.Add(this.dtDateOfBirth);
+            this.grpDogInfo.Controls.Add(this.dtpDateOfRetirement);
+            this.grpDogInfo.Controls.Add(this.dtpDateOfBirth);
             this.grpDogInfo.Controls.Add(this.label1);
             this.grpDogInfo.Controls.Add(this.label2);
             this.grpDogInfo.Controls.Add(this.label4);
@@ -293,16 +293,16 @@
             this.label21.TabIndex = 31;
             this.label21.Text = "Championship Date:";
             // 
-            // dtChampionshipDate
+            // dtpChampionshipDate
             // 
-            this.dtChampionshipDate.Checked = false;
-            this.dtChampionshipDate.CustomFormat = " ";
-            this.dtChampionshipDate.Enabled = false;
-            this.dtChampionshipDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtChampionshipDate.Location = new System.Drawing.Point(115, 569);
-            this.dtChampionshipDate.Name = "dtChampionshipDate";
-            this.dtChampionshipDate.Size = new System.Drawing.Size(132, 20);
-            this.dtChampionshipDate.TabIndex = 30;
+            this.dtpChampionshipDate.Checked = false;
+            this.dtpChampionshipDate.CustomFormat = " ";
+            this.dtpChampionshipDate.Enabled = false;
+            this.dtpChampionshipDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpChampionshipDate.Location = new System.Drawing.Point(115, 569);
+            this.dtpChampionshipDate.Name = "dtpChampionshipDate";
+            this.dtpChampionshipDate.Size = new System.Drawing.Size(132, 20);
+            this.dtpChampionshipDate.TabIndex = 30;
             // 
             // label20
             // 
@@ -313,16 +313,16 @@
             this.label20.TabIndex = 29;
             this.label20.Text = "Date Banned:";
             // 
-            // dtDateBanned
+            // dtpDateBanned
             // 
-            this.dtDateBanned.Checked = false;
-            this.dtDateBanned.CustomFormat = " ";
-            this.dtDateBanned.Enabled = false;
-            this.dtDateBanned.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDateBanned.Location = new System.Drawing.Point(115, 639);
-            this.dtDateBanned.Name = "dtDateBanned";
-            this.dtDateBanned.Size = new System.Drawing.Size(132, 20);
-            this.dtDateBanned.TabIndex = 28;
+            this.dtpDateBanned.Checked = false;
+            this.dtpDateBanned.CustomFormat = " ";
+            this.dtpDateBanned.Enabled = false;
+            this.dtpDateBanned.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDateBanned.Location = new System.Drawing.Point(115, 639);
+            this.dtpDateBanned.Name = "dtpDateBanned";
+            this.dtpDateBanned.Size = new System.Drawing.Size(132, 20);
+            this.dtpDateBanned.TabIndex = 28;
             // 
             // txtName
             // 
@@ -416,24 +416,24 @@
             this.cmbBreed.Size = new System.Drawing.Size(132, 21);
             this.cmbBreed.TabIndex = 18;
             // 
-            // dtDateOfRetirement
+            // dtpDateOfRetirement
             // 
-            this.dtDateOfRetirement.Checked = false;
-            this.dtDateOfRetirement.CustomFormat = " ";
-            this.dtDateOfRetirement.Enabled = false;
-            this.dtDateOfRetirement.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDateOfRetirement.Location = new System.Drawing.Point(115, 359);
-            this.dtDateOfRetirement.Name = "dtDateOfRetirement";
-            this.dtDateOfRetirement.Size = new System.Drawing.Size(132, 20);
-            this.dtDateOfRetirement.TabIndex = 17;
+            this.dtpDateOfRetirement.Checked = false;
+            this.dtpDateOfRetirement.CustomFormat = " ";
+            this.dtpDateOfRetirement.Enabled = false;
+            this.dtpDateOfRetirement.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDateOfRetirement.Location = new System.Drawing.Point(115, 359);
+            this.dtpDateOfRetirement.Name = "dtpDateOfRetirement";
+            this.dtpDateOfRetirement.Size = new System.Drawing.Size(132, 20);
+            this.dtpDateOfRetirement.TabIndex = 17;
             // 
-            // dtDateOfBirth
+            // dtpDateOfBirth
             // 
-            this.dtDateOfBirth.Enabled = false;
-            this.dtDateOfBirth.Location = new System.Drawing.Point(115, 260);
-            this.dtDateOfBirth.Name = "dtDateOfBirth";
-            this.dtDateOfBirth.Size = new System.Drawing.Size(132, 20);
-            this.dtDateOfBirth.TabIndex = 16;
+            this.dtpDateOfBirth.Enabled = false;
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(115, 260);
+            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(132, 20);
+            this.dtpDateOfBirth.TabIndex = 16;
             // 
             // grpSearch
             // 
@@ -794,8 +794,8 @@
         private System.Windows.Forms.TextBox txtWeight;
         private System.Windows.Forms.TextBox txtHeight;
         private System.Windows.Forms.GroupBox grpDogInfo;
-        private System.Windows.Forms.DateTimePicker dtDateOfRetirement;
-        private System.Windows.Forms.DateTimePicker dtDateOfBirth;
+        private System.Windows.Forms.DateTimePicker dtpDateOfRetirement;
+        private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
         private System.Windows.Forms.GroupBox grpSearch;
         private System.Windows.Forms.ComboBox cmbBreed;
         private System.Windows.Forms.Label label9;
@@ -834,9 +834,9 @@
         private System.Windows.Forms.Button btnNewDog;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.DateTimePicker dtDateBanned;
+        private System.Windows.Forms.DateTimePicker dtpDateBanned;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.DateTimePicker dtChampionshipDate;
+        private System.Windows.Forms.DateTimePicker dtpChampionshipDate;
         private System.Windows.Forms.ComboBox cmbOwner;
         private System.Windows.Forms.DataGridView dgCompetitions;
         private System.Windows.Forms.Button btnViewOwner;

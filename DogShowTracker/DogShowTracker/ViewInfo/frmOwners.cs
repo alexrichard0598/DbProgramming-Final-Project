@@ -73,7 +73,7 @@ namespace DogShowTracker
             txtFName.Text = fName;
             txtMName.Text = mName;
             txtLName.Text = lName;
-            dtDOB.Value = dob;
+            dtpDOB.Value = dob;
             chkRetired.Checked = retired;
 
             GetOwnership();

@@ -106,14 +106,14 @@ namespace DogShowTracker
             DateTime dob = Convert.ToDateTime(row["DOB"]);
 
 
-            UIMethods.PickDateTimePicker(dtDateOfRetirement, row["DateOfRetirement"]);
+            UIMethods.PickDateTimePicker(dtpDateOfRetirement, row["DateOfRetirement"]);
             bool retired = Convert.ToBoolean(row["Retired"]);
 
             bool champion = Convert.ToBoolean(row["Champion"]);
-            UIMethods.PickDateTimePicker(dtChampionshipDate, row["DateOfChampionship"]);
+            UIMethods.PickDateTimePicker(dtpChampionshipDate, row["DateOfChampionship"]);
 
             bool banned = Convert.ToBoolean(row["PermanentlyDisqualified"]);
-            UIMethods.PickDateTimePicker(dtDateBanned, row["DateOfDisqualification"]);
+            UIMethods.PickDateTimePicker(dtpDateBanned, row["DateOfDisqualification"]);
 
             int breedID = Convert.ToInt32(row["Breed"]);
             int ownerID = GetCurrentOwner();
@@ -124,7 +124,7 @@ namespace DogShowTracker
             rdoFemale.Checked = !isMale;
             txtWeight.Text = weight.ToString("N1");
             txtHeight.Text = height.ToString("N1");
-            dtDateOfBirth.Value = dob;
+            dtpDateOfBirth.Value = dob;
             chkRetired.Checked = retired;
             chkChampion.Checked = champion;
             chkBanned.Checked = banned;

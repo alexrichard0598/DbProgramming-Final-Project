@@ -119,7 +119,7 @@ namespace DogShowTracker
         {
             try
             {
-                UIMethods.OpenForm(MdiParent, new frmAddBreed());
+                UIMethods.OpenForm(MdiParent, new frmAddDogBreed());
             }
             catch (Exception ex)
             {

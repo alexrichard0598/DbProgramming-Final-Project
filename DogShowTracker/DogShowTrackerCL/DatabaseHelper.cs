@@ -18,7 +18,7 @@ namespace DogShowTrackerCL
     public static class DatabaseHelper
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbConnection"].ConnectionString;
-
+        
         /// <summary>
         /// Gets the data from the database 
         /// using the sql string and return with a DataTable
@@ -50,17 +50,28 @@ namespace DogShowTrackerCL
         /// <returns></returns>
         public static object ExecuteScaler(string sql)
         {
-            object obj;
             SqlConnection connection = new SqlConnection(connectionString);
-
             using (connection)
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(sql, connection);
-                obj = cmd.ExecuteScalar();
+                return cmd.ExecuteScalar();
+            }
+        }
+
+        public static int SendData(string sql)
+        {
+            int rowAffected = 0;
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            using (connection)
+            {
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                connection.Open();
+                rowAffected = cmd.ExecuteNonQuery();
             }
 
-            return obj;
+            return rowAffected;
         }
 
         /// <summary>

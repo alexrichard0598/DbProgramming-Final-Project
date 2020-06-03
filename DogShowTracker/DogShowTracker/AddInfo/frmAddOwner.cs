@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DogShowTrackerCL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,30 @@ namespace DogShowTracker
         public frmAddOwner()
         {
             InitializeComponent();
+        }
+
+        private void btnAddOwner_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Close()
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
     }
 }

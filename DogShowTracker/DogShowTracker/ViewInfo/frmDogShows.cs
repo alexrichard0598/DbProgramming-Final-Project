@@ -76,8 +76,8 @@ namespace DogShowTracker
             DataRow row = DatabaseHelper.GetDataRow(sql);
             DateTime startDate = Convert.ToDateTime(row["StartDate"]);
             DateTime endDate = Convert.ToDateTime(row["EndDate"]);
-            dtStartDate.Value = startDate;
-            dtEndDate.Value = endDate;
+            dtpStartDate.Value = startDate;
+            dtpEndDate.Value = endDate;
         }
 
         /// <summary>
