@@ -73,11 +73,11 @@ namespace DogShowTracker
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void chkDisqualified_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
-                nudRank.Enabled = !chkDisqualified.Enabled;
+                nudRank.Enabled = !chkDisqualified.Checked;
             }
             catch (Exception ex)
             {

@@ -175,7 +175,7 @@
             this.chkDisqualified.TabIndex = 9;
             this.chkDisqualified.Text = "Disqualified:";
             this.chkDisqualified.UseVisualStyleBackColor = true;
-            this.chkDisqualified.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.chkDisqualified.CheckedChanged += new System.EventHandler(this.chkDisqualified_CheckedChanged);
             // 
             // frmChangeDogShowDogs
             // 
