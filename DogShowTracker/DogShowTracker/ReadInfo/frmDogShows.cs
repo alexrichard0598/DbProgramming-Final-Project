@@ -43,17 +43,7 @@ namespace DogShowTracker
         private void GetDogs()
         {
             int id = Convert.ToInt32(cmbDogShows.SelectedValue);
-            string sql = $@"SELECT	COALESCE(CAST([Rank] AS VARCHAR), '-') + '/' + 
-		                            CAST(DogShows.NumDogs AS VARCHAR) + ' - ' + 
-		                            Dogs.[Name] AS Dog, Dogs.DogID FROM DogShowDetails
-	                            LEFT JOIN Dogs
-		                            ON Dogs.DogID = DogShowDetails.DogID
-	                            LEFT JOIN DogShows
-		                            ON DogShows.DogShowID = DogShowDetails.DogShowID
-	                            WHERE DogShowDetails.DogShowID = {id}
-		                            ORDER BY COALESCE([Rank], 999);";
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(lstDogs, "Dog", "DogID", dt);
+            UIMethods.FillListControl(lstDogs, "Dog", "DogID", LoadFormData.DogShowDogs(id));
         }
 
         /// <summary>
@@ -149,7 +139,7 @@ namespace DogShowTracker
         {
             try
             {
-                UIMethods.OpenForm(MdiParent, new frmAssignDogShowDogs());
+                UIMethods.OpenForm(MdiParent, new frmChangeDogShowDogs());
             }
             catch (Exception ex)
             {

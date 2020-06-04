@@ -49,6 +49,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.assignDogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -95,7 +96,7 @@
             // addDogToolStripMenuItem
             // 
             this.addDogToolStripMenuItem.Name = "addDogToolStripMenuItem";
-            this.addDogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addDogToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.addDogToolStripMenuItem.Tag = "addDog";
             this.addDogToolStripMenuItem.Text = "Add Dog";
             this.addDogToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
@@ -103,7 +104,7 @@
             // viewDogsToolStripMenuItem
             // 
             this.viewDogsToolStripMenuItem.Name = "viewDogsToolStripMenuItem";
-            this.viewDogsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewDogsToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.viewDogsToolStripMenuItem.Tag = "viewDogs";
             this.viewDogsToolStripMenuItem.Text = "View Dogs";
             this.viewDogsToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
@@ -120,7 +121,7 @@
             // addOwnerToolStripMenuItem
             // 
             this.addOwnerToolStripMenuItem.Name = "addOwnerToolStripMenuItem";
-            this.addOwnerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addOwnerToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.addOwnerToolStripMenuItem.Tag = "addOwner";
             this.addOwnerToolStripMenuItem.Text = "Add Owner";
             this.addOwnerToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
@@ -128,7 +129,7 @@
             // viewOwnerToolStripMenuItem
             // 
             this.viewOwnerToolStripMenuItem.Name = "viewOwnerToolStripMenuItem";
-            this.viewOwnerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewOwnerToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.viewOwnerToolStripMenuItem.Tag = "viewOwners";
             this.viewOwnerToolStripMenuItem.Text = "View Owners";
             this.viewOwnerToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
@@ -137,7 +138,8 @@
             // 
             this.dogShowInformationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addDogShowToolStripMenuItem,
-            this.viewDogShowsToolStripMenuItem});
+            this.viewDogShowsToolStripMenuItem,
+            this.assignDogsToolStripMenuItem});
             this.dogShowInformationToolStripMenuItem.Name = "dogShowInformationToolStripMenuItem";
             this.dogShowInformationToolStripMenuItem.Size = new System.Drawing.Size(139, 20);
             this.dogShowInformationToolStripMenuItem.Text = "Dog Show Information";
@@ -170,7 +172,7 @@
             // addBreedToolStripMenuItem
             // 
             this.addBreedToolStripMenuItem.Name = "addBreedToolStripMenuItem";
-            this.addBreedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addBreedToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.addBreedToolStripMenuItem.Tag = "addBreed";
             this.addBreedToolStripMenuItem.Text = "Add Breed";
             this.addBreedToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
@@ -178,7 +180,7 @@
             // viewBreedToolStripMenuItem
             // 
             this.viewBreedToolStripMenuItem.Name = "viewBreedToolStripMenuItem";
-            this.viewBreedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewBreedToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.viewBreedToolStripMenuItem.Tag = "viewBreeds";
             this.viewBreedToolStripMenuItem.Text = "View Breed";
             this.viewBreedToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
@@ -217,6 +219,14 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
+            // 
+            // assignDogsToolStripMenuItem
+            // 
+            this.assignDogsToolStripMenuItem.Name = "assignDogsToolStripMenuItem";
+            this.assignDogsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.assignDogsToolStripMenuItem.Tag = "assignDogs";
+            this.assignDogsToolStripMenuItem.Text = "Assign Dogs";
+            this.assignDogsToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
             // 
             // MDIParent
             // 
@@ -266,6 +276,7 @@
         private System.Windows.Forms.ToolStripMenuItem viewDogShowsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addBreedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewBreedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem assignDogsToolStripMenuItem;
     }
 }
 

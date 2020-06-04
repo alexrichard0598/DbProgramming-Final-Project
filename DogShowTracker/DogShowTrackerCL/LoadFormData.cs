@@ -40,7 +40,7 @@ namespace DogShowTrackerCL
         }
 
         /// <summary>
-        /// Load the DogIDs and Dogs
+        /// Load the DogIDs and Name
         /// </summary>
         /// <returns>DogID, Dog</returns>
         public static DataTable DogNames()
@@ -66,6 +66,25 @@ namespace DogShowTrackerCL
         public static DataTable DogShowNames()
         {
             string sql = "SELECT DogShowID, CAST(StartDate AS VARCHAR) + ' '+ CHAR(151) +' ' + [Name] AS [Name] FROM DogShows ORDER BY [Name];";
+            return DatabaseHelper.GetDataTable(sql);
+        }
+
+        /// <summary>
+        /// Loads the Dogs and DogIDs of the Dog Show id provided
+        /// </summary>
+        /// <param name="id">The Dog Show ID</param>
+        /// <returns>Dog, DogID</returns>
+        public static DataTable DogShowDogs(int id)
+        {
+            string sql = $@"SELECT	COALESCE(CAST([Rank] AS VARCHAR), '-') + '/' + 
+		                            CAST(DogShows.NumDogs AS VARCHAR) + ' - ' + 
+		                            Dogs.[Name] AS Dog, Dogs.DogID FROM DogShowDetails
+	                            LEFT JOIN Dogs
+		                            ON Dogs.DogID = DogShowDetails.DogID
+	                            LEFT JOIN DogShows
+		                            ON DogShows.DogShowID = DogShowDetails.DogShowID
+	                            WHERE DogShowDetails.DogShowID = {id}
+		                            ORDER BY COALESCE([Rank], 999);";
             return DatabaseHelper.GetDataTable(sql);
         }
     }

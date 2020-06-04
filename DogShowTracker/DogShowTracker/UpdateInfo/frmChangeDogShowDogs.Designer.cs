@@ -1,6 +1,6 @@
 ﻿namespace DogShowTracker
 {
-    partial class frmAssignDogShowDogs
+    partial class frmChangeDogShowDogs
     {
         /// <summary>
         /// Required designer variable.
@@ -35,12 +35,16 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAddDog = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNumDogs = new System.Windows.Forms.TextBox();
             this.btnRemoveDogs = new System.Windows.Forms.Button();
+            this.txtNumDogs = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nudRank = new System.Windows.Forms.NumericUpDown();
+            this.chkDisqualified = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRank)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbDogShow
@@ -51,6 +55,7 @@
             this.cmbDogShow.Name = "cmbDogShow";
             this.cmbDogShow.Size = new System.Drawing.Size(272, 21);
             this.cmbDogShow.TabIndex = 0;
+            this.cmbDogShow.SelectedIndexChanged += new System.EventHandler(this.cmbDogShow_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -81,11 +86,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkDisqualified);
+            this.groupBox2.Controls.Add(this.nudRank);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.btnAddDog);
             this.groupBox2.Controls.Add(this.cmbDogs);
             this.groupBox2.Location = new System.Drawing.Point(12, 74);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(303, 53);
+            this.groupBox2.Size = new System.Drawing.Size(303, 81);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Assign Dogs";
@@ -106,29 +114,12 @@
             this.groupBox3.Controls.Add(this.txtNumDogs);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.lstDogs);
-            this.groupBox3.Location = new System.Drawing.Point(12, 133);
+            this.groupBox3.Location = new System.Drawing.Point(12, 161);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(303, 220);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Current Dogs";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Number of Dogs:";
-            // 
-            // txtNumDogs
-            // 
-            this.txtNumDogs.Location = new System.Drawing.Point(255, 21);
-            this.txtNumDogs.Name = "txtNumDogs";
-            this.txtNumDogs.ReadOnly = true;
-            this.txtNumDogs.Size = new System.Drawing.Size(42, 20);
-            this.txtNumDogs.TabIndex = 1;
             // 
             // btnRemoveDogs
             // 
@@ -140,21 +131,69 @@
             this.btnRemoveDogs.UseVisualStyleBackColor = true;
             this.btnRemoveDogs.Click += new System.EventHandler(this.btnRemoveDogs_Click);
             // 
-            // frmAssignDogShowDogs
+            // txtNumDogs
+            // 
+            this.txtNumDogs.Location = new System.Drawing.Point(255, 21);
+            this.txtNumDogs.Name = "txtNumDogs";
+            this.txtNumDogs.ReadOnly = true;
+            this.txtNumDogs.Size = new System.Drawing.Size(42, 20);
+            this.txtNumDogs.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(162, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Number of Dogs:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(135, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Rank:";
+            // 
+            // nudRank
+            // 
+            this.nudRank.Location = new System.Drawing.Point(177, 50);
+            this.nudRank.Name = "nudRank";
+            this.nudRank.Size = new System.Drawing.Size(120, 20);
+            this.nudRank.TabIndex = 8;
+            this.nudRank.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // chkDisqualified
+            // 
+            this.chkDisqualified.AutoSize = true;
+            this.chkDisqualified.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkDisqualified.Location = new System.Drawing.Point(6, 51);
+            this.chkDisqualified.Name = "chkDisqualified";
+            this.chkDisqualified.Size = new System.Drawing.Size(83, 17);
+            this.chkDisqualified.TabIndex = 9;
+            this.chkDisqualified.Text = "Disqualified:";
+            this.chkDisqualified.UseVisualStyleBackColor = true;
+            this.chkDisqualified.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // frmChangeDogShowDogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 367);
+            this.ClientSize = new System.Drawing.Size(330, 393);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "frmAssignDogShowDogs";
+            this.Name = "frmChangeDogShowDogs";
             this.Text = "Assign Dog Show Dogs";
             this.Load += new System.EventHandler(this.frmAssignDogShowDogs_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRank)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -171,5 +210,8 @@
         private System.Windows.Forms.TextBox txtNumDogs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRemoveDogs;
+        private System.Windows.Forms.CheckBox chkDisqualified;
+        private System.Windows.Forms.NumericUpDown nudRank;
+        private System.Windows.Forms.Label label2;
     }
 }

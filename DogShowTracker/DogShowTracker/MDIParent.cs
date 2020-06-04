@@ -80,6 +80,9 @@ namespace DogShowTracker
                 case "viewBreeds":
                     UIMethods.OpenForm(this, new frmBreeds());
                     break;
+                case "assignDogs":
+                    UIMethods.OpenForm(this, new frmChangeDogShowDogs());
+                    break;
             }
         }
     }
