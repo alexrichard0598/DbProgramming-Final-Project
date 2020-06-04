@@ -18,13 +18,19 @@ namespace DogShowTracker
         }
 
         private bool classAdded = false;
+        string className;
+
+        private void GetUserInput()
+        {
+            className = DatabaseHelper.SanitizeUserInput(txtClass.Text);
+        }
 
         /// <summary>
         /// Insert the colour into the database
         /// </summary>
         private void InsertNewColour()
         {
-            string className = DatabaseHelper.SanitizeUserInput(txtClass.Text);
+            GetUserInput();
             string sql = $@"
                         INSERT INTO Classes
                             (Class)
@@ -41,7 +47,7 @@ namespace DogShowTracker
         {
             bool isValid = true;
             errorProvider.Clear();
-            if (txtClass.Text == "")
+            if (DatabaseHelper.SanitizeUserInput(txtClass.Text) == "")
             {
                 errorProvider.SetError(txtClass, "Colour Name cannot be blank");
                 isValid = false;

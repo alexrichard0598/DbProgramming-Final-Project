@@ -19,8 +19,20 @@ namespace DogShowTracker
         }
 
         bool breedAdded = false;
+        string breedName, primaryId, secondaryId, classId;
 
         #region Helper Methods
+
+        private void GetUserData()
+        {
+            breedName = DatabaseHelper.SanitizeUserInput(txtBreedName.Text);
+            primaryId = cmbPrimaryCoat.SelectedValue.ToString();
+            secondaryId = cmbSecondaryCoat.SelectedValue != DBNull.Value
+                                ? cmbSecondaryCoat.SelectedValue.ToString()
+                                : "NULL";
+            classId = cmbClass.SelectedValue.ToString();
+        }
+
         /// <summary>
         /// Load all form info
         /// </summary>
@@ -36,12 +48,7 @@ namespace DogShowTracker
         /// </summary>
         private void AddBreed()
         {
-            string breedName = DatabaseHelper.SanitizeUserInput(txtBreedName.Text);
-            string primaryId = cmbPrimaryCoat.SelectedValue.ToString();
-            string secondaryId = cmbSecondaryCoat.SelectedValue != DBNull.Value
-                                ? cmbSecondaryCoat.SelectedValue.ToString()
-                                : "NULL";
-            string classId = cmbClass.SelectedValue.ToString();
+            
             string sql = $@"
                         INSERT INTO Breeds
 	                        (Breed, PrimaryCoatColour, SecondaryCoatColour, [Classification])
@@ -56,9 +63,10 @@ namespace DogShowTracker
         /// <returns></returns>
         private bool ValidateFields()
         {
+            GetUserData();
             errorProvider.Clear();
             bool isValid = true;
-            if (txtBreedName.Text == "")
+            if (breedName == "")
             {
                 errorProvider.SetError(txtBreedName, "Breed Name cannot be empty");
                 isValid = false;

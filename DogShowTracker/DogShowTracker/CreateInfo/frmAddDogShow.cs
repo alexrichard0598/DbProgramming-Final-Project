@@ -19,6 +19,17 @@ namespace DogShowTracker
         }
 
         bool dogShowAdded = false;
+        string name, start, end;
+        int numDogs;
+
+
+        private void GetUserData()
+        {
+            name = DatabaseHelper.SanitizeUserInput(txtDogShowName.Text);
+            start = dtpStartDate.Value.ToString("yyyy-MM-dd");
+            end = dtpEndDate.Value.ToString("yyyy-MM-dd");
+            numDogs = Convert.ToInt32(nudNumDogs.Value);
+        }
 
         /// <summary>
         /// Validate the user provided info
@@ -26,19 +37,20 @@ namespace DogShowTracker
         /// <returns></returns>
         private bool ValidateFields()
         {
+            GetUserData();
             bool isValid = true;
             errorProvider.Clear();
-            if(txtDogShowName.Text.Replace(" ", "").Length < 5 || !txtDogShowName.Text.All(c => char.IsWhiteSpace(c) || char.IsLetter(c)))
+            if(name.Length < 5 || !name.All(c => char.IsWhiteSpace(c) || char.IsLetter(c)))
             {
                 isValid = false;
                 errorProvider.SetError(txtDogShowName, "Dog show name must be longer than 5 characters and contain only letters and spaces");
             }
-            if(nudNumDogs.Value < 5)
+            if(numDogs < 5)
             {
                 isValid = false;
                 errorProvider.SetError(nudNumDogs, "Dog shows must have a least 5 dogs competing");
             }
-            if(dtpEndDate.Value.Date < dtpStartDate.Value.Date)
+            if(DateTime.Parse(end) < DateTime.Parse(start))
             {
                 isValid = false;
                 errorProvider.SetError(dtpEndDate, "Dog show cannnot end before it starts");

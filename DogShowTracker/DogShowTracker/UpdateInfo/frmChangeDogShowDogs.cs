@@ -24,10 +24,22 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        int dogShowID, dogShowDogID, dogID, disqualified;
+        string rank;
+
         public override void Reload()
         {
             UIMethods.FillListControl(cmbDogs, "Name", "DogID", LoadFormData.DogNames(), true);
             UIMethods.FillListControl(cmbDogShow, "Name", "DogShowID", LoadFormData.DogShowNames());
+        }
+
+        private void GetUserData()
+        {
+            dogID = Convert.ToInt32(cmbDogs.SelectedValue);
+            dogShowDogID = Convert.ToInt32(lstDogs.SelectedValue);
+            dogShowID = Convert.ToInt32(cmbDogShow.SelectedValue);
+            rank = chkDisqualified.Checked? "NULL" : Convert.ToInt32(nudRank.Value).ToString();
+            disqualified = chkDisqualified.Checked ? 1 : 0;
         }
 
         private void LoadDogShowDogsCount()
@@ -46,21 +58,18 @@ namespace DogShowTracker
         /// </summary>
         private void GetDogShowDetails()
         {
-            int id = Convert.ToInt32(cmbDogShow.SelectedValue);
-            UIMethods.FillListControl(lstDogs, "Dog", "DogID", LoadFormData.DogShowDogs(id));
+            GetUserData();
+            UIMethods.FillListControl(lstDogs, "Dog", "DogID", LoadFormData.DogShowDogs(dogShowID));
             LoadDogShowDogsCount();
         }
 
         private void InsertDogShowDog()
         {
-
+            
         }
 
         private void RemoveDogShowDog()
         {
-            int dogID = Convert.ToInt32(lstDogs.SelectedValue);
-            int dogShowID = Convert.ToInt32(cmbDogShow.SelectedValue);
-
             string sql = $@"DELETE DogShowDetails
             	            WHERE DogID = {dogID} AND DogShowID = {dogShowID};";
 
@@ -69,11 +78,11 @@ namespace DogShowTracker
 
         private bool ValidateDeletion()
         {
-            int dogID = Convert.ToInt32(lstDogs.SelectedValue);
+            GetUserData();
 
             string sqlDogName = $"SELECT [Name] FROM Dogs WHERE DogID = {dogID}";
-
             string dogName = DatabaseHelper.ExecuteScaler(sqlDogName).ToString();
+
             string dogShowName = cmbDogShow.Text.Split('\u2014')[1];
             DateTime dogShowDate = DateTime.Parse(cmbDogShow.Text.Split('\u2014')[0]);
 

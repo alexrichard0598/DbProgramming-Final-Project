@@ -17,26 +17,41 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        int age, isRetired;
+        string fName, mName, lName, dob, dateOfRetirement;
+
+        private void GetUserData()
+        {
+            age = Convert.ToInt32(DateTime.Now.Subtract(dtpDateOfRetirement.Value));
+            fName = DatabaseHelper.SanitizeUserInput(txtFirstName.Text);
+            mName = DatabaseHelper.SanitizeUserInput(txtMiddleName.Text);
+            lName = DatabaseHelper.SanitizeUserInput(txtLastName.Text);
+            dob = dtpDOB.Value.ToString("yyyy-MM-dd");
+            isRetired = chkRetired.Checked ? 1 : 0;
+            dateOfRetirement = chkRetired.Checked ? $"'{dtpDateOfRetirement.Value.ToString("yyyy-MM-dd")}'" : "NULL";
+        }
+
+
         /// <summary>
         /// Validate the user provided info
         /// </summary>
         /// <returns></returns>
         private bool ValidateFields()
         {
+            GetUserData();
             errorProvider.Clear();
             bool isValid = true;
-            int age = Convert.ToInt32(DateTime.Now.Subtract(dtpDateOfRetirement.Value));
-            if (txtFirstName.Text == "" || !txtFirstName.Text.All(c => Char.IsLetter(c)))
+            if (fName == "" || !fName.All(c => Char.IsLetter(c)))
             {
                 errorProvider.SetError(txtFirstName, "First Name must not be empty and contain only letters");
                 isValid = false;
             }
-            if (txtMiddleName.Text != "" && !txtMiddleName.Text.All(c => Char.IsLetter(c)))
+            if (mName != "" && !mName.All(c => Char.IsLetter(c)))
             {
                 errorProvider.SetError(txtMiddleName, "Middle Name must only contain letters");
                 isValid = false;
             }
-            if (txtLastName.Text == "" || !txtLastName.Text.All(c => Char.IsLetter(c)))
+            if (lName == "" || !lName.All(c => Char.IsLetter(c)))
             {
                 errorProvider.SetError(txtLastName, "Last Name must not be empty and contain only letters");
                 isValid = false;
@@ -46,7 +61,7 @@ namespace DogShowTracker
                 errorProvider.SetError(dtpDOB, "Owners must be at least 18 years old");
                 isValid = false;
             }
-            if (chkRetired.Checked && dtpDateOfRetirement.Value.AddYears(18) < dtpDOB.Value)
+            if (isRetired == 1 && DateTime.Parse(dateOfRetirement) < DateTime.Parse(dob).AddYears(18))
             {
                 errorProvider.SetError(dtpDateOfRetirement, "Cannot retire before 18 years of age");
                 isValid = false;
@@ -59,13 +74,6 @@ namespace DogShowTracker
         /// </summary>
         private void InsertOwner()
         {
-            string fName = DatabaseHelper.SanitizeUserInput(txtFirstName.Text);
-            string mName = txtMiddleName.Text == "" ? "NULL" : $"'{DatabaseHelper.SanitizeUserInput(txtMiddleName.Text)}'";
-            string lName = DatabaseHelper.SanitizeUserInput(txtLastName.Text);
-            string dob = dtpDOB.Value.ToString("yyyy-MM-dd");
-            int isRetired = chkRetired.Checked ? 1 : 0 ;
-            string dateOfRetirement = chkRetired.Checked ? $"'{dtpDateOfRetirement.Value.ToString("yyyy-MM-dd")}'" : "NULL";
-
             string sql = $@"INSERT INTO Owners
 	                            (FirstName, MiddleName, LastName, DOB, DateOfRetirement, Retired)
 	                            VALUES
