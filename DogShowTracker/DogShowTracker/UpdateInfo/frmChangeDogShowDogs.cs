@@ -24,9 +24,10 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        int dogShowID, dogShowDogID, dogID, disqualified;
+        int dogShowID, currentDogID, assignDogID, disqualified;
         string rank;
 
+        #region Helper Methods
         public override void Reload()
         {
             UIMethods.FillListControl(cmbDogs, "Name", "DogID", LoadFormData.DogNames(), true);
@@ -35,28 +36,39 @@ namespace DogShowTracker
 
         private void GetUserData()
         {
-            dogID = Convert.ToInt32(cmbDogs.SelectedValue);
-            dogShowDogID = Convert.ToInt32(lstDogs.SelectedValue);
+            assignDogID = cmbDogs.SelectedValue != DBNull.Value ? Convert.ToInt32(cmbDogs.SelectedValue) : 0;
+            currentDogID = Convert.ToInt32(lstDogs.SelectedValue);
             dogShowID = Convert.ToInt32(cmbDogShow.SelectedValue);
             rank = chkDisqualified.Checked? "NULL" : Convert.ToInt32(nudRank.Value).ToString();
             disqualified = chkDisqualified.Checked ? 1 : 0;
         }
 
-        private void LoadDogShowDogsCount()
+        private int GetDogShowDogsCount()
         {
             int id = Convert.ToInt32(cmbDogShow.SelectedValue);
-            string sql = $@"SELECT CAST(COUNT(DogID) AS VARCHAR) + '/' + CAST(NumDogs AS VARCHAR) AS NumDogs FROM DogShows
+            string sql = $@"SELECT COUNT(DogID) FROM DogShows
 	                            LEFT JOIN DogShowDetails
 		                            ON DogShows.DogShowID = DogShowDetails.DogShowID
-	                            WHERE DogShows.DogShowID = {id}
-	                            GROUP BY DogShows.DogShowID, NumDogs;";
-            txtNumDogs.Text = DatabaseHelper.ExecuteScaler(sql).ToString();
+	                            WHERE DogShows.DogShowID = {id};";
+            return Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
+        }
+
+        private int GetMaxDogShowDogs()
+        {
+            int id = Convert.ToInt32(cmbDogShow.SelectedValue);
+            string sql = $@"SELECT NumDogs FROM DogShows WHERE DogShows.DogShowID = {id};";
+            return Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
+        }
+
+        private void LoadDogShowDogsCount()
+        {
+            txtNumDogs.Text = GetDogShowDogsCount().ToString() + "/" + GetMaxDogShowDogs().ToString();
         }
 
         /// <summary>
         /// Fill the dogs list with the dogs that competed in the selected dog show
         /// </summary>
-        private void GetDogShowDetails()
+        private void LoadDogShowDetails()
         {
             GetUserData();
             UIMethods.FillListControl(lstDogs, "Dog", "DogID", LoadFormData.DogShowDogs(dogShowID));
@@ -65,22 +77,66 @@ namespace DogShowTracker
 
         private void InsertDogShowDog()
         {
-            
+            string sql = $@"INSERT INTO DogShowDetails
+	                            (DogID, DogShowID, [Rank], Disqualified)
+	                            VALUES
+	                            ({assignDogID}, {dogShowID}, {rank}, {disqualified});";
+            DatabaseHelper.SendData(sql);
         }
 
         private void RemoveDogShowDog()
         {
             string sql = $@"DELETE DogShowDetails
-            	            WHERE DogID = {dogID} AND DogShowID = {dogShowID};";
-
+            	            WHERE DogID = {currentDogID} AND DogShowID = {dogShowID};";
             DatabaseHelper.SendData(sql);
+        }
+
+        private bool ValidateInsert()
+        {
+            bool isValid = true;
+            GetUserData();
+
+            string errorMsg = "";
+            string dogNotAlreadyAddedSQL = $"SELECT COUNT(*) FROM DogShowDetails WHERE DogID = {assignDogID} AND DogShowID = {dogShowID};";
+            string dogAlreadyHasThatRankSQL = $"SELECT COUNT(*) FROM DogShowDetails WHERE [Rank] = {rank} AND DogShowID = {dogShowID};";
+
+            errorProvider.Clear();
+            if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(dogNotAlreadyAddedSQL)) != 0)
+            {
+                isValid = false;
+                errorMsg += "Dog is already in dog show. ";
+            }
+            if(GetDogShowDogsCount() == GetMaxDogShowDogs())
+            {
+                isValid = false;
+                errorMsg += "Dog show already has max number of dogs.";
+            }
+            if (disqualified == 0 && Convert.ToInt32(rank) <= 0)
+            {
+                isValid = false;
+                errorProvider.SetError(nudRank, "Rank must be higher than 0 if not disqualified");
+            }
+            if(disqualified == 0 && Convert.ToInt32(rank) > GetMaxDogShowDogs())
+            {
+                isValid = false;
+                errorProvider.SetError(nudRank, "Rank cannot be higher than the max number of dogs");
+            }
+            if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(dogAlreadyHasThatRankSQL)) != 0)
+            {
+                isValid = false;
+                errorProvider.SetError(nudRank, "A dog already has that rank");
+            }
+
+            if(errorMsg.Length > 0) MessageBox.Show(errorMsg.Trim(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return isValid;
         }
 
         private bool ValidateDeletion()
         {
             GetUserData();
+            errorProvider.Clear();
 
-            string sqlDogName = $"SELECT [Name] FROM Dogs WHERE DogID = {dogID}";
+            string sqlDogName = $"SELECT [Name] FROM Dogs WHERE DogID = {currentDogID}";
             string dogName = DatabaseHelper.ExecuteScaler(sqlDogName).ToString();
 
             string dogShowName = cmbDogShow.Text.Split('\u2014')[1];
@@ -92,9 +148,77 @@ namespace DogShowTracker
                                                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
+        private void UpdateDogShowDog()
+        {
+            string sql = $@"
+                            UPDATE DogShowDetails
+	                            SET Rank = {rank},
+	                            Disqualified = {disqualified}
+	                            WHERE DogID = {assignDogID} AND DogShowID = {dogShowID};";
+            DatabaseHelper.SendData(sql);
+        }
+
+        private bool VerifyUpdate()
+        {
+            GetUserData();
+
+            bool isValid = true;
+            string dogIsInDogShowSQL = $"SELECT COUNT(*) FROM DogShowDetails WHERE DogID = {assignDogID} AND DogShowID = {dogShowID};";
+            string dogAlreadyHasThatRankSQL = $@"
+                                                SELECT COUNT(*) FROM DogShowDetails 
+                                                    WHERE [Rank] = {rank} AND DogShowID = {dogShowID} AND NOT dogID = {assignDogID};
+                                                ";
+
+            if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(dogIsInDogShowSQL)) == 0)
+            {
+                isValid = false;
+                MessageBox.Show("Dog cannot be modified as dog is not in dog show");
+            }
+            if (disqualified == 0 && Convert.ToInt32(rank) <= 0)
+            {
+                isValid = false;
+                errorProvider.SetError(nudRank, "Rank must be higher than 0 if not disqualified");
+            }
+            if (disqualified == 0 && Convert.ToInt32(rank) > GetMaxDogShowDogs())
+            {
+                isValid = false;
+                errorProvider.SetError(nudRank, "Rank cannot be higher than the max number of dogs");
+            }
+            if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(dogAlreadyHasThatRankSQL)) != 0)
+            {
+                isValid = false;
+                errorProvider.SetError(nudRank, "A dog already has that rank");
+            }
+
+            return isValid;
+        }
+
+        private void LoadDogShowDogDetails()
+        {
+            GetUserData();
+            string sql = $"SELECT [Rank], Disqualified FROM DogShowDetails WHERE DogID = {currentDogID};";
+            DataRow row = DatabaseHelper.GetDataRow(sql);
+
+            cmbDogs.SelectedValue = currentDogID;
+            nudRank.Value = row["Rank"] != DBNull.Value? Convert.ToDecimal(row["Rank"]) : 0;
+            chkDisqualified.Checked = Convert.ToBoolean(row["Disqualified"]);
+        }
+        #endregion
+
         private void btnAddDog_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if(ValidateInsert())
+                {
+                    InsertDogShowDog();
+                    LoadDogShowDetails();
+                }
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
 
         private void btnRemoveDogs_Click(object sender, EventArgs e)
@@ -104,6 +228,7 @@ namespace DogShowTracker
                 if (ValidateDeletion())
                 {
                     RemoveDogShowDog();
+                    LoadDogShowDetails();
                 }
             }
             catch (Exception ex)
@@ -112,7 +237,35 @@ namespace DogShowTracker
             }
         }
 
-        private void frmAssignDogShowDogs_Load(object sender, EventArgs e)
+        private void btnModifyDog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(VerifyUpdate())
+                {
+                    UpdateDogShowDog();
+                    LoadDogShowDetails();
+                }
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void lstDogs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadDogShowDogDetails();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void frmChangeDogShowDogs_Load(object sender, EventArgs e)
         {
             try
             {
@@ -128,7 +281,7 @@ namespace DogShowTracker
         {
             try
             {
-                GetDogShowDetails();
+                LoadDogShowDetails();
             }
             catch (Exception ex)
             {

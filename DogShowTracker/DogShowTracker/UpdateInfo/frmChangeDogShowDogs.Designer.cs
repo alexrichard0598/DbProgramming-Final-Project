@@ -28,23 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbDogShow = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstDogs = new System.Windows.Forms.ListBox();
             this.cmbDogs = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnModifyDog = new System.Windows.Forms.Button();
+            this.chkDisqualified = new System.Windows.Forms.CheckBox();
+            this.nudRank = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnAddDog = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRemoveDogs = new System.Windows.Forms.Button();
             this.txtNumDogs = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.nudRank = new System.Windows.Forms.NumericUpDown();
-            this.chkDisqualified = new System.Windows.Forms.CheckBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRank)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbDogShow
@@ -53,7 +57,7 @@
             this.cmbDogShow.FormattingEnabled = true;
             this.cmbDogShow.Location = new System.Drawing.Point(6, 19);
             this.cmbDogShow.Name = "cmbDogShow";
-            this.cmbDogShow.Size = new System.Drawing.Size(272, 21);
+            this.cmbDogShow.Size = new System.Drawing.Size(291, 21);
             this.cmbDogShow.TabIndex = 0;
             this.cmbDogShow.SelectedIndexChanged += new System.EventHandler(this.cmbDogShow_SelectedIndexChanged);
             // 
@@ -74,6 +78,7 @@
             this.lstDogs.Name = "lstDogs";
             this.lstDogs.Size = new System.Drawing.Size(291, 160);
             this.lstDogs.TabIndex = 2;
+            this.lstDogs.SelectedIndexChanged += new System.EventHandler(this.lstDogs_SelectedIndexChanged);
             // 
             // cmbDogs
             // 
@@ -86,6 +91,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnModifyDog);
             this.groupBox2.Controls.Add(this.chkDisqualified);
             this.groupBox2.Controls.Add(this.nudRank);
             this.groupBox2.Controls.Add(this.label2);
@@ -97,6 +103,45 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Assign Dogs";
+            // 
+            // btnModifyDog
+            // 
+            this.btnModifyDog.Location = new System.Drawing.Point(222, 50);
+            this.btnModifyDog.Name = "btnModifyDog";
+            this.btnModifyDog.Size = new System.Drawing.Size(75, 23);
+            this.btnModifyDog.TabIndex = 10;
+            this.btnModifyDog.Text = "Modify Dog";
+            this.btnModifyDog.UseVisualStyleBackColor = true;
+            this.btnModifyDog.Click += new System.EventHandler(this.btnModifyDog_Click);
+            // 
+            // chkDisqualified
+            // 
+            this.chkDisqualified.AutoSize = true;
+            this.chkDisqualified.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkDisqualified.Location = new System.Drawing.Point(6, 51);
+            this.chkDisqualified.Name = "chkDisqualified";
+            this.chkDisqualified.Size = new System.Drawing.Size(83, 17);
+            this.chkDisqualified.TabIndex = 9;
+            this.chkDisqualified.Text = "Disqualified:";
+            this.chkDisqualified.UseVisualStyleBackColor = true;
+            this.chkDisqualified.CheckedChanged += new System.EventHandler(this.chkDisqualified_CheckedChanged);
+            // 
+            // nudRank
+            // 
+            this.nudRank.Location = new System.Drawing.Point(146, 50);
+            this.nudRank.Name = "nudRank";
+            this.nudRank.Size = new System.Drawing.Size(46, 20);
+            this.nudRank.TabIndex = 8;
+            this.nudRank.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(104, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Rank:";
             // 
             // btnAddDog
             // 
@@ -148,34 +193,9 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Number of Dogs:";
             // 
-            // label2
+            // errorProvider
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(135, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Rank:";
-            // 
-            // nudRank
-            // 
-            this.nudRank.Location = new System.Drawing.Point(177, 50);
-            this.nudRank.Name = "nudRank";
-            this.nudRank.Size = new System.Drawing.Size(120, 20);
-            this.nudRank.TabIndex = 8;
-            this.nudRank.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // chkDisqualified
-            // 
-            this.chkDisqualified.AutoSize = true;
-            this.chkDisqualified.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkDisqualified.Location = new System.Drawing.Point(6, 51);
-            this.chkDisqualified.Name = "chkDisqualified";
-            this.chkDisqualified.Size = new System.Drawing.Size(83, 17);
-            this.chkDisqualified.TabIndex = 9;
-            this.chkDisqualified.Text = "Disqualified:";
-            this.chkDisqualified.UseVisualStyleBackColor = true;
-            this.chkDisqualified.CheckedChanged += new System.EventHandler(this.chkDisqualified_CheckedChanged);
+            this.errorProvider.ContainerControl = this;
             // 
             // frmChangeDogShowDogs
             // 
@@ -186,14 +206,15 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmChangeDogShowDogs";
-            this.Text = "Assign Dog Show Dogs";
-            this.Load += new System.EventHandler(this.frmAssignDogShowDogs_Load);
+            this.Text = "Change Dog Show Dogs";
+            this.Load += new System.EventHandler(this.frmChangeDogShowDogs_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRank)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRank)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -213,5 +234,7 @@
         private System.Windows.Forms.CheckBox chkDisqualified;
         private System.Windows.Forms.NumericUpDown nudRank;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button btnModifyDog;
     }
 }
