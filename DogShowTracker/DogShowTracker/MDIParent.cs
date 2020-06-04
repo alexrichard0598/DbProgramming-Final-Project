@@ -19,58 +19,6 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        private void dogInformationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                UIMethods.OpenForm(this, new frmDogs());
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-        }
-
-        private void ownerInformationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                UIMethods.OpenForm(this, new frmOwners());
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-        }
-
-        private void dogShowInformationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                UIMethods.OpenForm(this, new frmDogShows());
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-        }
-
-        private void dogBreedInformationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                UIMethods.OpenForm(this, new frmBreeds());
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-        }
-
         private void btnReloadForm_Click(object sender, EventArgs e)
         {
             try
@@ -86,6 +34,52 @@ namespace DogShowTracker
             catch (Exception ex)
             {
                 UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void closeAllOpenFormsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (Form form in MdiChildren)
+                {
+                    form.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void OpenForm(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Tag)
+            {
+                case "addDog":
+                    UIMethods.OpenForm(this, new frmAddDog());
+                    break;
+                case "viewDogs":
+                    UIMethods.OpenForm(this, new frmDogs());
+                    break;
+                case "addOwner":
+                    UIMethods.OpenForm(this, new frmAddOwner());
+                    break;
+                case "viewOwners":
+                    UIMethods.OpenForm(this, new frmOwners());
+                    break;
+                case "addDogShow":
+                    UIMethods.OpenForm(this, new frmAddDogShow());
+                    break;
+                case "viewDogShows":
+                    UIMethods.OpenForm(this, new frmDogShows());
+                    break;
+                case "addBreed":
+                    UIMethods.OpenForm(this, new frmAddDogBreed());
+                    break;
+                case "viewBreeds":
+                    UIMethods.OpenForm(this, new frmBreeds());
+                    break;
             }
         }
     }
