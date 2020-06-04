@@ -1,6 +1,7 @@
 ﻿using DogShowTrackerCL;
 using System;
 using System.Data;
+using System.Windows.Forms;
 
 /*
     Alex Richard
@@ -16,6 +17,9 @@ namespace DogShowTracker
         {
             InitializeComponent();
         }
+
+        bool breedAdded = false;
+
         #region Helper Methods
         /// <summary>
         /// Load all form info
@@ -97,6 +101,7 @@ namespace DogShowTracker
                 if (ValidateFields())
                 {
                     AddBreed();
+                    breedAdded = true;
                     Close();
                 }
             }
@@ -123,6 +128,18 @@ namespace DogShowTracker
             try
             {
                 Reload();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void frmAddDogBreed_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        {
+            try
+            {
+                if (breedAdded) MessageBox.Show("Dog Breed Added");
             }
             catch (Exception ex)
             {

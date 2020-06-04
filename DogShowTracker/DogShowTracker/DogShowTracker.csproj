@@ -58,11 +58,11 @@
     <Compile Include="CreateInfo\frmAddColour.Designer.cs">
       <DependentUpon>frmAddColour.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateInfo\frmAddDog.cs">
+    <Compile Include="CreateInfo\frmAddDogShow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateInfo\frmAddDog.Designer.cs">
-      <DependentUpon>frmAddDog.cs</DependentUpon>
+    <Compile Include="CreateInfo\frmAddDogShow.Designer.cs">
+      <DependentUpon>frmAddDogShow.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateInfo\frmAddDogBreed.cs">
       <SubType>Form</SubType>
@@ -70,11 +70,11 @@
     <Compile Include="CreateInfo\frmAddDogBreed.Designer.cs">
       <DependentUpon>frmAddDogBreed.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateInfo\frmAddDogShow.cs">
+    <Compile Include="CreateInfo\frmAddDog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateInfo\frmAddDogShow.Designer.cs">
-      <DependentUpon>frmAddDogShow.cs</DependentUpon>
+    <Compile Include="CreateInfo\frmAddDog.Designer.cs">
+      <DependentUpon>frmAddDog.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateInfo\frmAddOwner.cs">
       <SubType>Form</SubType>
@@ -146,6 +146,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateInfo\frmAddDogBreed.resx">
       <DependentUpon>frmAddDogBreed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateInfo\frmAddDog.resx">
+      <DependentUpon>frmAddDog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateInfo\frmAddDogShow.resx">
+      <DependentUpon>frmAddDogShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateInfo\frmAddOwner.resx">
       <DependentUpon>frmAddOwner.cs</DependentUpon>

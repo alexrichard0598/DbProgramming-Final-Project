@@ -50,3 +50,4 @@ SELECT	Dogs.[Name] AS DogName, DogShows.[Name] AS DogShowName,
 	LEFT JOIN DogShows
 		ON DogShowDetails.DogShowID = DogShows.DogShowID
 	ORDER BY DogShowDetails.DogShowID, COALESCE([Rank], 999);
+
