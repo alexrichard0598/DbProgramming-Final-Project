@@ -50,7 +50,9 @@ namespace DogShowTracker
         /// </summary>
         private void LoadOwnerDetails()
         {
-            string sql = $"SELECT FirstName, COALESCE(MiddleName + ' ', '') AS MiddleName, LastName, DOB, DateOfRetirement, Retired FROM Owners WHERE OwnerID = {currentID};";
+            string sql = $@"SELECT  FirstName, COALESCE(MiddleName + ' ', '') AS MiddleName, LastName, DOB, 
+                                    DateOfRetirement, Retired FROM Owners WHERE OwnerID = {currentID};";
+
             DataRow row = DatabaseHelper.GetDataRow(sql);
 
             string fName = row["FirstName"].ToString();
@@ -76,14 +78,14 @@ namespace DogShowTracker
         private DataRow OwnerNavigation()
         {
             string sql = $@"
-                SELECT * FROM 
-                            ( 
-	                        SELECT	(SELECT TOP(1) OwnerID FROM Owners ORDER BY LastName) AS FirstID,
-			                        COALESCE(LAG(OwnerID) OVER (ORDER BY LastName), -1) AS [PreviousID],
-			                        OwnerID AS CurrentID, 
-			                        COALESCE(LEAD(OwnerID) OVER (ORDER BY LastName), -1) AS [NextID],
-			                        (SELECT TOP(1) OwnerID FROM Owners ORDER BY LastName DESC) AS LastID FROM Owners 
-                            ) AS q WHERE CurrentID = {currentID};";
+                            SELECT * FROM 
+                                        ( 
+	                                    SELECT	(SELECT TOP(1) OwnerID FROM Owners ORDER BY LastName) AS FirstID,
+			                                    COALESCE(LAG(OwnerID) OVER (ORDER BY LastName), -1) AS [PreviousID],
+			                                    OwnerID AS CurrentID, 
+			                                    COALESCE(LEAD(OwnerID) OVER (ORDER BY LastName), -1) AS [NextID],
+			                                    (SELECT TOP(1) OwnerID FROM Owners ORDER BY LastName DESC) AS LastID FROM Owners 
+                                        ) AS q WHERE CurrentID = {currentID};";
             return DatabaseHelper.GetDataRow(sql);
         }
 

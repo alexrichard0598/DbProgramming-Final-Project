@@ -36,7 +36,7 @@ namespace DogShowTracker
         /// </summary>
         private void AddBreed()
         {
-            string breedName = txtBreedName.Text;
+            string breedName = DatabaseHelper.SanitizeUserInput(txtBreedName.Text);
             string primaryId = cmbPrimaryCoat.SelectedValue.ToString();
             string secondaryId = cmbSecondaryCoat.SelectedValue != DBNull.Value
                                 ? cmbSecondaryCoat.SelectedValue.ToString()

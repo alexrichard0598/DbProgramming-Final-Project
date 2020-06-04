@@ -105,16 +105,16 @@ namespace DogShowTracker
         /// Search the dogs using any of the provided search terms.
         /// If a search term is blank will filter that field by all possiblites
         /// </summary>
-        private void QuerryDogs()
+        private void QueryDogs()
         {
-            string dogName = txtSearchName.Text;
+            string dogName = DatabaseHelper.SanitizeUserInput(txtSearchName.Text);
 
             //If no breed is selected set to a wild card
             string breedID = cmbSearchBreed.SelectedIndex <= 0 ? "%%" : cmbSearchBreed.SelectedValue.ToString();
 
             //If the rdo male is check set a 1 if rdo female is checked set to 0 else set to 1, 0 which will show both
             string sex = rdoSearchMale.Checked ? "1" : rdoSearchFemale.Checked ? "0" : "1, 0";
-            string ownerName = txtSearchOwner.Text;
+            string ownerName = DatabaseHelper.SanitizeUserInput(txtSearchOwner.Text);
 
             //If max weight is 0 set to filter max by 999
             decimal maxWeight = nudMaxWeight.Value == 0 ? 999 : nudMaxWeight.Value;
@@ -150,7 +150,7 @@ namespace DogShowTracker
             int id = Convert.ToInt32(dgCompetitions.Rows[rowIndex].Cells["ID"].Value);
             int dogId = Convert.ToInt32(lstDogs.SelectedValue);
 
-            Form form = UIMethods.OpenForm(this.MdiParent, new frmDogShows());
+            Form form = UIMethods.OpenForm(MdiParent, new frmDogShows());
             foreach (Control ctrl in form.Controls)
             {
                 if (ctrl.Name == "grpDogShows")
@@ -291,7 +291,7 @@ namespace DogShowTracker
         {
             try
             {
-                QuerryDogs();
+                QueryDogs();
             }
             catch (Exception ex)
             {

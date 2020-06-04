@@ -46,11 +46,7 @@ namespace DogShowTracker
         /// </summary>
         private void GetValues()
         {
-            name = txtName.Text.Trim();
-            while (name.Contains("  "))
-            {
-                name = name.Replace("  ", " ");
-            }
+            name = DatabaseHelper.SanitizeUserInput(txtName.Text);
             sex = Convert.ToInt32(rdoMale.Checked);
             weight = Math.Round(nudWeight.Value, 1);
             height = Math.Round(nudHeight.Value, 1);

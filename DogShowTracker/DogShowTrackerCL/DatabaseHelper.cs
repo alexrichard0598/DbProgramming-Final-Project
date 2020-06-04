@@ -18,7 +18,7 @@ namespace DogShowTrackerCL
     public static class DatabaseHelper
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["dbConnection"].ConnectionString;
-        
+
         /// <summary>
         /// Gets the data from the database 
         /// using the sql string and return with a DataTable
@@ -27,6 +27,7 @@ namespace DogShowTrackerCL
         /// <returns></returns>
         public static DataTable GetDataTable(string sql)
         {
+            sql = SQLStringCleaner(sql);
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -50,6 +51,7 @@ namespace DogShowTrackerCL
         /// <returns></returns>
         public static object ExecuteScaler(string sql)
         {
+            sql = SQLStringCleaner(sql);
             SqlConnection connection = new SqlConnection(connectionString);
             using (connection)
             {
@@ -61,6 +63,7 @@ namespace DogShowTrackerCL
 
         public static int SendData(string sql)
         {
+            sql = SQLStringCleaner(sql);
             int rowAffected = 0;
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -82,7 +85,30 @@ namespace DogShowTrackerCL
         /// <returns></returns>
         public static DataRow GetDataRow(string sql)
         {
-           return GetDataTable(sql).Rows[0];
+            sql = SQLStringCleaner(sql);
+            return GetDataTable(sql).Rows[0];
+        }
+
+        /// <summary>
+        /// Removes all extra spaces and new lines from a sql string
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public static string SQLStringCleaner(string sql)
+        {
+            sql.Trim();
+            while (sql.Contains("  ")) sql = sql.Replace("  ", " ");
+            return sql.Replace(Environment.NewLine, "");
+        }
+
+        /// <summary>
+        /// Trims user input and fixes and escapes
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string SanitizeUserInput(string str)
+        {
+            return str.Trim().Replace("'", "''");
         }
     }
 }

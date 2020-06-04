@@ -59,9 +59,9 @@ namespace DogShowTracker
         /// </summary>
         private void InsertOwner()
         {
-            string fName = txtFirstName.Text;
-            string mName = txtMiddleName.Text == "" ? "NULL" : $"'{txtMiddleName.Text}'";
-            string lName = txtLastName.Text;
+            string fName = DatabaseHelper.SanitizeUserInput(txtFirstName.Text);
+            string mName = txtMiddleName.Text == "" ? "NULL" : $"'{DatabaseHelper.SanitizeUserInput(txtMiddleName.Text)}'";
+            string lName = DatabaseHelper.SanitizeUserInput(txtLastName.Text);
             string dob = dtpDOB.Value.ToString("yyyy-MM-dd");
             int isRetired = chkRetired.Checked ? 1 : 0 ;
             string dateOfRetirement = chkRetired.Checked ? $"'{dtpDateOfRetirement.Value.ToString("yyyy-MM-dd")}'" : "NULL";

@@ -51,7 +51,7 @@ namespace DogShowTracker
         /// </summary>
         private void InsertDogShow()
         {
-            string name = txtDogShowName.Text;
+            string name = DatabaseHelper.SanitizeUserInput(txtDogShowName.Text);
             string start = dtpStartDate.Value.ToString("yyyy-MM-dd");
             string end = dtpEndDate.Value.ToString("yyyy-MM-dd");
             int numDogs = Convert.ToInt32(nudNumDogs.Value);

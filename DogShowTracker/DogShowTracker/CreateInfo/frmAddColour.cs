@@ -24,7 +24,7 @@ namespace DogShowTracker
         /// </summary>
         private void InsertNewColour()
         {
-            string colourName = txtColour.Text;
+            string colourName = DatabaseHelper.SanitizeUserInput(txtColour.Text);
             string sql = $@"
                         INSERT INTO Colours
                             (Colour)
