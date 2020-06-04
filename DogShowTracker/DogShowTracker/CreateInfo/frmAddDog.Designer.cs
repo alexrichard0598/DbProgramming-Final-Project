@@ -46,16 +46,13 @@
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.chkBanned = new System.Windows.Forms.CheckBox();
             this.dtpDateBanned = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.chkChampion = new System.Windows.Forms.CheckBox();
             this.dtpChampionshipDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.dtpDateOfRetirement = new System.Windows.Forms.DateTimePicker();
             this.chkRetired = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -229,7 +226,6 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.chkBanned);
             this.groupBox3.Controls.Add(this.dtpDateBanned);
             this.groupBox3.Location = new System.Drawing.Point(247, 111);
@@ -248,22 +244,15 @@
             this.label20.TabIndex = 29;
             this.label20.Text = "Date Banned:";
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(61, 16);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(47, 13);
-            this.label19.TabIndex = 24;
-            this.label19.Text = "Banned:";
-            // 
             // chkBanned
             // 
             this.chkBanned.AutoSize = true;
-            this.chkBanned.Location = new System.Drawing.Point(113, 15);
+            this.chkBanned.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkBanned.Location = new System.Drawing.Point(62, 15);
             this.chkBanned.Name = "chkBanned";
-            this.chkBanned.Size = new System.Drawing.Size(15, 14);
+            this.chkBanned.Size = new System.Drawing.Size(66, 17);
             this.chkBanned.TabIndex = 25;
+            this.chkBanned.Text = "Banned:";
             this.chkBanned.UseVisualStyleBackColor = true;
             this.chkBanned.CheckedChanged += new System.EventHandler(this.EnableDateTimePickers);
             // 
@@ -280,7 +269,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.chkChampion);
             this.groupBox2.Controls.Add(this.dtpChampionshipDate);
             this.groupBox2.Location = new System.Drawing.Point(247, 197);
@@ -299,22 +287,15 @@
             this.label21.TabIndex = 31;
             this.label21.Text = "Championship Date:";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(51, 15);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 13);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Champion:";
-            // 
             // chkChampion
             // 
             this.chkChampion.AutoSize = true;
-            this.chkChampion.Location = new System.Drawing.Point(114, 15);
+            this.chkChampion.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkChampion.Location = new System.Drawing.Point(52, 12);
             this.chkChampion.Name = "chkChampion";
-            this.chkChampion.Size = new System.Drawing.Size(15, 14);
+            this.chkChampion.Size = new System.Drawing.Size(76, 17);
             this.chkChampion.TabIndex = 26;
+            this.chkChampion.Text = "Champion:";
             this.chkChampion.UseVisualStyleBackColor = true;
             this.chkChampion.CheckedChanged += new System.EventHandler(this.EnableDateTimePickers);
             // 
@@ -329,7 +310,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.dtpDateOfRetirement);
             this.groupBox1.Controls.Add(this.chkRetired);
             this.groupBox1.Controls.Add(this.label17);
@@ -339,15 +319,6 @@
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Retirement";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(64, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Retired:";
             // 
             // dtpDateOfRetirement
             // 
@@ -362,10 +333,12 @@
             // chkRetired
             // 
             this.chkRetired.AutoSize = true;
-            this.chkRetired.Location = new System.Drawing.Point(114, 16);
+            this.chkRetired.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkRetired.Location = new System.Drawing.Point(65, 13);
             this.chkRetired.Name = "chkRetired";
-            this.chkRetired.Size = new System.Drawing.Size(15, 14);
+            this.chkRetired.Size = new System.Drawing.Size(63, 17);
             this.chkRetired.TabIndex = 21;
+            this.chkRetired.Text = "Retired:";
             this.chkRetired.UseVisualStyleBackColor = true;
             this.chkRetired.CheckedChanged += new System.EventHandler(this.EnableDateTimePickers);
             // 
@@ -437,16 +410,13 @@
         private System.Windows.Forms.GroupBox grpDogInfo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.CheckBox chkBanned;
         private System.Windows.Forms.DateTimePicker dtpDateBanned;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox chkChampion;
         private System.Windows.Forms.DateTimePicker dtpChampionshipDate;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtpDateOfRetirement;
         private System.Windows.Forms.CheckBox chkRetired;
         private System.Windows.Forms.Label label17;

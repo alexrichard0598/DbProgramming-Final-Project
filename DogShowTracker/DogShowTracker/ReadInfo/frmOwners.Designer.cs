@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.dtDateOfRetirement = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.chkRetired = new System.Windows.Forms.CheckBox();
@@ -58,7 +57,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.dtDateOfRetirement);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.chkRetired);
@@ -68,15 +66,6 @@
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Retirement Info";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(60, 46);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Retired:";
             // 
             // dtDateOfRetirement
             // 
@@ -100,11 +89,13 @@
             // chkRetired
             // 
             this.chkRetired.AutoSize = true;
+            this.chkRetired.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkRetired.Enabled = false;
-            this.chkRetired.Location = new System.Drawing.Point(110, 46);
+            this.chkRetired.Location = new System.Drawing.Point(58, 45);
             this.chkRetired.Name = "chkRetired";
-            this.chkRetired.Size = new System.Drawing.Size(15, 14);
+            this.chkRetired.Size = new System.Drawing.Size(63, 17);
             this.chkRetired.TabIndex = 0;
+            this.chkRetired.Text = "Retired:";
             this.chkRetired.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -312,7 +303,6 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtDateOfRetirement;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkRetired;

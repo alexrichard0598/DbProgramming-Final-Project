@@ -38,7 +38,6 @@
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.dtpDateOfRetirement = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.chkRetired = new System.Windows.Forms.CheckBox();
@@ -115,7 +114,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.dtpDateOfRetirement);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.chkRetired);
@@ -125,15 +123,6 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Retirement Info";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(60, 46);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Retired:";
             // 
             // dtpDateOfRetirement
             // 
@@ -155,10 +144,12 @@
             // chkRetired
             // 
             this.chkRetired.AutoSize = true;
-            this.chkRetired.Location = new System.Drawing.Point(110, 46);
+            this.chkRetired.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkRetired.Location = new System.Drawing.Point(64, 45);
             this.chkRetired.Name = "chkRetired";
-            this.chkRetired.Size = new System.Drawing.Size(15, 14);
+            this.chkRetired.Size = new System.Drawing.Size(60, 17);
             this.chkRetired.TabIndex = 0;
+            this.chkRetired.Text = "Reired:";
             this.chkRetired.UseVisualStyleBackColor = true;
             this.chkRetired.CheckedChanged += new System.EventHandler(this.chkRetired_CheckedChanged);
             // 
@@ -223,7 +214,6 @@
         private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpDateOfRetirement;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkRetired;
