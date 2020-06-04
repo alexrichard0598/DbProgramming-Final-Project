@@ -5,7 +5,7 @@ using System.Linq;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-03
+    2020-06-04
 */
 
 namespace DogShowTracker
@@ -17,6 +17,10 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Validate the user provided info
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateFields()
         {
             errorProvider.Clear();
@@ -50,6 +54,9 @@ namespace DogShowTracker
             return isValid;
         }
 
+        /// <summary>
+        /// Insert the owner info into the database
+        /// </summary>
         private void InsertOwner()
         {
             string fName = txtFirstName.Text;

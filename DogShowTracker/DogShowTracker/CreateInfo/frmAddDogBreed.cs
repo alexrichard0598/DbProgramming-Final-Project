@@ -6,7 +6,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-03
+    2020-06-04
 */
 
 namespace DogShowTracker
@@ -55,6 +55,9 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbSecondaryCoat, "Colour", "ColourID", dt2, true);
         }
 
+        /// <summary>
+        /// Insert the breed info into the database
+        /// </summary>
         private void AddBreed()
         {
             string breedName = txtBreedName.Text;
@@ -71,6 +74,10 @@ namespace DogShowTracker
             DatabaseHelper.SendData(sql);
         }
 
+        /// <summary>
+        /// Validate user provided data
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateFields()
         {
             errorProvider.Clear();

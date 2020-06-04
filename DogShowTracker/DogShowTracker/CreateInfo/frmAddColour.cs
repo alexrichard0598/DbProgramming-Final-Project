@@ -5,7 +5,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-03
+    2020-06-04
 */
 
 namespace DogShowTracker
@@ -19,6 +19,9 @@ namespace DogShowTracker
 
         private bool colourAdded = false;
 
+        /// <summary>
+        /// Insert the colour into the database
+        /// </summary>
         private void InsertNewColour()
         {
             string colourName = txtColour.Text;
@@ -30,6 +33,10 @@ namespace DogShowTracker
             DatabaseHelper.SendData(sql);
         }
 
+        /// <summary>
+        /// Validate all user provided data
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateFields()
         {
             errorProvider.Clear();

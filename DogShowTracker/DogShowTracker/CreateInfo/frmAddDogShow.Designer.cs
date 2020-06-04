@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -36,13 +37,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.nudNumDogs = new System.Windows.Forms.NumericUpDown();
             this.btnAddDogShow = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.nudNumDogs = new System.Windows.Forms.NumericUpDown();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumDogs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -50,7 +53,7 @@
             this.groupBox2.Controls.Add(this.dtpEndDate);
             this.groupBox2.Location = new System.Drawing.Point(12, 160);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(215, 55);
+            this.groupBox2.Size = new System.Drawing.Size(236, 55);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "End Date";
@@ -67,7 +70,7 @@
             this.groupBox1.Controls.Add(this.dtpStartDate);
             this.groupBox1.Location = new System.Drawing.Point(12, 99);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(215, 55);
+            this.groupBox1.Size = new System.Drawing.Size(236, 55);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Start Date";
@@ -112,10 +115,18 @@
             this.groupBox3.Controls.Add(this.txtDogShowName);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(215, 81);
+            this.groupBox3.Size = new System.Drawing.Size(236, 81);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Details";
+            // 
+            // nudNumDogs
+            // 
+            this.nudNumDogs.Location = new System.Drawing.Point(103, 47);
+            this.nudNumDogs.Name = "nudNumDogs";
+            this.nudNumDogs.Size = new System.Drawing.Size(106, 20);
+            this.nudNumDogs.TabIndex = 12;
+            this.nudNumDogs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnAddDogShow
             // 
@@ -125,6 +136,7 @@
             this.btnAddDogShow.TabIndex = 13;
             this.btnAddDogShow.Text = "Add Dog Show";
             this.btnAddDogShow.UseVisualStyleBackColor = true;
+            this.btnAddDogShow.Click += new System.EventHandler(this.btnAddDogShow_Click);
             // 
             // btnCancel
             // 
@@ -135,19 +147,15 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // nudNumDogs
+            // errorProvider
             // 
-            this.nudNumDogs.Location = new System.Drawing.Point(103, 47);
-            this.nudNumDogs.Name = "nudNumDogs";
-            this.nudNumDogs.Size = new System.Drawing.Size(106, 20);
-            this.nudNumDogs.TabIndex = 12;
-            this.nudNumDogs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.errorProvider.ContainerControl = this;
             // 
             // frmAddDogShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(244, 260);
+            this.ClientSize = new System.Drawing.Size(256, 260);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAddDogShow);
             this.Controls.Add(this.groupBox3);
@@ -155,11 +163,13 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmAddDogShow";
             this.Text = "Add Dog Show";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddDogShow_FormClosed);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumDogs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,5 +187,6 @@
         private System.Windows.Forms.Button btnAddDogShow;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.NumericUpDown nudNumDogs;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

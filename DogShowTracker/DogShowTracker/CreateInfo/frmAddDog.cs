@@ -7,7 +7,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-03
+    2020-06-04
 */
 
 namespace DogShowTracker
@@ -35,12 +35,17 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", dt);
         }
 
-
+        /// <summary>
+        /// Reload the database info
+        /// </summary>
         public override void Reload()
         {
             PopulateBreedsList();
         }
 
+        /// <summary>
+        /// Get the user provided info
+        /// </summary>
         private void GetValues()
         {
             name = txtName.Text.Trim();
@@ -65,6 +70,10 @@ namespace DogShowTracker
             breedId = cmbBreed.SelectedValue != DBNull.Value ? Convert.ToInt32(cmbBreed.SelectedValue) : 0;
         }
 
+        /// <summary>
+        /// Validate user provided info
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateFields()
         {
             bool isValid = true;
@@ -131,6 +140,9 @@ namespace DogShowTracker
             return isValid;
         }
 
+        /// <summary>
+        /// Insert dog info into database
+        /// </summary>
         private void InsertDog()
         {
             string sql = $@"INSERT INTO Dogs
@@ -142,6 +154,11 @@ namespace DogShowTracker
             DatabaseHelper.SendData(sql);
         }
 
+        /// <summary>
+        /// Set the enabled property of the datetimepickers to the equivelent checkbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EnableDateTimePickers(object sender, EventArgs e)
         {
             try

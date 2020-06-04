@@ -1,0 +1,5 @@
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\bin\Release\DogShowTrackerCL.dll
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\bin\Release\DogShowTrackerCL.pdb
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\obj\Release\DogShowTrackerCL.csprojAssemblyReference.cache
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\obj\Release\DogShowTrackerCL.dll
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\obj\Release\DogShowTrackerCL.pdb
