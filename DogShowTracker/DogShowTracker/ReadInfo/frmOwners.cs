@@ -6,7 +6,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-03
+    2020-06-04
 */
 
 namespace DogShowTracker
@@ -26,17 +26,9 @@ namespace DogShowTracker
         /// </summary>
         public override void Reload()
         {
-            PopulateOwnersList();
+            UIMethods.FillListControl(cmbSelectOwner, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
             currentID = Convert.ToInt32(OwnerNavigation()["FirstID"]);
             LoadOwnerDetails();
-        }
-
-        /// <summary>
-        /// Fill the selected owner combobox
-        /// </summary>
-        private void PopulateOwnersList()
-        {
-            UIMethods.FillListControl(cmbSelectOwner, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
         }
 
         /// <summary>
@@ -127,9 +119,7 @@ namespace DogShowTracker
         {
             try
             {
-                PopulateOwnersList();
-                currentID = Convert.ToInt32(OwnerNavigation()["FirstID"]);
-                LoadOwnerDetails();
+                Reload();             
             }
             catch (Exception ex)
             {

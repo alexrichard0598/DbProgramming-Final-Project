@@ -6,7 +6,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-03
+    2020-06-04
 */
 
 namespace DogShowTracker
@@ -23,14 +23,6 @@ namespace DogShowTracker
         /// Load all form info
         /// </summary>
         public override void Reload()
-        {
-            PopulateDogShows();
-        }
-
-        /// <summary>
-        /// Fill the dogshows combobox
-        /// </summary>
-        private void PopulateDogShows()
         {
             UIMethods.FillListControl(cmbDogShows, "Name", "DogShowID", LoadFormData.DogShowNames());
         }
@@ -106,7 +98,7 @@ namespace DogShowTracker
         {
             try
             {
-                PopulateDogShows();
+                Reload();
             }
             catch (Exception ex)
             {

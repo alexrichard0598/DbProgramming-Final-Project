@@ -6,7 +6,7 @@ using DogShowTrackerCL;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-03
+    2020-06-04
 */
 
 namespace DogShowTracker
@@ -24,34 +24,10 @@ namespace DogShowTracker
         /// </summary>
         public override void Reload()
         {
-            PopulateBreedsList();
-            PopulateOwnersList();
-            PopulateDogsList();
-        }
-
-        /// <summary>
-        /// Fill the Dogs listbox
-        /// </summary>
-        private void PopulateDogsList()
-        {
-            UIMethods.FillListControl(lstDogs, "Name", "DogID", LoadFormData.DogNames());
-        }
-
-        /// <summary>
-        /// Fill the breed and search breed comboboxes
-        /// </summary>
-        private void PopulateBreedsList()
-        {
             UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", LoadFormData.BreedNames());
             UIMethods.FillListControl(cmbSearchBreed, "Breed", "BreedID", LoadFormData.BreedNames(), true);
-        }
-
-        /// <summary>
-        /// Fill the owners combobox
-        /// </summary>
-        private void PopulateOwnersList()
-        {
             UIMethods.FillListControl(cmbOwner, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
+            UIMethods.FillListControl(lstDogs, "Name", "DogID", LoadFormData.DogNames());
         }
 
         /// <summary>
@@ -237,9 +213,7 @@ namespace DogShowTracker
         {
             try
             {
-                PopulateBreedsList();
-                PopulateOwnersList();
-                PopulateDogsList();
+                Reload();
             }
             catch (Exception ex)
             {
@@ -276,9 +250,7 @@ namespace DogShowTracker
         {
             try
             {
-                PopulateBreedsList();
-                PopulateOwnersList();
-                PopulateDogsList();
+                Reload();
             }
             catch (Exception ex)
             {
@@ -313,7 +285,7 @@ namespace DogShowTracker
                     }
                 }
             }
-            PopulateDogsList();
+            Reload();
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {

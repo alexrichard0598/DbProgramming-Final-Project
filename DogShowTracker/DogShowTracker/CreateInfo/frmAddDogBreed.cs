@@ -26,23 +26,7 @@ namespace DogShowTracker
         /// </summary>
         public override void Reload()
         {
-            LoadClasses();
-            LoadColours();
-        }
-
-        /// <summary>
-        /// Fill the classification combobox
-        /// </summary>
-        private void LoadClasses()
-        {
             UIMethods.FillListControl(cmbClass, "Class", "ClassID", LoadFormData.ClassNames(), true);
-        }
-
-        /// <summary>
-        /// Fill the primary and secondary coat colour comboboxes
-        /// </summary>
-        private void LoadColours()
-        {
             UIMethods.FillListControl(cmbPrimaryCoat, "Colour", "ColourID", LoadFormData.ColourNames(), true);
             UIMethods.FillListControl(cmbSecondaryCoat, "Colour", "ColourID", LoadFormData.ColourNames(), true);
         }

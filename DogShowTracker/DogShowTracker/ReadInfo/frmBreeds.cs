@@ -6,7 +6,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-03
+    2020-06-04
 */
 
 
@@ -25,34 +25,10 @@ namespace DogShowTracker
         /// </summary>
         public override void Reload()
         {
-            LoadBreeds();
-            LoadClasses();
-            LoadColours();
-        }
-
-        /// <summary>
-        /// Fill the breeds listbox
-        /// </summary>
-        private void LoadBreeds()
-        {
-            UIMethods.FillListControl(lstBreeds, "Breed", "BreedID", LoadFormData.BreedNames());
-        }
-
-        /// <summary>
-        /// Fill the classification combobox
-        /// </summary>
-        private void LoadClasses()
-        {
             UIMethods.FillListControl(cmbClass, "Class", "ClassID", LoadFormData.ClassNames());
-        }
-
-        /// <summary>
-        /// Fill the primary and secondary coat colour comboboxes
-        /// </summary>
-        private void LoadColours()
-        {
             UIMethods.FillListControl(cmbPrimary, "Colour", "ColourID", LoadFormData.ColourNames());
             UIMethods.FillListControl(cmbSecondary, "Colour", "ColourID", LoadFormData.ColourNames(), true);
+            UIMethods.FillListControl(lstBreeds, "Breed", "BreedID", LoadFormData.BreedNames());
         }
 
         /// <summary>
@@ -85,9 +61,7 @@ namespace DogShowTracker
         {
             try
             {
-                LoadBreeds();
-                LoadClasses();
-                LoadColours();
+                Reload();
             }
             catch (Exception ex)
             {

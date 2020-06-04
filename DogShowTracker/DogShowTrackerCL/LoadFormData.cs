@@ -55,7 +55,7 @@ namespace DogShowTrackerCL
         /// <returns>OwnerID, OwnerName</returns>
         public static DataTable OwnerNamesCombined()
         {
-            string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners;";
+            string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners ORDER BY LastName;";
             return DatabaseHelper.GetDataTable(sql);
         }
 
