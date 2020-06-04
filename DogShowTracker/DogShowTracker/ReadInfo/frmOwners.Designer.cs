@@ -49,6 +49,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cmbSelectOwner = new System.Windows.Forms.ComboBox();
             this.btnChangeOwnership = new System.Windows.Forms.Button();
+            this.btnDeleteOwner = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -274,6 +275,15 @@
             this.btnChangeOwnership.UseVisualStyleBackColor = true;
             this.btnChangeOwnership.Click += new System.EventHandler(this.btnChangeOwnership_Click);
             // 
+            // btnDeleteOwner
+            // 
+            this.btnDeleteOwner.Location = new System.Drawing.Point(205, 12);
+            this.btnDeleteOwner.Name = "btnDeleteOwner";
+            this.btnDeleteOwner.Size = new System.Drawing.Size(88, 23);
+            this.btnDeleteOwner.TabIndex = 36;
+            this.btnDeleteOwner.Text = "Delete Owner";
+            this.btnDeleteOwner.UseVisualStyleBackColor = true;
+            // 
             // frmOwners
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,6 +291,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(745, 304);
+            this.Controls.Add(this.btnDeleteOwner);
             this.Controls.Add(this.btnChangeOwnership);
             this.Controls.Add(this.cmbSelectOwner);
             this.Controls.Add(this.label7);
@@ -323,5 +334,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbSelectOwner;
         private System.Windows.Forms.Button btnChangeOwnership;
+        private System.Windows.Forms.Button btnDeleteOwner;
     }
 }

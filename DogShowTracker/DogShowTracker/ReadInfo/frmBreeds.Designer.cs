@@ -45,6 +45,7 @@
             this.btnNewClass = new System.Windows.Forms.Button();
             this.btnNewColour = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDeleteBreed = new System.Windows.Forms.Button();
             this.grpBreedInfo.SuspendLayout();
             this.grpBreeds.SuspendLayout();
             this.SuspendLayout();
@@ -218,11 +219,21 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // btnDeleteBreed
+            // 
+            this.btnDeleteBreed.Location = new System.Drawing.Point(344, 12);
+            this.btnDeleteBreed.Name = "btnDeleteBreed";
+            this.btnDeleteBreed.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteBreed.TabIndex = 35;
+            this.btnDeleteBreed.Text = "Delete Breed";
+            this.btnDeleteBreed.UseVisualStyleBackColor = true;
+            // 
             // frmBreeds
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 259);
+            this.Controls.Add(this.btnDeleteBreed);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnNewColour);
             this.Controls.Add(this.btnNewClass);
@@ -258,5 +269,6 @@
         private System.Windows.Forms.Button btnNewClass;
         private System.Windows.Forms.Button btnNewColour;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDeleteBreed;
     }
 }

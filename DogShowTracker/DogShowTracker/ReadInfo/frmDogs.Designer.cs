@@ -87,6 +87,7 @@
             this.lstDogs = new System.Windows.Forms.ListBox();
             this.btnNewDog = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDeleteDog = new System.Windows.Forms.Button();
             this.grpSex.SuspendLayout();
             this.grpDogInfo.SuspendLayout();
             this.grpSearch.SuspendLayout();
@@ -713,6 +714,15 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // btnDeleteDog
+            // 
+            this.btnDeleteDog.Location = new System.Drawing.Point(174, 12);
+            this.btnDeleteDog.Name = "btnDeleteDog";
+            this.btnDeleteDog.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteDog.TabIndex = 29;
+            this.btnDeleteDog.Text = "Delete Dog";
+            this.btnDeleteDog.UseVisualStyleBackColor = true;
+            // 
             // frmDogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -720,6 +730,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(756, 746);
+            this.Controls.Add(this.btnDeleteDog);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnNewDog);
             this.Controls.Add(this.grpDogs);
@@ -812,6 +823,7 @@
         private System.Windows.Forms.Button btnViewOwner;
         private System.Windows.Forms.Button btnViewBreed;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDeleteDog;
     }
 }
 
