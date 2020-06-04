@@ -35,10 +35,7 @@ namespace DogShowTracker
         /// </summary>
         private void LoadBreeds()
         {
-            string sql = "SELECT BreedID, Breed FROM Breeds ORDER BY Breed;";
-
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(lstBreeds, "Breed", "BreedID", dt);
+            UIMethods.FillListControl(lstBreeds, "Breed", "BreedID", LoadFormData.BreedNames());
         }
 
         /// <summary>
@@ -46,10 +43,7 @@ namespace DogShowTracker
         /// </summary>
         private void LoadClasses()
         {
-            string sql = "SELECT ClassID, Class FROM Classes;";
-
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbClass, "Class", "ClassID", dt);
+            UIMethods.FillListControl(cmbClass, "Class", "ClassID", LoadFormData.ClassNames());
         }
 
         /// <summary>
@@ -57,13 +51,8 @@ namespace DogShowTracker
         /// </summary>
         private void LoadColours()
         {
-            string sql = "SELECT ColourID, Colour FROM Colours;";
-
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbPrimary, "Colour", "ColourID", dt);
-
-            DataTable dt2 = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbSecondary, "Colour", "ColourID", dt2);
+            UIMethods.FillListControl(cmbPrimary, "Colour", "ColourID", LoadFormData.ColourNames());
+            UIMethods.FillListControl(cmbSecondary, "Colour", "ColourID", LoadFormData.ColourNames(), true);
         }
 
         /// <summary>
@@ -78,7 +67,10 @@ namespace DogShowTracker
             string breed = row["Breed"].ToString();
             int classID = Convert.ToInt32(row["Classification"]);
             int primaryColourID = Convert.ToInt32(row["PrimaryCoatColour"]);
-            int secondaryColourID = Convert.ToInt32(row["SecondaryCoatColour"]);
+
+
+            int secondaryColourID = 0;
+            int.TryParse(row["SecondaryCoatColour"].ToString(), out secondaryColourID);
 
             txtID.Text = breedID.ToString();
             txtName.Text = breed;

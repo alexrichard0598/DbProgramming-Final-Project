@@ -35,10 +35,7 @@ namespace DogShowTracker
         /// </summary>
         private void LoadClasses()
         {
-            string sql = "SELECT ClassID, Class FROM Classes;";
-
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbClass, "Class", "ClassID", dt, true);
+            UIMethods.FillListControl(cmbClass, "Class", "ClassID", LoadFormData.ClassNames(), true);
         }
 
         /// <summary>
@@ -46,13 +43,8 @@ namespace DogShowTracker
         /// </summary>
         private void LoadColours()
         {
-            string sql = "SELECT ColourID, Colour FROM Colours;";
-
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbPrimaryCoat, "Colour", "ColourID", dt, true);
-
-            DataTable dt2 = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbSecondaryCoat, "Colour", "ColourID", dt2, true);
+            UIMethods.FillListControl(cmbPrimaryCoat, "Colour", "ColourID", LoadFormData.ColourNames(), true);
+            UIMethods.FillListControl(cmbSecondaryCoat, "Colour", "ColourID", LoadFormData.ColourNames(), true);
         }
 
         /// <summary>

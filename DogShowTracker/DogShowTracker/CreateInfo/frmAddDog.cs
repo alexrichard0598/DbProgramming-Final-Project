@@ -30,9 +30,7 @@ namespace DogShowTracker
         /// </summary>
         private void PopulateBreedsList()
         {
-            string sql = "SELECT [BreedID], [Breed] FROM Breeds ORDER BY [Breed];";
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", dt);
+            UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", LoadFormData.BreedNames());
         }
 
         /// <summary>

@@ -23,5 +23,20 @@ namespace DogShowTracker
         {
             InitializeComponent();
         }
+
+        private void btnAddDog_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemoveDogs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmAssignDogShowDogs_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

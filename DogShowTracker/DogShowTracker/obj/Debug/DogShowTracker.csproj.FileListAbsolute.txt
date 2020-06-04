@@ -20,3 +20,4 @@ C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgrammi
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmBreeds.resources
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddDog.resources
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddDogShow.resources
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAssignDogShowDogs.resources

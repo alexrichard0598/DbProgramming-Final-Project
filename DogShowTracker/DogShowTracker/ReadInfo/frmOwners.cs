@@ -36,9 +36,7 @@ namespace DogShowTracker
         /// </summary>
         private void PopulateOwnersList()
         {
-            string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners ORDER BY LastName;";
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbSelectOwner, "OwnerName", "OwnerID", dt);
+            UIMethods.FillListControl(cmbSelectOwner, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
         }
 
         /// <summary>

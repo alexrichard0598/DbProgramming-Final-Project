@@ -34,9 +34,7 @@ namespace DogShowTracker
         /// </summary>
         private void PopulateDogsList()
         {
-            string sql = "SELECT [DogID], [Name] FROM Dogs ORDER BY [Name];";
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(lstDogs, "Name", "DogID", dt);
+            UIMethods.FillListControl(lstDogs, "Name", "DogID", LoadFormData.DogNames());
         }
 
         /// <summary>
@@ -44,13 +42,8 @@ namespace DogShowTracker
         /// </summary>
         private void PopulateBreedsList()
         {
-            string sql = "SELECT [BreedID], [Breed] FROM Breeds ORDER BY [Breed];";
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", dt);
-
-            DataTable dt2 = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbSearchBreed, "Breed", "BreedID", dt2, true);
-            cmbSearchBreed.SelectedIndex = -1;
+            UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", LoadFormData.BreedNames());
+            UIMethods.FillListControl(cmbSearchBreed, "Breed", "BreedID", LoadFormData.BreedNames(), true);
         }
 
         /// <summary>
@@ -58,9 +51,7 @@ namespace DogShowTracker
         /// </summary>
         private void PopulateOwnersList()
         {
-            string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners;";
-            DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(cmbOwner, "OwnerName", "OwnerID", dt);
+            UIMethods.FillListControl(cmbOwner, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
         }
 
         /// <summary>
