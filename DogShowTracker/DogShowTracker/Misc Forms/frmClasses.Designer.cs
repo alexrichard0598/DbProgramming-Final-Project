@@ -31,7 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.txtColourName = new System.Windows.Forms.TextBox();
+            this.txtClassName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstClasses = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
@@ -42,7 +42,7 @@
             // 
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnUpdate);
-            this.groupBox1.Controls.Add(this.txtColourName);
+            this.groupBox1.Controls.Add(this.txtClassName);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(217, 82);
@@ -68,12 +68,12 @@
             this.btnUpdate.Text = "Update Class";
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // txtColourName
+            // txtClassName
             // 
-            this.txtColourName.Location = new System.Drawing.Point(12, 19);
-            this.txtColourName.Name = "txtColourName";
-            this.txtColourName.Size = new System.Drawing.Size(194, 20);
-            this.txtColourName.TabIndex = 5;
+            this.txtClassName.Location = new System.Drawing.Point(12, 19);
+            this.txtClassName.Name = "txtClassName";
+            this.txtClassName.Size = new System.Drawing.Size(194, 20);
+            this.txtClassName.TabIndex = 5;
             // 
             // groupBox2
             // 
@@ -92,6 +92,7 @@
             this.lstClasses.Name = "lstClasses";
             this.lstClasses.Size = new System.Drawing.Size(203, 251);
             this.lstClasses.TabIndex = 4;
+            this.lstClasses.SelectedIndexChanged += new System.EventHandler(this.lstClasses_SelectedIndexChanged);
             // 
             // frmClasses
             // 
@@ -116,7 +117,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.TextBox txtColourName;
+        private System.Windows.Forms.TextBox txtClassName;
         private System.Windows.Forms.ListBox lstClasses;
     }
 }

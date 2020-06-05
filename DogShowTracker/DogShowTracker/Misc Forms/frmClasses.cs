@@ -23,11 +23,30 @@ namespace DogShowTracker
             UIMethods.FillListControl(lstClasses, "Class", "ClassID", LoadFormData.ClassNames());
         }
 
+        private void GetClassInfo()
+        {
+            int id = Convert.ToInt32(lstClasses.SelectedValue);
+            string sql = $"Select Class FROM Classes WHERE ClassID = {id}";
+            txtClassName.Text = DatabaseHelper.ExecuteScaler(sql).ToString();
+        }
+
         private void frmClasses_Load(object sender, EventArgs e)
         {
             try
             {
                 LoadClasses();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void lstClasses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GetClassInfo();
             }
             catch (Exception ex)
             {

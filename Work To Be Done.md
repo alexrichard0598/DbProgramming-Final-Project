@@ -46,13 +46,13 @@
 ## Colour Info
 
 - ~~Create Colour~~
-- _Read Colours (UI-Complete)_
+- ~~Read Colours~~
 - _Update Colour (UI-Complete)_
 - _Delete Colour (UI-Complete)_
 
 ## Class Info
 
 - ~~Create Class~~
-- _Read Classes (UI-Complete)_
+- ~~Read Classes~~
 - _Update Class (UI-Complete)_
 - _Delete Class (UI-Complete)_

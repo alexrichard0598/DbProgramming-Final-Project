@@ -23,11 +23,30 @@ namespace DogShowTracker
             UIMethods.FillListControl(lstColours, "Colour", "ColourID", LoadFormData.ColourNames());
         }
 
+        private void GetColourInfo()
+        {
+            int id = Convert.ToInt32(lstColours.SelectedValue);
+            string sql = $"Select Colour FROM Colours WHERE ColourID = {id}";
+            txtColourName.Text = DatabaseHelper.ExecuteScaler(sql).ToString();
+        }
+
         private void frmColours_Load(object sender, EventArgs e)
         {
             try
             {
                 LoadColours();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void lstColours_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GetColourInfo();
             }
             catch (Exception ex)
             {

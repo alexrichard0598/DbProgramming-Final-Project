@@ -45,6 +45,7 @@
             this.lstColours.Name = "lstColours";
             this.lstColours.Size = new System.Drawing.Size(203, 251);
             this.lstColours.TabIndex = 0;
+            this.lstColours.SelectedIndexChanged += new System.EventHandler(this.lstColours_SelectedIndexChanged);
             // 
             // txtColourName
             // 
