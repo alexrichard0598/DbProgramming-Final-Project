@@ -5,7 +5,7 @@
 - ~~Create Dog Breed~~
 - ~~Read Dog Breeds~~
 - _Update Dog Breeds (UI-Complete)_
-- ~~Delete Dog Breeds (UI-Complete)~~
+- ~~Delete Dog Breeds~~
 
 ## Dog Info
 
@@ -56,3 +56,20 @@
 - ~~Read Classes~~
 - _Update Class (UI-Complete)_
 - _Delete Class (UI-Complete)_
+
+## Prevent Adding Duplicated
+
+- Breeds
+  - Same Name
+- Colours
+  - Same Name
+- Classes
+  - Same Name
+- Ownership
+  - Same Dog and Owner Pair
+- Owners
+  - Prompt when exact name match
+- DogShow
+  - Start Date and Name Must be the same
+- Dog
+  - Prompt when same name
