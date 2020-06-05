@@ -40,17 +40,17 @@ namespace DogShowTracker
             GetUserData();
             errorProvider.Clear();
             bool isValid = true;
-            if (fName == "" || !fName.All(c => char.IsLetter(c)))
+            if (string.IsNullOrEmpty(fName) || !fName.All(c => char.IsLetter(c)))
             {
                 errorProvider.SetError(txtFirstName, "First Name must not be empty and contain only letters");
                 isValid = false;
             }
-            if (mName != "" && !mName.All(c => char.IsLetter(c)))
+            if (mName.Length != 0 && !mName.All(c => char.IsLetter(c)))
             {
                 errorProvider.SetError(txtMiddleName, "Middle Name must only contain letters");
                 isValid = false;
             }
-            if (lName == "" || !lName.All(c => char.IsLetter(c)))
+            if (string.IsNullOrEmpty(lName) || !lName.All(c => char.IsLetter(c)))
             {
                 errorProvider.SetError(txtLastName, "Last Name must not be empty and contain only letters");
                 isValid = false;

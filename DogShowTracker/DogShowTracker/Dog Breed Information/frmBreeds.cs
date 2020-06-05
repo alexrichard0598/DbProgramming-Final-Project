@@ -43,10 +43,7 @@ namespace DogShowTracker
             string breed = row["Breed"].ToString();
             int classID = Convert.ToInt32(row["Classification"]);
             int primaryColourID = Convert.ToInt32(row["PrimaryCoatColour"]);
-
-
-            int secondaryColourID;
-            int.TryParse(row["SecondaryCoatColour"].ToString(), out secondaryColourID);
+            _ = int.TryParse(row["SecondaryCoatColour"].ToString(), out int secondaryColourID);
 
             txtID.Text = breedID.ToString();
             txtName.Text = breed;
@@ -60,7 +57,7 @@ namespace DogShowTracker
         {
             int id = Convert.ToInt32(lstBreeds.SelectedValue);
 
-            if(DatabaseHelper.ValueExists("Breed", id.ToString(), "Dogs"))
+            if (DatabaseHelper.ValueExists("Breed", id.ToString(), "Dogs"))
             {
                 MessageBox.Show("Cannot delete breed that is referenced by a dog", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

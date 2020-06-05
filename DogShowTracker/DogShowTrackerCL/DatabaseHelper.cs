@@ -17,13 +17,13 @@ namespace DogShowTrackerCL
 {
     public static class DatabaseHelper
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["dbConnection"].ConnectionString;
+        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["dbConnection"].ConnectionString;
 
         /// <summary>
         /// Gets the data from the database 
-        /// using the sql string and return with a DataTable
+        /// using the SQL string and return with a DataTable
         /// </summary>
-        /// <param name="sql">The sql string to querry with</param>
+        /// <param name="sql">The SQL string to querry with</param>
         /// <returns></returns>
         public static DataTable GetDataTable(string sql)
         {
@@ -44,10 +44,10 @@ namespace DogShowTrackerCL
 
         /// <summary>
         /// Gets the data from the database
-        /// using the sql string and return an object
+        /// using the SQL string and return an object
         /// form the first row and column returned
         /// </summary>
-        /// <param name="sql">The sql string to querry with</param>
+        /// <param name="sql">The SQL string to querry with</param>
         /// <returns></returns>
         public static object ExecuteScaler(string sql)
         {
@@ -79,9 +79,9 @@ namespace DogShowTrackerCL
 
         /// <summary>
         /// Returns the first row returned from the database
-        /// when querried using the sql string provided
+        /// when queried using the SQL string provided
         /// </summary>
-        /// <param name="sql">The sql string to querry with</param>
+        /// <param name="sql">The SQL string to querry with</param>
         /// <returns></returns>
         public static DataRow GetDataRow(string sql)
         {
@@ -90,7 +90,7 @@ namespace DogShowTrackerCL
         }
 
         /// <summary>
-        /// Removes all extra spaces and new lines from a sql string
+        /// Removes all extra spaces and new lines from a SQL string
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>

@@ -69,7 +69,7 @@ namespace DogShowTracker
             bool isValid = true;
             string errorMsg = "";
             colourName = DatabaseHelper.SanitizeUserInput(txtColourName.Text);
-            if (colourName == "")
+            if (string.IsNullOrEmpty(colourName))
             {
                 errorMsg += "Colour Name cannot be blank. ";
                 isValid = false;

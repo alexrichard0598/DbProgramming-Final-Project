@@ -38,10 +38,7 @@ namespace DogShowTracker
             string breed = row["Breed"].ToString();
             int classID = Convert.ToInt32(row["Classification"]);
             int primaryColourID = Convert.ToInt32(row["PrimaryCoatColour"]);
-
-
-            int secondaryColourID;
-            int.TryParse(row["SecondaryCoatColour"].ToString(), out secondaryColourID);
+            _ = int.TryParse(row["SecondaryCoatColour"].ToString(), out int secondaryColourID);
 
             txtName.Text = breed;
             cmbClass.SelectedValue = classID;

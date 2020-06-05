@@ -16,7 +16,7 @@ using System.Windows.Forms;
 */
 
 namespace DogShowTracker
-{ 
+{
     public partial class frmUpdateDog : DogShowForm
     {
         public frmUpdateDog()

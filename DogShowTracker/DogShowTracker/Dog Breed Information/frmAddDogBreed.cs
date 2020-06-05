@@ -64,7 +64,7 @@ namespace DogShowTracker
             GetUserData();
             errorProvider.Clear();
             bool isValid = true;
-            if (breedName == "")
+            if (string.IsNullOrEmpty(breedName))
             {
                 errorProvider.SetError(txtBreedName, "Breed Name cannot be empty");
                 isValid = false;
@@ -79,7 +79,7 @@ namespace DogShowTracker
                 errorProvider.SetError(cmbClass, "Breed must have a class");
                 isValid = false;
             }
-            if(DatabaseHelper.ValueExists("Breed", $"'{breedName}'", "Breeds"))
+            if (DatabaseHelper.ValueExists("Breed", $"'{breedName}'", "Breeds"))
             {
                 isValid = false;
                 MessageBox.Show("A breed with that name already exists", "", MessageBoxButtons.OK, MessageBoxIcon.Error);

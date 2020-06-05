@@ -40,7 +40,7 @@ namespace DogShowTracker
             string colourName = DatabaseHelper.SanitizeUserInput(txtColour.Text);
             errorProvider.Clear();
             bool isValid = true;
-            if (colourName == "")
+            if (string.IsNullOrEmpty(colourName))
             {
                 errorProvider.SetError(txtColour, "Colour Name cannot be blank");
                 isValid = false;
@@ -57,7 +57,7 @@ namespace DogShowTracker
         {
             try
             {
-                if(ValidateFields())
+                if (ValidateFields())
                 {
                     InsertNewColour();
                 }

@@ -39,22 +39,22 @@ namespace DogShowTracker
             GetUserData();
             bool isValid = true;
             errorProvider.Clear();
-            if(name.Length < 5 || !name.All(c => char.IsWhiteSpace(c) || char.IsLetter(c)))
+            if (name.Length < 5 || !name.All(c => char.IsWhiteSpace(c) || char.IsLetter(c)))
             {
                 isValid = false;
                 errorProvider.SetError(txtDogShowName, "Dog show name must be longer than 5 characters and contain only letters and spaces");
             }
-            if(numDogs < 5)
+            if (numDogs < 5)
             {
                 isValid = false;
                 errorProvider.SetError(nudNumDogs, "Dog shows must have a least 5 dogs competing");
             }
-            if(DateTime.Parse(end) < DateTime.Parse(start))
+            if (DateTime.Parse(end) < DateTime.Parse(start))
             {
                 isValid = false;
                 errorProvider.SetError(dtpEndDate, "Dog show cannnot end before it starts");
             }
-            if(DatabaseHelper.ValueExists("Name", $"'{name}'", "DogShows") && DatabaseHelper.ValueExists("StartDate", $"'{start}'", "DogShows"))
+            if (DatabaseHelper.ValueExists("Name", $"'{name}'", "DogShows") && DatabaseHelper.ValueExists("StartDate", $"'{start}'", "DogShows"))
             {
                 isValid = false;
                 MessageBox.Show("A dog show with that name already starts at that date", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,7 +84,7 @@ namespace DogShowTracker
         {
             try
             {
-                if(ValidateFields())
+                if (ValidateFields())
                 {
                     InsertDogShow();
                 }

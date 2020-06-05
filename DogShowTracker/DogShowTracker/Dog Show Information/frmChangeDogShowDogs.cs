@@ -39,7 +39,7 @@ namespace DogShowTracker
             assignDogID = cmbDogs.SelectedValue != DBNull.Value ? Convert.ToInt32(cmbDogs.SelectedValue) : 0;
             currentDogID = Convert.ToInt32(lstDogs.SelectedValue);
             dogShowID = Convert.ToInt32(cmbDogShow.SelectedValue);
-            rank = chkDisqualified.Checked? "NULL" : Convert.ToInt32(nudRank.Value).ToString();
+            rank = chkDisqualified.Checked ? "NULL" : Convert.ToInt32(nudRank.Value).ToString();
             disqualified = chkDisqualified.Checked ? 1 : 0;
         }
 
@@ -104,7 +104,7 @@ namespace DogShowTracker
                 isValid = false;
                 errorMsg += "Dog is already in dog show. ";
             }
-            if(GetDogShowDogsCount() == GetMaxDogShowDogs())
+            if (GetDogShowDogsCount() == GetMaxDogShowDogs())
             {
                 isValid = false;
                 errorMsg += "Dog show already has max number of dogs.";
@@ -114,18 +114,18 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(nudRank, "Rank must be higher than 0 if not disqualified");
             }
-            if(disqualified == 0 && Convert.ToInt32(rank) > GetMaxDogShowDogs())
+            if (disqualified == 0 && Convert.ToInt32(rank) > GetMaxDogShowDogs())
             {
                 isValid = false;
                 errorProvider.SetError(nudRank, "Rank cannot be higher than the max number of dogs");
             }
-            if(int.TryParse(rank, out _) && DatabaseHelper.ValueExists("Rank", rank, "DogShowDetails"))
+            if (int.TryParse(rank, out _) && DatabaseHelper.ValueExists("Rank", rank, "DogShowDetails"))
             {
                 isValid = false;
                 errorProvider.SetError(nudRank, "A dog already has that rank");
             }
 
-            if(errorMsg.Length > 0) MessageBox.Show(errorMsg.Trim(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (errorMsg.Length > 0) MessageBox.Show(errorMsg.Trim(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return isValid;
         }
 
@@ -141,7 +141,7 @@ namespace DogShowTracker
             DateTime dogShowDate = DateTime.Parse(cmbDogShow.Text.Split('\u2014')[0]);
 
 
-            return lstDogs.SelectedIndex != -1 
+            return lstDogs.SelectedIndex != -1
                     && UIMethods.ConfirmationPrompt($"Are you sure you want to remove {dogName} from the " +
                                                     $"{dogShowDate.ToString("yyyy MMMM d")}{dogShowName} dog show?");
         }
@@ -192,7 +192,7 @@ namespace DogShowTracker
             DataRow row = DatabaseHelper.GetDataRow(sql);
 
             cmbDogs.SelectedValue = currentDogID;
-            nudRank.Value = row["Rank"] != DBNull.Value? Convert.ToDecimal(row["Rank"]) : 0;
+            nudRank.Value = row["Rank"] != DBNull.Value ? Convert.ToDecimal(row["Rank"]) : 0;
             chkDisqualified.Checked = Convert.ToBoolean(row["Disqualified"]);
         }
         #endregion
@@ -201,7 +201,7 @@ namespace DogShowTracker
         {
             try
             {
-                if(ValidateInsert())
+                if (ValidateInsert())
                 {
                     InsertDogShowDog();
                     LoadDogShowDetails();
@@ -233,7 +233,7 @@ namespace DogShowTracker
         {
             try
             {
-                if(VerifyUpdate())
+                if (VerifyUpdate())
                 {
                     UpdateDogShowDog();
                     LoadDogShowDetails();

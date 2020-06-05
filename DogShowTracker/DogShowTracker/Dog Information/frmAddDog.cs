@@ -72,7 +72,7 @@ namespace DogShowTracker
             bool isValid = true;
             errorProvider.Clear();
             GetValues();
-            if (name == "" || !name.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            if (string.IsNullOrEmpty(name) || !name.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
             {
                 isValid = false;
                 errorProvider.SetError(txtName, "Name must not be empty and can only contain letters and spaces");
@@ -118,7 +118,7 @@ namespace DogShowTracker
                 if (dtpChampionshipDate.Value.Date > dtpDateOfRetirement.Value.Date && chkRetired.Checked)
                     errorMsg += "Date of championship cannot be after date retired";
 
-                if (errorMsg != "")
+                if (errorMsg.Length != 0)
                 {
                     isValid = false;
                     errorProvider.SetError(dtpChampionshipDate, errorMsg);
@@ -130,9 +130,9 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(cmbBreed, "Dog breed must be selected");
             }
-            if(DatabaseHelper.ValueExists("Name", $"'{name}'", "Dogs"))
+            if (DatabaseHelper.ValueExists("Name", $"'{name}'", "Dogs"))
             {
-               if(isValid && DialogResult.Yes == MessageBox.Show("A dog with that name already exists, are you sure you wish to add this dog?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if (isValid && DialogResult.Yes == MessageBox.Show("A dog with that name already exists, are you sure you wish to add this dog?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     isValid = false;
             }
             return isValid;

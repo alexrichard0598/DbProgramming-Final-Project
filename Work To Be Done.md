@@ -43,18 +43,18 @@
 - _Update Ownership (UI-Complete)_
 - _Delete Ownership (UI-Complete)_
 
-## Colour Info
+## ~~Colour Info~~
 
 - ~~Create Colour~~
 - ~~Read Colours~~
-- _Update Colour (UI-Complete)_
+- ~~Update Colour~~
 - ~~Delete Colour~~
 
-## Class Info
+## ~~Class Info~~
 
 - ~~Create Class~~
 - ~~Read Classes~~
-- _Update Class (UI-Complete)_
+- ~~Update Class~~
 - ~~Delete Class~~
 
 ## Prevent Adding Duplicated

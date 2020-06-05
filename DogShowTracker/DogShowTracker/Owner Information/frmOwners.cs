@@ -117,7 +117,7 @@ namespace DogShowTracker
 
         private void DeleteOwner()
         {
-            if(DatabaseHelper.ValueExists("OwnerID", currentID.ToString(), "DogOwnership"))
+            if (DatabaseHelper.ValueExists("OwnerID", currentID.ToString(), "DogOwnership"))
             {
                 MessageBox.Show("Cannot remove an owner which is listed owning dogs.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -132,7 +132,7 @@ namespace DogShowTracker
         {
             try
             {
-                Reload();             
+                Reload();
             }
             catch (Exception ex)
             {
