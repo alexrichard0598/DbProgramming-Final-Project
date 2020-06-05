@@ -1,5 +1,19 @@
 # Work to be completed
 
+## Misc. Requirements
+
+- Tool strip
+- About Form
+  - List All Application Properties
+- Splash Screen
+  - Displayed at launch
+  - Application Name
+  - Current Version Number
+- Login Form
+  - A login database table with pre-populated login accounts
+    - Username
+    - Password
+
 ## ~~Breed Info~~
 
 - ~~Create Dog Breed~~
@@ -33,7 +47,7 @@
 
 - ~~Create Owner~~
 - ~~Read Owners~~
-- _Update Owner(UI-Complete)_
+- ~~Update Owner~~
 - ~~Delete Owner~~
 
 ## Ownership Info
