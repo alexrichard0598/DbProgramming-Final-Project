@@ -48,7 +48,6 @@ namespace DogShowTracker
         /// </summary>
         private void AddBreed()
         {
-            
             string sql = $@"
                         INSERT INTO Breeds
 	                        (Breed, PrimaryCoatColour, SecondaryCoatColour, [Classification])
@@ -64,6 +63,7 @@ namespace DogShowTracker
         private bool ValidateFields()
         {
             GetUserData();
+            //TODO: Prevent Adding Duplicates
             errorProvider.Clear();
             bool isValid = true;
             if (breedName == "")

@@ -31,6 +31,7 @@
             this.grpBreeds = new System.Windows.Forms.GroupBox();
             this.lstBreeds = new System.Windows.Forms.ListBox();
             this.grpBreedInfo = new System.Windows.Forms.GroupBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.cmbPrimary = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbSecondary = new System.Windows.Forms.ComboBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.grpBreeds.SuspendLayout();
             this.grpBreedInfo.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +79,16 @@
             this.grpBreedInfo.TabIndex = 12;
             this.grpBreedInfo.TabStop = false;
             this.grpBreedInfo.Text = "Breed Info";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(131, 163);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(121, 23);
+            this.btnUpdate.TabIndex = 10;
+            this.btnUpdate.Text = "Update Breed";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // label5
             // 
@@ -150,15 +160,6 @@
             this.cmbSecondary.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondary.TabIndex = 4;
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(131, 163);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(121, 23);
-            this.btnUpdate.TabIndex = 10;
-            this.btnUpdate.Text = "Update Breed";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            // 
             // frmUpdateBreed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +169,7 @@
             this.Controls.Add(this.grpBreedInfo);
             this.Name = "frmUpdateBreed";
             this.Text = "frmUpdateBreed";
+            this.Load += new System.EventHandler(this.frmUpdateBreed_Load);
             this.grpBreeds.ResumeLayout(false);
             this.grpBreedInfo.ResumeLayout(false);
             this.grpBreedInfo.PerformLayout();

@@ -284,6 +284,7 @@
             this.btnDeleteOwner.TabIndex = 36;
             this.btnDeleteOwner.Text = "Delete Owner";
             this.btnDeleteOwner.UseVisualStyleBackColor = true;
+            this.btnDeleteOwner.Click += new System.EventHandler(this.btnDeleteOwner_Click);
             // 
             // btnChangeOwner
             // 
@@ -293,6 +294,7 @@
             this.btnChangeOwner.TabIndex = 37;
             this.btnChangeOwner.Text = "Change Owner";
             this.btnChangeOwner.UseVisualStyleBackColor = true;
+            this.btnChangeOwner.Click += new System.EventHandler(this.btnChangeOwner_Click);
             // 
             // frmOwners
             // 

@@ -115,6 +115,10 @@ namespace DogShowTracker
             }
         }
 
+        private void DeleteOwner()
+        {
+            //TODO: Impliment DeleteOwner Method
+        }
         #endregion
 
         private void frmOwners_Load(object sender, EventArgs e)
@@ -193,6 +197,23 @@ namespace DogShowTracker
             try
             {
                 UIMethods.OpenForm(MdiParent, new frmChangeOwnership());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnChangeOwner_Click(object sender, EventArgs e)
+        {
+            //TODO: Create ChangeOwner Form
+        }
+
+        private void btnDeleteOwner_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DeleteOwner();
             }
             catch (Exception ex)
             {

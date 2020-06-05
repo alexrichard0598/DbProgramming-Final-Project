@@ -30,19 +30,19 @@
         {
             this.cmbOwnerOwners = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lstOwnerOwnership = new System.Windows.Forms.ListBox();
-            this.cmbOwnerDogs = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbOwnerDogs = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkOwnerDoesEnd = new System.Windows.Forms.CheckBox();
             this.dtpOwnerEndDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dtpOwnerStartDate = new System.Windows.Forms.DateTimePicker();
-            this.chkOwnerDoesEnd = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.lstOwnerOwnership = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -59,9 +59,9 @@
             this.dtpDogStartDate = new System.Windows.Forms.DateTimePicker();
             this.lstDogOwnership = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -92,6 +92,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "By Owner";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(167, 372);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Delete";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(87, 372);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Change";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(6, 372);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 11;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label1);
+            this.groupBox5.Controls.Add(this.cmbOwnerOwners);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.cmbOwnerDogs);
+            this.groupBox5.Location = new System.Drawing.Point(6, 19);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(236, 85);
+            this.groupBox5.TabIndex = 10;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Names";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -101,22 +141,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Owner:";
             // 
-            // lstOwnerOwnership
-            // 
-            this.lstOwnerOwnership.FormattingEnabled = true;
-            this.lstOwnerOwnership.Location = new System.Drawing.Point(6, 232);
-            this.lstOwnerOwnership.Name = "lstOwnerOwnership";
-            this.lstOwnerOwnership.Size = new System.Drawing.Size(236, 134);
-            this.lstOwnerOwnership.TabIndex = 2;
-            // 
-            // cmbOwnerDogs
-            // 
-            this.cmbOwnerDogs.FormattingEnabled = true;
-            this.cmbOwnerDogs.Location = new System.Drawing.Point(56, 49);
-            this.cmbOwnerDogs.Name = "cmbOwnerDogs";
-            this.cmbOwnerDogs.Size = new System.Drawing.Size(165, 21);
-            this.cmbOwnerDogs.TabIndex = 3;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -125,6 +149,14 @@
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Dog:";
+            // 
+            // cmbOwnerDogs
+            // 
+            this.cmbOwnerDogs.FormattingEnabled = true;
+            this.cmbOwnerDogs.Location = new System.Drawing.Point(56, 49);
+            this.cmbOwnerDogs.Name = "cmbOwnerDogs";
+            this.cmbOwnerDogs.Size = new System.Drawing.Size(165, 21);
+            this.cmbOwnerDogs.TabIndex = 3;
             // 
             // groupBox3
             // 
@@ -136,6 +168,15 @@
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "End Date";
+            // 
+            // chkOwnerDoesEnd
+            // 
+            this.chkOwnerDoesEnd.AutoSize = true;
+            this.chkOwnerDoesEnd.Location = new System.Drawing.Point(215, 22);
+            this.chkOwnerDoesEnd.Name = "chkOwnerDoesEnd";
+            this.chkOwnerDoesEnd.Size = new System.Drawing.Size(15, 14);
+            this.chkOwnerDoesEnd.TabIndex = 2;
+            this.chkOwnerDoesEnd.UseVisualStyleBackColor = true;
             // 
             // dtpOwnerEndDate
             // 
@@ -161,54 +202,13 @@
             this.dtpOwnerStartDate.Size = new System.Drawing.Size(203, 20);
             this.dtpOwnerStartDate.TabIndex = 0;
             // 
-            // chkOwnerDoesEnd
+            // lstOwnerOwnership
             // 
-            this.chkOwnerDoesEnd.AutoSize = true;
-            this.chkOwnerDoesEnd.Location = new System.Drawing.Point(215, 22);
-            this.chkOwnerDoesEnd.Name = "chkOwnerDoesEnd";
-            this.chkOwnerDoesEnd.Size = new System.Drawing.Size(15, 14);
-            this.chkOwnerDoesEnd.TabIndex = 2;
-            this.chkOwnerDoesEnd.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.cmbOwnerOwners);
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.cmbOwnerDogs);
-            this.groupBox5.Location = new System.Drawing.Point(6, 19);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(236, 85);
-            this.groupBox5.TabIndex = 10;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Names";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(6, 372);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(87, 372);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Change";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(167, 372);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.lstOwnerOwnership.FormattingEnabled = true;
+            this.lstOwnerOwnership.Location = new System.Drawing.Point(6, 232);
+            this.lstOwnerOwnership.Name = "lstOwnerOwnership";
+            this.lstOwnerOwnership.Size = new System.Drawing.Size(236, 134);
+            this.lstOwnerOwnership.TabIndex = 2;
             // 
             // groupBox2
             // 
@@ -362,11 +362,11 @@
             this.Name = "frmChangeOwnership";
             this.Text = "Change Ownership";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();

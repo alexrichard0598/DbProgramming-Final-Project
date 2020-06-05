@@ -24,7 +24,7 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        public void Reload()
+        public override void Reload()
         {
             UIMethods.FillListControl(cmbDogToUpdate, "Name", "DogID", LoadFormData.DogNames());
             UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", LoadFormData.BreedNames());
@@ -72,14 +72,33 @@ namespace DogShowTracker
             cmbOwner.SelectedValue = ownerID;
         }
 
+        private void UpdateDog()
+        {
+            //TODO: Impliment UpdateDog Method
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                UpdateDog();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                Close();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
 
         private void frmUpdateDog_Load(object sender, EventArgs e)

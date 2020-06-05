@@ -55,6 +55,7 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(dtpEndDate, "Dog show cannnot end before it starts");
             }
+            //TODO: Prevent Adding Duplicates
             return isValid;
         }
 

@@ -156,6 +156,7 @@
             this.btnDeleteDogShow.TabIndex = 35;
             this.btnDeleteDogShow.Text = "Delete Dog Show";
             this.btnDeleteDogShow.UseVisualStyleBackColor = true;
+            this.btnDeleteDogShow.Click += new System.EventHandler(this.btnDeleteDogShow_Click);
             // 
             // btnChangeDogShow
             // 

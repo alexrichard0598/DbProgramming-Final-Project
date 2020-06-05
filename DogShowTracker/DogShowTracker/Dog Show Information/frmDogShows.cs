@@ -82,6 +82,11 @@ namespace DogShowTracker
                 UIMethods.ErrorHandler(ex);
             }
         }
+
+        private void DeleteDogShow()
+        {
+            //TODO: Impliment DeleteDogShow
+        }
         #endregion
 
         private void frmDogShows_Load(object sender, EventArgs e)
@@ -140,6 +145,18 @@ namespace DogShowTracker
             try
             {
                 UIMethods.OpenForm(MdiParent, new frmChangeDogShowDogs());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnDeleteDogShow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
             }
             catch (Exception ex)
             {

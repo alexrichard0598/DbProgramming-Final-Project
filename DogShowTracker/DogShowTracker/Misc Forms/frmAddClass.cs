@@ -31,6 +31,7 @@ namespace DogShowTracker
         private void InsertNewColour()
         {
             GetUserInput();
+            //TODO: Prevent Adding Duplicates
             string sql = $@"
                         INSERT INTO Classes
                             (Class)

@@ -88,5 +88,10 @@ namespace DogShowTracker
                 UIMethods.ErrorHandler(ex);
             }
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            //TODO: Impliment Update Colour
+        }
     }
 }

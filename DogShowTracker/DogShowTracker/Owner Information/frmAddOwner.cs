@@ -66,6 +66,8 @@ namespace DogShowTracker
                 errorProvider.SetError(dtpDateOfRetirement, "Cannot retire before 18 years of age");
                 isValid = false;
             }
+
+            //TODO: Prevent Adding Duplicates
             return isValid;
         }
 

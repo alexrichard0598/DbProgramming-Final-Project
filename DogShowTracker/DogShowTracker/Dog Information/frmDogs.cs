@@ -198,7 +198,10 @@ namespace DogShowTracker
 
         private void DeleteDog()
         {
+            //TODO: Impliment DeleteDog Method
             int id = Convert.ToInt32(txtID.Text);
+            string sqlReferencedByDogShowDetails = $@"";
+            string sqlReferencedByDogOwnership = $@"";
         }
         #endregion
 
@@ -316,7 +319,7 @@ namespace DogShowTracker
                 UIMethods.ErrorHandler(ex);
             }
         }
-        #endregion
+
 
         private void btnViewBreed_Click(object sender, EventArgs e)
         {
@@ -344,7 +347,15 @@ namespace DogShowTracker
 
         private void btnDeleteDog_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                DeleteDog();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
+        #endregion
     }
 }

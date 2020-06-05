@@ -131,6 +131,7 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(cmbBreed, "Dog breed must be selected");
             }
+            //TODO: Prevent Adding Duplicates
             return isValid;
         }
 

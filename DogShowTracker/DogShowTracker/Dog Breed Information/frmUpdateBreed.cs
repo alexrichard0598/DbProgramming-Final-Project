@@ -23,5 +23,39 @@ namespace DogShowTracker
         {
             InitializeComponent();
         }
+
+        private void UpdateBreed()
+        {
+            //TODO: Impliment UpdateBreed Method
+        }
+
+        public override void Reload()
+        {
+            //TODO: Impliment Reload Method
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateBreed();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void frmUpdateBreed_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                Reload();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
     }
 }
