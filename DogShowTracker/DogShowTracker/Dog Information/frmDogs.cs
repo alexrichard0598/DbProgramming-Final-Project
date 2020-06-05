@@ -198,10 +198,24 @@ namespace DogShowTracker
 
         private void DeleteDog()
         {
-            //TODO: Impliment DeleteDog Method
             int id = Convert.ToInt32(txtID.Text);
-            string sqlReferencedByDogShowDetails = $@"";
-            string sqlReferencedByDogOwnership = $@"";
+            string errorMsg = "";
+
+            if (DatabaseHelper.ValueExists("DogID", id.ToString(), "DogShowDetails"))
+            {
+                errorMsg += "Cannot remove a dog that is in a dog show results. ";
+            }
+            if (DatabaseHelper.ValueExists("DogID", id.ToString(), "DogOwnership"))
+            {
+                errorMsg += "Cannot remove a dog that is in an ownership record.";
+            }
+
+            if (errorMsg.Length != 0) MessageBox.Show(errorMsg.Trim(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                string sql = $"DELETE FROM Dogs WHERE DogID = {id};";
+                DatabaseHelper.SendData(sql);
+            }
         }
         #endregion
 
