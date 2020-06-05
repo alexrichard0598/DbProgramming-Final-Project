@@ -27,6 +27,21 @@ namespace DogShowTracker
         private void UpdateBreed()
         {
             //TODO: Impliment UpdateBreed Method
+            string name = DatabaseHelper.SanitizeUserInput(txtName.Text);
+            int id = Convert.ToInt32(lstBreeds.SelectedValue);
+
+            if (DatabaseHelper.ValueChanged("Breed", name, "Breeds", "BreedID", id) && DatabaseHelper.ValueExists("Breed", name, "Breeds"))
+            {
+                errorProvider.SetError(txtName, "A breed already exists with that name");
+                return;
+            }
+
+            int classID = Convert.ToInt32(cmbClass.SelectedValue);
+            int primaryCoatID = Convert.ToInt32(cmbPrimary.SelectedValue);
+            string secondaryCoatID = cmbSecondary.SelectedIndex <= 0 ? "NULL" : Convert.ToInt32(cmbSecondary.SelectedValue).ToString();
+
+            string sql = $"UPDATE Breeds WHERE BreedID = {id} SET Breed = '{name}' Class = {classID}, PrimaryCoatColour = {primaryCoatID}, SecondaryCoatColour = {secondaryCoatID}; ";
+            DatabaseHelper.SendData(sql);
         }
 
         private void LoadBreedInfo()

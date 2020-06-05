@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grpBreeds = new System.Windows.Forms.GroupBox();
             this.lstBreeds = new System.Windows.Forms.ListBox();
             this.grpBreedInfo = new System.Windows.Forms.GroupBox();
@@ -40,8 +41,10 @@
             this.cmbPrimary = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbSecondary = new System.Windows.Forms.ComboBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpBreeds.SuspendLayout();
             this.grpBreedInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // grpBreeds
@@ -161,6 +164,10 @@
             this.cmbSecondary.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondary.TabIndex = 4;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmUpdateBreed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,6 +181,7 @@
             this.grpBreeds.ResumeLayout(false);
             this.grpBreedInfo.ResumeLayout(false);
             this.grpBreedInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -192,5 +200,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbSecondary;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -123,5 +123,11 @@ namespace DogShowTrackerCL
         {
             return 0 != Convert.ToInt32(ExecuteScaler($"SELECT COUNT(*) FROM {tableToCheck} WHERE {fieldsToCheck} = {valueToCheck}"));
         }
+
+        public static bool ValueChanged(string fieldToCheck, string valueToCheck, string tableToCheck, string idColumn, int id)
+        {
+            
+            return 0 == Convert.ToInt32(ExecuteScaler($"SELECT COUNT(*) FROM {tableToCheck} WHERE {idColumn} = {id} AND {fieldToCheck} = {valueToCheck}"));
+        }
     }
 }
