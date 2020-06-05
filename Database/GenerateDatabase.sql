@@ -381,7 +381,7 @@ CREATE TABLE DogOwnership
 	DogID INT FOREIGN KEY REFERENCES Dogs(DogID),
 	StartOfOwnership DATE NOT NULL,
 	EndOfOwnership DATE NULL,
-	CONSTRAINT PK_DogOwnership PRIMARY KEY (OwnerID,DogID)
+	CONSTRAINT PK_DogOwnership PRIMARY KEY (OwnerID,DogID,StartOfOwnership)
 );
 Go
 
