@@ -19,7 +19,7 @@
 - ~~Create Dog Show~~
 - ~~Read Dog Shows~~
 - **Update Dog Shows**
-- ~~Delete Dog Shows (UI-Complete)~~
+- ~~Delete Dog Shows~~
 
 ## ~~Dog Show Details~~
 
@@ -34,7 +34,7 @@
 - ~~Create Owner~~
 - ~~Read Owners~~
 - **Update Owner**
-- _Delete Owner (UI-Complete)_
+- ~~Delete Owner~~
 
 ## Ownership Info
 

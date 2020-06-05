@@ -117,7 +117,14 @@ namespace DogShowTracker
 
         private void DeleteOwner()
         {
-            //TODO: Impliment DeleteOwner Method
+            if(DatabaseHelper.ValueExists("OwnerID", currentID.ToString(), "DogOwnership"))
+            {
+                MessageBox.Show("Cannot remove an owner which is listed owning dogs.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string sql = $"DELETE FROM Owners WHERE OwnerID = {currentID};";
+            DatabaseHelper.SendData(sql);
+
         }
         #endregion
 
