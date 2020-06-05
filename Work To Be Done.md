@@ -18,7 +18,7 @@
 
 - ~~Create Dog Show~~
 - ~~Read Dog Shows~~
-- **Update Dog Shows**
+- _Update Dog Shows (UI-Complete)_
 - ~~Delete Dog Shows~~
 
 ## ~~Dog Show Details~~
