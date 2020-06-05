@@ -5,7 +5,7 @@
 - ~~Create Dog Breed~~
 - ~~Read Dog Breeds~~
 - _Update Dog Breeds (UI-Complete)_
-- _Delete Dog Breeds (UI-Complete)_
+- ~~Delete Dog Breeds (UI-Complete)~~
 
 ## Dog Info
 

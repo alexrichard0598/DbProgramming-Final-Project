@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dog Show Information\frmChangeDogShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dog Show Information\frmChangeDogShow.Designer.cs">
+      <DependentUpon>frmChangeDogShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Misc Forms\frmAddClass.cs">
       <SubType>Form</SubType>
     </Compile>

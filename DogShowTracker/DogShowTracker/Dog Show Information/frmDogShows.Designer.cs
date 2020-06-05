@@ -40,6 +40,7 @@
             this.txtNumDogs = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDeleteDogShow = new System.Windows.Forms.Button();
+            this.btnChangeDogShow = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grpDogShows.SuspendLayout();
@@ -122,11 +123,11 @@
             // 
             // btnAssignDogs
             // 
-            this.btnAssignDogs.Location = new System.Drawing.Point(227, 12);
+            this.btnAssignDogs.Location = new System.Drawing.Point(12, 42);
             this.btnAssignDogs.Name = "btnAssignDogs";
-            this.btnAssignDogs.Size = new System.Drawing.Size(117, 23);
+            this.btnAssignDogs.Size = new System.Drawing.Size(96, 23);
             this.btnAssignDogs.TabIndex = 32;
-            this.btnAssignDogs.Text = "Change Dog Show Dogs";
+            this.btnAssignDogs.Text = "Change Dogs";
             this.btnAssignDogs.UseVisualStyleBackColor = true;
             this.btnAssignDogs.Click += new System.EventHandler(this.btnAssignDogs_Click);
             // 
@@ -141,20 +142,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(219, 47);
+            this.label1.Location = new System.Drawing.Point(194, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.Size = new System.Drawing.Size(112, 13);
             this.label1.TabIndex = 34;
-            this.label1.Text = "Number of Dogs:";
+            this.label1.Text = "Max Number Of Dogs:";
             // 
             // btnDeleteDogShow
             // 
-            this.btnDeleteDogShow.Location = new System.Drawing.Point(114, 12);
+            this.btnDeleteDogShow.Location = new System.Drawing.Point(237, 12);
             this.btnDeleteDogShow.Name = "btnDeleteDogShow";
             this.btnDeleteDogShow.Size = new System.Drawing.Size(107, 23);
             this.btnDeleteDogShow.TabIndex = 35;
             this.btnDeleteDogShow.Text = "Delete Dog Show";
             this.btnDeleteDogShow.UseVisualStyleBackColor = true;
+            // 
+            // btnChangeDogShow
+            // 
+            this.btnChangeDogShow.Location = new System.Drawing.Point(114, 12);
+            this.btnChangeDogShow.Name = "btnChangeDogShow";
+            this.btnChangeDogShow.Size = new System.Drawing.Size(117, 23);
+            this.btnChangeDogShow.TabIndex = 36;
+            this.btnChangeDogShow.Text = "Change Dog Show";
+            this.btnChangeDogShow.UseVisualStyleBackColor = true;
             // 
             // frmDogShows
             // 
@@ -163,6 +173,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(359, 415);
+            this.Controls.Add(this.btnChangeDogShow);
             this.Controls.Add(this.btnDeleteDogShow);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNumDogs);
@@ -197,5 +208,6 @@
         private System.Windows.Forms.TextBox txtNumDogs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDeleteDogShow;
+        private System.Windows.Forms.Button btnChangeDogShow;
     }
 }

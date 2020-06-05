@@ -50,6 +50,7 @@
             this.cmbSelectOwner = new System.Windows.Forms.ComboBox();
             this.btnChangeOwnership = new System.Windows.Forms.Button();
             this.btnDeleteOwner = new System.Windows.Forms.Button();
+            this.btnChangeOwner = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -249,7 +250,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(317, 17);
+            this.label7.Location = new System.Drawing.Point(311, 17);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 13);
             this.label7.TabIndex = 33;
@@ -259,15 +260,15 @@
             // 
             this.cmbSelectOwner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectOwner.FormattingEnabled = true;
-            this.cmbSelectOwner.Location = new System.Drawing.Point(397, 14);
+            this.cmbSelectOwner.Location = new System.Drawing.Point(391, 14);
             this.cmbSelectOwner.Name = "cmbSelectOwner";
-            this.cmbSelectOwner.Size = new System.Drawing.Size(330, 21);
+            this.cmbSelectOwner.Size = new System.Drawing.Size(230, 21);
             this.cmbSelectOwner.TabIndex = 34;
             this.cmbSelectOwner.SelectedIndexChanged += new System.EventHandler(this.cmbSelectOwner_SelectedIndexChanged);
             // 
             // btnChangeOwnership
             // 
-            this.btnChangeOwnership.Location = new System.Drawing.Point(93, 12);
+            this.btnChangeOwnership.Location = new System.Drawing.Point(627, 14);
             this.btnChangeOwnership.Name = "btnChangeOwnership";
             this.btnChangeOwnership.Size = new System.Drawing.Size(106, 23);
             this.btnChangeOwnership.TabIndex = 35;
@@ -284,6 +285,15 @@
             this.btnDeleteOwner.Text = "Delete Owner";
             this.btnDeleteOwner.UseVisualStyleBackColor = true;
             // 
+            // btnChangeOwner
+            // 
+            this.btnChangeOwner.Location = new System.Drawing.Point(109, 12);
+            this.btnChangeOwner.Name = "btnChangeOwner";
+            this.btnChangeOwner.Size = new System.Drawing.Size(75, 23);
+            this.btnChangeOwner.TabIndex = 37;
+            this.btnChangeOwner.Text = "Change Owner";
+            this.btnChangeOwner.UseVisualStyleBackColor = true;
+            // 
             // frmOwners
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,6 +301,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(745, 304);
+            this.Controls.Add(this.btnChangeOwner);
             this.Controls.Add(this.btnDeleteOwner);
             this.Controls.Add(this.btnChangeOwnership);
             this.Controls.Add(this.cmbSelectOwner);
@@ -335,5 +346,6 @@
         private System.Windows.Forms.ComboBox cmbSelectOwner;
         private System.Windows.Forms.Button btnChangeOwnership;
         private System.Windows.Forms.Button btnDeleteOwner;
+        private System.Windows.Forms.Button btnChangeOwner;
     }
 }
