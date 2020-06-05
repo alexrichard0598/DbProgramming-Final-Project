@@ -87,5 +87,15 @@ namespace DogShowTrackerCL
 		                            ORDER BY COALESCE([Rank], 999);";
             return DatabaseHelper.GetDataTable(sql);
         }
+
+        /// <summary>
+        /// Gets the id of the current owner of the selected dog
+        /// </summary>
+        /// <returns></returns>
+        public static int GetCurrentOwnerOfDog(int dogID)
+        {
+            string sql = $"SELECT OwnerID FROM DogOwnership WHERE DogID = {dogID} AND EndOfOwnership IS NULL;";
+            return Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
+        }
     }
 }

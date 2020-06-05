@@ -31,17 +31,6 @@ namespace DogShowTracker
         }
 
         /// <summary>
-        /// Gets the id of the current owner of the selected dog
-        /// </summary>
-        /// <returns></returns>
-        private int GetCurrentOwner()
-        {
-            int id = Convert.ToInt32(lstDogs.SelectedValue);
-            string sql = $"SELECT OwnerID FROM DogOwnership WHERE DogID = {id} AND EndOfOwnership IS NULL;";
-            return Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
-        }
-
-        /// <summary>
         /// Fills the datagrid of competions with competitions the selected dog has done
         /// </summary>
         private void PopulateDogShows()
@@ -83,7 +72,7 @@ namespace DogShowTracker
             UIMethods.PickDateTimePicker(dtpDateBanned, row["DateOfDisqualification"]);
 
             int breedID = Convert.ToInt32(row["Breed"]);
-            int ownerID = GetCurrentOwner();
+            int ownerID = LoadFormData.GetCurrentOwnerOfDog(id);
 
             txtID.Text = id.ToString();
             txtName.Text = name.ToString();
