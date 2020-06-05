@@ -33,9 +33,7 @@ namespace DogShowTracker
         private void DeleteClass()
         {
             int id = Convert.ToInt32(lstClasses.SelectedValue);
-            string sqlCheckForReferences = $"SELECT COUNT(*) FROM Breeds WHERE ClassID = {id};";
-
-            if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(sqlCheckForReferences)) == 0)
+            if(DatabaseHelper.ValueExists("ClassID", id.ToString(), "Breeds"))
             {
                 MessageBox.Show("Cannot delete class that is referenced by a breed", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

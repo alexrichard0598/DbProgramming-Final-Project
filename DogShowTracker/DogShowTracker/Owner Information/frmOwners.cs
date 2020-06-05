@@ -50,7 +50,7 @@ namespace DogShowTracker
         /// </summary>
         private void LoadOwnerDetails()
         {
-            string sql = $@"SELECT  FirstName, COALESCE(MiddleName + ' ', '') AS MiddleName, LastName, DOB, 
+            string sql = $@"SELECT  FirstName, COALESCE(MiddleName, '') AS MiddleName, LastName, DOB, 
                                     DateOfRetirement, Retired FROM Owners WHERE OwnerID = {currentID};";
 
             DataRow row = DatabaseHelper.GetDataRow(sql);

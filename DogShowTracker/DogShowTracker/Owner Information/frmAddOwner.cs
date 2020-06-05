@@ -23,7 +23,7 @@ namespace DogShowTracker
 
         private void GetUserData()
         {
-            age = Convert.ToInt32(DateTime.Now.Subtract(dtpDateOfRetirement.Value));
+            age = Convert.ToInt32(DateTime.Now.Subtract(dtpDOB.Value).TotalDays / 365);
             fName = DatabaseHelper.SanitizeUserInput(txtFirstName.Text);
             mName = DatabaseHelper.SanitizeUserInput(txtMiddleName.Text);
             lName = DatabaseHelper.SanitizeUserInput(txtLastName.Text);
@@ -40,17 +40,17 @@ namespace DogShowTracker
             GetUserData();
             errorProvider.Clear();
             bool isValid = true;
-            if (fName == "" || !fName.All(c => Char.IsLetter(c)))
+            if (fName == "" || !fName.All(c => char.IsLetter(c)))
             {
                 errorProvider.SetError(txtFirstName, "First Name must not be empty and contain only letters");
                 isValid = false;
             }
-            if (mName != "" && !mName.All(c => Char.IsLetter(c)))
+            if (mName != "" && !mName.All(c => char.IsLetter(c)))
             {
                 errorProvider.SetError(txtMiddleName, "Middle Name must only contain letters");
                 isValid = false;
             }
-            if (lName == "" || !lName.All(c => Char.IsLetter(c)))
+            if (lName == "" || !lName.All(c => char.IsLetter(c)))
             {
                 errorProvider.SetError(txtLastName, "Last Name must not be empty and contain only letters");
                 isValid = false;
@@ -67,7 +67,7 @@ namespace DogShowTracker
             }
             if (DatabaseHelper.ValueExists("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners"))
             {
-                if (DialogResult.Yes == MessageBox.Show("A owner with that name already exists, are you sure you wish to add owner?"))
+                if (DialogResult.Yes == MessageBox.Show("A owner with that name already exists, are you sure you wish to add owner?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     isValid = false;
             }
 

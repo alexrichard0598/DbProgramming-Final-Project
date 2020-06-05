@@ -57,7 +57,7 @@ namespace DogShowTracker
             if(DatabaseHelper.ValueExists("Name", $"'{name}'", "DogShows") && DatabaseHelper.ValueExists("StartDate", $"'{start}'", "DogShows"))
             {
                 isValid = false;
-                MessageBox.Show("A dog show with that name already starts at that date");
+                MessageBox.Show("A dog show with that name already starts at that date", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return isValid;
         }

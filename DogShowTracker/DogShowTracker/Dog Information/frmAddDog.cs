@@ -132,7 +132,7 @@ namespace DogShowTracker
             }
             if(DatabaseHelper.ValueExists("Name", $"'{name}'", "Dogs"))
             {
-                if(DialogResult.Yes == MessageBox.Show("A dog with that name already exists, are you sure you wish to add this dog?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+               if(isValid && DialogResult.Yes == MessageBox.Show("A dog with that name already exists, are you sure you wish to add this dog?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     isValid = false;
             }
             return isValid;

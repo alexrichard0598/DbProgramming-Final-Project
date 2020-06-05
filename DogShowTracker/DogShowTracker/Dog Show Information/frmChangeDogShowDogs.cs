@@ -161,15 +161,10 @@ namespace DogShowTracker
             GetUserData();
 
             bool isValid = true;
-            string dogAlreadyHasThatRankSQL = $@"
-                                                SELECT COUNT(*) FROM DogShowDetails 
-                                                    WHERE [Rank] = {rank} AND DogShowID = {dogShowID} AND NOT dogID = {assignDogID};
-                                                ";
-
             if (DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR)", $"{assignDogID},{dogShowID}", "DogShowDetails"))
             {
                 isValid = false;
-                MessageBox.Show("Dog cannot be modified as dog is not in dog show");
+                MessageBox.Show("Dog cannot be modified as dog is not in the selected dog show", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             if (disqualified == 0 && Convert.ToInt32(rank) <= 0)
             {
@@ -181,7 +176,7 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(nudRank, "Rank cannot be higher than the max number of dogs");
             }
-            if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(dogAlreadyHasThatRankSQL)) != 0)
+            if (DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR) + ',' + CAST(Rank AS VARCHAR)", $"{assignDogID},{dogShowID},{rank}", "DogShowDetails"))
             {
                 isValid = false;
                 errorProvider.SetError(nudRank, "A dog already has that rank");
