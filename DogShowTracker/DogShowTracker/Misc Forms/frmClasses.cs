@@ -79,10 +79,9 @@ namespace DogShowTracker
         private void UpdateClass()
         {
             int id = Convert.ToInt32(lstClasses.SelectedValue);
-            string name = DatabaseHelper.SanitizeUserInput(txtClassName.Text);
             if (!ValidateFields())
             {
-                string sql = $"UPDATE Classes WHERE ClassID = {id} SET Class = {name}";
+                string sql = $"UPDATE Classes WHERE ClassID = {id} SET Class = {className}";
                 DatabaseHelper.SendData(sql);
             }
         }

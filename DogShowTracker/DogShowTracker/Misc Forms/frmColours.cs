@@ -24,6 +24,8 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        string colourName;
+
         public override void Reload()
         {
             UIMethods.FillListControl(lstColours, "Colour", "ColourID", LoadFormData.ColourNames());
@@ -56,6 +58,39 @@ namespace DogShowTracker
                 DatabaseHelper.SendData(sql);
             }
 
+        }
+
+        /// <summary>
+        /// Validate the user provided info
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidateFields()
+        {
+            bool isValid = true;
+            string errorMsg = "";
+            colourName = DatabaseHelper.SanitizeUserInput(txtColourName.Text);
+            if (colourName == "")
+            {
+                errorMsg += "Colour Name cannot be blank. ";
+                isValid = false;
+            }
+            if (DatabaseHelper.ValueExists("Class", $"'{colourName}'", "Classes"))
+            {
+                isValid = false;
+                errorMsg += "A class with that name already exists";
+            }
+            if (!isValid) MessageBox.Show(errorMsg.Trim(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return isValid;
+        }
+
+        private void UpdateColour()
+        {
+            int id = Convert.ToInt32(lstColours.SelectedValue);
+            if (!ValidateFields())
+            {
+                string sql = $"UPDATE Classes WHERE ClassID = {id} SET Class = {colourName}";
+                DatabaseHelper.SendData(sql);
+            }
         }
 
         private void frmColours_Load(object sender, EventArgs e)
@@ -96,7 +131,14 @@ namespace DogShowTracker
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //TODO: Impliment Update Colour
+            try
+            {
+                UpdateColour();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
     }
 }
