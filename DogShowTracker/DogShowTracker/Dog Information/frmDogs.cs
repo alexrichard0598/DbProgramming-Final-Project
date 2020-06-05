@@ -195,6 +195,11 @@ namespace DogShowTracker
                 }
             }
         }
+
+        private void DeleteDog()
+        {
+            int id = Convert.ToInt32(txtID.Text);
+        }
         #endregion
 
         #region Event Handlers
@@ -335,6 +340,11 @@ namespace DogShowTracker
             {
                 UIMethods.ErrorHandler(ex);
             }
+        }
+
+        private void btnDeleteDog_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

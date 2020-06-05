@@ -12,7 +12,7 @@
 - ~~Create Dog~~
 - ~~Read Dogs~~
 - **Update Dog (WIP)**
-- _Delete Dog (UI-Complete)_
+- **Delete Dog (WIP)**
 
 ## Dog Show Info
 

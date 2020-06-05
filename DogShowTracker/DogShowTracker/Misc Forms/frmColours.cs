@@ -17,5 +17,22 @@ namespace DogShowTracker
         {
             InitializeComponent();
         }
+
+        private void LoadColours()
+        {
+            UIMethods.FillListControl(lstColours, "Colour", "ColourID", LoadFormData.ColourNames());
+        }
+
+        private void frmColours_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadColours();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
     }
 }

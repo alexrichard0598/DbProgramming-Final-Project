@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtColourName = new System.Windows.Forms.TextBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.txtColourName = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstClasses = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -50,22 +50,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Class Info";
             // 
-            // groupBox2
+            // btnDelete
             // 
-            this.groupBox2.Controls.Add(this.lstClasses);
-            this.groupBox2.Location = new System.Drawing.Point(12, 100);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(217, 278);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Classes";
-            // 
-            // txtColourName
-            // 
-            this.txtColourName.Location = new System.Drawing.Point(12, 19);
-            this.txtColourName.Name = "txtColourName";
-            this.txtColourName.Size = new System.Drawing.Size(194, 20);
-            this.txtColourName.TabIndex = 5;
+            this.btnDelete.Location = new System.Drawing.Point(115, 45);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(91, 23);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Delete Class";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnUpdate
             // 
@@ -76,14 +68,22 @@
             this.btnUpdate.Text = "Update Class";
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // btnDelete
+            // txtColourName
             // 
-            this.btnDelete.Location = new System.Drawing.Point(115, 45);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(91, 23);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "Delete Class";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.txtColourName.Location = new System.Drawing.Point(12, 19);
+            this.txtColourName.Name = "txtColourName";
+            this.txtColourName.Size = new System.Drawing.Size(194, 20);
+            this.txtColourName.TabIndex = 5;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lstClasses);
+            this.groupBox2.Location = new System.Drawing.Point(12, 100);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(217, 278);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Classes";
             // 
             // lstClasses
             // 
@@ -102,6 +102,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmClasses";
             this.Text = "Classes";
+            this.Load += new System.EventHandler(this.frmClasses_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

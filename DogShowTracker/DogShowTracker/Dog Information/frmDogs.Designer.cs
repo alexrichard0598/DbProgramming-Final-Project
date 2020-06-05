@@ -722,6 +722,7 @@
             this.btnDeleteDog.TabIndex = 29;
             this.btnDeleteDog.Text = "Delete Dog";
             this.btnDeleteDog.UseVisualStyleBackColor = true;
+            this.btnDeleteDog.Click += new System.EventHandler(this.btnDeleteDog_Click);
             // 
             // frmDogs
             // 

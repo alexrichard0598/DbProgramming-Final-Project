@@ -102,6 +102,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmColours";
             this.Text = "Colours";
+            this.Load += new System.EventHandler(this.frmColours_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

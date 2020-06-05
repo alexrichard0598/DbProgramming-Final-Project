@@ -17,5 +17,22 @@ namespace DogShowTracker
         {
             InitializeComponent();
         }
+
+        private void LoadClasses()
+        {
+            UIMethods.FillListControl(lstClasses, "Class", "ClassID", LoadFormData.ClassNames());
+        }
+
+        private void frmClasses_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadClasses();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
     }
 }
