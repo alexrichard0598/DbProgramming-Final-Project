@@ -61,6 +61,7 @@
             this.lstBreeds.Name = "lstBreeds";
             this.lstBreeds.Size = new System.Drawing.Size(352, 173);
             this.lstBreeds.TabIndex = 0;
+            this.lstBreeds.SelectedIndexChanged += new System.EventHandler(this.lstBreeds_SelectedIndexChanged);
             // 
             // grpBreedInfo
             // 

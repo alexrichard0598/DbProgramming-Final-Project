@@ -29,9 +29,32 @@ namespace DogShowTracker
             //TODO: Impliment UpdateBreed Method
         }
 
+        private void LoadBreedInfo()
+        {
+            int breedID = Convert.ToInt32(lstBreeds.SelectedValue);
+            string sql = $"SELECT Breed, [Classification], PrimaryCoatColour, SecondaryCoatColour FROM Breeds WHERE BreedID = {breedID};";
+
+            DataRow row = DatabaseHelper.GetDataRow(sql);
+            string breed = row["Breed"].ToString();
+            int classID = Convert.ToInt32(row["Classification"]);
+            int primaryColourID = Convert.ToInt32(row["PrimaryCoatColour"]);
+
+
+            int secondaryColourID = 0;
+            int.TryParse(row["SecondaryCoatColour"].ToString(), out secondaryColourID);
+
+            txtName.Text = breed;
+            cmbClass.SelectedValue = classID;
+            cmbPrimary.SelectedValue = primaryColourID;
+            cmbSecondary.SelectedValue = secondaryColourID;
+        }
+
         public override void Reload()
         {
-            //TODO: Impliment Reload Method
+            UIMethods.FillListControl(cmbClass, "Class", "ClassID", LoadFormData.ClassNames());
+            UIMethods.FillListControl(cmbPrimary, "Colour", "ColourID", LoadFormData.ColourNames());
+            UIMethods.FillListControl(cmbSecondary, "Colour", "ColourID", LoadFormData.ColourNames(), true);
+            UIMethods.FillListControl(lstBreeds, "Breed", "BreedID", LoadFormData.BreedNames());
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -51,6 +74,18 @@ namespace DogShowTracker
             try
             {
                 Reload();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void lstBreeds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadBreedInfo();
             }
             catch (Exception ex)
             {
