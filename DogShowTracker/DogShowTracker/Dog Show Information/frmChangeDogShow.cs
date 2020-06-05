@@ -50,7 +50,6 @@ namespace DogShowTracker
 
         private int GetDogShowDogsCount()
         {
-            int id = Convert.ToInt32(cmbDogShow.SelectedValue);
             string sql = $@"SELECT COUNT(DogID) FROM DogShows
 	                            LEFT JOIN DogShowDetails
 		                            ON DogShows.DogShowID = DogShowDetails.DogShowID
@@ -70,13 +69,13 @@ namespace DogShowTracker
         private bool VerifyFields()
         {
             bool isValid = true;
-            if(DatabaseHelper.ValueChanged("Name", name, "DogShows", "DogID", id) && DatabaseHelper.ValueChanged("StartDate", startDate, "DogShows", "DogShowID", id) 
-                && DatabaseHelper.ValueExists("Name + StartDate", $"'{name+startDate}'", "DogShows"))
+            if (DatabaseHelper.ValueChanged("Name", name, "DogShows", "DogID", id) && DatabaseHelper.ValueChanged("StartDate", startDate, "DogShows", "DogShowID", id)
+                && DatabaseHelper.ValueExists("Name + StartDate", $"'{name + startDate}'", "DogShows"))
             {
                 isValid = false;
                 errorProvider.SetError(txtDogShowName, "A dog show with that name already starts at that date");
             }
-            if(GetDogShowDogsCount() > numDogs)
+            if (GetDogShowDogsCount() > numDogs)
             {
                 isValid = false;
                 errorProvider.SetError(nudNumDogs, "The max number of dogs cannot be set lower than the current number of dogs");

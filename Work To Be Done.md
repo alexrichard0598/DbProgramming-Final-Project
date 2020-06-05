@@ -14,11 +14,11 @@
 - ~~Update Dog~~
 - ~~Delete Dog~~
 
-## Dog Show Info
+## ~~Dog Show Info~~
 
 - ~~Create Dog Show~~
 - ~~Read Dog Shows~~
-- _Update Dog Shows (UI-Complete)_
+- ~~Update Dog Shows~~
 - ~~Delete Dog Shows~~
 
 ## ~~Dog Show Details~~
