@@ -40,7 +40,7 @@ namespace DogShowTracker
             int primaryColourID = Convert.ToInt32(row["PrimaryCoatColour"]);
 
 
-            int secondaryColourID = 0;
+            int secondaryColourID;
             int.TryParse(row["SecondaryCoatColour"].ToString(), out secondaryColourID);
 
             txtName.Text = breed;
