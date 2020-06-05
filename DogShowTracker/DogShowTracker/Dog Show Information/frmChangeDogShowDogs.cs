@@ -161,7 +161,7 @@ namespace DogShowTracker
             GetUserData();
 
             bool isValid = true;
-            if (DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR)", $"{assignDogID},{dogShowID}", "DogShowDetails"))
+            if (!DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR)", $"{assignDogID},{dogShowID}", "DogShowDetails"))
             {
                 isValid = false;
                 MessageBox.Show("Dog cannot be modified as dog is not in the selected dog show", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
