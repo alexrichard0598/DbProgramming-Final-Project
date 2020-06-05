@@ -17,7 +17,6 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        private bool classAdded = false;
         string className;
 
         private void GetUserInput()
@@ -31,7 +30,6 @@ namespace DogShowTracker
         private void InsertNewColour()
         {
             GetUserInput();
-            //TODO: Prevent Adding Duplicates
             string sql = $@"
                         INSERT INTO Classes
                             (Class)
@@ -53,6 +51,11 @@ namespace DogShowTracker
                 errorProvider.SetError(txtClass, "Colour Name cannot be blank");
                 isValid = false;
             }
+            if (DatabaseHelper.ValueExists("Class", $"'{className}'", "Classes"))
+            {
+                isValid = false;
+                MessageBox.Show("A class with that name already exists", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return isValid;
         }
 
@@ -72,22 +75,15 @@ namespace DogShowTracker
         {
             try
             {
-                if(ValidateFields())
+                if (ValidateFields())
                 {
                     InsertNewColour();
-                    classAdded = true;
-                    Close();
                 }
             }
             catch (Exception ex)
             {
                 UIMethods.ErrorHandler(ex);
             }
-        }
-
-        private void frmAddClass_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (classAdded) MessageBox.Show("Class Added");
         }
     }
 }

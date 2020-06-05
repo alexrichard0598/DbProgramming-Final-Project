@@ -22,7 +22,6 @@ namespace DogShowTracker
         string name, dob, dateRetired, dateBanned, dateChampionship;
         int sex, retired, banned, champion, breedId;
         decimal weight, height;
-        bool dogAdded = false;
 
 
         /// <summary>
@@ -131,7 +130,11 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(cmbBreed, "Dog breed must be selected");
             }
-            //TODO: Prevent Adding Duplicates
+            if(DatabaseHelper.ValueExists("Name", $"'{name}'", "Dogs"))
+            {
+                if(DialogResult.Yes == MessageBox.Show("A dog with that name already exists, are you sure you wish to add this dog?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                    isValid = false;
+            }
             return isValid;
         }
 
@@ -175,8 +178,6 @@ namespace DogShowTracker
                 if (ValidateFields())
                 {
                     InsertDog();
-                    dogAdded = true;
-                    Close();
                 }
             }
             catch (Exception ex)
@@ -203,19 +204,6 @@ namespace DogShowTracker
             try
             {
                 Reload();
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-        }
-
-
-        private void frmAddDog_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
-        {
-            try
-            {
-                if(dogAdded) MessageBox.Show("Dog added");
             }
             catch (Exception ex)
             {

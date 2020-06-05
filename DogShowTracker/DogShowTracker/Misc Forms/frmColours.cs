@@ -33,9 +33,8 @@ namespace DogShowTracker
         private void DeleteColour()
         {
             int id = Convert.ToInt32(lstColours.SelectedValue);
-            string sqlCheckForReferences = $"SELECT COUNT(*) FROM Breeds WHERE ColourID = {id};";
 
-            if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(sqlCheckForReferences)) == 0)
+            if (DatabaseHelper.ValueExists("ColourID", id.ToString(), "Breeds"))
             {
                 MessageBox.Show("Cannot delete colour that is referenced by a breed", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

@@ -60,8 +60,7 @@ namespace DogShowTracker
         {
             int id = Convert.ToInt32(lstBreeds.SelectedValue);
 
-            string sqlCheckForReferences = $"SELECT COUNT(*) FROM Dogs WHERE Breed = {id};";
-            if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(sqlCheckForReferences)) != 0)
+            if(DatabaseHelper.ValueExists("Breed", id.ToString(), "Dogs"))
             {
                 MessageBox.Show("Cannot delete breed that is referenced by a dog", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

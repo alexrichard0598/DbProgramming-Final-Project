@@ -88,7 +88,6 @@
             this.Controls.Add(this.label1);
             this.Name = "frmAddColour";
             this.Text = "Add Colour";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddColour_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -59,17 +59,17 @@
 
 ## Prevent Adding Duplicated
 
-- Breeds
+- ~~Breeds~~
   - Same Name
-- Colours
+- ~~Colours~~
   - Same Name
-- Classes
+- ~~Classes~~
   - Same Name
 - Ownership
   - Same Dog and Owner Pair
-- Owners
+- ~~Owners~~
   - Prompt when exact name match
-- DogShow
+- ~~DogShow~~
   - Start Date and Name Must be the same
-- Dog
+- ~~Dog~~
   - Prompt when same name

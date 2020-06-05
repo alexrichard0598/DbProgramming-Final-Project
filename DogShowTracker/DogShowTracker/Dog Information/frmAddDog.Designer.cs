@@ -385,7 +385,6 @@
             this.Controls.Add(this.grpDogInfo);
             this.Name = "frmAddDog";
             this.Text = "Add Dog";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddDog_FormClosed);
             this.Load += new System.EventHandler(this.frmAddDog_Load);
             this.grpDogInfo.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);

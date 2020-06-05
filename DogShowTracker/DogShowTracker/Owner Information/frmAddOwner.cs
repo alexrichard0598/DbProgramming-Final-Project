@@ -1,6 +1,7 @@
 ﻿using DogShowTrackerCL;
 using System;
 using System.Linq;
+using System.Windows.Forms;
 
 /*
     Alex Richard
@@ -30,8 +31,6 @@ namespace DogShowTracker
             isRetired = chkRetired.Checked ? 1 : 0;
             dateOfRetirement = chkRetired.Checked ? $"'{dtpDateOfRetirement.Value.ToString("yyyy-MM-dd")}'" : "NULL";
         }
-
-
         /// <summary>
         /// Validate the user provided info
         /// </summary>
@@ -66,8 +65,12 @@ namespace DogShowTracker
                 errorProvider.SetError(dtpDateOfRetirement, "Cannot retire before 18 years of age");
                 isValid = false;
             }
+            if (DatabaseHelper.ValueExists("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners"))
+            {
+                if (DialogResult.Yes == MessageBox.Show("A owner with that name already exists, are you sure you wish to add owner?"))
+                    isValid = false;
+            }
 
-            //TODO: Prevent Adding Duplicates
             return isValid;
         }
 

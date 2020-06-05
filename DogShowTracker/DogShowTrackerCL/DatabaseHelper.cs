@@ -119,9 +119,9 @@ namespace DogShowTrackerCL
         /// <param name="valueToCheck">The value to check for</param>
         /// <param name="tableToCheck">The table to check in</param>
         /// <returns></returns>
-        public static bool NotDuplicate(string fieldsToCheck, string valueToCheck, string tableToCheck)
+        public static bool ValueExists(string fieldsToCheck, string valueToCheck, string tableToCheck)
         {
-            return 0 == Convert.ToInt32(ExecuteScaler($"SELECT COUNT(*) FROM {tableToCheck} WHERE {fieldsToCheck} = {valueToCheck}"));
+            return 0 != Convert.ToInt32(ExecuteScaler($"SELECT COUNT(*) FROM {tableToCheck} WHERE {fieldsToCheck} = {valueToCheck}"));
         }
     }
 }

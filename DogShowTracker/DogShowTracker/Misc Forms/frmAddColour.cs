@@ -17,15 +17,12 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        private bool colourAdded = false;
-
         /// <summary>
         /// Insert the colour into the database
         /// </summary>
         private void InsertNewColour()
         {
             string colourName = DatabaseHelper.SanitizeUserInput(txtColour.Text);
-            //TODO: Prevent Adding Duplicates
             string sql = $@"
                         INSERT INTO Colours
                             (Colour)
@@ -40,12 +37,18 @@ namespace DogShowTracker
         /// <returns></returns>
         private bool ValidateFields()
         {
+            string colourName = DatabaseHelper.SanitizeUserInput(txtColour.Text);
             errorProvider.Clear();
             bool isValid = true;
-            if (txtColour.Text == "")
+            if (colourName == "")
             {
                 errorProvider.SetError(txtColour, "Colour Name cannot be blank");
                 isValid = false;
+            }
+            if (DatabaseHelper.ValueExists("Colour", $"'{colourName}'", "Colours"))
+            {
+                isValid = false;
+                MessageBox.Show("A colour with that name already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return isValid;
         }
@@ -57,8 +60,6 @@ namespace DogShowTracker
                 if(ValidateFields())
                 {
                     InsertNewColour();
-                    colourAdded = true;
-                    Close();
                 }
             }
             catch (Exception ex)
@@ -78,11 +79,6 @@ namespace DogShowTracker
                 UIMethods.ErrorHandler(ex);
             }
 
-        }
-
-        private void frmAddColour_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (colourAdded) MessageBox.Show("Colour Added");
         }
     }
 }

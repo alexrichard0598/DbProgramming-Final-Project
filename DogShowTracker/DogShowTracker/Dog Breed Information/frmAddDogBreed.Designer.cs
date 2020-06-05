@@ -154,7 +154,6 @@
             this.Controls.Add(this.txtBreedName);
             this.Name = "frmAddDogBreed";
             this.Text = "Add Dog Breed";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddDogBreed_FormClosed);
             this.Load += new System.EventHandler(this.frmAddDogBreed_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

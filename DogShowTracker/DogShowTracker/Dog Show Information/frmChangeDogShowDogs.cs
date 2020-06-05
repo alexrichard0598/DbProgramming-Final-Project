@@ -97,11 +97,9 @@ namespace DogShowTracker
             GetUserData();
 
             string errorMsg = "";
-            string dogNotAlreadyAddedSQL = $"SELECT COUNT(*) FROM DogShowDetails WHERE DogID = {assignDogID} AND DogShowID = {dogShowID};";
-            string dogAlreadyHasThatRankSQL = $"SELECT COUNT(*) FROM DogShowDetails WHERE [Rank] = {rank} AND DogShowID = {dogShowID};";
 
             errorProvider.Clear();
-            if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(dogNotAlreadyAddedSQL)) != 0)
+            if (DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR)", $"'{assignDogID},{dogShowID}'", "DogShowDetails"))
             {
                 isValid = false;
                 errorMsg += "Dog is already in dog show. ";
@@ -121,7 +119,7 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(nudRank, "Rank cannot be higher than the max number of dogs");
             }
-            if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(dogAlreadyHasThatRankSQL)) != 0)
+            if(int.TryParse(rank, out _) && DatabaseHelper.ValueExists("Rank", rank, "DogShowDetails"))
             {
                 isValid = false;
                 errorProvider.SetError(nudRank, "A dog already has that rank");
@@ -163,13 +161,12 @@ namespace DogShowTracker
             GetUserData();
 
             bool isValid = true;
-            string dogIsInDogShowSQL = $"SELECT COUNT(*) FROM DogShowDetails WHERE DogID = {assignDogID} AND DogShowID = {dogShowID};";
             string dogAlreadyHasThatRankSQL = $@"
                                                 SELECT COUNT(*) FROM DogShowDetails 
                                                     WHERE [Rank] = {rank} AND DogShowID = {dogShowID} AND NOT dogID = {assignDogID};
                                                 ";
 
-            if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(dogIsInDogShowSQL)) == 0)
+            if (DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR)", $"{assignDogID},{dogShowID}", "DogShowDetails"))
             {
                 isValid = false;
                 MessageBox.Show("Dog cannot be modified as dog is not in dog show");
@@ -196,7 +193,7 @@ namespace DogShowTracker
         private void LoadDogShowDogDetails()
         {
             GetUserData();
-            string sql = $"SELECT [Rank], Disqualified FROM DogShowDetails WHERE DogID = {currentDogID};";
+            string sql = $"SELECT [Rank], Disqualified FROM DogShowDetails WHERE DogID = {currentDogID}  AND DogShowID = {dogShowID};";
             DataRow row = DatabaseHelper.GetDataRow(sql);
 
             cmbDogs.SelectedValue = currentDogID;

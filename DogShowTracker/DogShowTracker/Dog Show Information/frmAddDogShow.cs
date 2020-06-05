@@ -18,7 +18,6 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        bool dogShowAdded = false;
         string name, start, end;
         int numDogs;
 
@@ -55,7 +54,11 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(dtpEndDate, "Dog show cannnot end before it starts");
             }
-            //TODO: Prevent Adding Duplicates
+            if(DatabaseHelper.ValueExists("Name", $"'{name}'", "DogShows") && DatabaseHelper.ValueExists("StartDate", $"'{start}'", "DogShows"))
+            {
+                isValid = false;
+                MessageBox.Show("A dog show with that name already starts at that date");
+            }
             return isValid;
         }
 
@@ -84,21 +87,7 @@ namespace DogShowTracker
                 if(ValidateFields())
                 {
                     InsertDogShow();
-                    dogShowAdded = true;
-                    Close();
                 }
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-        }
-
-        private void frmAddDogShow_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
-        {
-            try
-            {
-                if(dogShowAdded) MessageBox.Show("Dog show added");
             }
             catch (Exception ex)
             {

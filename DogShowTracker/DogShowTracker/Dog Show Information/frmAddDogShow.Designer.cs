@@ -163,7 +163,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmAddDogShow";
             this.Text = "Add Dog Show";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddDogShow_FormClosed);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

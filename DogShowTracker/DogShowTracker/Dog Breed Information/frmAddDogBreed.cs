@@ -18,7 +18,6 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        bool breedAdded = false;
         string breedName, primaryId, secondaryId, classId;
 
         #region Helper Methods
@@ -63,7 +62,6 @@ namespace DogShowTracker
         private bool ValidateFields()
         {
             GetUserData();
-            //TODO: Prevent Adding Duplicates
             errorProvider.Clear();
             bool isValid = true;
             if (breedName == "")
@@ -81,6 +79,11 @@ namespace DogShowTracker
                 errorProvider.SetError(cmbClass, "Breed must have a class");
                 isValid = false;
             }
+            if(DatabaseHelper.ValueExists("Breed", $"'{breedName}'", "Breeds"))
+            {
+                isValid = false;
+                MessageBox.Show("A breed with that name already exists", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return isValid;
         }
         #endregion
@@ -92,8 +95,6 @@ namespace DogShowTracker
                 if (ValidateFields())
                 {
                     AddBreed();
-                    breedAdded = true;
-                    Close();
                 }
             }
             catch (Exception ex)
@@ -119,18 +120,6 @@ namespace DogShowTracker
             try
             {
                 Reload();
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-        }
-
-        private void frmAddDogBreed_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
-        {
-            try
-            {
-                if (breedAdded) MessageBox.Show("Dog Breed Added");
             }
             catch (Exception ex)
             {
