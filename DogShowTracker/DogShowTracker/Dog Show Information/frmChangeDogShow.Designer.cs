@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdateDogShow = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -41,11 +42,13 @@
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.cmbSelectedDogShow = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumDogs)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -82,35 +85,35 @@
             // 
             // nudNumDogs
             // 
-            this.nudNumDogs.Location = new System.Drawing.Point(103, 47);
+            this.nudNumDogs.Location = new System.Drawing.Point(70, 47);
             this.nudNumDogs.Name = "nudNumDogs";
-            this.nudNumDogs.Size = new System.Drawing.Size(106, 20);
+            this.nudNumDogs.Size = new System.Drawing.Size(139, 20);
             this.nudNumDogs.TabIndex = 12;
             this.nudNumDogs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Location = new System.Drawing.Point(26, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 13);
+            this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Dog Show Name:";
+            this.label1.Text = "Name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 49);
+            this.label2.Location = new System.Drawing.Point(6, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Number of Dogs:";
+            this.label2.Text = "Max Dogs:";
             // 
             // txtDogShowName
             // 
-            this.txtDogShowName.Location = new System.Drawing.Point(103, 13);
+            this.txtDogShowName.Location = new System.Drawing.Point(70, 13);
             this.txtDogShowName.Name = "txtDogShowName";
-            this.txtDogShowName.Size = new System.Drawing.Size(106, 20);
+            this.txtDogShowName.Size = new System.Drawing.Size(139, 20);
             this.txtDogShowName.TabIndex = 8;
             // 
             // groupBox2
@@ -167,6 +170,10 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dog Show To Modify";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmChangeDogShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,6 +194,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -206,5 +214,6 @@
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.ComboBox cmbSelectedDogShow;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

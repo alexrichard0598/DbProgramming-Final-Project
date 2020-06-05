@@ -54,10 +54,10 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(dtpEndDate, "Dog show cannnot end before it starts");
             }
-            if (DatabaseHelper.ValueExists("Name", $"'{name}'", "DogShows") && DatabaseHelper.ValueExists("StartDate", $"'{start}'", "DogShows"))
+            if (DatabaseHelper.ValueExists("Name + StartDate", $"'{name + start}'", "DogShows"))
             {
                 isValid = false;
-                MessageBox.Show("A dog show with that name already starts at that date", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtDogShowName,"A dog show with that name already starts at that date");
             }
             return isValid;
         }

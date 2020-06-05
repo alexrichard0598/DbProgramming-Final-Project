@@ -71,6 +71,9 @@ namespace DogShowTracker
                 case "viewOwners":
                     UIMethods.OpenForm(this, new frmOwners());
                     break;
+                case "updateOwner":
+                    UIMethods.OpenForm(this, new frmUpdateOwner());
+                    break;
                 case "updateOwnership":
                     UIMethods.OpenForm(this, new frmChangeOwnership());
                     break;
@@ -79,6 +82,9 @@ namespace DogShowTracker
                     break;
                 case "viewDogShows":
                     UIMethods.OpenForm(this, new frmDogShows());
+                    break;
+                case "updateDogShow":
+                    UIMethods.OpenForm(this, new frmChangeDogShow());
                     break;
                 case "assignDogs":
                     UIMethods.OpenForm(this, new frmChangeDogShowDogs());
