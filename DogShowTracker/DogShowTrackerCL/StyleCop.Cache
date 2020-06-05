@@ -7,7 +7,7 @@
     <timestamps>
       <styleCop>2020-05-26 09:09:44.611</styleCop>
       <settingsFile>2020-05-26 09:09:44.592</settingsFile>
-      <sourceFile>2020-06-05 13:28:54.191</sourceFile>
+      <sourceFile>2020-06-05 14:29:10.294</sourceFile>
       <parser>2020-05-26 09:09:44.611</parser>
       <StyleCop.CSharp.DocumentationRules>2020-05-26 09:09:44.611</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>295422901</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -166,6 +166,27 @@
         <endColumn>133</endColumn>
         <warning>False</warning>
       </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>127</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
+        <context>An opening curly bracket must not be followed by a blank line.</context>
+        <line>128</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="UseReadableConditions" ruleCheckId="SA1131">
+        <context>Do not use comparison where value goes first, reverse order of operands in '0 == Convert.ToInt32(ExecuteScaler($"SELECT COUNT(*) FROM {tableToCheck} WHERE {idColumn} = {id} AND {fieldToCheck} = {valueToCheck}"))'.</context>
+        <line>130</line>
+        <index>4487</index>
+        <endIndex>4621</endIndex>
+        <startLine>130</startLine>
+        <startColumn>20</startColumn>
+        <endLine>130</endLine>
+        <endColumn>154</endColumn>
+        <warning>False</warning>
+      </violation>
     </violations>
   </sourcecode>
   <sourcecode name="LoadFormData.cs" parser="StyleCop.CSharp.CsParser">
@@ -290,7 +311,7 @@
     <timestamps>
       <styleCop>2020-05-26 09:09:44.611</styleCop>
       <settingsFile>2020-05-26 09:09:44.592</settingsFile>
-      <sourceFile>2020-06-05 12:29:29.648</sourceFile>
+      <sourceFile>2020-06-05 15:30:22.105</sourceFile>
       <parser>2020-05-26 09:09:44.611</parser>
       <StyleCop.CSharp.DocumentationRules>2020-05-26 09:09:44.611</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>295422901</StyleCop.CSharp.DocumentationRules.FilesHashCode>

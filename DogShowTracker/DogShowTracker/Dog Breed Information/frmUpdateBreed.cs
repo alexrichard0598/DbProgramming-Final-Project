@@ -26,7 +26,6 @@ namespace DogShowTracker
 
         private void UpdateBreed()
         {
-            //TODO: Impliment UpdateBreed Method
             string name = DatabaseHelper.SanitizeUserInput(txtName.Text);
             int id = Convert.ToInt32(lstBreeds.SelectedValue);
 

@@ -97,14 +97,13 @@ namespace DogShowTracker
 
         private void UpdateDog()
         {
-            //TODO: Impliment UpdateDog Method
             GetValues();
             if (ValidateFields())
             {
                 string sql = $@"
                                 UPDATE Dogs WHERE DogID = {id} SET 
                                     [Name] = '{name}', Sex = {sex}, [Weight] = {weight}, Height = {height}, 
-                                    DOB = '{dob}', DateOfRetirement = {dateRetired}, Retired = {retired}, DateOfChampionship = {dateChampionship}
+                                    DOB = '{dob}', DateOfRetirement = {dateRetired}, Retired = {retired}, DateOfChampionship = {dateChampionship}, Champion = {champion},
                                     DateOfDisqualification = {dateBanned}, PermanentlyDisqualified = {banned}, Breed = {breedId};
                                 ";
                 DatabaseHelper.SendData(sql);

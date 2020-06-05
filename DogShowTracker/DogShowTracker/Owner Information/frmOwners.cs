@@ -213,7 +213,7 @@ namespace DogShowTracker
 
         private void btnChangeOwner_Click(object sender, EventArgs e)
         {
-            //TODO: Create ChangeOwner Form
+            // TODO: Create ChangeOwner Form
         }
 
         private void btnDeleteOwner_Click(object sender, EventArgs e)

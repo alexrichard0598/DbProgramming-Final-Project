@@ -20,32 +20,32 @@ namespace DogShowTracker
 
         public override void Reload()
         {
-            //TODO: Implement Reload Method
+            // TODO: Implement Reload Method
         }
 
         private void GetUserData()
         {
-            //TODO: Implement GetUserData Method
+            // TODO: Implement GetUserData Method
         }
 
         private bool VerifyFields()
         {
-            //TODO: Implement VerifyFields Method
+            // TODO: Implement VerifyFields Method
             throw new NotImplementedException();
         }
 
         private void UpdateOwner()
         {
             GetUserData();
-            if(VerifyFields())
+            if (VerifyFields())
             {
-                //TODO: Implement UpdateOwner Method
+                // TODO: Implement UpdateOwner Method
             }
         }
 
         private void GetOwnerInfo()
         {
-            //TODO: Implement GetOwnerInfo Method
+            // TODO: Implement GetOwnerInfo Method
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -88,7 +88,7 @@ namespace DogShowTracker
         {
             try
             {
-                //TODO: Implement Retired Checkbox Checked Changed
+                // TODO: Implement Retired Checkbox Checked Changed
             }
             catch (Exception ex)
             {

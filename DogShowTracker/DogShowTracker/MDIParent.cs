@@ -25,7 +25,7 @@ namespace DogShowTracker
             {
                 foreach (Form childForm in MdiChildren)
                 {
-                    if(childForm.GetType().IsSubclassOf(typeof(DogShowForm)))
+                    if (childForm.GetType().IsSubclassOf(typeof(DogShowForm)))
                     {
                         ((DogShowForm)childForm).Reload();
                     }

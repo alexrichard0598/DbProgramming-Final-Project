@@ -24,6 +24,6 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        //TODO: Impliment ChangeOwnership Methods and Name Form All Controls
+        // TODO: Impliment ChangeOwnership Methods and Name Form All Controls
     }
 }

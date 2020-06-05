@@ -26,22 +26,22 @@ namespace DogShowTracker
 
         public override void Reload()
         {
-            //TODO: Implement Reload Method
+            // TODO: Implement Reload Method
         }
 
         private void LoadDogShowDetails()
         {
-            //TODO: Implement LoadDogShowDetails Method
+            // TODO: Implement LoadDogShowDetails Method
         }
 
         private void GetUserData()
         {
-            //TODO: Implement GetUserData Method
+            // TODO: Implement GetUserData Method
         }
 
         private bool VerifyFields()
         {
-            //TODO: Implement VerifyFields Method
+            // TODO: Implement VerifyFields Method
             throw new NotImplementedException();
         }
 
@@ -50,7 +50,7 @@ namespace DogShowTracker
             GetUserData();
             if (VerifyFields())
             {
-                //TODO: Implement UpdateOwner Method
+                // TODO: Implement UpdateOwner Method
             }
         }
 

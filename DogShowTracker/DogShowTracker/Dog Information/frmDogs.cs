@@ -98,18 +98,18 @@ namespace DogShowTracker
         {
             string dogName = DatabaseHelper.SanitizeUserInput(txtSearchName.Text);
 
-            //If no breed is selected set to a wild card
+            // If no breed is selected set to a wild card
             string breedID = cmbSearchBreed.SelectedIndex <= 0 ? "%%" : cmbSearchBreed.SelectedValue.ToString();
 
-            //If the rdo male is check set a 1 if rdo female is checked set to 0 else set to 1, 0 which will show both
+            // If the rdo male is check set a 1 if rdo female is checked set to 0 else set to 1, 0 which will show both
             string sex = rdoSearchMale.Checked ? "1" : rdoSearchFemale.Checked ? "0" : "1, 0";
             string ownerName = DatabaseHelper.SanitizeUserInput(txtSearchOwner.Text);
 
-            //If max weight is 0 set to filter max by 999
+            // If max weight is 0 set to filter max by 999
             decimal maxWeight = nudMaxWeight.Value == 0 ? 999 : nudMaxWeight.Value;
             decimal minWeight = nudMinWeight.Value;
 
-            //If max height is 0 set to filter max by 999
+            // If max height is 0 set to filter max by 999
             decimal maxHeight = nudMaxHeight.Value == 0 ? 999 : nudMaxHeight.Value;
             decimal minHeight = nudMinHeight.Value;
 
