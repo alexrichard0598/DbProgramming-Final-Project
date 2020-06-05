@@ -10,13 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DogShowTracker
-{ 
+{
     public partial class frmClasses : DogShowForm
     {
         public frmClasses()
         {
             InitializeComponent();
         }
+
+        string className;
 
         public override void Reload()
         {
@@ -33,7 +35,7 @@ namespace DogShowTracker
         private void DeleteClass()
         {
             int id = Convert.ToInt32(lstClasses.SelectedValue);
-            if(DatabaseHelper.ValueExists("ClassID", id.ToString(), "Breeds"))
+            if (DatabaseHelper.ValueExists("ClassID", id.ToString(), "Breeds"))
             {
                 MessageBox.Show("Cannot delete class that is referenced by a breed", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -48,7 +50,41 @@ namespace DogShowTracker
             {
                 DatabaseHelper.SendData(sql);
             }
-               
+
+        }
+
+        /// <summary>
+        /// Validate the user provided info
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidateFields()
+        {
+            bool isValid = true;
+            string errorMsg = "";
+            className = DatabaseHelper.SanitizeUserInput(txtClassName.Text);
+            if (className == "")
+            {
+                errorMsg += "Colour Name cannot be blank. ";
+                isValid = false;
+            }
+            if (DatabaseHelper.ValueExists("Class", $"'{className}'", "Classes"))
+            {
+                isValid = false;
+                errorMsg += "A class with that name already exists";
+            }
+            if (!isValid) MessageBox.Show(errorMsg.Trim(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return isValid;
+        }
+
+        private void UpdateClass()
+        {
+            int id = Convert.ToInt32(lstClasses.SelectedValue);
+            string name = DatabaseHelper.SanitizeUserInput(txtClassName.Text);
+            if (!ValidateFields())
+            {
+                string sql = $"UPDATE Classes WHERE ClassID = {id} SET Class = {name}";
+                DatabaseHelper.SendData(sql);
+            }
         }
 
         private void frmClasses_Load(object sender, EventArgs e)
@@ -89,7 +125,15 @@ namespace DogShowTracker
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //TODO: Impliment Update Class
+            try
+            {
+                UpdateClass();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+
         }
     }
 }

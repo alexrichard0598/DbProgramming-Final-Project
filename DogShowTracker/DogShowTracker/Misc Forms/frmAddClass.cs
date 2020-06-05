@@ -46,7 +46,8 @@ namespace DogShowTracker
         {
             bool isValid = true;
             errorProvider.Clear();
-            if (DatabaseHelper.SanitizeUserInput(txtClass.Text) == "")
+            GetUserInput();
+            if (className == "")
             {
                 errorProvider.SetError(txtClass, "Colour Name cannot be blank");
                 isValid = false;
