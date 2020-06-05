@@ -46,8 +46,7 @@ namespace DogShowTracker
             string sqlClassName = $"SELECT [Class] FROM Classes WHERE ClassID = {id}";
             string className = DatabaseHelper.ExecuteScaler(sqlClassName).ToString();
 
-            if (DialogResult.Yes == MessageBox.Show($"Are you sure you want to delete {className} breed?", "",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            if (UIMethods.ConfirmationPrompt($"Are you sure you want to delete {className} breed?"))
             {
                 DatabaseHelper.SendData(sql);
             }

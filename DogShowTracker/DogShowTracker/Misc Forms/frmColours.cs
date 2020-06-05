@@ -46,8 +46,7 @@ namespace DogShowTracker
             string sqlColourName = $"SELECT [Colour] FROM Colours WHERE ColourID = {id}";
             string colourName = DatabaseHelper.ExecuteScaler(sqlColourName).ToString();
 
-            if (DialogResult.Yes == MessageBox.Show($"Are you sure you want to delete {colourName} breed?", "",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            if (UIMethods.ConfirmationPrompt($"Are you sure you want to delete {colourName} breed?"))
             {
                 DatabaseHelper.SendData(sql);
             }

@@ -89,5 +89,15 @@ namespace DogShowTrackerCL
                 dateTimePicker.Format = DateTimePickerFormat.Custom;
             }
         }
+
+        /// <summary>
+        /// Prompts the user to confirm their choice
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public static bool ConfirmationPrompt(string msg)
+        {
+            return DialogResult.Yes == MessageBox.Show(msg, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
     }
 }

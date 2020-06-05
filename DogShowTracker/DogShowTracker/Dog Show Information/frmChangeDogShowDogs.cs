@@ -144,8 +144,8 @@ namespace DogShowTracker
 
 
             return lstDogs.SelectedIndex != -1 
-                    && DialogResult.Yes == MessageBox.Show($"Are you sure you want to remove {dogName} from the {dogShowDate.ToString("yyyy MMMM d")}{dogShowName} dog show?", "", 
-                                                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    && UIMethods.ConfirmationPrompt($"Are you sure you want to remove {dogName} from the " +
+                                                    $"{dogShowDate.ToString("yyyy MMMM d")}{dogShowName} dog show?");
         }
 
         private void UpdateDogShowDog()

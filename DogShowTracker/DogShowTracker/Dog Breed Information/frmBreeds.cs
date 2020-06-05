@@ -71,8 +71,7 @@ namespace DogShowTracker
             string breedName = DatabaseHelper.ExecuteScaler(sqlBreedName).ToString();
 
             string sql = $"DELETE Breeds WHERE BreedID = {id};";
-            if (DialogResult.Yes == MessageBox.Show($"Are you sure you want to delete {breedName} breed?", "",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            if (UIMethods.ConfirmationPrompt($"Are you sure you want to delete {breedName} breed?"))
             {
                 DatabaseHelper.SendData(sql);
                 Reload();
