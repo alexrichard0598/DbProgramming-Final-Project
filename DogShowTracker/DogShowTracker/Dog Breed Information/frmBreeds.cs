@@ -63,7 +63,7 @@ namespace DogShowTracker
             string sqlCheckForReferences = $"SELECT COUNT(*) FROM Dogs WHERE Breed = {id};";
             if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(sqlCheckForReferences)) != 0)
             {
-                MessageBox.Show("Cannot delete breed that is referenced by dogs", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot delete breed that is referenced by a dog", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

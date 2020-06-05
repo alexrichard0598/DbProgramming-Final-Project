@@ -18,7 +18,7 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        private void LoadColours()
+        public override void Reload()
         {
             UIMethods.FillListControl(lstColours, "Colour", "ColourID", LoadFormData.ColourNames());
         }
@@ -30,11 +30,35 @@ namespace DogShowTracker
             txtColourName.Text = DatabaseHelper.ExecuteScaler(sql).ToString();
         }
 
+        private void DeleteColour()
+        {
+            int id = Convert.ToInt32(lstColours.SelectedValue);
+            string sqlCheckForReferences = $"SELECT COUNT(*) FROM Breeds WHERE ColourID = {id};";
+
+            if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(sqlCheckForReferences)) == 0)
+            {
+                MessageBox.Show("Cannot delete colour that is referenced by a breed", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string sql = $"DELETE Colours WHERE ColourID = {id}";
+
+            string sqlColourName = $"SELECT [Colour] FROM Colours WHERE ColourID = {id}";
+            string colourName = DatabaseHelper.ExecuteScaler(sqlColourName).ToString();
+
+            if (DialogResult.Yes == MessageBox.Show($"Are you sure you want to delete {colourName} breed?", "",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                DatabaseHelper.SendData(sql);
+            }
+
+        }
+
         private void frmColours_Load(object sender, EventArgs e)
         {
             try
             {
-                LoadColours();
+                Reload();
             }
             catch (Exception ex)
             {
@@ -47,6 +71,18 @@ namespace DogShowTracker
             try
             {
                 GetColourInfo();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DeleteColour();
             }
             catch (Exception ex)
             {

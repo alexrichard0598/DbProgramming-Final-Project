@@ -48,14 +48,14 @@
 - ~~Create Colour~~
 - ~~Read Colours~~
 - _Update Colour (UI-Complete)_
-- _Delete Colour (UI-Complete)_
+- ~~Delete Colour~~
 
 ## Class Info
 
 - ~~Create Class~~
 - ~~Read Classes~~
 - _Update Class (UI-Complete)_
-- _Delete Class (UI-Complete)_
+- ~~Delete Class~~
 
 ## Prevent Adding Duplicated
 
