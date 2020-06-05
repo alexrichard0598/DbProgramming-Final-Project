@@ -13,6 +13,20 @@ GO
 USE DogShowDb;
 GO
 
+CREATE TABLE UserLogin
+(
+	Username VARCHAR(50) PRIMARY KEY,
+	Pass VARCHAR(50) NOT NULL
+)
+
+INSERT INTO UserLogin
+	(Username, Pass)
+	VALUES
+	('Alex Richard', 'Password'),
+	('Admin', 'Admin1'),
+	('Dummy', 'Terminal'),
+	('Test', 'File');
+
 CREATE TABLE Classes
 (
 	ClassID INT PRIMARY KEY IDENTITY,

@@ -5,11 +5,11 @@
 - Tool strip
 - About Form
   - List All Application Properties
-- Splash Screen
+- ~~Splash Screen~~
   - Displayed at launch
   - Application Name
   - Current Version Number
-- Login Form
+- ~~Login Form~~
   - A login database table with pre-populated login accounts
     - Username
     - Password

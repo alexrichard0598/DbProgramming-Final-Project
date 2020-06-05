@@ -112,5 +112,31 @@ namespace DogShowTracker
                     break;
             }
         }
+
+        private void MDIParent_Load(object sender, EventArgs e)
+        {
+            Hide();
+
+            frmSplashScreen splashScreen = new frmSplashScreen();
+            splashScreen.ShowDialog();
+            frmLogin login = new frmLogin();
+
+            if (splashScreen.DialogResult != DialogResult.OK)
+            {
+                Close();
+            }
+            else
+            {
+                login.ShowDialog();
+            }
+            if(login.DialogResult == DialogResult.OK)
+            {
+                Show();
+            }
+            else
+            {
+                Close();
+            }
+        }
     }
 }
