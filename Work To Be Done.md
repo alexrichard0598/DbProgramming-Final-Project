@@ -36,9 +36,23 @@
 - Update Owner
 - _Delete Owner (UI-Complete)_
 
-## Ownership
+## Ownership Info
 
 - _Create Ownership (UI-Complete)_
 - ~~Read Ownership~~
 - _Update Ownership (UI-Complete)_
 - _Delete Ownership (UI-Complete)_
+
+## Colour Info
+
+- ~~Create Colour~~
+- _Read Colours (UI-Complete)_
+- _Update Colour (UI-Complete)_
+- _Delete Colour (UI-Complete)_
+
+## Class Info
+
+- ~~Create Class~~
+- _Read Classes (UI-Complete)_
+- _Update Class (UI-Complete)_
+- _Delete Class (UI-Complete)_
