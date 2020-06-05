@@ -28,7 +28,8 @@ namespace DogShowTracker
                             (Colour)
                             VALUES
                             ('{colourName}');";
-            DatabaseHelper.SendData(sql);
+            int rowsAffected = DatabaseHelper.SendData(sql);
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
         }
 
         /// <summary>

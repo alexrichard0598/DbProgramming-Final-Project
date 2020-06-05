@@ -77,7 +77,8 @@ namespace DogShowTracker
 	                        VALUES
 	                        ('{name}', '{start}', '{end}', {numDogs});";
 
-            DatabaseHelper.SendData(sql);
+            int rowsAffected = DatabaseHelper.SendData(sql);
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
         }
 
         private void btnAddDogShow_Click(object sender, System.EventArgs e)

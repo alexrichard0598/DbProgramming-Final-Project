@@ -83,7 +83,8 @@ namespace DogShowTracker
 	                            (FirstName, MiddleName, LastName, DOB, DateOfRetirement, Retired)
 	                            VALUES
 	                            ('{fName}', {mName}, '{lName}', '{dob}', {dateOfRetirement}, {isRetired});";
-            DatabaseHelper.SendData(sql);
+            int rowsAffected = DatabaseHelper.SendData(sql);
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
         }
 
         private void btnAddOwner_Click(object sender, EventArgs e)

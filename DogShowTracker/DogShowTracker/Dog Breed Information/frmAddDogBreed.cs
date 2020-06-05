@@ -52,7 +52,8 @@ namespace DogShowTracker
 	                        (Breed, PrimaryCoatColour, SecondaryCoatColour, [Classification])
 	                        Values
 	                        ('{breedName}', {primaryId}, {secondaryId}, {classId});";
-            DatabaseHelper.SendData(sql);
+            int rowsAffected = DatabaseHelper.SendData(sql);
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace DogShowTracker
             if (DatabaseHelper.ValueExists("Breed", $"'{breedName}'", "Breeds"))
             {
                 isValid = false;
-                MessageBox.Show("A breed with that name already exists", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 errorProvider.SetError(txtBreedName, "A breed with that name already exists");
             }
             return isValid;
         }

@@ -99,5 +99,10 @@ namespace DogShowTrackerCL
         {
             return DialogResult.Yes == MessageBox.Show(msg, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
+
+        public static void DisplayStatusMessage(ToolStripStatusLabel label, string msg)
+        {
+            label.Text = msg;
+        }
     }
 }

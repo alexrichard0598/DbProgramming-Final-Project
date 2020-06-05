@@ -138,5 +138,10 @@ namespace DogShowTracker
                 Close();
             }
         }
+
+        public ToolStripStatusLabel GetStatusLabel()
+        {
+            return toolStripStatusLabel;
+        }
     }
 }

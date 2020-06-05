@@ -2,17 +2,21 @@
 
 ## Misc. Requirements
 
-- Tool strip
+- Tool strip status label
+  - ~~Create~~
+  - Read
+  - Update
+  - Delete
 - About Form
   - List All Application Properties
 - ~~Splash Screen~~
-  - Displayed at launch
-  - Application Name
-  - Current Version Number
+  - ~~Displayed at launch~~
+  - ~~Application Name~~
+  - ~~Current Version Number~~
 - ~~Login Form~~
-  - A login database table with pre-populated login accounts
-    - Username
-    - Password
+  - ~~A login database table with pre-populated login accounts~~
+    - ~~Username~~
+    - ~~Password~~
 
 ## ~~Breed Info~~
 
@@ -39,7 +43,7 @@
 
 - ~~Create Dog Show Dogs~~
 - ~~Read Dog Show Details~~
-  - Dog show detail visible from Read Dog Shows and Read Dogs
+  - ~~Dog show detail visible from Read Dog Shows and Read Dogs~~
 - ~~Update Dog Show Dogs~~
 - ~~Delete Dog Show Dogs~~
 
@@ -74,19 +78,19 @@
 ## Prevent Adding Duplicated
 
 - ~~Breeds~~
-  - Same Name
+  - ~~Same Name~~
 - ~~Colours~~
-  - Same Name
+  - ~~Same Name~~
 - ~~Classes~~
-  - Same Name
+  - ~~Same Name~~
 - Ownership
-  - Same Dog and Owner Pair
+  - Same Dog, Owner and Start Date
 - ~~Owners~~
-  - Prompt when exact name match
+  - ~~Prompt when exact name match~~
 - ~~Dog Shows~~
-  - Start Date and Name Must be the same
+  - ~~Start Date and Name Must be the same~~
 - ~~Dog~~
-  - Prompt when same name
+  - ~~Prompt when same name~~
 
 ## Deal With Unchanged Values
 
