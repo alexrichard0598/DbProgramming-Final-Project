@@ -67,10 +67,10 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.dogInformationToolStripMenuItem,
-            this.ownerInformationToolStripMenuItem,
-            this.dogShowInformationToolStripMenuItem,
             this.dogBreedInformationToolStripMenuItem,
+            this.dogInformationToolStripMenuItem,
+            this.dogShowInformationToolStripMenuItem,
+            this.ownerInformationToolStripMenuItem,
             this.miscFormsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
