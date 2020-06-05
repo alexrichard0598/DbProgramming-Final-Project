@@ -110,5 +110,18 @@ namespace DogShowTrackerCL
         {
             return str.Trim().Replace("'", "''");
         }
+
+        /// <summary>
+        /// Checks if any records exist where the fieldsToCheck is 
+        /// equal to the valueToCheck in the tableToCheck
+        /// </summary>
+        /// <param name="fieldsToCheck">The field(s) to check it it is equal to the value</param>
+        /// <param name="valueToCheck">The value to check for</param>
+        /// <param name="tableToCheck">The table to check in</param>
+        /// <returns></returns>
+        public static bool NotDuplicate(string fieldsToCheck, string valueToCheck, string tableToCheck)
+        {
+            return 0 == Convert.ToInt32(ExecuteScaler($"SELECT COUNT(*) FROM {tableToCheck} WHERE {fieldsToCheck} = {valueToCheck}"));
+        }
     }
 }
