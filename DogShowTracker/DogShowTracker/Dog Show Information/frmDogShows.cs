@@ -85,7 +85,16 @@ namespace DogShowTracker
 
         private void DeleteDogShow()
         {
-            //TODO: Impliment DeleteDogShow
+            int id = Convert.ToInt32(cmbDogShows.Text);
+
+            if (DatabaseHelper.ValueExists("DogShowID", id.ToString(), "DogShowDetails"))
+            {
+                MessageBox.Show("Cannot remove a dog show that is has dogs in the results.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string sql = $"DELETE FROM Dogs WHERE DogID = {id};";
+            DatabaseHelper.SendData(sql);
         }
         #endregion
 
@@ -156,7 +165,7 @@ namespace DogShowTracker
         {
             try
             {
-
+                DeleteDogShow();
             }
             catch (Exception ex)
             {
