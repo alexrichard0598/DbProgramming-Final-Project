@@ -69,7 +69,17 @@
   - Same Dog and Owner Pair
 - ~~Owners~~
   - Prompt when exact name match
-- ~~DogShow~~
+- ~~Dog Shows~~
   - Start Date and Name Must be the same
 - ~~Dog~~
   - Prompt when same name
+
+## Deal With Unchanged Values
+
+- Breeds
+- Colours
+- Classes
+- Ownership
+- Owners
+- Dog Shows
+- Dogs
