@@ -184,6 +184,9 @@
     <EmbeddedResource Include="UpdateInfo\frmChangeDogShowDogs.resx">
       <DependentUpon>frmChangeDogShowDogs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateInfo\frmUpdateDog.resx">
+      <DependentUpon>frmUpdateDog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
