@@ -55,6 +55,29 @@ namespace DogShowTracker
             cmbSecondary.SelectedValue = secondaryColourID;
 
         }
+
+        private void DeleteBreed()
+        {
+            int id = Convert.ToInt32(lstBreeds.SelectedValue);
+
+            string sqlCheckForReferences = $"SELECT COUNT(*) FROM Dogs WHERE Breed = {id};";
+            if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(sqlCheckForReferences)) != 0)
+            {
+                MessageBox.Show("Cannot delete breed that is referenced by dogs", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string sqlBreedName = $"SELECT [Breed] FROM Breeds WHERE BreedID = {id}";
+            string breedName = DatabaseHelper.ExecuteScaler(sqlBreedName).ToString();
+
+            string sql = $"DELETE Breeds WHERE BreedID = {id};";
+            if (DialogResult.Yes == MessageBox.Show($"Are you sure you want to delete {breedName} breed?", "",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                DatabaseHelper.SendData(sql);
+                Reload();
+            }
+        }
         #endregion
 
         private void frmBreeds_Load(object sender, EventArgs e)
@@ -122,6 +145,18 @@ namespace DogShowTracker
             try
             {
                 UIMethods.OpenForm(MdiParent, new frmUpdateBreed());
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void btnDeleteBreed_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DeleteBreed();
             }
             catch (Exception ex)
             {

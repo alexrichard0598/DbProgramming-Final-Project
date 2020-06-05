@@ -227,6 +227,7 @@
             this.btnDeleteBreed.TabIndex = 35;
             this.btnDeleteBreed.Text = "Delete Breed";
             this.btnDeleteBreed.UseVisualStyleBackColor = true;
+            this.btnDeleteBreed.Click += new System.EventHandler(this.btnDeleteBreed_Click);
             // 
             // frmBreeds
             // 
