@@ -150,6 +150,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dog Breed Information\frmUpdateBreed.resx">
+      <DependentUpon>frmUpdateBreed.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Misc Forms\frmAddClass.resx">
       <DependentUpon>frmAddClass.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +168,12 @@
     <EmbeddedResource Include="Dog Show Information\frmAddDogShow.resx">
       <DependentUpon>frmAddDogShow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Misc Forms\frmClasses.resx">
+      <DependentUpon>frmClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Misc Forms\frmColours.resx">
+      <DependentUpon>frmColours.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Owner Information\frmAddOwner.resx">
       <DependentUpon>frmAddOwner.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dog Show Information\frmDogShows.resx">
       <DependentUpon>frmDogShows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Information\frmChangeOwnership.resx">
+      <DependentUpon>frmChangeOwnership.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Information\frmOwners.resx">
       <DependentUpon>frmOwners.cs</DependentUpon>

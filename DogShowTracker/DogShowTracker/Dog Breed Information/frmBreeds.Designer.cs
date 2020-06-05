@@ -223,7 +223,7 @@
             // 
             this.btnDeleteBreed.Location = new System.Drawing.Point(344, 12);
             this.btnDeleteBreed.Name = "btnDeleteBreed";
-            this.btnDeleteBreed.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteBreed.Size = new System.Drawing.Size(85, 23);
             this.btnDeleteBreed.TabIndex = 35;
             this.btnDeleteBreed.Text = "Delete Breed";
             this.btnDeleteBreed.UseVisualStyleBackColor = true;
