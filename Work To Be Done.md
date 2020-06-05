@@ -11,14 +11,14 @@
 
 - ~~Create Dog~~
 - ~~Read Dogs~~
-- **Update Dog (WIP)**
-- **Delete Dog (WIP)**
+- _Update Dog (UI-Complete)_
+- ~~Delete Dog~~
 
 ## Dog Show Info
 
 - ~~Create Dog Show~~
 - ~~Read Dog Shows~~
-- Update Dog Shows
+- **Update Dog Shows**
 - _Delete Dog Shows (UI-Complete)_
 
 ## ~~Dog Show Details~~
@@ -33,7 +33,7 @@
 
 - ~~Create Owner~~
 - ~~Read Owners~~
-- Update Owner
+- **Update Owner**
 - _Delete Owner (UI-Complete)_
 
 ## Ownership Info
