@@ -9,6 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+    Alex Richard
+    Dog Show Tracker
+    2020-06-05
+*/
+
 namespace DogShowTracker
 {
     public partial class frmChangeDogShow : DogShowForm

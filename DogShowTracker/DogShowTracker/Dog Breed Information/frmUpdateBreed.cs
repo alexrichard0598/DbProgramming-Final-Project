@@ -12,7 +12,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-03
+    2020-06-05
 */
 
 namespace DogShowTracker
