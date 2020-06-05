@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtDateOfRetirement = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateOfRetirement = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.chkRetired = new System.Windows.Forms.CheckBox();
             this.txtFName = new System.Windows.Forms.TextBox();
@@ -45,9 +46,11 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.lstOwners = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -79,25 +82,25 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dtDateOfRetirement);
+            this.groupBox1.Controls.Add(this.dtpDateOfRetirement);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.chkRetired);
             this.groupBox1.Location = new System.Drawing.Point(7, 123);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(255, 80);
+            this.groupBox1.Size = new System.Drawing.Size(268, 80);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Retirement Info";
             // 
-            // dtDateOfRetirement
+            // dtpDateOfRetirement
             // 
-            this.dtDateOfRetirement.CustomFormat = " ";
-            this.dtDateOfRetirement.Enabled = false;
-            this.dtDateOfRetirement.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDateOfRetirement.Location = new System.Drawing.Point(110, 19);
-            this.dtDateOfRetirement.Name = "dtDateOfRetirement";
-            this.dtDateOfRetirement.Size = new System.Drawing.Size(131, 20);
-            this.dtDateOfRetirement.TabIndex = 2;
+            this.dtpDateOfRetirement.CustomFormat = " ";
+            this.dtpDateOfRetirement.Enabled = false;
+            this.dtpDateOfRetirement.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDateOfRetirement.Location = new System.Drawing.Point(110, 19);
+            this.dtpDateOfRetirement.Name = "dtpDateOfRetirement";
+            this.dtpDateOfRetirement.Size = new System.Drawing.Size(131, 20);
+            this.dtpDateOfRetirement.TabIndex = 2;
             // 
             // label5
             // 
@@ -112,7 +115,6 @@
             // 
             this.chkRetired.AutoSize = true;
             this.chkRetired.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkRetired.Enabled = false;
             this.chkRetired.Location = new System.Drawing.Point(58, 45);
             this.chkRetired.Name = "chkRetired";
             this.chkRetired.Size = new System.Drawing.Size(63, 17);
@@ -215,6 +217,10 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Owners";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmUpdateOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,6 +238,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -241,7 +248,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dtDateOfRetirement;
+        private System.Windows.Forms.DateTimePicker dtpDateOfRetirement;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkRetired;
         private System.Windows.Forms.TextBox txtFName;
@@ -255,5 +262,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ListBox lstOwners;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
