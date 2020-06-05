@@ -26,5 +26,3 @@ C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgrammi
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmClasses.resources
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmColours.resources
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmChangeOwnership.resources
-C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTracker.exe.CodeAnalysisLog.xml
-C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTracker.exe.lastcodeanalysissucceeded

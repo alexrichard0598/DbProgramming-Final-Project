@@ -79,7 +79,7 @@ namespace DogShowTrackerCL
 
             if (DateTime.TryParse(dateObject.ToString(), out DateTime date))
             {
-                dateTimePicker.Value = Convert.ToDateTime(date);
+                dateTimePicker.Value = date;
                 dateTimePicker.Format = DateTimePickerFormat.Long;
             }
             else

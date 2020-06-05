@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grpDogInfo = new System.Windows.Forms.GroupBox();
+            this.nudHeight = new System.Windows.Forms.NumericUpDown();
+            this.nudWeight = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.chkBanned = new System.Windows.Forms.CheckBox();
             this.dtpDateBanned = new System.Windows.Forms.DateTimePicker();
@@ -43,8 +46,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.cmbDogToUpdate = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.cmbOwner = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.cmbBreed = new System.Windows.Forms.ComboBox();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,15 +59,15 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.nudWeight = new System.Windows.Forms.NumericUpDown();
-            this.nudHeight = new System.Windows.Forms.NumericUpDown();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpDogInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpSex.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // grpDogInfo
@@ -78,8 +79,6 @@
             this.grpDogInfo.Controls.Add(this.groupBox1);
             this.grpDogInfo.Controls.Add(this.cmbDogToUpdate);
             this.grpDogInfo.Controls.Add(this.txtName);
-            this.grpDogInfo.Controls.Add(this.cmbOwner);
-            this.grpDogInfo.Controls.Add(this.label9);
             this.grpDogInfo.Controls.Add(this.cmbBreed);
             this.grpDogInfo.Controls.Add(this.dtpDateOfBirth);
             this.grpDogInfo.Controls.Add(this.label1);
@@ -91,17 +90,35 @@
             this.grpDogInfo.Controls.Add(this.label8);
             this.grpDogInfo.Location = new System.Drawing.Point(12, 12);
             this.grpDogInfo.Name = "grpDogInfo";
-            this.grpDogInfo.Size = new System.Drawing.Size(544, 280);
+            this.grpDogInfo.Size = new System.Drawing.Size(544, 258);
             this.grpDogInfo.TabIndex = 17;
             this.grpDogInfo.TabStop = false;
             this.grpDogInfo.Text = "Dog Information";
+            // 
+            // nudHeight
+            // 
+            this.nudHeight.DecimalPlaces = 1;
+            this.nudHeight.Location = new System.Drawing.Point(96, 158);
+            this.nudHeight.Name = "nudHeight";
+            this.nudHeight.Size = new System.Drawing.Size(132, 20);
+            this.nudHeight.TabIndex = 36;
+            this.nudHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // nudWeight
+            // 
+            this.nudWeight.DecimalPlaces = 1;
+            this.nudWeight.Location = new System.Drawing.Point(96, 132);
+            this.nudWeight.Name = "nudWeight";
+            this.nudWeight.Size = new System.Drawing.Size(132, 20);
+            this.nudWeight.TabIndex = 35;
+            this.nudWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.chkBanned);
             this.groupBox3.Controls.Add(this.dtpDateBanned);
             this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Location = new System.Drawing.Point(263, 194);
+            this.groupBox3.Location = new System.Drawing.Point(263, 174);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(263, 73);
             this.groupBox3.TabIndex = 20;
@@ -118,6 +135,7 @@
             this.chkBanned.TabIndex = 25;
             this.chkBanned.Text = "Banned:";
             this.chkBanned.UseVisualStyleBackColor = true;
+            this.chkBanned.CheckedChanged += new System.EventHandler(this.EnableDateTimePickers);
             // 
             // dtpDateBanned
             // 
@@ -143,7 +161,7 @@
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.chkChampion);
             this.groupBox2.Controls.Add(this.dtpChampionshipDate);
-            this.groupBox2.Location = new System.Drawing.Point(263, 108);
+            this.groupBox2.Location = new System.Drawing.Point(263, 98);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(263, 70);
             this.groupBox2.TabIndex = 34;
@@ -169,6 +187,7 @@
             this.chkChampion.TabIndex = 26;
             this.chkChampion.Text = "Champion:";
             this.chkChampion.UseVisualStyleBackColor = true;
+            this.chkChampion.CheckedChanged += new System.EventHandler(this.EnableDateTimePickers);
             // 
             // dtpChampionshipDate
             // 
@@ -202,6 +221,7 @@
             this.chkRetired.TabIndex = 21;
             this.chkRetired.Text = "Retired:";
             this.chkRetired.UseVisualStyleBackColor = true;
+            this.chkRetired.CheckedChanged += new System.EventHandler(this.EnableDateTimePickers);
             // 
             // dtpDateOfRetirement
             // 
@@ -239,29 +259,11 @@
             this.txtName.Size = new System.Drawing.Size(132, 20);
             this.txtName.TabIndex = 27;
             // 
-            // cmbOwner
-            // 
-            this.cmbOwner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOwner.FormattingEnabled = true;
-            this.cmbOwner.Location = new System.Drawing.Point(96, 240);
-            this.cmbOwner.Name = "cmbOwner";
-            this.cmbOwner.Size = new System.Drawing.Size(132, 21);
-            this.cmbOwner.TabIndex = 20;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 243);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 13);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Current Owner:";
-            // 
             // cmbBreed
             // 
             this.cmbBreed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBreed.FormattingEnabled = true;
-            this.cmbBreed.Location = new System.Drawing.Point(96, 213);
+            this.cmbBreed.Location = new System.Drawing.Point(96, 219);
             this.cmbBreed.Name = "cmbBreed";
             this.cmbBreed.Size = new System.Drawing.Size(132, 21);
             this.cmbBreed.TabIndex = 18;
@@ -354,7 +356,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(52, 216);
+            this.label8.Location = new System.Drawing.Point(52, 222);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 8;
@@ -362,7 +364,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(165, 298);
+            this.btnUpdate.Location = new System.Drawing.Point(180, 276);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 18;
@@ -372,7 +374,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(285, 298);
+            this.btnCancel.Location = new System.Drawing.Point(300, 276);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 19;
@@ -380,29 +382,15 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // nudWeight
+            // errorProvider
             // 
-            this.nudWeight.DecimalPlaces = 1;
-            this.nudWeight.Location = new System.Drawing.Point(96, 132);
-            this.nudWeight.Name = "nudWeight";
-            this.nudWeight.Size = new System.Drawing.Size(132, 20);
-            this.nudWeight.TabIndex = 35;
-            this.nudWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // nudHeight
-            // 
-            this.nudHeight.DecimalPlaces = 1;
-            this.nudHeight.Location = new System.Drawing.Point(96, 158);
-            this.nudHeight.Name = "nudHeight";
-            this.nudHeight.Size = new System.Drawing.Size(132, 20);
-            this.nudHeight.TabIndex = 36;
-            this.nudHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.errorProvider.ContainerControl = this;
             // 
             // frmUpdateDog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 335);
+            this.ClientSize = new System.Drawing.Size(569, 307);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.grpDogInfo);
@@ -411,6 +399,8 @@
             this.Load += new System.EventHandler(this.frmUpdateDog_Load);
             this.grpDogInfo.ResumeLayout(false);
             this.grpDogInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -419,8 +409,7 @@
             this.groupBox1.PerformLayout();
             this.grpSex.ResumeLayout(false);
             this.grpSex.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,8 +426,6 @@
         private System.Windows.Forms.CheckBox chkBanned;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox chkRetired;
-        private System.Windows.Forms.ComboBox cmbOwner;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbBreed;
         private System.Windows.Forms.DateTimePicker dtpDateOfRetirement;
         private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
@@ -459,5 +446,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown nudHeight;
         private System.Windows.Forms.NumericUpDown nudWeight;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

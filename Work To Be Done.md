@@ -1,17 +1,17 @@
 # Work to be completed
 
-## Breed Info
+## ~~Breed Info~~
 
 - ~~Create Dog Breed~~
 - ~~Read Dog Breeds~~
-- _Update Dog Breeds (UI-Complete)_
+- ~~Update Dog Breeds~~
 - ~~Delete Dog Breeds~~
 
-## Dog Info
+## ~~Dog Info~~
 
 - ~~Create Dog~~
 - ~~Read Dogs~~
-- _Update Dog (UI-Complete)_
+- ~~Update Dog~~
 - ~~Delete Dog~~
 
 ## Dog Show Info
