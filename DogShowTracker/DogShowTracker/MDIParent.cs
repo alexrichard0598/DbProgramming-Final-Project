@@ -62,11 +62,17 @@ namespace DogShowTracker
                 case "viewDogs":
                     UIMethods.OpenForm(this, new frmDogs());
                     break;
+                case "updateDogs":
+                    UIMethods.OpenForm(this, new frmUpdateDog());
+                    break;
                 case "addOwner":
                     UIMethods.OpenForm(this, new frmAddOwner());
                     break;
                 case "viewOwners":
                     UIMethods.OpenForm(this, new frmOwners());
+                    break;
+                case "updateOwnership":
+                    UIMethods.OpenForm(this, new frmChangeOwnership());
                     break;
                 case "addDogShow":
                     UIMethods.OpenForm(this, new frmAddDogShow());
@@ -74,14 +80,29 @@ namespace DogShowTracker
                 case "viewDogShows":
                     UIMethods.OpenForm(this, new frmDogShows());
                     break;
+                case "assignDogs":
+                    UIMethods.OpenForm(this, new frmChangeDogShowDogs());
+                    break;
                 case "addBreed":
                     UIMethods.OpenForm(this, new frmAddDogBreed());
                     break;
                 case "viewBreeds":
                     UIMethods.OpenForm(this, new frmBreeds());
                     break;
-                case "assignDogs":
-                    UIMethods.OpenForm(this, new frmChangeDogShowDogs());
+                case "updateBreeds":
+                    UIMethods.OpenForm(this, new frmUpdateBreed());
+                    break;
+                case "addColour":
+                    UIMethods.OpenForm(this, new frmAddColour());
+                    break;
+                case "viewColours":
+                    UIMethods.OpenForm(this, new frmColours());
+                    break;
+                case "addClass":
+                    UIMethods.OpenForm(this, new frmAddClass());
+                    break;
+                case "viewClasses":
+                    UIMethods.OpenForm(this, new frmClasses());
                     break;
             }
         }

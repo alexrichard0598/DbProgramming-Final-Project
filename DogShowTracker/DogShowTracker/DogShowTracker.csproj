@@ -82,6 +82,18 @@
     <Compile Include="CreateInfo\frmAddOwner.Designer.cs">
       <DependentUpon>frmAddOwner.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReadInfo\frmClasses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReadInfo\frmClasses.Designer.cs">
+      <DependentUpon>frmClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReadInfo\frmColours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReadInfo\frmColours.Designer.cs">
+      <DependentUpon>frmColours.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateInfo\frmChangeDogShowDogs.cs">
       <SubType>Form</SubType>
     </Compile>
