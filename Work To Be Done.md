@@ -59,11 +59,11 @@
 - ~~Update Owner~~
 - ~~Delete Owner~~
 
-## Ownership Info
+## ~~Ownership Info~~
 
-- _Create Ownership (UI-Complete)_
+- ~~Create Ownership~~
 - ~~Read Ownership~~
-- ~~Update Ownership (UI-Complete)~~
+- ~~Update Ownership~~
 - ~~Delete Ownership~~
 
 ## ~~Colour Info~~

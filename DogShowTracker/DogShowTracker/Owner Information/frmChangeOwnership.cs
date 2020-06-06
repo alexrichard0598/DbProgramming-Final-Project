@@ -75,7 +75,17 @@ namespace DogShowTracker
 
         private void InsertOwnership()
         {
-            // TODO: Insert Ownership
+            if(VerifyUserData())
+            {
+                string sql = $@"
+                    INSERT INTO DogOwnership
+	                    (OwnerID, DogID, StartOfOwnership, EndOfOwnership)
+	                    VALUES
+	                    ({ownerID},{dogID},'{startDate}', {endDate});";
+                int rowsAffected = DatabaseHelper.SendData(sql);
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) inserted");
+                Reload();
+            }
         }
 
         private bool VerifyUserData()
