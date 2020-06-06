@@ -43,10 +43,12 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.lstOwnership = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbOwners
@@ -62,12 +64,12 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.btnChange);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.lstOwnership);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(255, 411);
@@ -194,17 +196,27 @@
             // lstOwnership
             // 
             this.lstOwnership.FormattingEnabled = true;
-            this.lstOwnership.Location = new System.Drawing.Point(6, 232);
+            this.lstOwnership.Location = new System.Drawing.Point(6, 19);
             this.lstOwnership.Name = "lstOwnership";
-            this.lstOwnership.Size = new System.Drawing.Size(236, 134);
+            this.lstOwnership.Size = new System.Drawing.Size(224, 108);
             this.lstOwnership.TabIndex = 2;
             this.lstOwnership.SelectedIndexChanged += new System.EventHandler(this.lstOwnership_SelectedIndexChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lstOwnership);
+            this.groupBox2.Location = new System.Drawing.Point(6, 232);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(236, 134);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Selected Ownership";
             // 
             // frmChangeOwnership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 433);
+            this.ClientSize = new System.Drawing.Size(833, 745);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmChangeOwnership";
             this.Text = "Change Ownership";
@@ -215,6 +227,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -236,5 +249,6 @@
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

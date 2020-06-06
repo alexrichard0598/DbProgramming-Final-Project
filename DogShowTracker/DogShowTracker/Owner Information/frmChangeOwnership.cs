@@ -44,19 +44,22 @@ namespace DogShowTracker
         private void LoadOwnership()
         {
             ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
-            string sql = $@"SELECT	Dogs.DogID AS ID, Dogs.[Name] FROM DogOwnership
+            string sql = $@"SELECT	CAST(StartOfOwnership AS VARCHAR) + ':' + CAST(Dogs.DogID AS VARCHAR) AS ID, 
+                                    CAST(StartOfOwnership AS VARCHAR) + ' ' + CHAR(151) + ' ' + CAST(Dogs.[Name] AS VARCHAR) AS Dog 
+                            FROM DogOwnership
 	                            LEFT JOIN Dogs
 		                            ON Dogs.DogID = DogOwnership.DogID
 	                             WHERE OwnerID = {ownerID}
                                  ORDER BY StartOfOwnership;";
             DataTable dt = DatabaseHelper.GetDataTable(sql);
-            UIMethods.FillListControl(lstOwnership, "Name", "ID", dt);
+            UIMethods.FillListControl(lstOwnership, "Dog", "ID", dt);
         }
 
         private void LoadOwnershipDetails()
         {
             ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
-            dogID = Convert.ToInt32(cmbDogs.SelectedValue = lstOwnership.SelectedValue);
+            dogID = Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]);
+            cmbDogs.SelectedValue = dogID;
             string sql = $@"SELECT	Dogs.DogID AS ID, Dogs.[Name], StartOfOwnership, EndOfOwnership FROM DogOwnership
 	                            LEFT JOIN Dogs
 		                            ON Dogs.DogID = DogOwnership.DogID
@@ -81,7 +84,17 @@ namespace DogShowTracker
 
         private void DeleteOwnership()
         {
-            // TODO: Delete Ownership
+            ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
+            dogID = Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]);
+            startDate = lstOwnership.SelectedValue.ToString().Split(':')[0];
+            string sql = $@"
+                            DELETE DogOwnership
+	                            WHERE OwnerID = {ownerID}
+	                            AND DogID = {dogID}
+	                            AND StartOfOwnership = '{startDate}';
+                            ";
+            int rowsAffected = DatabaseHelper.SendData(sql);
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

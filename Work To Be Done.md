@@ -64,7 +64,7 @@
 - _Create Ownership (UI-Complete)_
 - ~~Read Ownership~~
 - _Update Ownership (UI-Complete)_
-- _Delete Ownership (UI-Complete)_
+- ~~Delete Ownership~~
 
 ## ~~Colour Info~~
 
