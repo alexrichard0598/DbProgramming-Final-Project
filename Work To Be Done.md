@@ -2,7 +2,7 @@
 
 ## Misc. Requirements
 
-- Tool strip status label
+- ~~Tool strip status label~~
   - ~~Create~~
   - ~~Read~~
   - ~~Update~~
@@ -17,6 +17,11 @@
   - ~~A login database table with pre-populated login accounts~~
     - ~~Username~~
     - ~~Password~~
+- OneClick Deployment
+- Database Seed???
+- PowerPoint Presentation
+  - Include Business Rules
+    - Update Business Rules
 
 ## ~~Breed Info~~
 
@@ -47,7 +52,7 @@
 - ~~Update Dog Show Dogs~~
 - ~~Delete Dog Show Dogs~~
 
-## Owner Info
+## ~~Owner Info~~
 
 - ~~Create Owner~~
 - ~~Read Owners~~

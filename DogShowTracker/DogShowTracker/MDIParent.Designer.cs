@@ -52,14 +52,17 @@
             this.updateOwnershipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miscFormsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addColoursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewColoursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewColoursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewClassesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutDogShowTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.btnReloadForm = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnReloadForm = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -73,7 +76,8 @@
             this.dogInformationToolStripMenuItem,
             this.dogShowInformationToolStripMenuItem,
             this.ownerInformationToolStripMenuItem,
-            this.miscFormsToolStripMenuItem});
+            this.miscFormsToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1096, 24);
@@ -263,53 +267,61 @@
             // addColoursToolStripMenuItem
             // 
             this.addColoursToolStripMenuItem.Name = "addColoursToolStripMenuItem";
-            this.addColoursToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addColoursToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.addColoursToolStripMenuItem.Tag = "addColour";
             this.addColoursToolStripMenuItem.Text = "Add Colour";
             this.addColoursToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
             // 
-            // viewColoursToolStripMenuItem
-            // 
-            this.viewColoursToolStripMenuItem.Name = "viewColoursToolStripMenuItem";
-            this.viewColoursToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.viewColoursToolStripMenuItem.Tag = "viewColours";
-            this.viewColoursToolStripMenuItem.Text = "View Colours";
-            this.viewColoursToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
-            // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.addToolStripMenuItem.Tag = "addClass";
             this.addToolStripMenuItem.Text = "Add Class";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
             // 
+            // viewColoursToolStripMenuItem
+            // 
+            this.viewColoursToolStripMenuItem.Name = "viewColoursToolStripMenuItem";
+            this.viewColoursToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.viewColoursToolStripMenuItem.Tag = "viewColours";
+            this.viewColoursToolStripMenuItem.Text = "View Colours";
+            this.viewColoursToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
+            // 
             // viewClassesToolStripMenuItem
             // 
             this.viewClassesToolStripMenuItem.Name = "viewClassesToolStripMenuItem";
-            this.viewClassesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewClassesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.viewClassesToolStripMenuItem.Tag = "viewClasses";
             this.viewClassesToolStripMenuItem.Text = "View Classes";
             this.viewClassesToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutDogShowTrackerToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutDogShowTrackerToolStripMenuItem
+            // 
+            this.aboutDogShowTrackerToolStripMenuItem.Name = "aboutDogShowTrackerToolStripMenuItem";
+            this.aboutDogShowTrackerToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.aboutDogShowTrackerToolStripMenuItem.Tag = "about";
+            this.aboutDogShowTrackerToolStripMenuItem.Text = "About Dog Show Tracker";
+            this.aboutDogShowTrackerToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
+            // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReloadForm});
+            this.btnReloadForm,
+            this.toolStripButton1});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(1096, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
-            // 
-            // btnReloadForm
-            // 
-            this.btnReloadForm.Image = global::DogShowTracker.Properties.Resources.Reload_Icon;
-            this.btnReloadForm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReloadForm.Name = "btnReloadForm";
-            this.btnReloadForm.Size = new System.Drawing.Size(99, 22);
-            this.btnReloadForm.Text = "Reload Forms";
-            this.btnReloadForm.Click += new System.EventHandler(this.btnReloadForm_Click);
             // 
             // statusStrip
             // 
@@ -326,6 +338,26 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
+            // 
+            // btnReloadForm
+            // 
+            this.btnReloadForm.Image = global::DogShowTracker.Properties.Resources.Reload_Icon;
+            this.btnReloadForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReloadForm.Name = "btnReloadForm";
+            this.btnReloadForm.Size = new System.Drawing.Size(99, 22);
+            this.btnReloadForm.Text = "Reload Forms";
+            this.btnReloadForm.Click += new System.EventHandler(this.btnReloadForm_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::DogShowTracker.Properties.Resources.help_icon;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Tag = "about";
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // MDIParent
             // 
@@ -387,6 +419,9 @@
         private System.Windows.Forms.ToolStripMenuItem viewClassesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateDogShowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateOwnerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutDogShowTrackerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

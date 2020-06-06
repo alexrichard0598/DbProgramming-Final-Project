@@ -30,3 +30,37 @@ C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgrammi
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmUpdateOwner.resources
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmLogin.resources
 C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmSplashScreen.resources
+C:\Users\Alex Richard\Nextcloud\School\Database Programming\Projects\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.AboutBox.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTracker.exe.config
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTracker.exe
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTracker.pdb
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTrackerCL.dll
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTrackerCL.pdb
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.csprojAssemblyReference.cache
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.AboutBox.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmUpdateBreed.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmChangeDogShow.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmLogin.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmSplashScreen.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddClass.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddColour.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddDogBreed.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddDog.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddDogShow.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmClasses.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmColours.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmAddOwner.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmBreeds.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmDogs.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmDogShows.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmChangeOwnership.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmOwners.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.MDIParent.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmUpdateOwner.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.Properties.Resources.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmChangeDogShowDogs.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmUpdateDog.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.csproj.GenerateResource.cache
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.csproj.CopyComplete
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.exe
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.pdb
