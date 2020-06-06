@@ -4,7 +4,7 @@
 
 - Tool strip status label
   - ~~Create~~
-  - Read
+  - ~~Read~~
   - Update
   - Delete
 - About Form

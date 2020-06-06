@@ -40,7 +40,8 @@ namespace DogShowTracker
             string secondaryCoatID = cmbSecondary.SelectedIndex <= 0 ? "NULL" : Convert.ToInt32(cmbSecondary.SelectedValue).ToString();
 
             string sql = $"UPDATE Breeds WHERE BreedID = {id} SET Breed = '{name}' Class = {classID}, PrimaryCoatColour = {primaryCoatID}, SecondaryCoatColour = {secondaryCoatID}; ";
-            DatabaseHelper.SendData(sql);
+            int rowsAffected = DatabaseHelper.SendData(sql);
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
         }
 
         private void LoadBreedInfo()

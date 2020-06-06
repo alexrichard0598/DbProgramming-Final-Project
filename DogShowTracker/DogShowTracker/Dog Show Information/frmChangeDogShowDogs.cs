@@ -81,14 +81,16 @@ namespace DogShowTracker
 	                            (DogID, DogShowID, [Rank], Disqualified)
 	                            VALUES
 	                            ({assignDogID}, {dogShowID}, {rank}, {disqualified});";
-            DatabaseHelper.SendData(sql);
+            int rowsAffected = DatabaseHelper.SendData(sql);
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
         }
 
         private void RemoveDogShowDog()
         {
             string sql = $@"DELETE DogShowDetails
             	            WHERE DogID = {currentDogID} AND DogShowID = {dogShowID};";
-            DatabaseHelper.SendData(sql);
+            int rowsAffected = DatabaseHelper.SendData(sql);
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
         }
 
         private bool ValidateInsert()

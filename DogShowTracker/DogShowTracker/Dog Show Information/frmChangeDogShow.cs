@@ -104,7 +104,8 @@ namespace DogShowTracker
             if (VerifyFields())
             {
                 string sql = $"UPDATE DogShows WHERE DogShowID = {id} SET Name = {name}, StartDate = {startDate}, EndDate = {endDate}, NumDogs = {numDogs}";
-                DatabaseHelper.SendData(sql);
+                int rowsAffected = DatabaseHelper.SendData(sql);
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
             }
         }
 

@@ -91,7 +91,8 @@ namespace DogShowTracker
             if (!ValidateFields())
             {
                 string sql = $"UPDATE Classes WHERE ClassID = {id} SET Class = {colourName}";
-                DatabaseHelper.SendData(sql);
+                int rowsAffected = DatabaseHelper.SendData(sql);
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
             }
         }
 

@@ -29,7 +29,7 @@ namespace DogShowTracker
         private void GetUserData()
         {
             id = Convert.ToInt32(lstOwners.SelectedValue);
-            retired = chkRetired.Checked? 1 : 0;
+            retired = chkRetired.Checked ? 1 : 0;
             fName = txtFName.Text;
             mName = txtMName.Text;
             lName = txtLName.Text;
@@ -68,10 +68,10 @@ namespace DogShowTracker
                 errorProvider.SetError(dtpDateOfRetirement, "Cannot retire before 18 years of age");
                 isValid = false;
             }
-            if (isValid && DatabaseHelper.ValueChanged("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners", "OwnerID", id) 
+            if (isValid && DatabaseHelper.ValueChanged("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners", "OwnerID", id)
                 && DatabaseHelper.ValueExists("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners"))
             {
-                if (DialogResult.Yes == MessageBox.Show("A owner with that name already exists, are you sure you wish to change owner name that?", 
+                if (DialogResult.Yes == MessageBox.Show("A owner with that name already exists, are you sure you wish to change owner name that?",
                     "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     isValid = false;
             }
@@ -86,7 +86,8 @@ namespace DogShowTracker
             {
                 string sql = $@"UPDATE Owners WHERE OwnerID = {id} SET FirstName = {fName}, MiddleName = {mName}, LastName = {lName}, DOB = '{dob}', 
                             DateOfRetirement = {dateOfRetirement}, Retired = {retired}";
-                DatabaseHelper.SendData(sql);
+                int rowsAffected = DatabaseHelper.SendData(sql);
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
             }
         }
 

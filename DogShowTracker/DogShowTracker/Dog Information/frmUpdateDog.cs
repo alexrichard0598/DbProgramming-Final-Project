@@ -106,7 +106,8 @@ namespace DogShowTracker
                                     DOB = '{dob}', DateOfRetirement = {dateRetired}, Retired = {retired}, DateOfChampionship = {dateChampionship}, Champion = {champion},
                                     DateOfDisqualification = {dateBanned}, PermanentlyDisqualified = {banned}, Breed = {breedId};
                                 ";
-                DatabaseHelper.SendData(sql);
+                int rowsAffected = DatabaseHelper.SendData(sql);
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
             }
 
         }
