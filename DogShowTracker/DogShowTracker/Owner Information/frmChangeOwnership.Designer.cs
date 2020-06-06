@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbOwners = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -44,11 +45,13 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbOwners
@@ -57,7 +60,7 @@
             this.cmbOwners.FormattingEnabled = true;
             this.cmbOwners.Location = new System.Drawing.Point(56, 16);
             this.cmbOwners.Name = "cmbOwners";
-            this.cmbOwners.Size = new System.Drawing.Size(165, 21);
+            this.cmbOwners.Size = new System.Drawing.Size(153, 21);
             this.cmbOwners.TabIndex = 0;
             this.cmbOwners.SelectedIndexChanged += new System.EventHandler(this.cmbOwners_SelectedIndexChanged);
             // 
@@ -72,14 +75,14 @@
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(255, 397);
+            this.groupBox1.Size = new System.Drawing.Size(255, 408);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "By Owner";
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(167, 362);
+            this.btnDelete.Location = new System.Drawing.Point(167, 376);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 13;
@@ -90,7 +93,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lstOwnership);
-            this.groupBox2.Location = new System.Drawing.Point(6, 222);
+            this.groupBox2.Location = new System.Drawing.Point(6, 236);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(236, 134);
             this.groupBox2.TabIndex = 3;
@@ -108,7 +111,7 @@
             // 
             // btnChange
             // 
-            this.btnChange.Location = new System.Drawing.Point(87, 362);
+            this.btnChange.Location = new System.Drawing.Point(87, 376);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(75, 23);
             this.btnChange.TabIndex = 12;
@@ -118,7 +121,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(6, 362);
+            this.btnAdd.Location = new System.Drawing.Point(6, 376);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 11;
@@ -163,7 +166,7 @@
             this.cmbDogs.FormattingEnabled = true;
             this.cmbDogs.Location = new System.Drawing.Point(56, 43);
             this.cmbDogs.Name = "cmbDogs";
-            this.cmbDogs.Size = new System.Drawing.Size(165, 21);
+            this.cmbDogs.Size = new System.Drawing.Size(153, 21);
             this.cmbDogs.TabIndex = 3;
             // 
             // groupBox3
@@ -172,7 +175,7 @@
             this.groupBox3.Controls.Add(this.dtpEndDate);
             this.groupBox3.Location = new System.Drawing.Point(6, 161);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(236, 55);
+            this.groupBox3.Size = new System.Drawing.Size(236, 69);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "End Date";
@@ -180,10 +183,12 @@
             // chkDoesEnd
             // 
             this.chkDoesEnd.AutoSize = true;
-            this.chkDoesEnd.Location = new System.Drawing.Point(215, 22);
+            this.chkDoesEnd.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkDoesEnd.Location = new System.Drawing.Point(6, 45);
             this.chkDoesEnd.Name = "chkDoesEnd";
-            this.chkDoesEnd.Size = new System.Drawing.Size(15, 14);
+            this.chkDoesEnd.Size = new System.Drawing.Size(106, 17);
             this.chkDoesEnd.TabIndex = 2;
+            this.chkDoesEnd.Text = "Ownership Ends:";
             this.chkDoesEnd.UseVisualStyleBackColor = true;
             this.chkDoesEnd.CheckedChanged += new System.EventHandler(this.chkDoesEnd_CheckedChanged);
             // 
@@ -212,11 +217,15 @@
             this.dtpStartDate.Size = new System.Drawing.Size(203, 20);
             this.dtpStartDate.TabIndex = 0;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmChangeOwnership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 416);
+            this.ClientSize = new System.Drawing.Size(279, 432);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmChangeOwnership";
             this.Text = "Change Ownership";
@@ -228,6 +237,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -250,5 +260,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
