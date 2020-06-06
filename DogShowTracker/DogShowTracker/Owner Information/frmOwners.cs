@@ -125,8 +125,8 @@ namespace DogShowTracker
                 return;
             }
             string sql = $"DELETE FROM Owners WHERE OwnerID = {currentID};";
-            DatabaseHelper.SendData(sql);
-
+            int rowsAffected = DatabaseHelper.SendData(sql);
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
         }
         #endregion
 

@@ -70,7 +70,8 @@ namespace DogShowTracker
             string sql = $"DELETE Breeds WHERE BreedID = {id};";
             if (UIMethods.ConfirmationPrompt($"Are you sure you want to delete {breedName} breed?"))
             {
-                DatabaseHelper.SendData(sql);
+                int rowsAffected = DatabaseHelper.SendData(sql);
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
                 Reload();
             }
         }

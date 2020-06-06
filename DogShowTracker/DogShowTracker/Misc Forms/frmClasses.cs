@@ -50,7 +50,8 @@ namespace DogShowTracker
 
             if (UIMethods.ConfirmationPrompt($"Are you sure you want to delete {className} breed?"))
             {
-                DatabaseHelper.SendData(sql);
+                int rowsAffected = DatabaseHelper.SendData(sql);
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
             }
 
         }

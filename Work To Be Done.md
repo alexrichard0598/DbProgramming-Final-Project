@@ -5,8 +5,8 @@
 - Tool strip status label
   - ~~Create~~
   - ~~Read~~
-  - Update
-  - Delete
+  - ~~Update~~
+  - ~~Delete~~
 - About Form
   - List All Application Properties
 - ~~Splash Screen~~
