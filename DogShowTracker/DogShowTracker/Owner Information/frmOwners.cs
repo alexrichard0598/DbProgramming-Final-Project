@@ -29,6 +29,7 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbSelectOwner, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
             currentID = Convert.ToInt32(OwnerNavigation()["FirstID"]);
             LoadOwnerDetails();
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Owners loaded");
         }
 
         /// <summary>
@@ -69,6 +70,7 @@ namespace DogShowTracker
             chkRetired.Checked = retired;
 
             GetOwnership();
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Owner info loaded");
         }
 
         /// <summary>

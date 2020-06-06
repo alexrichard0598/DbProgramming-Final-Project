@@ -23,6 +23,7 @@ namespace DogShowTracker
         public override void Reload()
         {
             UIMethods.FillListControl(lstClasses, "Class", "ClassID", LoadFormData.ClassNames());
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Classes loaded");
         }
 
         private void GetClassInfo()
@@ -30,6 +31,7 @@ namespace DogShowTracker
             int id = Convert.ToInt32(lstClasses.SelectedValue);
             string sql = $"SELECT Class FROM Classes WHERE ClassID = {id}";
             txtClassName.Text = DatabaseHelper.ExecuteScaler(sql).ToString();
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Class info loaded");
         }
 
         private void DeleteClass()

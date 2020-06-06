@@ -29,6 +29,7 @@ namespace DogShowTracker
         public override void Reload()
         {
             UIMethods.FillListControl(lstColours, "Colour", "ColourID", LoadFormData.ColourNames());
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Colours loaded");
         }
 
         private void GetColourInfo()
@@ -36,6 +37,7 @@ namespace DogShowTracker
             int id = Convert.ToInt32(lstColours.SelectedValue);
             string sql = $"Select Colour FROM Colours WHERE ColourID = {id}";
             txtColourName.Text = DatabaseHelper.ExecuteScaler(sql).ToString();
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Colour info loaded");
         }
 
         private void DeleteColour()

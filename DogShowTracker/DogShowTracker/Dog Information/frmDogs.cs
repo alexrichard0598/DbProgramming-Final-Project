@@ -28,6 +28,7 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbSearchBreed, "Breed", "BreedID", LoadFormData.BreedNames(), true);
             UIMethods.FillListControl(cmbOwner, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
             UIMethods.FillListControl(lstDogs, "Name", "DogID", LoadFormData.DogNames());
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Dogs info loaded");
         }
 
         /// <summary>
@@ -88,6 +89,7 @@ namespace DogShowTracker
             cmbOwner.SelectedValue = ownerID;
 
             PopulateDogShows();
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Dog info loaded");
         }
 
         /// <summary>

@@ -29,6 +29,7 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbPrimary, "Colour", "ColourID", LoadFormData.ColourNames());
             UIMethods.FillListControl(cmbSecondary, "Colour", "ColourID", LoadFormData.ColourNames(), true);
             UIMethods.FillListControl(lstBreeds, "Breed", "BreedID", LoadFormData.BreedNames());
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Breeds info loaded");
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace DogShowTracker
             cmbClass.SelectedValue = classID;
             cmbPrimary.SelectedValue = primaryColourID;
             cmbSecondary.SelectedValue = secondaryColourID;
-
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Breed info loaded");
         }
 
         private void DeleteBreed()

@@ -253,8 +253,8 @@
             // 
             this.miscFormsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addColoursToolStripMenuItem,
-            this.viewColoursToolStripMenuItem,
             this.addToolStripMenuItem,
+            this.viewColoursToolStripMenuItem,
             this.viewClassesToolStripMenuItem});
             this.miscFormsToolStripMenuItem.Name = "miscFormsToolStripMenuItem";
             this.miscFormsToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
@@ -263,7 +263,7 @@
             // addColoursToolStripMenuItem
             // 
             this.addColoursToolStripMenuItem.Name = "addColoursToolStripMenuItem";
-            this.addColoursToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.addColoursToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addColoursToolStripMenuItem.Tag = "addColour";
             this.addColoursToolStripMenuItem.Text = "Add Colour";
             this.addColoursToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
@@ -271,7 +271,7 @@
             // viewColoursToolStripMenuItem
             // 
             this.viewColoursToolStripMenuItem.Name = "viewColoursToolStripMenuItem";
-            this.viewColoursToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.viewColoursToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewColoursToolStripMenuItem.Tag = "viewColours";
             this.viewColoursToolStripMenuItem.Text = "View Colours";
             this.viewColoursToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
@@ -279,7 +279,7 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Tag = "addClass";
             this.addToolStripMenuItem.Text = "Add Class";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);
@@ -287,7 +287,7 @@
             // viewClassesToolStripMenuItem
             // 
             this.viewClassesToolStripMenuItem.Name = "viewClassesToolStripMenuItem";
-            this.viewClassesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.viewClassesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewClassesToolStripMenuItem.Tag = "viewClasses";
             this.viewClassesToolStripMenuItem.Text = "View Classes";
             this.viewClassesToolStripMenuItem.Click += new System.EventHandler(this.OpenForm);

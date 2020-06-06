@@ -25,6 +25,7 @@ namespace DogShowTracker
         public override void Reload()
         {
             UIMethods.FillListControl(cmbDogShows, "Name", "DogShowID", LoadFormData.DogShowNames());
+            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Dog shows loaded");
         }
 
         /// <summary>
@@ -118,6 +119,7 @@ namespace DogShowTracker
                 GetDogs();
                 GetNumDogs();
                 GetDates();
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Dog show details loaded");
             }
             catch (Exception ex)
             {
