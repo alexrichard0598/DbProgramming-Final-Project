@@ -75,7 +75,7 @@ namespace DogShowTracker
 
         private void InsertOwnership()
         {
-            if(VerifyUserData())
+            if(VerifyUserData(true))
             {
                 string sql = $@"
                     INSERT INTO DogOwnership
@@ -88,7 +88,7 @@ namespace DogShowTracker
             }
         }
 
-        private bool VerifyUserData()
+        private bool VerifyUserData(bool createRecord = false)
         {
             bool isValid = true;
 
@@ -142,6 +142,26 @@ namespace DogShowTracker
 			                AND StartOfOwnership > '{startDate}'
 			                AND StartOfOwnership < '{endDate}'
 	                ) AS Q;";
+
+            // DUPLICATE RECORD
+            string duplicateRecordEndNotNull = $@"
+                SELECT COUNT(*) FROM DogOwnership
+	                WHERE DogID = {selectedDogID}
+	                AND OwnerID = {ownerID}
+	                AND StartOfOwnership = '{startDate}';";
+
+            string duplicateRecordEndISNull = $@"
+                SELECT COUNT(*) FROM DogOwnership
+	                WHERE DogID = {selectedDogID}
+	                AND OwnerID = {ownerID}
+	                AND StartOfOwnership = '{startDate}';";
+
+            // Check if duplicate record
+            if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(duplicateRecordEndISNull)) > 0 && createRecord)
+            {
+                isValid = false;
+                errorProvider.SetError(cmbOwners, "Ownership record already exists");
+            }
 
             // Check if the previous ownership record doesn't have an end
             if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(sqlNoEndToPrev)) > 0)

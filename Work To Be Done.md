@@ -88,7 +88,7 @@
   - ~~Same Name~~
 - ~~Classes~~
   - ~~Same Name~~
-- Ownership
+- ~~Ownership~~
   - Same Dog, Owner and Start Date
 - ~~Owners~~
   - ~~Prompt when exact name match~~
@@ -96,13 +96,3 @@
   - ~~Start Date and Name Must be the same~~
 - ~~Dog~~
   - ~~Prompt when same name~~
-
-## Deal With Unchanged Values
-
-- Breeds
-- Colours
-- Classes
-- Ownership
-- Owners
-- Dog Shows
-- Dogs
