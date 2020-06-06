@@ -7,8 +7,8 @@
   - ~~Read~~
   - ~~Update~~
   - ~~Delete~~
-- About Form
-  - List All Application Properties
+- ~~About Form
+  - ~~List All Application Properties~~
 - ~~Splash Screen~~
   - ~~Displayed at launch~~
   - ~~Application Name~~

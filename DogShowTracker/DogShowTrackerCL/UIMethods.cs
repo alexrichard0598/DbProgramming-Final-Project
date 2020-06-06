@@ -73,7 +73,7 @@ namespace DogShowTrackerCL
         /// </summary>
         /// <param name="dateTimePicker">The DateTimePicker to set</param>
         /// <param name="dateObject">The object to set the DateTimePicker to</param>
-        public static void PickDateTimePicker(DateTimePicker dateTimePicker, object dateObject)
+        public static void PickDateTimePicker(DateTimePicker dateTimePicker, object dateObject, bool nullIsBlank = true)
         {
             
 
@@ -82,7 +82,7 @@ namespace DogShowTrackerCL
                 dateTimePicker.Value = date;
                 dateTimePicker.Format = DateTimePickerFormat.Long;
             }
-            else
+            else if(nullIsBlank)
             {
                 dateTimePicker.Value = DateTime.Now;
                 dateTimePicker.CustomFormat = " ";

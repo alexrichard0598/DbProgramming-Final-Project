@@ -215,7 +215,14 @@ namespace DogShowTracker
 
         private void btnChangeOwner_Click(object sender, EventArgs e)
         {
-            // TODO: Create ChangeOwner Form
+            try
+            {
+                // TODO: Change Owner
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
         }
 
         private void btnDeleteOwner_Click(object sender, EventArgs e)
