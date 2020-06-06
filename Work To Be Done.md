@@ -63,7 +63,7 @@
 
 - _Create Ownership (UI-Complete)_
 - ~~Read Ownership~~
-- _Update Ownership (UI-Complete)_
+- ~~Update Ownership (UI-Complete)~~
 - ~~Delete Ownership~~
 
 ## ~~Colour Info~~

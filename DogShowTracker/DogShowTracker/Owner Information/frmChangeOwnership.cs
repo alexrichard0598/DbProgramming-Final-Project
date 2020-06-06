@@ -24,8 +24,8 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        int ownerID, dogID;
-        string startDate, endDate;
+        int ownerID, dogID, selectedDogID;
+        string startDate, selectedStartDate, endDate;
 
         public override void Reload()
         {
@@ -36,9 +36,11 @@ namespace DogShowTracker
         private void LoadUserData()
         {
             ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
-            dogID = Convert.ToInt32(cmbDogs.SelectedValue);
-            startDate = dtpStartDate.Value.ToString("yyyy-MM-dd");
-            endDate = dtpEndDate.Value.ToString("yyyy-MM-dd");
+            dogID = Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]);
+            selectedDogID = Convert.ToInt32(cmbDogs.SelectedValue);
+            startDate = lstOwnership.SelectedValue.ToString().Split(':')[0];
+            selectedStartDate = dtpStartDate.Value.ToString("yyyy-MM-dd");
+            endDate = chkDoesEnd.Checked ? dtpEndDate.Value.ToString("yyyy-MM-dd") : "NULL";
         }
 
         private void LoadOwnership()
@@ -57,8 +59,7 @@ namespace DogShowTracker
 
         private void LoadOwnershipDetails()
         {
-            ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
-            dogID = Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]);
+            LoadUserData();
             cmbDogs.SelectedValue = dogID;
             string sql = $@"SELECT	Dogs.DogID AS ID, Dogs.[Name], StartOfOwnership, EndOfOwnership FROM DogOwnership
 	                            LEFT JOIN Dogs
@@ -66,7 +67,7 @@ namespace DogShowTracker
 	                             WHERE OwnerID = {ownerID} AND Dogs.DogID = {dogID}
                                  ORDER BY StartOfOwnership;";
             DataRow dt = DatabaseHelper.GetDataRow(sql);
-            
+
             UIMethods.PickDateTimePicker(dtpStartDate, dt["StartOfOwnership"]);
             UIMethods.PickDateTimePicker(dtpEndDate, dt["EndOfOwnership"], false);
             chkDoesEnd.Checked = dt["EndOfOwnership"] != DBNull.Value;
@@ -77,24 +78,52 @@ namespace DogShowTracker
             // TODO: Insert Ownership
         }
 
+        private bool VerifyUserData()
+        {
+            bool isValid = true;
+            // TODO: Verify User Data
+            throw new NotImplementedException();
+        }
+
         private void ModifyOwnership()
         {
-            // TODO: Modify Ownership
+            if (VerifyUserData())
+            {
+                LoadUserData();
+                string sql = $@"
+                            UPDATE DogOwnership
+	                            SET DogID = {selectedDogID},
+		                            StartOfOwnership = '{selectedStartDate}',
+		                            EndOfOwnership = '{endDate}'
+	                            WHERE OwnerID = {ownerID}
+	                            AND DogID = {dogID}
+	                            AND StartOfOwnership = '{startDate}';
+                            ";
+                int rowsAffected = DatabaseHelper.SendData(sql);
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) updated");
+                Reload();
+            }
+
         }
 
         private void DeleteOwnership()
         {
-            ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
-            dogID = Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]);
-            startDate = lstOwnership.SelectedValue.ToString().Split(':')[0];
-            string sql = $@"
+            if(VerifyUserData())
+            {
+                ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
+                dogID = Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]);
+                startDate = lstOwnership.SelectedValue.ToString().Split(':')[0];
+                string sql = $@"
                             DELETE DogOwnership
 	                            WHERE OwnerID = {ownerID}
 	                            AND DogID = {dogID}
 	                            AND StartOfOwnership = '{startDate}';
                             ";
-            int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+                int rowsAffected = DatabaseHelper.SendData(sql);
+                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+                Reload();
+            }
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
