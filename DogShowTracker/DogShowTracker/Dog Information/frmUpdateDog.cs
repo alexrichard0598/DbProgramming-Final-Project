@@ -50,14 +50,14 @@ namespace DogShowTracker
             DateTime dob = Convert.ToDateTime(row["DOB"]);
 
 
-            UIMethods.PickDateTimePicker(dtpDateOfRetirement, row["DateOfRetirement"]);
+            UIMethods.PickDateTimePicker(dtpDateOfRetirement, row["DateOfRetirement"], false);
             bool retired = Convert.ToBoolean(row["Retired"]);
 
             bool champion = Convert.ToBoolean(row["Champion"]);
-            UIMethods.PickDateTimePicker(dtpChampionshipDate, row["DateOfChampionship"]);
+            UIMethods.PickDateTimePicker(dtpChampionshipDate, row["DateOfChampionship"], false);
 
             bool banned = Convert.ToBoolean(row["PermanentlyDisqualified"]);
-            UIMethods.PickDateTimePicker(dtpDateBanned, row["DateOfDisqualification"]);
+            UIMethods.PickDateTimePicker(dtpDateBanned, row["DateOfDisqualification"], false);
 
             int breedID = Convert.ToInt32(row["Breed"]);
 
@@ -100,14 +100,16 @@ namespace DogShowTracker
             GetValues();
             if (ValidateFields())
             {
-                string sql = $@"
-                                UPDATE Dogs WHERE DogID = {id} SET 
-                                    [Name] = '{name}', Sex = {sex}, [Weight] = {weight}, Height = {height}, 
-                                    DOB = '{dob}', DateOfRetirement = {dateRetired}, Retired = {retired}, DateOfChampionship = {dateChampionship}, Champion = {champion},
-                                    DateOfDisqualification = {dateBanned}, PermanentlyDisqualified = {banned}, Breed = {breedId};
-                                ";
+                string sql = 
+                    $@"UPDATE Dogs 
+                            SET [Name] = '{name}', Sex = {sex}, [Weight] = {weight}, Height = {height}, DOB = '{dob}', 
+                                DateOfRetirement = {dateRetired}, Retired = {retired}, DateOfChampionship = {dateChampionship}, 
+                                Champion = {champion}, DateOfDisqualification = {dateBanned}, PermanentlyDisqualified = {banned}, 
+                                Breed = {breedId}
+                            WHERE DogID = {id};";
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+                Reload();
             }
 
         }
@@ -178,9 +180,9 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(cmbBreed, "Dog breed must be selected");
             }
-            if (DatabaseHelper.ValueExists("Name", $"'{name}'", "Dogs"))
+            if (DatabaseHelper.ValueChanged("Name", $"'{name}'", "Dogs", "DogID", id) && DatabaseHelper.ValueExists("Name", $"'{name}'", "Dogs"))
             {
-                if (isValid && DialogResult.Yes == MessageBox.Show("A dog with that name already exists, are you sure you wish to add this dog?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if (isValid && DialogResult.No == MessageBox.Show($"A dog with that name already exists, are you sure you wish to change the name to {name}?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     isValid = false;
             }
             return isValid;

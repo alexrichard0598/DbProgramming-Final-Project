@@ -50,21 +50,21 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(149, 12);
+            this.txtFirstName.Location = new System.Drawing.Point(122, 12);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(131, 20);
             this.txtFirstName.TabIndex = 0;
             // 
             // txtMiddleName
             // 
-            this.txtMiddleName.Location = new System.Drawing.Point(149, 38);
+            this.txtMiddleName.Location = new System.Drawing.Point(122, 38);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(131, 20);
             this.txtMiddleName.TabIndex = 1;
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(149, 64);
+            this.txtLastName.Location = new System.Drawing.Point(122, 64);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(131, 20);
             this.txtLastName.TabIndex = 2;
@@ -72,7 +72,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(83, 15);
+            this.label1.Location = new System.Drawing.Point(56, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 3;
@@ -81,7 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(71, 41);
+            this.label2.Location = new System.Drawing.Point(44, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 4;
@@ -90,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(82, 67);
+            this.label3.Location = new System.Drawing.Point(55, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 5;
@@ -98,7 +98,7 @@
             // 
             // dtpDOB
             // 
-            this.dtpDOB.Location = new System.Drawing.Point(149, 90);
+            this.dtpDOB.Location = new System.Drawing.Point(122, 90);
             this.dtpDOB.Name = "dtpDOB";
             this.dtpDOB.Size = new System.Drawing.Size(131, 20);
             this.dtpDOB.TabIndex = 6;
@@ -106,7 +106,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(74, 93);
+            this.label4.Location = new System.Drawing.Point(47, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 7;
@@ -117,9 +117,9 @@
             this.groupBox1.Controls.Add(this.dtpDateOfRetirement);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.chkRetired);
-            this.groupBox1.Location = new System.Drawing.Point(39, 116);
+            this.groupBox1.Location = new System.Drawing.Point(12, 116);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(255, 80);
+            this.groupBox1.Size = new System.Drawing.Size(264, 80);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Retirement Info";
@@ -155,7 +155,7 @@
             // 
             // btnAddOwner
             // 
-            this.btnAddOwner.Location = new System.Drawing.Point(39, 211);
+            this.btnAddOwner.Location = new System.Drawing.Point(12, 211);
             this.btnAddOwner.Name = "btnAddOwner";
             this.btnAddOwner.Size = new System.Drawing.Size(75, 23);
             this.btnAddOwner.TabIndex = 9;
@@ -165,7 +165,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(219, 211);
+            this.btnCancel.Location = new System.Drawing.Point(201, 202);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 10;
@@ -181,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(320, 263);
+            this.ClientSize = new System.Drawing.Size(292, 251);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAddOwner);
             this.Controls.Add(this.groupBox1);

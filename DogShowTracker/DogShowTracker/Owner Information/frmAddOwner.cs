@@ -25,7 +25,8 @@ namespace DogShowTracker
         {
             age = Convert.ToInt32(DateTime.Now.Subtract(dtpDOB.Value).TotalDays / 365);
             fName = DatabaseHelper.SanitizeUserInput(txtFirstName.Text);
-            mName = DatabaseHelper.SanitizeUserInput(txtMiddleName.Text);
+            mName = DatabaseHelper.SanitizeUserInput(txtMiddleName.Text).Length == 0 ? "NULL" 
+                : $"'{DatabaseHelper.SanitizeUserInput(txtMiddleName.Text)}'";
             lName = DatabaseHelper.SanitizeUserInput(txtLastName.Text);
             dob = dtpDOB.Value.ToString("yyyy-MM-dd");
             isRetired = chkRetired.Checked ? 1 : 0;
@@ -45,7 +46,7 @@ namespace DogShowTracker
                 errorProvider.SetError(txtFirstName, "First Name must not be empty and contain only letters");
                 isValid = false;
             }
-            if (mName.Length != 0 && !mName.All(c => char.IsLetter(c)))
+            if (mName.Length != 0 && !mName.Replace("'", "").All(c => char.IsLetter(c)))
             {
                 errorProvider.SetError(txtMiddleName, "Middle Name must only contain letters");
                 isValid = false;
@@ -60,14 +61,14 @@ namespace DogShowTracker
                 errorProvider.SetError(dtpDOB, "Owners must be at least 18 years old");
                 isValid = false;
             }
-            if (isRetired == 1 && DateTime.Parse(dateOfRetirement) < DateTime.Parse(dob).AddYears(18))
+            if (isRetired == 1 && DateTime.Parse(dateOfRetirement.Replace("'", "")) < DateTime.Parse(dob).AddYears(18))
             {
                 errorProvider.SetError(dtpDateOfRetirement, "Cannot retire before 18 years of age");
                 isValid = false;
             }
-            if (isValid && DatabaseHelper.ValueExists("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners"))
+            if (isValid && DatabaseHelper.ValueExists("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName.Replace("'", "") + ' ' + lName}'", "Owners"))
             {
-                if (DialogResult.Yes == MessageBox.Show("A owner with that name already exists, are you sure you wish to add owner?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if (DialogResult.No == MessageBox.Show("A owner with that name already exists, are you sure you wish to add owner?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     isValid = false;
             }
 
@@ -84,7 +85,8 @@ namespace DogShowTracker
 	                            VALUES
 	                            ('{fName}', {mName}, '{lName}', '{dob}', {dateOfRetirement}, {isRetired});";
             int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            UIMethods.ClearControls(Controls);
         }
 
         private void btnAddOwner_Click(object sender, EventArgs e)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -88,6 +89,7 @@
             this.btnNewDog = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDeleteDog = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpSex.SuspendLayout();
             this.grpDogInfo.SuspendLayout();
             this.grpSearch.SuspendLayout();
@@ -101,6 +103,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCompetitions)).BeginInit();
             this.grpDogs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -724,6 +727,10 @@
             this.btnDeleteDog.UseVisualStyleBackColor = true;
             this.btnDeleteDog.Click += new System.EventHandler(this.btnDeleteDog_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmDogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -760,6 +767,7 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCompetitions)).EndInit();
             this.grpDogs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -825,6 +833,7 @@
         private System.Windows.Forms.Button btnViewBreed;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDeleteDog;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
 

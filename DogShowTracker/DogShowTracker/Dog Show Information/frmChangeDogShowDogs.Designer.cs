@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.cmbDogShow = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpDogShow = new System.Windows.Forms.GroupBox();
             this.lstDogs = new System.Windows.Forms.ListBox();
             this.cmbDogs = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -44,7 +44,7 @@
             this.txtNumDogs = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox1.SuspendLayout();
+            this.grpDogShow.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRank)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -61,15 +61,15 @@
             this.cmbDogShow.TabIndex = 0;
             this.cmbDogShow.SelectedIndexChanged += new System.EventHandler(this.cmbDogShow_SelectedIndexChanged);
             // 
-            // groupBox1
+            // grpDogShow
             // 
-            this.groupBox1.Controls.Add(this.cmbDogShow);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(303, 52);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dog Show";
+            this.grpDogShow.Controls.Add(this.cmbDogShow);
+            this.grpDogShow.Location = new System.Drawing.Point(12, 12);
+            this.grpDogShow.Name = "grpDogShow";
+            this.grpDogShow.Size = new System.Drawing.Size(303, 52);
+            this.grpDogShow.TabIndex = 1;
+            this.grpDogShow.TabStop = false;
+            this.grpDogShow.Text = "Dog Show";
             // 
             // lstDogs
             // 
@@ -204,11 +204,11 @@
             this.ClientSize = new System.Drawing.Size(330, 393);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpDogShow);
             this.Name = "frmChangeDogShowDogs";
             this.Text = "Change Dog Show Dogs";
             this.Load += new System.EventHandler(this.frmChangeDogShowDogs_Load);
-            this.groupBox1.ResumeLayout(false);
+            this.grpDogShow.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRank)).EndInit();
@@ -222,7 +222,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cmbDogShow;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpDogShow;
         private System.Windows.Forms.ListBox lstDogs;
         private System.Windows.Forms.ComboBox cmbDogs;
         private System.Windows.Forms.GroupBox groupBox2;

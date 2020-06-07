@@ -45,11 +45,11 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lstOwners = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grpOwners = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.grpOwners.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,7 +96,6 @@
             // 
             this.dtpDateOfRetirement.CustomFormat = " ";
             this.dtpDateOfRetirement.Enabled = false;
-            this.dtpDateOfRetirement.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateOfRetirement.Location = new System.Drawing.Point(110, 19);
             this.dtpDateOfRetirement.Name = "dtpDateOfRetirement";
             this.dtpDateOfRetirement.Size = new System.Drawing.Size(131, 20);
@@ -207,15 +206,15 @@
             this.lstOwners.TabIndex = 24;
             this.lstOwners.SelectedIndexChanged += new System.EventHandler(this.lstOwners_SelectedIndexChanged);
             // 
-            // groupBox3
+            // grpOwners
             // 
-            this.groupBox3.Controls.Add(this.lstOwners);
-            this.groupBox3.Location = new System.Drawing.Point(317, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(367, 246);
-            this.groupBox3.TabIndex = 25;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Owners";
+            this.grpOwners.Controls.Add(this.lstOwners);
+            this.grpOwners.Location = new System.Drawing.Point(317, 12);
+            this.grpOwners.Name = "grpOwners";
+            this.grpOwners.Size = new System.Drawing.Size(367, 246);
+            this.grpOwners.TabIndex = 25;
+            this.grpOwners.TabStop = false;
+            this.grpOwners.Text = "Owners";
             // 
             // errorProvider
             // 
@@ -226,18 +225,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 273);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.grpOwners);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmUpdateOwner";
-            this.Text = "frmUpdateOwner";
+            this.Text = "Update Owner";
             this.Load += new System.EventHandler(this.frmUpdateOwner_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
+            this.grpOwners.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -261,7 +260,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ListBox lstOwners;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grpOwners;
         private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

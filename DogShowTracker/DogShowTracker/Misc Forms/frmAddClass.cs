@@ -36,7 +36,8 @@ namespace DogShowTracker
                             VALUES
                             ('{className}');";
             int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            txtClass.Clear();
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace DogShowTracker
             if (DatabaseHelper.ValueExists("Class", $"'{className}'", "Classes"))
             {
                 isValid = false;
-                MessageBox.Show("A class with that name already exists", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtClass, "A class with that name already exists");
             }
             return isValid;
         }

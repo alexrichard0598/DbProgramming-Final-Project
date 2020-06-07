@@ -268,9 +268,9 @@
             // 
             // btnChangeOwnership
             // 
-            this.btnChangeOwnership.Location = new System.Drawing.Point(627, 14);
+            this.btnChangeOwnership.Location = new System.Drawing.Point(627, 12);
             this.btnChangeOwnership.Name = "btnChangeOwnership";
-            this.btnChangeOwnership.Size = new System.Drawing.Size(106, 23);
+            this.btnChangeOwnership.Size = new System.Drawing.Size(106, 24);
             this.btnChangeOwnership.TabIndex = 35;
             this.btnChangeOwnership.Text = "Change Ownership";
             this.btnChangeOwnership.UseVisualStyleBackColor = true;

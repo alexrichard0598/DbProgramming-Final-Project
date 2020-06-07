@@ -29,7 +29,7 @@ namespace DogShowTracker
         public override void Reload()
         {
             UIMethods.FillListControl(lstColours, "Colour", "ColourID", LoadFormData.ColourNames());
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Colours loaded");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Colours loaded");
         }
 
         private void GetColourInfo()
@@ -37,14 +37,14 @@ namespace DogShowTracker
             int id = Convert.ToInt32(lstColours.SelectedValue);
             string sql = $"Select Colour FROM Colours WHERE ColourID = {id}";
             txtColourName.Text = DatabaseHelper.ExecuteScaler(sql).ToString();
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Colour info loaded");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Colour info loaded");
         }
 
         private void DeleteColour()
         {
             int id = Convert.ToInt32(lstColours.SelectedValue);
 
-            if (DatabaseHelper.ValueExists("ColourID", id.ToString(), "Breeds"))
+            if (DatabaseHelper.ValueExists("PrimaryCoatColour", id.ToString(), "Breeds") || DatabaseHelper.ValueExists("SecondaryCoatColour", id.ToString(), "Breeds"))
             {
                 MessageBox.Show("Cannot delete colour that is referenced by a breed", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -58,7 +58,8 @@ namespace DogShowTracker
             if (UIMethods.ConfirmationPrompt($"Are you sure you want to delete {colourName} breed?"))
             {
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+                Reload();
             }
 
         }
@@ -70,30 +71,30 @@ namespace DogShowTracker
         private bool ValidateFields()
         {
             bool isValid = true;
-            string errorMsg = "";
+            errorProvider.Clear();
             colourName = DatabaseHelper.SanitizeUserInput(txtColourName.Text);
             if (string.IsNullOrEmpty(colourName))
             {
-                errorMsg += "Colour Name cannot be blank. ";
+                errorProvider.SetError(txtColourName, "Colour Name cannot be blank. ");
                 isValid = false;
-            }
-            if (DatabaseHelper.ValueExists("Class", $"'{colourName}'", "Classes"))
+            } 
+            else if (DatabaseHelper.ValueExists("Colour", $"'{colourName}'", "Colours"))
             {
                 isValid = false;
-                errorMsg += "A class with that name already exists";
+                errorProvider.SetError(txtColourName, "A class with that name already exists");
             }
-            if (!isValid) MessageBox.Show(errorMsg.Trim(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return isValid;
         }
 
         private void UpdateColour()
         {
             int id = Convert.ToInt32(lstColours.SelectedValue);
-            if (!ValidateFields())
+            if (ValidateFields())
             {
-                string sql = $"UPDATE Classes WHERE ClassID = {id} SET Class = {colourName}";
+                string sql = $"UPDATE Colours SET Colour = '{colourName}' WHERE ColourID = {id};";
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+                Reload();
             }
         }
 

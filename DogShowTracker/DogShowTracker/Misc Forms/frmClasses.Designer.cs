@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtClassName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstClasses = new System.Windows.Forms.ListBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -45,7 +48,7 @@
             this.groupBox1.Controls.Add(this.txtClassName);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(217, 82);
+            this.groupBox1.Size = new System.Drawing.Size(231, 82);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Class Info";
@@ -82,7 +85,7 @@
             this.groupBox2.Controls.Add(this.lstClasses);
             this.groupBox2.Location = new System.Drawing.Point(12, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(217, 278);
+            this.groupBox2.Size = new System.Drawing.Size(231, 278);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Classes";
@@ -92,15 +95,19 @@
             this.lstClasses.FormattingEnabled = true;
             this.lstClasses.Location = new System.Drawing.Point(6, 19);
             this.lstClasses.Name = "lstClasses";
-            this.lstClasses.Size = new System.Drawing.Size(203, 251);
+            this.lstClasses.Size = new System.Drawing.Size(219, 251);
             this.lstClasses.TabIndex = 4;
             this.lstClasses.SelectedIndexChanged += new System.EventHandler(this.lstClasses_SelectedIndexChanged);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frmClasses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(245, 391);
+            this.ClientSize = new System.Drawing.Size(255, 391);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmClasses";
@@ -109,6 +116,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -121,5 +129,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TextBox txtClassName;
         private System.Windows.Forms.ListBox lstClasses;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

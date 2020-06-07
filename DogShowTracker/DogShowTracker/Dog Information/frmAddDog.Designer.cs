@@ -78,7 +78,7 @@
             this.grpDogInfo.Controls.Add(this.groupBox1);
             this.grpDogInfo.Location = new System.Drawing.Point(12, 12);
             this.grpDogInfo.Name = "grpDogInfo";
-            this.grpDogInfo.Size = new System.Drawing.Size(516, 285);
+            this.grpDogInfo.Size = new System.Drawing.Size(525, 285);
             this.grpDogInfo.TabIndex = 17;
             this.grpDogInfo.TabStop = false;
             this.grpDogInfo.Text = "Dog Information";
@@ -230,7 +230,7 @@
             this.groupBox3.Controls.Add(this.dtpDateBanned);
             this.groupBox3.Location = new System.Drawing.Point(247, 111);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(258, 70);
+            this.groupBox3.Size = new System.Drawing.Size(272, 70);
             this.groupBox3.TabIndex = 34;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Banned";
@@ -273,7 +273,7 @@
             this.groupBox2.Controls.Add(this.dtpChampionshipDate);
             this.groupBox2.Location = new System.Drawing.Point(247, 197);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(258, 73);
+            this.groupBox2.Size = new System.Drawing.Size(272, 73);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Championship";
@@ -315,7 +315,7 @@
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Location = new System.Drawing.Point(247, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(258, 77);
+            this.groupBox1.Size = new System.Drawing.Size(272, 77);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Retirement";
@@ -379,7 +379,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 344);
+            this.ClientSize = new System.Drawing.Size(546, 344);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.grpDogInfo);

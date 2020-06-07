@@ -17,7 +17,8 @@ CREATE TABLE UserLogin
 (
 	Username VARCHAR(50) PRIMARY KEY,
 	Pass VARCHAR(50) NOT NULL
-)
+);
+GO
 
 INSERT INTO UserLogin
 	(Username, Pass)
@@ -26,6 +27,7 @@ INSERT INTO UserLogin
 	('Admin', 'Admin1'),
 	('Dummy', 'Terminal'),
 	('Test', 'File');
+GO
 
 CREATE TABLE Classes
 (
@@ -204,7 +206,7 @@ INSERT INTO Dogs
 	('Pooh',0,30.2,58.6,'2010-11-24',NULL,0,'2014-08-24',1,NULL,0,46),
 	('Piper',0,7.5,29.2,'2005-05-18','2013-06-08',1,NULL,0,NULL,0,18),
 	('Magic',1,22.2,50.2,'2009-07-29','2014-07-22',1,NULL,0,NULL,0,26),
-	('Petunia',1,35.7,63.7,'2000-02-25','2004-09-25',1,'2015-02-14',1,NULL,0,46),
+	('Petunia',1,35.7,63.7,'2000-02-25','2016-09-25',1,'2015-02-14',1,NULL,0,46),
 	('Guffaw',1,31.6,59.9,'2009-12-12',NULL,0,NULL,0,'2010-07-07',1,44),
 	('Thomas',1,7.4,29.0,'2009-03-03','2013-09-12',1,NULL,0,NULL,0,45),
 	('Tar',0,10.0,33.7,'2001-03-01','2006-12-29',1,NULL,0,NULL,0,29),
@@ -259,7 +261,8 @@ CREATE TABLE Owners
 	DateOfRetirement DATE NULL,
 	Retired BIT NOT NULL,
 	CONSTRAINT CK_OWNERS_RetiredDate_MustBeRetired CHECK(NOT(Retired = 0 AND DateOfRetirement IS NOT NULL))
-)
+);
+GO
 
 INSERT INTO Owners
 	([FirstName], [MiddleName], [LastName], [DOB], [Retired], [DateOfRetirement])

@@ -41,13 +41,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.cmbSelectedDogShow = new System.Windows.Forms.ComboBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.grpDogShow = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumDogs)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.grpDogShow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,15 +160,15 @@
             this.cmbSelectedDogShow.TabIndex = 20;
             this.cmbSelectedDogShow.SelectedIndexChanged += new System.EventHandler(this.cmbSelectedDogShow_SelectedIndexChanged);
             // 
-            // groupBox4
+            // grpDogShow
             // 
-            this.groupBox4.Controls.Add(this.cmbSelectedDogShow);
-            this.groupBox4.Location = new System.Drawing.Point(12, 12);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(236, 52);
-            this.groupBox4.TabIndex = 21;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Dog Show To Modify";
+            this.grpDogShow.Controls.Add(this.cmbSelectedDogShow);
+            this.grpDogShow.Location = new System.Drawing.Point(12, 12);
+            this.grpDogShow.Name = "grpDogShow";
+            this.grpDogShow.Size = new System.Drawing.Size(236, 52);
+            this.grpDogShow.TabIndex = 21;
+            this.grpDogShow.TabStop = false;
+            this.grpDogShow.Text = "Dog Show To Modify";
             // 
             // errorProvider
             // 
@@ -179,7 +179,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(264, 320);
-            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.grpDogShow);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdateDogShow);
             this.Controls.Add(this.groupBox3);
@@ -193,7 +193,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudNumDogs)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
+            this.grpDogShow.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -213,7 +213,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.ComboBox cmbSelectedDogShow;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox grpDogShow;
         private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

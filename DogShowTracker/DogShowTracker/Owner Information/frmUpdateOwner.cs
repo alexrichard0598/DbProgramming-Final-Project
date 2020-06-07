@@ -30,12 +30,12 @@ namespace DogShowTracker
         {
             id = Convert.ToInt32(lstOwners.SelectedValue);
             retired = chkRetired.Checked ? 1 : 0;
-            fName = txtFName.Text;
-            mName = txtMName.Text;
-            lName = txtLName.Text;
+            fName = DatabaseHelper.SanitizeUserInput(txtFName.Text);
+            mName = DatabaseHelper.SanitizeUserInput(txtMName.Text).Length == 0? "NULL": DatabaseHelper.SanitizeUserInput(txtMName.Text);
+            lName = DatabaseHelper.SanitizeUserInput(txtLName.Text);
             dob = dtpDOB.Value.ToString("yyyy-MM-dd");
             age = Convert.ToInt32(DateTime.Now.Subtract(dtpDOB.Value).TotalDays / 365);
-            dateOfRetirement = retired == 1 ? "NULL" : $"'{dtpDateOfRetirement.Value.ToString("yyyy-MM-dd")}'";
+            dateOfRetirement = retired == 0 ? "NULL" : $"'{dtpDateOfRetirement.Value.ToString("yyyy-MM-dd")}'";
         }
 
         private bool VerifyFields()
@@ -63,7 +63,7 @@ namespace DogShowTracker
                 errorProvider.SetError(dtpDOB, "Owners must be at least 18 years old");
                 isValid = false;
             }
-            if (retired == 1 && DateTime.Parse(dateOfRetirement) < DateTime.Parse(dob).AddYears(18))
+            if (retired == 1 && DateTime.Parse(dateOfRetirement.Replace("'", "")) < DateTime.Parse(dob).AddYears(18))
             {
                 errorProvider.SetError(dtpDateOfRetirement, "Cannot retire before 18 years of age");
                 isValid = false;
@@ -71,7 +71,7 @@ namespace DogShowTracker
             if (isValid && DatabaseHelper.ValueChanged("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners", "OwnerID", id)
                 && DatabaseHelper.ValueExists("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners"))
             {
-                if (DialogResult.Yes == MessageBox.Show("A owner with that name already exists, are you sure you wish to change owner name that?",
+                if (DialogResult.No == MessageBox.Show("A owner with that name already exists, are you sure you wish to change owner name that?",
                     "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     isValid = false;
             }
@@ -84,10 +84,12 @@ namespace DogShowTracker
             GetUserData();
             if (VerifyFields())
             {
-                string sql = $@"UPDATE Owners WHERE OwnerID = {id} SET FirstName = {fName}, MiddleName = {mName}, LastName = {lName}, DOB = '{dob}', 
-                            DateOfRetirement = {dateOfRetirement}, Retired = {retired}";
+                string sql = $@"UPDATE Owners 
+                                SET FirstName = '{fName}', MiddleName = {mName}, LastName = '{lName}', DOB = '{dob}', 
+                                    DateOfRetirement = {dateOfRetirement}, Retired = {retired}
+                                WHERE OwnerID = {id} ";
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
             }
         }
 
@@ -104,7 +106,7 @@ namespace DogShowTracker
             txtLName.Text = row["LastName"].ToString();
             dtpDOB.Value = Convert.ToDateTime(row["DOB"]);
 
-            UIMethods.PickDateTimePicker(dtpDateOfRetirement, row["DateOfRetirement"]);
+            UIMethods.PickDateTimePicker(dtpDateOfRetirement, row["DateOfRetirement"], false);
             chkRetired.Checked = Convert.ToBoolean(row["Retired"]);
         }
 

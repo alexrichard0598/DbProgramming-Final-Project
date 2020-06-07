@@ -45,7 +45,7 @@ namespace DogShowTrackerCL
         /// <returns>DogID, Dog</returns>
         public static DataTable DogNames()
         {
-            string sql = "SELECT [DogID], [Name] FROM Dogs ORDER BY [Name];";
+            string sql = "SELECT [DogID], RIGHT('000'+CAST([DogID] AS VARCHAR), 3) + ' '+ CHAR(151) +' ' + [Name] AS [Name] FROM Dogs ORDER BY Dogs.Name;";
             return DatabaseHelper.GetDataTable(sql);
         }
 
@@ -55,7 +55,9 @@ namespace DogShowTrackerCL
         /// <returns>OwnerID, OwnerName</returns>
         public static DataTable OwnerNamesCombined()
         {
-            string sql = "SELECT [OwnerID], FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName FROM Owners ORDER BY LastName;";
+            string sql = @"SELECT [OwnerID], 
+		                        CAST(DOB AS VARCHAR) + ' ' + CHAR(150) + ' ' + FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName AS OwnerName 
+	                        FROM Owners ORDER BY LastName, Firstname, MiddleName;";
             return DatabaseHelper.GetDataTable(sql);
         }
 

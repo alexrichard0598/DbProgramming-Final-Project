@@ -83,7 +83,7 @@ namespace DogShowTracker
 	                    VALUES
 	                    ({ownerID},{dogID},'{startDate}', {endDate});";
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) inserted");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) inserted");
                 Reload();
             }
         }
@@ -259,7 +259,7 @@ namespace DogShowTracker
 	                            AND StartOfOwnership = '{startDate}';
                             ";
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) updated");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) updated");
                 Reload();
             }
 
@@ -288,7 +288,7 @@ namespace DogShowTracker
 	                            AND StartOfOwnership = '{startDate}';
                             ";
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
                 Reload();
             }
 

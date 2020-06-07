@@ -176,7 +176,7 @@
             this.Controls.Add(this.grpBreeds);
             this.Controls.Add(this.grpBreedInfo);
             this.Name = "frmUpdateBreed";
-            this.Text = "frmUpdateBreed";
+            this.Text = "Update Breed";
             this.Load += new System.EventHandler(this.frmUpdateBreed_Load);
             this.grpBreeds.ResumeLayout(false);
             this.grpBreedInfo.ResumeLayout(false);

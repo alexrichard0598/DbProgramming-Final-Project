@@ -29,7 +29,7 @@ namespace DogShowTracker
         /// </summary>
         private void PopulateBreedsList()
         {
-            UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", LoadFormData.BreedNames());
+            UIMethods.FillListControl(cmbBreed, "Breed", "BreedID", LoadFormData.BreedNames(), true);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace DogShowTracker
             {
                 isValid = false;
                 errorProvider.SetError(chkBanned, "Cannot ban a retired dog");
-                errorProvider.SetError(chkRetired, "A banned dog cannot retired");
+                errorProvider.SetError(chkRetired, "A banned dog cannot be retired");
             }
             if (chkChampion.Checked)
             {
@@ -132,8 +132,10 @@ namespace DogShowTracker
             }
             if (DatabaseHelper.ValueExists("Name", $"'{name}'", "Dogs"))
             {
-                if (isValid && DialogResult.Yes == MessageBox.Show("A dog with that name already exists, are you sure you wish to add this dog?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if (isValid && DialogResult.No == MessageBox.Show("A dog with that name already exists, are you sure you wish to add this dog?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
                     isValid = false;
+                }
             }
             return isValid;
         }
@@ -150,7 +152,9 @@ namespace DogShowTracker
 	                            ('{name}', {sex}, {weight}, {height}, '{dob}', {dateRetired}, {retired}, 
                                 {dateChampionship}, {champion}, {dateBanned}, {banned}, {breedId});";
             int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            UIMethods.ClearControls(Controls);
+            rdoMale.Checked = true;
         }
 
         /// <summary>

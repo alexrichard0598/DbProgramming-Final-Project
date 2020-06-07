@@ -23,7 +23,7 @@ namespace DogShowTracker
         public override void Reload()
         {
             UIMethods.FillListControl(lstClasses, "Class", "ClassID", LoadFormData.ClassNames());
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Classes loaded");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Classes loaded");
         }
 
         private void GetClassInfo()
@@ -31,13 +31,13 @@ namespace DogShowTracker
             int id = Convert.ToInt32(lstClasses.SelectedValue);
             string sql = $"SELECT Class FROM Classes WHERE ClassID = {id}";
             txtClassName.Text = DatabaseHelper.ExecuteScaler(sql).ToString();
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Class info loaded");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Class info loaded");
         }
 
         private void DeleteClass()
         {
             int id = Convert.ToInt32(lstClasses.SelectedValue);
-            if (DatabaseHelper.ValueExists("ClassID", id.ToString(), "Breeds"))
+            if (DatabaseHelper.ValueExists("Classification", id.ToString(), "Breeds"))
             {
                 MessageBox.Show("Cannot delete class that is referenced by a breed", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -48,10 +48,11 @@ namespace DogShowTracker
             string sqlClassName = $"SELECT [Class] FROM Classes WHERE ClassID = {id}";
             string className = DatabaseHelper.ExecuteScaler(sqlClassName).ToString();
 
-            if (UIMethods.ConfirmationPrompt($"Are you sure you want to delete {className} breed?"))
+            if (UIMethods.ConfirmationPrompt($"Are you sure you want to delete {className} class?"))
             {
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+                Reload();
             }
 
         }
@@ -63,30 +64,30 @@ namespace DogShowTracker
         private bool ValidateFields()
         {
             bool isValid = true;
-            string errorMsg = "";
+            errorProvider.Clear();
             className = DatabaseHelper.SanitizeUserInput(txtClassName.Text);
             if (string.IsNullOrEmpty(className))
             {
-                errorMsg += "Colour Name cannot be blank. ";
+                errorProvider.SetError(txtClassName, "Colour Name cannot be blank. ");
                 isValid = false;
             }
-            if (DatabaseHelper.ValueExists("Class", $"'{className}'", "Classes"))
+            else if (DatabaseHelper.ValueExists("Class", $"'{className}'", "Classes"))
             {
                 isValid = false;
-                errorMsg += "A class with that name already exists";
+                errorProvider.SetError(txtClassName, "A class with that name already exists");
             }
-            if (!isValid) MessageBox.Show(errorMsg.Trim(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return isValid;
         }
 
         private void UpdateClass()
         {
             int id = Convert.ToInt32(lstClasses.SelectedValue);
-            if (!ValidateFields())
+            if (ValidateFields())
             {
-                string sql = $"UPDATE Classes WHERE ClassID = {id} SET Class = {className}";
+                string sql = $"UPDATE Classes SET Class = '{className}' WHERE ClassID = {id};";
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+                Reload();
             }
         }
 

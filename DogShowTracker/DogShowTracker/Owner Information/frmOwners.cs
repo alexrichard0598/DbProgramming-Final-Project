@@ -29,7 +29,7 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbSelectOwner, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
             currentID = Convert.ToInt32(OwnerNavigation()["FirstID"]);
             LoadOwnerDetails();
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Owners loaded");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Owners loaded");
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace DogShowTracker
             chkRetired.Checked = retired;
 
             GetOwnership();
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Owner info loaded");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Owner info loaded");
         }
 
         /// <summary>
@@ -101,15 +101,8 @@ namespace DogShowTracker
                 int rowIndex = dgOwnership.SelectedCells[0].RowIndex;
                 int id = Convert.ToInt32(dgOwnership.Rows[rowIndex].Cells["ID"].Value);
 
-                Form form = UIMethods.OpenForm(this.MdiParent, new frmDogs());
-                foreach (Control ctrl in form.Controls)
-                {
-                    if (ctrl.Name == "grpDogs")
-                    {
-                        ((ListBox)ctrl.Controls[0]).SelectedValue = id;
-                        break;
-                    }
-                }
+                Form form = UIMethods.OpenForm(MdiParent, new frmDogs());
+                ((ListBox)form.Controls["grpDogs"].Controls["lstDogs"]).SelectedValue = id;
             }
             catch (Exception ex)
             {
@@ -126,7 +119,7 @@ namespace DogShowTracker
             }
             string sql = $"DELETE FROM Owners WHERE OwnerID = {currentID};";
             int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
         }
         #endregion
 
@@ -205,7 +198,8 @@ namespace DogShowTracker
         {
             try
             {
-                UIMethods.OpenForm(MdiParent, new frmChangeOwnership());
+                Form form = UIMethods.OpenForm(MdiParent, new frmChangeOwnership());
+                ((ComboBox)form.Controls["grpByOwner"].Controls["grpNames"].Controls["cmbOwners"]).SelectedValue = cmbSelectOwner.SelectedValue;
             }
             catch (Exception ex)
             {
@@ -217,7 +211,8 @@ namespace DogShowTracker
         {
             try
             {
-                // TODO: Change Owner
+                Form form = UIMethods.OpenForm(MdiParent, new frmUpdateOwner());
+                ((ListBox)form.Controls["grpOwners"].Controls["lstOwners"]).SelectedValue = cmbSelectOwner.SelectedValue;
             }
             catch (Exception ex)
             {

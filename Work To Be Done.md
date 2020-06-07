@@ -80,7 +80,7 @@
 - ~~Update Class~~
 - ~~Delete Class~~
 
-## Prevent Adding Duplicated
+## ~~Prevent Adding Duplicated~~
 
 - ~~Breeds~~
   - ~~Same Name~~
@@ -89,10 +89,21 @@
 - ~~Classes~~
   - ~~Same Name~~
 - ~~Ownership~~
-  - Same Dog, Owner and Start Date
+  - ~~Same Dog, Owner and Start Date~~
 - ~~Owners~~
   - ~~Prompt when exact name match~~
 - ~~Dog Shows~~
   - ~~Start Date and Name Must be the same~~
 - ~~Dog~~
   - ~~Prompt when same name~~
+
+## Fixes to Apply
+
+- Test all user input (Continue at Ownership)
+- Should reload all forms when value is created, updated, or deleted
+  - MDIParent should have a public method to do this.
+  - Clear field of the form which created (if any)
+- Reload form should keep currently selected id
+  - Store the current id in a temp variable and then apply it to the appropriate combobox/listbox
+- Prevent Resize on all forms
+- Check Names on all forms

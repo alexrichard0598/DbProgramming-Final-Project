@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.cmbOwners = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpByOwner = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstOwnership = new System.Windows.Forms.ListBox();
             this.btnChange = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.grpNames = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbDogs = new System.Windows.Forms.ComboBox();
@@ -46,9 +46,9 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox1.SuspendLayout();
+            this.grpByOwner.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.grpNames.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -64,21 +64,21 @@
             this.cmbOwners.TabIndex = 0;
             this.cmbOwners.SelectedIndexChanged += new System.EventHandler(this.cmbOwners_SelectedIndexChanged);
             // 
-            // groupBox1
+            // grpByOwner
             // 
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.btnChange);
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(255, 408);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "By Owner";
+            this.grpByOwner.Controls.Add(this.btnDelete);
+            this.grpByOwner.Controls.Add(this.groupBox2);
+            this.grpByOwner.Controls.Add(this.btnChange);
+            this.grpByOwner.Controls.Add(this.btnAdd);
+            this.grpByOwner.Controls.Add(this.grpNames);
+            this.grpByOwner.Controls.Add(this.groupBox3);
+            this.grpByOwner.Controls.Add(this.groupBox4);
+            this.grpByOwner.Location = new System.Drawing.Point(12, 12);
+            this.grpByOwner.Name = "grpByOwner";
+            this.grpByOwner.Size = new System.Drawing.Size(255, 408);
+            this.grpByOwner.TabIndex = 2;
+            this.grpByOwner.TabStop = false;
+            this.grpByOwner.Text = "By Owner";
             // 
             // btnDelete
             // 
@@ -129,18 +129,18 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // groupBox5
+            // grpNames
             // 
-            this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.cmbOwners);
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.cmbDogs);
-            this.groupBox5.Location = new System.Drawing.Point(6, 19);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(236, 75);
-            this.groupBox5.TabIndex = 10;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Names";
+            this.grpNames.Controls.Add(this.label1);
+            this.grpNames.Controls.Add(this.cmbOwners);
+            this.grpNames.Controls.Add(this.label2);
+            this.grpNames.Controls.Add(this.cmbDogs);
+            this.grpNames.Location = new System.Drawing.Point(6, 19);
+            this.grpNames.Name = "grpNames";
+            this.grpNames.Size = new System.Drawing.Size(236, 75);
+            this.grpNames.TabIndex = 10;
+            this.grpNames.TabStop = false;
+            this.grpNames.Text = "Names";
             // 
             // label1
             // 
@@ -226,14 +226,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(279, 432);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpByOwner);
             this.Name = "frmChangeOwnership";
             this.Text = "Change Ownership";
             this.Load += new System.EventHandler(this.frmChangeOwnership_Load);
-            this.groupBox1.ResumeLayout(false);
+            this.grpByOwner.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.grpNames.ResumeLayout(false);
+            this.grpNames.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -245,7 +245,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cmbOwners;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpByOwner;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbDogs;
         private System.Windows.Forms.ListBox lstOwnership;
@@ -253,7 +253,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox grpNames;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox chkDoesEnd;
         private System.Windows.Forms.DateTimePicker dtpEndDate;

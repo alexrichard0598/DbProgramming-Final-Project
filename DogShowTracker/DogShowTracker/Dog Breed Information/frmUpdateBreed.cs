@@ -29,7 +29,7 @@ namespace DogShowTracker
             string name = DatabaseHelper.SanitizeUserInput(txtName.Text);
             int id = Convert.ToInt32(lstBreeds.SelectedValue);
 
-            if (DatabaseHelper.ValueChanged("Breed", name, "Breeds", "BreedID", id) && DatabaseHelper.ValueExists("Breed", name, "Breeds"))
+            if (DatabaseHelper.ValueChanged("Breed", $"'{name}'", "Breeds", "BreedID", id) && DatabaseHelper.ValueExists("Breed", $"'{name}'", "Breeds"))
             {
                 errorProvider.SetError(txtName, "A breed already exists with that name");
                 return;
@@ -39,9 +39,10 @@ namespace DogShowTracker
             int primaryCoatID = Convert.ToInt32(cmbPrimary.SelectedValue);
             string secondaryCoatID = cmbSecondary.SelectedIndex <= 0 ? "NULL" : Convert.ToInt32(cmbSecondary.SelectedValue).ToString();
 
-            string sql = $"UPDATE Breeds WHERE BreedID = {id} SET Breed = '{name}' Class = {classID}, PrimaryCoatColour = {primaryCoatID}, SecondaryCoatColour = {secondaryCoatID}; ";
+            string sql = $"UPDATE Breeds SET Breed = '{name}', [Classification] = {classID}, PrimaryCoatColour = {primaryCoatID}, SecondaryCoatColour = {secondaryCoatID} WHERE BreedID = {id};";
             int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+            Reload();
         }
 
         private void LoadBreedInfo()

@@ -141,7 +141,6 @@
             // 
             this.dtpDateBanned.Checked = false;
             this.dtpDateBanned.CustomFormat = " ";
-            this.dtpDateBanned.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateBanned.Location = new System.Drawing.Point(115, 42);
             this.dtpDateBanned.Name = "dtpDateBanned";
             this.dtpDateBanned.Size = new System.Drawing.Size(116, 20);
@@ -193,7 +192,6 @@
             // 
             this.dtpChampionshipDate.Checked = false;
             this.dtpChampionshipDate.CustomFormat = " ";
-            this.dtpChampionshipDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpChampionshipDate.Location = new System.Drawing.Point(115, 42);
             this.dtpChampionshipDate.Name = "dtpChampionshipDate";
             this.dtpChampionshipDate.Size = new System.Drawing.Size(116, 20);
@@ -227,7 +225,6 @@
             // 
             this.dtpDateOfRetirement.Checked = false;
             this.dtpDateOfRetirement.CustomFormat = " ";
-            this.dtpDateOfRetirement.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateOfRetirement.Location = new System.Drawing.Point(115, 42);
             this.dtpDateOfRetirement.Name = "dtpDateOfRetirement";
             this.dtpDateOfRetirement.Size = new System.Drawing.Size(116, 20);

@@ -53,7 +53,8 @@ namespace DogShowTracker
 	                        Values
 	                        ('{breedName}', {primaryId}, {secondaryId}, {classId});";
             int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            UIMethods.ClearControls(Controls);
         }
 
         /// <summary>

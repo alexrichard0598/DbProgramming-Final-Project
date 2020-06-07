@@ -28,7 +28,7 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbSearchBreed, "Breed", "BreedID", LoadFormData.BreedNames(), true);
             UIMethods.FillListControl(cmbOwner, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
             UIMethods.FillListControl(lstDogs, "Name", "DogID", LoadFormData.DogNames());
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Dogs info loaded");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Dogs info loaded");
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace DogShowTracker
             cmbOwner.SelectedValue = ownerID;
 
             PopulateDogShows();
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), "Dog info loaded");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Dog info loaded");
         }
 
         /// <summary>
@@ -142,23 +142,8 @@ namespace DogShowTracker
             int dogId = Convert.ToInt32(lstDogs.SelectedValue);
 
             Form form = UIMethods.OpenForm(MdiParent, new frmDogShows());
-            foreach (Control ctrl in form.Controls)
-            {
-                if (ctrl.Name == "grpDogShows")
-                {
-                    ((ComboBox)ctrl.Controls["cmbDogShows"]).SelectedValue = id;
-                    break;
-                }
-
-            }
-            foreach (Control ctrl in form.Controls)
-            {
-                if (ctrl.Name == "lstDogs")
-                {
-                    ((ListBox)ctrl).SelectedValue = dogId;
-                    break;
-                }
-            }
+            ((ComboBox)form.Controls["grpDogShows"].Controls["cmbDogShows"]).SelectedValue = id;
+            ((ListBox)form.Controls["lstDogs"]).SelectedValue = dogId;
         }
 
         /// <summary>
@@ -168,16 +153,8 @@ namespace DogShowTracker
         {
             int id = Convert.ToInt32(cmbOwner.SelectedValue);
 
-            Form form = UIMethods.OpenForm(this.MdiParent, new frmOwners());
-            foreach (Control ctrl in form.Controls)
-            {
-                if (ctrl.Name == "cmbSelectOwner")
-                {
-                    ((ComboBox)ctrl).SelectedValue = id;
-                    break;
-                }
-            }
-
+            Form form = UIMethods.OpenForm(MdiParent, new frmOwners());
+            ((ComboBox)form.Controls["cmbSelectOwner"]).SelectedValue = id;
         }
 
         /// <summary>
@@ -187,15 +164,8 @@ namespace DogShowTracker
         {
             int id = Convert.ToInt32(cmbBreed.SelectedValue);
 
-            Form form = UIMethods.OpenForm(this.MdiParent, new frmBreeds());
-            foreach (Control ctrl in form.Controls)
-            {
-                if (ctrl.Name == "grpBreeds")
-                {
-                    ((ListBox)ctrl.Controls["lstBreeds"]).SelectedValue = id;
-                    break;
-                }
-            }
+            Form form = UIMethods.OpenForm(MdiParent, new frmBreeds());
+            ((ListBox)form.Controls["grpBreeds"].Controls["lstBreeds"]).SelectedValue = id;
         }
 
         private void DeleteDog()
@@ -205,19 +175,19 @@ namespace DogShowTracker
 
             if (DatabaseHelper.ValueExists("DogID", id.ToString(), "DogShowDetails"))
             {
-                errorMsg += "Cannot remove a dog that is in a dog show results. ";
+                errorMsg += "Cannot remove a dog that is in a dog show results\r\n";
             }
             if (DatabaseHelper.ValueExists("DogID", id.ToString(), "DogOwnership"))
             {
-                errorMsg += "Cannot remove a dog that is in an ownership record.";
+                errorMsg += "Cannot remove a dog that is in an ownership record";
             }
 
-            if (errorMsg.Length != 0) MessageBox.Show(errorMsg.Trim(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (errorMsg.Length != 0) errorProvider.SetError(btnDeleteDog, errorMsg.Trim());
             else
             {
                 string sql = $"DELETE FROM Dogs WHERE DogID = {id};";
                 int rowsAffected = DatabaseHelper.SendData(sql);
-                UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+                UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
             }
         }
         #endregion
@@ -240,7 +210,7 @@ namespace DogShowTracker
         {
             try
             {
-                UIMethods.OpenForm(this.MdiParent, new frmAddDog());
+                UIMethods.OpenForm(MdiParent, new frmAddDog());
             }
             catch (Exception ex)
             {
@@ -274,31 +244,8 @@ namespace DogShowTracker
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            foreach (Control ctrl in grpSearch.Controls)
-            {
-                if (ctrl is TextBox)
-                {
-                    ctrl.Text = "";
-                }
-                if (ctrl is ComboBox)
-                {
-                    ((ComboBox)ctrl).SelectedIndex = 0;
-                }
-                if (ctrl is GroupBox)
-                {
-                    foreach (Control subCtrl in ctrl.Controls)
-                    {
-                        if (subCtrl is RadioButton)
-                        {
-                            if (subCtrl.Name == "rdoSexEither") ((RadioButton)subCtrl).Checked = true;
-                        }
-                        if (subCtrl is NumericUpDown)
-                        {
-                            ((NumericUpDown)subCtrl).Value = 0;
-                        }
-                    }
-                }
-            }
+            UIMethods.ClearControls(Controls);
+            rdoSexEither.Checked = true;
             Reload();
         }
         private void btnSearch_Click(object sender, EventArgs e)
@@ -354,7 +301,8 @@ namespace DogShowTracker
         {
             try
             {
-                UIMethods.OpenForm(MdiParent, new frmUpdateDog());
+                Form form = UIMethods.OpenForm(MdiParent, new frmUpdateDog());
+                ((ComboBox)form.Controls["grpDogInfo"].Controls["cmbDogToUpdate"]).SelectedValue = lstDogs.SelectedValue;
             }
             catch (Exception ex)
             {

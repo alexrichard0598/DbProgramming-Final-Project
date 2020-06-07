@@ -125,9 +125,9 @@
             // 
             this.btnAssignDogs.Location = new System.Drawing.Point(12, 42);
             this.btnAssignDogs.Name = "btnAssignDogs";
-            this.btnAssignDogs.Size = new System.Drawing.Size(96, 23);
+            this.btnAssignDogs.Size = new System.Drawing.Size(136, 23);
             this.btnAssignDogs.TabIndex = 32;
-            this.btnAssignDogs.Text = "Change Dogs";
+            this.btnAssignDogs.Text = "Change Dog Show Dogs";
             this.btnAssignDogs.UseVisualStyleBackColor = true;
             this.btnAssignDogs.Click += new System.EventHandler(this.btnAssignDogs_Click);
             // 
@@ -166,6 +166,7 @@
             this.btnChangeDogShow.TabIndex = 36;
             this.btnChangeDogShow.Text = "Change Dog Show";
             this.btnChangeDogShow.UseVisualStyleBackColor = true;
+            this.btnChangeDogShow.Click += new System.EventHandler(this.btnChangeDogShow_Click);
             // 
             // frmDogShows
             // 

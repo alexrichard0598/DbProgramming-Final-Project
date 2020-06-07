@@ -55,7 +55,6 @@ C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowT
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmDogShows.resources
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmChangeOwnership.resources
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmOwners.resources
-C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.MDIParent.resources
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmUpdateOwner.resources
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.Properties.Resources.resources
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmChangeDogShowDogs.resources
@@ -64,3 +63,4 @@ C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowT
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.csproj.CopyComplete
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.exe
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.pdb
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmMDIParent.resources

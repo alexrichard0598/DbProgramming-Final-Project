@@ -82,7 +82,7 @@ namespace DogShowTracker
 	                            VALUES
 	                            ({assignDogID}, {dogShowID}, {rank}, {disqualified});";
             int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
         }
 
         private void RemoveDogShowDog()
@@ -90,7 +90,7 @@ namespace DogShowTracker
             string sql = $@"DELETE DogShowDetails
             	            WHERE DogID = {currentDogID} AND DogShowID = {dogShowID};";
             int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
         }
 
         private bool ValidateInsert()

@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace DogShowTracker
 {
-    public partial class MDIParent : Form
+    public partial class frmMDIParent : Form
     {
 
-        public MDIParent()
+        public frmMDIParent()
         {
             InitializeComponent();
         }
@@ -125,28 +125,36 @@ namespace DogShowTracker
 
         private void MDIParent_Load(object sender, EventArgs e)
         {
-            Hide();
+            try
+            {
+                ////Hide();
 
-            frmSplashScreen splashScreen = new frmSplashScreen();
-            splashScreen.ShowDialog();
-            frmLogin login = new frmLogin();
+                ////frmSplashScreen splashScreen = new frmSplashScreen();
+                ////splashScreen.ShowDialog();
+                ////frmLogin login = new frmLogin();
 
-            if (splashScreen.DialogResult != DialogResult.OK)
-            {
-                Close();
+                ////if (splashScreen.DialogResult != DialogResult.OK)
+                ////{
+                ////    Close();
+                ////}
+                ////else
+                ////{
+                ////    login.ShowDialog();
+                ////}
+                ////if (login.DialogResult == DialogResult.OK)
+                ////{
+                ////    Show();
+                ////}
+                ////else
+                ////{
+                ////    Close();
+                ////}
             }
-            else
+            catch (Exception ex)
             {
-                login.ShowDialog();
+                UIMethods.ErrorHandler(ex);
             }
-            if(login.DialogResult == DialogResult.OK)
-            {
-                Show();
-            }
-            else
-            {
-                Close();
-            }
+
         }
 
         public ToolStripStatusLabel GetStatusLabel()

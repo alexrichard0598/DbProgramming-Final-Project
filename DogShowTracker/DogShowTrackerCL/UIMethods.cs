@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -100,9 +101,44 @@ namespace DogShowTrackerCL
             return DialogResult.Yes == MessageBox.Show(msg, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
+        /// <summary>
+        /// Display the status message in the toolstripstatuslabels provided
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="msg"></param>
         public static void DisplayStatusMessage(ToolStripStatusLabel label, string msg)
         {
             label.Text = msg;
+        }
+
+        public static void ClearControls(Control.ControlCollection controls)
+        {
+            foreach (Control ctrl in controls)
+            {
+                if (ctrl is GroupBox)
+                {
+                    ClearControls(ctrl.Controls);
+                }
+                else if (ctrl is TextBox)
+                {
+                    ((TextBox)ctrl).Clear();
+                }
+                else if (ctrl is CheckBox)
+                {
+                    ((CheckBox)ctrl).Checked = false;
+                }
+                else if (ctrl is DateTimePicker)
+                {
+                    ((DateTimePicker)ctrl).Value = DateTime.Now;
+                } else if (ctrl is NumericUpDown)
+                {
+                    ((NumericUpDown)ctrl).Value = 0;
+                }
+                if (ctrl is ComboBox)
+                {
+                    ((ComboBox)ctrl).SelectedIndex = 0;
+                }
+            }
         }
     }
 }

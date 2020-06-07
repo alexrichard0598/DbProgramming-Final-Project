@@ -29,7 +29,8 @@ namespace DogShowTracker
                             VALUES
                             ('{colourName}');";
             int rowsAffected = DatabaseHelper.SendData(sql);
-            UIMethods.DisplayStatusMessage(((MDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            txtColour.Clear();
+            UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace DogShowTracker
             if (DatabaseHelper.ValueExists("Colour", $"'{colourName}'", "Colours"))
             {
                 isValid = false;
-                MessageBox.Show("A colour with that name already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtColour, "A colour with that name already exists.");
             }
             return isValid;
         }
