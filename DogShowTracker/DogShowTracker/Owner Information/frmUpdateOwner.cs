@@ -68,7 +68,7 @@ namespace DogShowTracker
                 errorProvider.SetError(dtpDateOfRetirement, "Cannot retire before 18 years of age");
                 isValid = false;
             }
-            if (isValid && DatabaseHelper.ValueChanged("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners", "OwnerID", id)
+            if (isValid && DatabaseHelper.ValueChanged("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners", "OwnerID", id.ToString())
                 && DatabaseHelper.ValueExists("FirstName + ' ' + COALESCE(MiddleName + ' ', '') + LastName", $"'{fName + ' ' + mName + ' ' + lName}'", "Owners"))
             {
                 if (DialogResult.No == MessageBox.Show("A owner with that name already exists, are you sure you wish to change owner name that?",

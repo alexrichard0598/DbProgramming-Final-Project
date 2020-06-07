@@ -180,7 +180,7 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(cmbBreed, "Dog breed must be selected");
             }
-            if (DatabaseHelper.ValueChanged("Name", $"'{name}'", "Dogs", "DogID", id) && DatabaseHelper.ValueExists("Name", $"'{name}'", "Dogs"))
+            if (DatabaseHelper.ValueChanged("Name", $"'{name}'", "Dogs", "DogID", id.ToString()) && DatabaseHelper.ValueExists("Name", $"'{name}'", "Dogs"))
             {
                 if (isValid && DialogResult.No == MessageBox.Show($"A dog with that name already exists, are you sure you wish to change the name to {name}?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     isValid = false;

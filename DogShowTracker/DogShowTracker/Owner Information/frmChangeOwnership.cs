@@ -24,8 +24,8 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        int ownerID, dogID, selectedDogID;
-        string startDate, selectedStartDate, endDate;
+        int ownerID, dogID, originalDogID;
+        string startDate, endDate, originalStartDate;
 
         public override void Reload()
         {
@@ -33,18 +33,19 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbOwners, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
         }
 
-        private void LoadUserData()
+        private void LoadUserData(bool isUpdate = false)
         {
             ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
-            dogID = Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]);
-            selectedDogID = Convert.ToInt32(cmbDogs.SelectedValue);
-            startDate = lstOwnership.SelectedValue.ToString().Split(':')[0];
-            selectedStartDate = dtpStartDate.Value.ToString("yyyy-MM-dd");
-            endDate = chkDoesEnd.Checked ? dtpEndDate.Value.ToString("yyyy-MM-dd") : "NULL";
+            originalDogID = isUpdate? Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]) : 0;
+            dogID = Convert.ToInt32(cmbDogs.SelectedValue);
+            originalStartDate = isUpdate? lstOwnership.SelectedValue.ToString().Split(':')[0] : "";
+            startDate = dtpStartDate.Value.ToString("yyyy-MM-dd");
+            endDate = chkDoesEnd.Checked ? $"'{dtpEndDate.Value.ToString("yyyy-MM-dd")}'" : "NULL";
         }
 
         private void LoadOwnership()
         {
+            errorProvider.Clear();
             ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
             string sql = $@"SELECT	CAST(StartOfOwnership AS VARCHAR) + ':' + CAST(Dogs.DogID AS VARCHAR) AS ID, 
                                     CAST(StartOfOwnership AS VARCHAR) + ' ' + CHAR(151) + ' ' + CAST(Dogs.[Name] AS VARCHAR) AS Dog 
@@ -59,12 +60,13 @@ namespace DogShowTracker
 
         private void LoadOwnershipDetails()
         {
-            LoadUserData();
-            cmbDogs.SelectedValue = dogID;
+            ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
+            originalDogID = Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]);
+            cmbDogs.SelectedValue = originalDogID;
             string sql = $@"SELECT	Dogs.DogID AS ID, Dogs.[Name], StartOfOwnership, EndOfOwnership FROM DogOwnership
 	                            LEFT JOIN Dogs
 		                            ON Dogs.DogID = DogOwnership.DogID
-	                             WHERE OwnerID = {ownerID} AND Dogs.DogID = {dogID}
+	                             WHERE OwnerID = {ownerID} AND Dogs.DogID = {originalDogID}
                                  ORDER BY StartOfOwnership;";
             DataRow dt = DatabaseHelper.GetDataRow(sql);
 
@@ -75,7 +77,8 @@ namespace DogShowTracker
 
         private void InsertOwnership()
         {
-            if(VerifyUserData(true))
+            LoadUserData();
+            if(VerifyUserData())
             {
                 string sql = $@"
                     INSERT INTO DogOwnership
@@ -88,9 +91,11 @@ namespace DogShowTracker
             }
         }
 
-        private bool VerifyUserData(bool createRecord = false)
+        private bool VerifyUserData(bool isUpdate = false)
         {
             bool isValid = true;
+
+            errorProvider.Clear();
 
             // Check if the end date is before the start date
             if (chkDoesEnd.Checked && dtpEndDate.Value.Date < dtpStartDate.Value.Date)
@@ -104,9 +109,10 @@ namespace DogShowTracker
 	                FROM
 	                (
 		                SELECT TOP(1) OwnerID FROM DogOwnership 
-			                WHERE DogID = {selectedDogID}
-			                AND StartOfOwnership < '{startDate}'
+			                WHERE DogID = {dogID}
+			                AND StartOfOwnership <= '{startDate}'
 			                AND EndOfOwnership IS NULL
+                            AND OwnerID <> {ownerID}
 			                ORDER BY StartOfOwnership DESC
 	                ) AS Q;";
 
@@ -116,9 +122,10 @@ namespace DogShowTracker
 	                FROM
 	                (
 		                SELECT TOP(1) OwnerID FROM DogOwnership 
-			                WHERE DogID = {selectedDogID}
-			                AND StartOfOwnership < '{startDate}'
+			                WHERE DogID = {dogID}
+			                AND StartOfOwnership <= '{startDate}'
 			                AND EndOfOwnership > '{startDate}'
+                            AND OwnerID <> {ownerID}
 			                ORDER BY StartOfOwnership DESC
 	                ) AS Q;";
 
@@ -128,8 +135,9 @@ namespace DogShowTracker
 	                FROM
 	                (
 		                SELECT OwnerID FROM DogOwnership 
-			                WHERE DogID = {selectedDogID}
-			                AND StartOfOwnership > '{startDate}'
+			                WHERE DogID = {dogID}
+			                AND StartOfOwnership >= '{startDate}'
+                            AND OwnerID <> {ownerID}
 	                ) AS Q;";
 
             // IS END AFTER NEXT RECORD START
@@ -138,26 +146,21 @@ namespace DogShowTracker
 	                FROM
 	                (
 		                SELECT OwnerID FROM DogOwnership 
-			                WHERE DogID = {selectedDogID}
-			                AND StartOfOwnership > '{startDate}'
-			                AND StartOfOwnership < '{endDate}'
+			                WHERE DogID = {dogID}
+			                AND StartOfOwnership >= '{startDate}'
+			                AND StartOfOwnership < {endDate}
+                            AND OwnerID <> {ownerID}
 	                ) AS Q;";
 
             // DUPLICATE RECORD
-            string duplicateRecordEndNotNull = $@"
+            string duplicateRecord = $@"
                 SELECT COUNT(*) FROM DogOwnership
-	                WHERE DogID = {selectedDogID}
-	                AND OwnerID = {ownerID}
-	                AND StartOfOwnership = '{startDate}';";
-
-            string duplicateRecordEndISNull = $@"
-                SELECT COUNT(*) FROM DogOwnership
-	                WHERE DogID = {selectedDogID}
+	                WHERE DogID = {dogID}
 	                AND OwnerID = {ownerID}
 	                AND StartOfOwnership = '{startDate}';";
 
             // Check if duplicate record
-            if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(duplicateRecordEndISNull)) > 0 && createRecord)
+            if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(duplicateRecord)) > 0 && !isUpdate)
             {
                 isValid = false;
                 errorProvider.SetError(cmbOwners, "Ownership record already exists");
@@ -211,7 +214,7 @@ namespace DogShowTracker
             // Check if the dog is born after the start date
             if(
                 DateTime.Parse(startDate).Date <
-                DateTime.Parse(DatabaseHelper.ExecuteScaler($"SELECT DOB FROM Dogs WHERE DogID = {selectedDogID};").ToString()).Date
+                DateTime.Parse(DatabaseHelper.ExecuteScaler($"SELECT DOB FROM Dogs WHERE DogID = {dogID};").ToString()).Date
               )
             {
                 isValid = false;
@@ -221,18 +224,18 @@ namespace DogShowTracker
             // Check if the dog is retired or disqualfied before the start date
             if (
                 (
-                    DatabaseHelper.ExecuteScaler($"SELECT DateOfRetirement FROM Dogs WHERE DogID = {selectedDogID};") != DBNull.Value
+                    DatabaseHelper.ExecuteScaler($"SELECT DateOfRetirement FROM Dogs WHERE DogID = {dogID};") != DBNull.Value
                     && DateTime.Parse(startDate).Date >
                     DateTime.Parse
                     (
-                        DatabaseHelper.ExecuteScaler($"SELECT DateOfRetirement FROM Dogs WHERE DogID = {selectedDogID};"
+                        DatabaseHelper.ExecuteScaler($"SELECT DateOfRetirement FROM Dogs WHERE DogID = {dogID};"
                     ).ToString()).Date
                 ) || (
-                    DatabaseHelper.ExecuteScaler($"SELECT DateOfDisqualification FROM Dogs WHERE DogID = {selectedDogID};") != DBNull.Value
+                    DatabaseHelper.ExecuteScaler($"SELECT DateOfDisqualification FROM Dogs WHERE DogID = {dogID};") != DBNull.Value
                     && DateTime.Parse(startDate).Date >
                     DateTime.Parse
                     (
-                        DatabaseHelper.ExecuteScaler($"SELECT DateOfDisqualification FROM Dogs WHERE DogID = {selectedDogID};"
+                        DatabaseHelper.ExecuteScaler($"SELECT DateOfDisqualification FROM Dogs WHERE DogID = {dogID};"
                     ).ToString()).Date
                 )
                )
@@ -246,17 +249,18 @@ namespace DogShowTracker
 
         private void ModifyOwnership()
         {
-            if (VerifyUserData())
+            LoadUserData(true);
+            if (VerifyUserData(true))
             {
-                LoadUserData();
+                LoadUserData(true);
                 string sql = $@"
                             UPDATE DogOwnership
-	                            SET DogID = {selectedDogID},
-		                            StartOfOwnership = '{selectedStartDate}',
-		                            EndOfOwnership = '{endDate}'
+	                            SET DogID = {dogID},
+		                            StartOfOwnership = '{startDate}',
+		                            EndOfOwnership = {endDate}
 	                            WHERE OwnerID = {ownerID}
-	                            AND DogID = {dogID}
-	                            AND StartOfOwnership = '{startDate}';
+	                            AND DogID = {originalDogID}
+	                            AND StartOfOwnership = '{originalStartDate}';
                             ";
                 int rowsAffected = DatabaseHelper.SendData(sql);
                 UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) updated");

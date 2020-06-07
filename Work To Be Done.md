@@ -99,7 +99,7 @@
 
 ## Fixes to Apply
 
-- Test all user input (Continue at Ownership)
+- ~~Test all user input (Continue at Ownership)~~
 - Should reload all forms when value is created, updated, or deleted
   - MDIParent should have a public method to do this.
   - Clear field of the form which created (if any)

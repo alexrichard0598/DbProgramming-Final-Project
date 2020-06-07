@@ -71,6 +71,7 @@ namespace DogShowTracker
         private void LoadDogShowDetails()
         {
             GetUserData();
+            cmbDogs.SelectedIndex = 0;
             UIMethods.FillListControl(lstDogs, "Dog", "DogID", LoadFormData.DogShowDogs(dogShowID));
             LoadDogShowDogsCount();
         }
@@ -104,12 +105,12 @@ namespace DogShowTracker
             if (DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR)", $"'{assignDogID},{dogShowID}'", "DogShowDetails"))
             {
                 isValid = false;
-                errorMsg += "Dog is already in dog show. ";
+                errorProvider.SetError(cmbDogs, "Dog is already in dog show");
             }
             if (GetDogShowDogsCount() == GetMaxDogShowDogs())
             {
                 isValid = false;
-                errorMsg += "Dog show already has max number of dogs.";
+                errorProvider.SetError(txtNumDogs, "Dog show already has max number of dogs.");
             }
             if (disqualified == 0 && Convert.ToInt32(rank) <= 0)
             {
@@ -121,7 +122,7 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(nudRank, "Rank cannot be higher than the max number of dogs");
             }
-            if (int.TryParse(rank, out _) && DatabaseHelper.ValueExists("Rank", rank, "DogShowDetails"))
+            if (disqualified == 0 && DatabaseHelper.ValueExists("CAST(Rank AS VARCHAR) + CAST(DogShowID AS VARCHAR)", $"'{rank.ToString() + dogShowID.ToString()}'", "DogShowDetails"))
             {
                 isValid = false;
                 errorProvider.SetError(nudRank, "A dog already has that rank");
@@ -163,7 +164,7 @@ namespace DogShowTracker
             GetUserData();
 
             bool isValid = true;
-            if (!DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR)", $"{assignDogID},{dogShowID}", "DogShowDetails"))
+            if (!DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR)", $"'{assignDogID},{dogShowID}'", "DogShowDetails"))
             {
                 isValid = false;
                 MessageBox.Show("Dog cannot be modified as dog is not in the selected dog show", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -178,7 +179,10 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(nudRank, "Rank cannot be higher than the max number of dogs");
             }
-            if (DatabaseHelper.ValueExists("CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR) + ',' + CAST(Rank AS VARCHAR)", $"{assignDogID},{dogShowID},{rank}", "DogShowDetails"))
+            if (
+                DatabaseHelper.ValueExists("CAST(DogShowID AS VARCHAR) + ',' + CAST(Rank AS VARCHAR)", $"'{dogShowID},{rank}'", "DogShowDetails")
+                && DatabaseHelper.ValueChanged("Rank", rank, "DogShowDetails", "CAST(DogID AS VARCHAR) + ',' + CAST(DogShowID AS VARCHAR)", $"'{assignDogID},{dogShowID}'")
+                )
             {
                 isValid = false;
                 errorProvider.SetError(nudRank, "A dog already has that rank");

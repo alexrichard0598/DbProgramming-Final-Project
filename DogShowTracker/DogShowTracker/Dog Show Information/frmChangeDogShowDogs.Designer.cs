@@ -86,7 +86,7 @@
             this.cmbDogs.FormattingEnabled = true;
             this.cmbDogs.Location = new System.Drawing.Point(6, 19);
             this.cmbDogs.Name = "cmbDogs";
-            this.cmbDogs.Size = new System.Drawing.Size(210, 21);
+            this.cmbDogs.Size = new System.Drawing.Size(186, 21);
             this.cmbDogs.TabIndex = 3;
             // 
             // groupBox2
@@ -178,7 +178,7 @@
             // 
             // txtNumDogs
             // 
-            this.txtNumDogs.Location = new System.Drawing.Point(255, 21);
+            this.txtNumDogs.Location = new System.Drawing.Point(236, 21);
             this.txtNumDogs.Name = "txtNumDogs";
             this.txtNumDogs.ReadOnly = true;
             this.txtNumDogs.Size = new System.Drawing.Size(42, 20);
@@ -187,7 +187,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 24);
+            this.label1.Location = new System.Drawing.Point(143, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 0;

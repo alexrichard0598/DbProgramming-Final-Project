@@ -79,15 +79,15 @@ namespace DogShowTracker
 
         private void DeleteDogShow()
         {
-            int id = Convert.ToInt32(cmbDogShows.Text);
-
+            int id = Convert.ToInt32(cmbDogShows.SelectedValue);
+            errorProvider.Clear();
             if (DatabaseHelper.ValueExists("DogShowID", id.ToString(), "DogShowDetails"))
             {
-                MessageBox.Show("Cannot remove a dog show that is has dogs in the results.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(btnDeleteDogShow, "Cannot remove a dog show that is has dogs in the results");
                 return;
             }
 
-            string sql = $"DELETE FROM Dogs WHERE DogID = {id};";
+            string sql = $"DELETE FROM DogShows WHERE DogShowID = {id};";
             int rowsAffected = DatabaseHelper.SendData(sql);
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
         }

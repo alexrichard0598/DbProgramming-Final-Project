@@ -29,7 +29,7 @@ namespace DogShowTracker
             string name = DatabaseHelper.SanitizeUserInput(txtName.Text);
             int id = Convert.ToInt32(lstBreeds.SelectedValue);
 
-            if (DatabaseHelper.ValueChanged("Breed", $"'{name}'", "Breeds", "BreedID", id) && DatabaseHelper.ValueExists("Breed", $"'{name}'", "Breeds"))
+            if (DatabaseHelper.ValueChanged("Breed", $"'{name}'", "Breeds", "BreedID", id.ToString()) && DatabaseHelper.ValueExists("Breed", $"'{name}'", "Breeds"))
             {
                 errorProvider.SetError(txtName, "A breed already exists with that name");
                 return;

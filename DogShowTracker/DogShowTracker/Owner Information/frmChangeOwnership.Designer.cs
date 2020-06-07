@@ -60,7 +60,7 @@
             this.cmbOwners.FormattingEnabled = true;
             this.cmbOwners.Location = new System.Drawing.Point(56, 16);
             this.cmbOwners.Name = "cmbOwners";
-            this.cmbOwners.Size = new System.Drawing.Size(153, 21);
+            this.cmbOwners.Size = new System.Drawing.Size(266, 21);
             this.cmbOwners.TabIndex = 0;
             this.cmbOwners.SelectedIndexChanged += new System.EventHandler(this.cmbOwners_SelectedIndexChanged);
             // 
@@ -75,14 +75,14 @@
             this.grpByOwner.Controls.Add(this.groupBox4);
             this.grpByOwner.Location = new System.Drawing.Point(12, 12);
             this.grpByOwner.Name = "grpByOwner";
-            this.grpByOwner.Size = new System.Drawing.Size(255, 408);
+            this.grpByOwner.Size = new System.Drawing.Size(371, 352);
             this.grpByOwner.TabIndex = 2;
             this.grpByOwner.TabStop = false;
             this.grpByOwner.Text = "By Owner";
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(167, 376);
+            this.btnDelete.Location = new System.Drawing.Point(277, 315);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 13;
@@ -93,9 +93,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lstOwnership);
-            this.groupBox2.Location = new System.Drawing.Point(6, 236);
+            this.groupBox2.Location = new System.Drawing.Point(6, 175);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(236, 134);
+            this.groupBox2.Size = new System.Drawing.Size(346, 134);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selected Ownership";
@@ -105,13 +105,13 @@
             this.lstOwnership.FormattingEnabled = true;
             this.lstOwnership.Location = new System.Drawing.Point(6, 19);
             this.lstOwnership.Name = "lstOwnership";
-            this.lstOwnership.Size = new System.Drawing.Size(224, 108);
+            this.lstOwnership.Size = new System.Drawing.Size(334, 108);
             this.lstOwnership.TabIndex = 2;
             this.lstOwnership.SelectedIndexChanged += new System.EventHandler(this.lstOwnership_SelectedIndexChanged);
             // 
             // btnChange
             // 
-            this.btnChange.Location = new System.Drawing.Point(87, 376);
+            this.btnChange.Location = new System.Drawing.Point(147, 315);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(75, 23);
             this.btnChange.TabIndex = 12;
@@ -121,7 +121,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(6, 376);
+            this.btnAdd.Location = new System.Drawing.Point(6, 315);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 11;
@@ -137,7 +137,7 @@
             this.grpNames.Controls.Add(this.cmbDogs);
             this.grpNames.Location = new System.Drawing.Point(6, 19);
             this.grpNames.Name = "grpNames";
-            this.grpNames.Size = new System.Drawing.Size(236, 75);
+            this.grpNames.Size = new System.Drawing.Size(346, 75);
             this.grpNames.TabIndex = 10;
             this.grpNames.TabStop = false;
             this.grpNames.Text = "Names";
@@ -166,16 +166,16 @@
             this.cmbDogs.FormattingEnabled = true;
             this.cmbDogs.Location = new System.Drawing.Point(56, 43);
             this.cmbDogs.Name = "cmbDogs";
-            this.cmbDogs.Size = new System.Drawing.Size(153, 21);
+            this.cmbDogs.Size = new System.Drawing.Size(266, 21);
             this.cmbDogs.TabIndex = 3;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.chkDoesEnd);
             this.groupBox3.Controls.Add(this.dtpEndDate);
-            this.groupBox3.Location = new System.Drawing.Point(6, 161);
+            this.groupBox3.Location = new System.Drawing.Point(182, 100);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(236, 69);
+            this.groupBox3.Size = new System.Drawing.Size(170, 69);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "End Date";
@@ -197,7 +197,7 @@
             this.dtpEndDate.Enabled = false;
             this.dtpEndDate.Location = new System.Drawing.Point(6, 19);
             this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(203, 20);
+            this.dtpEndDate.Size = new System.Drawing.Size(140, 20);
             this.dtpEndDate.TabIndex = 1;
             // 
             // groupBox4
@@ -205,7 +205,7 @@
             this.groupBox4.Controls.Add(this.dtpStartDate);
             this.groupBox4.Location = new System.Drawing.Point(6, 100);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(236, 55);
+            this.groupBox4.Size = new System.Drawing.Size(170, 69);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Start Date";
@@ -214,7 +214,7 @@
             // 
             this.dtpStartDate.Location = new System.Drawing.Point(6, 19);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(203, 20);
+            this.dtpStartDate.Size = new System.Drawing.Size(140, 20);
             this.dtpStartDate.TabIndex = 0;
             // 
             // errorProvider
@@ -225,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 432);
+            this.ClientSize = new System.Drawing.Size(393, 373);
             this.Controls.Add(this.grpByOwner);
             this.Name = "frmChangeOwnership";
             this.Text = "Change Ownership";

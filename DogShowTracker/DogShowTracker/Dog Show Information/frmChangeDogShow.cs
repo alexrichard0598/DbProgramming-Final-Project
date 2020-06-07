@@ -69,8 +69,9 @@ namespace DogShowTracker
         private bool VerifyFields()
         {
             bool isValid = true;
-            if (DatabaseHelper.ValueChanged("Name", name, "DogShows", "DogID", id) && DatabaseHelper.ValueChanged("StartDate", startDate, "DogShows", "DogShowID", id)
-                && DatabaseHelper.ValueExists("Name + StartDate", $"'{name + startDate}'", "DogShows"))
+            errorProvider.Clear();
+            if (DatabaseHelper.ValueChanged("Name", $"'{name}'", "DogShows", "DogShowID", id.ToString()) && DatabaseHelper.ValueChanged("StartDate", $"'{startDate}'", "DogShows", "DogShowID", id.ToString())
+                && DatabaseHelper.ValueExists("Name + CAST(StartDate AS VARCHAR)", $"'{name + startDate}'", "DogShows"))
             {
                 isValid = false;
                 errorProvider.SetError(txtDogShowName, "A dog show with that name already starts at that date");
@@ -103,7 +104,7 @@ namespace DogShowTracker
             GetUserData();
             if (VerifyFields())
             {
-                string sql = $"UPDATE DogShows WHERE DogShowID = {id} SET Name = {name}, StartDate = {startDate}, EndDate = {endDate}, NumDogs = {numDogs}";
+                string sql = $"UPDATE DogShows SET Name = '{name}', StartDate = '{startDate}', EndDate = '{endDate}', NumDogs = {numDogs} WHERE DogShowID = {id};";
                 int rowsAffected = DatabaseHelper.SendData(sql);
                 UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
             }
@@ -145,7 +146,7 @@ namespace DogShowTracker
             }
         }
 
-        private void btnAddDogShow_Click(object sender, EventArgs e)
+        private void btnChangeDogShow_Click(object sender, EventArgs e)
         {
             try
             {

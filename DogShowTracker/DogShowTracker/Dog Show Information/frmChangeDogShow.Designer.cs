@@ -69,6 +69,7 @@
             this.btnUpdateDogShow.TabIndex = 18;
             this.btnUpdateDogShow.Text = "Change Dog Show";
             this.btnUpdateDogShow.UseVisualStyleBackColor = true;
+            this.btnUpdateDogShow.Click += new System.EventHandler(this.btnChangeDogShow_Click);
             // 
             // groupBox3
             // 
