@@ -1,13 +1,6 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 /*
     Alex Richard
@@ -36,9 +29,9 @@ namespace DogShowTracker
         private void LoadUserData(bool isUpdate = false)
         {
             ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
-            originalDogID = isUpdate? Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]) : 0;
+            originalDogID = isUpdate ? Convert.ToInt32(lstOwnership.SelectedValue.ToString().Split(':')[1]) : 0;
             dogID = Convert.ToInt32(cmbDogs.SelectedValue);
-            originalStartDate = isUpdate? lstOwnership.SelectedValue.ToString().Split(':')[0] : "";
+            originalStartDate = isUpdate ? lstOwnership.SelectedValue.ToString().Split(':')[0] : "";
             startDate = dtpStartDate.Value.ToString("yyyy-MM-dd");
             endDate = chkDoesEnd.Checked ? $"'{dtpEndDate.Value.ToString("yyyy-MM-dd")}'" : "NULL";
         }
@@ -78,7 +71,7 @@ namespace DogShowTracker
         private void InsertOwnership()
         {
             LoadUserData();
-            if(VerifyUserData())
+            if (VerifyUserData())
             {
                 string sql = $@"
                     INSERT INTO DogOwnership
@@ -160,7 +153,7 @@ namespace DogShowTracker
 	                AND StartOfOwnership = '{startDate}';";
 
             // Check if duplicate record
-            if(Convert.ToInt32(DatabaseHelper.ExecuteScaler(duplicateRecord)) > 0 && !isUpdate)
+            if (Convert.ToInt32(DatabaseHelper.ExecuteScaler(duplicateRecord)) > 0 && !isUpdate)
             {
                 isValid = false;
                 errorProvider.SetError(cmbOwners, "Ownership record already exists");
@@ -191,8 +184,8 @@ namespace DogShowTracker
 
 
             // Check if the owner is born after the start date
-            if(
-                DateTime.Parse(startDate).Date < 
+            if (
+                DateTime.Parse(startDate).Date <
                 DateTime.Parse(DatabaseHelper.ExecuteScaler($"SELECT DOB FROM Owners WHERE OwnerID = {ownerID};").ToString()).Date
                )
             {
@@ -212,7 +205,7 @@ namespace DogShowTracker
             }
 
             // Check if the dog is born after the start date
-            if(
+            if (
                 DateTime.Parse(startDate).Date <
                 DateTime.Parse(DatabaseHelper.ExecuteScaler($"SELECT DOB FROM Dogs WHERE DogID = {dogID};").ToString()).Date
               )

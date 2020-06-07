@@ -1,7 +1,7 @@
-﻿using System;
+﻿using DogShowTrackerCL;
+using System;
 using System.Data;
 using System.Windows.Forms;
-using DogShowTrackerCL;
 
 /*
     Alex Richard

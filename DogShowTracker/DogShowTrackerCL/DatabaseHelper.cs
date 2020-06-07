@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
     Alex Richard
@@ -127,7 +123,7 @@ namespace DogShowTrackerCL
 
         public static bool ValueChanged(string fieldToCheck, string valueToCheck, string tableToCheck, string idColumn, string id)
         {
-            
+
             return 0 == Convert.ToInt32(ExecuteScaler($"SELECT COUNT(*) FROM {tableToCheck} WHERE {idColumn} = {id} AND {fieldToCheck} = {valueToCheck}"));
         }
     }

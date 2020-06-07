@@ -1,12 +1,7 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*
@@ -100,7 +95,7 @@ namespace DogShowTracker
             GetValues();
             if (ValidateFields())
             {
-                string sql = 
+                string sql =
                     $@"UPDATE Dogs 
                             SET [Name] = '{name}', Sex = {sex}, [Weight] = {weight}, Height = {height}, DOB = '{dob}', 
                                 DateOfRetirement = {dateRetired}, Retired = {retired}, DateOfChampionship = {dateChampionship}, 

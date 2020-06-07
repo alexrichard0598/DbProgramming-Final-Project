@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -76,14 +75,14 @@ namespace DogShowTrackerCL
         /// <param name="dateObject">The object to set the DateTimePicker to</param>
         public static void PickDateTimePicker(DateTimePicker dateTimePicker, object dateObject, bool nullIsBlank = true)
         {
-            
+
 
             if (DateTime.TryParse(dateObject.ToString(), out DateTime date))
             {
                 dateTimePicker.Value = date;
                 dateTimePicker.Format = DateTimePickerFormat.Long;
             }
-            else if(nullIsBlank)
+            else if (nullIsBlank)
             {
                 dateTimePicker.Value = DateTime.Now;
                 dateTimePicker.CustomFormat = " ";
@@ -130,7 +129,8 @@ namespace DogShowTrackerCL
                 else if (ctrl is DateTimePicker)
                 {
                     ((DateTimePicker)ctrl).Value = DateTime.Now;
-                } else if (ctrl is NumericUpDown)
+                }
+                else if (ctrl is NumericUpDown)
                 {
                     ((NumericUpDown)ctrl).Value = 0;
                 }

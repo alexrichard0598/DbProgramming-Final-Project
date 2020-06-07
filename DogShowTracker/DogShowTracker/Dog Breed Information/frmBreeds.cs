@@ -72,10 +72,10 @@ namespace DogShowTracker
             {
                 int rowsAffected = DatabaseHelper.SendData(sql);
                 UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
-                Reload();
+                ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
         }
-        ((frmMDIParent) MdiParent).ReloadAllChildForms();
+        
         #endregion
 
         private void frmBreeds_Load(object sender, EventArgs e)

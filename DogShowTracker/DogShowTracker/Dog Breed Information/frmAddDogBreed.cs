@@ -1,7 +1,5 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Data;
-using System.Windows.Forms;
 
 /*
     Alex Richard
@@ -85,7 +83,7 @@ namespace DogShowTracker
             if (DatabaseHelper.ValueExists("Breed", $"'{breedName}'", "Breeds"))
             {
                 isValid = false;
-                 errorProvider.SetError(txtBreedName, "A breed with that name already exists");
+                errorProvider.SetError(txtBreedName, "A breed with that name already exists");
             }
             return isValid;
         }

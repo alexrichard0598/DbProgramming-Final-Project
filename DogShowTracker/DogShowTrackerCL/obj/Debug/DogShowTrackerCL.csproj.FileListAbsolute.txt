@@ -8,3 +8,5 @@ C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowT
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\obj\Debug\DogShowTrackerCL.csprojAssemblyReference.cache
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\obj\Debug\DogShowTrackerCL.dll
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\obj\Debug\DogShowTrackerCL.pdb
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\bin\Debug\DogShowTrackerCL.dll.CodeAnalysisLog.xml
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTrackerCL\bin\Debug\DogShowTrackerCL.dll.lastcodeanalysissucceeded

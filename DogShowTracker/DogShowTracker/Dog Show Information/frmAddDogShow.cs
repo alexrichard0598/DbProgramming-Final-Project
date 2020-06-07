@@ -1,7 +1,6 @@
 ﻿using DogShowTrackerCL;
 using System;
 using System.Linq;
-using System.Windows.Forms;
 
 /*
     Alex Richard
@@ -57,7 +56,7 @@ namespace DogShowTracker
             if (DatabaseHelper.ValueExists("Name + CAST(StartDate AS VARCHAR)", $"'{name + start}'", "DogShows"))
             {
                 isValid = false;
-                errorProvider.SetError(txtDogShowName,"A dog show with that name already starts at that date");
+                errorProvider.SetError(txtDogShowName, "A dog show with that name already starts at that date");
             }
             return isValid;
         }

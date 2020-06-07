@@ -1,12 +1,5 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*
@@ -77,7 +70,7 @@ namespace DogShowTracker
             {
                 errorProvider.SetError(txtColourName, "Colour Name cannot be blank. ");
                 isValid = false;
-            } 
+            }
             else if (DatabaseHelper.ValueExists("Colour", $"'{colourName}'", "Colours"))
             {
                 isValid = false;

@@ -25,7 +25,7 @@ namespace DogShowTracker
         {
             age = Convert.ToInt32(DateTime.Now.Subtract(dtpDOB.Value).TotalDays / 365);
             fName = DatabaseHelper.SanitizeUserInput(txtFirstName.Text);
-            mName = DatabaseHelper.SanitizeUserInput(txtMiddleName.Text).Length == 0 ? "NULL" 
+            mName = DatabaseHelper.SanitizeUserInput(txtMiddleName.Text).Length == 0 ? "NULL"
                 : $"'{DatabaseHelper.SanitizeUserInput(txtMiddleName.Text)}'";
             lName = DatabaseHelper.SanitizeUserInput(txtLastName.Text);
             dob = dtpDOB.Value.ToString("yyyy-MM-dd");

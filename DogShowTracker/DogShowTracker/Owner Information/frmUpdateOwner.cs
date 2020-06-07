@@ -1,12 +1,7 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DogShowTracker
@@ -31,7 +26,7 @@ namespace DogShowTracker
             id = Convert.ToInt32(lstOwners.SelectedValue);
             retired = chkRetired.Checked ? 1 : 0;
             fName = DatabaseHelper.SanitizeUserInput(txtFName.Text);
-            mName = DatabaseHelper.SanitizeUserInput(txtMName.Text).Length == 0? "NULL": DatabaseHelper.SanitizeUserInput(txtMName.Text);
+            mName = DatabaseHelper.SanitizeUserInput(txtMName.Text).Length == 0 ? "NULL" : DatabaseHelper.SanitizeUserInput(txtMName.Text);
             lName = DatabaseHelper.SanitizeUserInput(txtLName.Text);
             dob = dtpDOB.Value.ToString("yyyy-MM-dd");
             age = Convert.ToInt32(DateTime.Now.Subtract(dtpDOB.Value).TotalDays / 365);

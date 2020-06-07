@@ -1,12 +1,5 @@
 ﻿using DogShowTrackerCL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DogShowTracker
@@ -30,7 +23,7 @@ namespace DogShowTracker
             {
                 string user = txtUsr.Text;
                 string pass = txtPass.Text;
-                if(pass == DatabaseHelper.ExecuteScaler($"SELECT Pass FROM UserLogin WHERE Username = '{user}'").ToString())
+                if (pass == DatabaseHelper.ExecuteScaler($"SELECT Pass FROM UserLogin WHERE Username = '{user}'").ToString())
                 {
                     DialogResult = DialogResult.OK;
                 }
