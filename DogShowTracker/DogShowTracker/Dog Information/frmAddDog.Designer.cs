@@ -383,6 +383,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.grpDogInfo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmAddDog";
             this.Text = "Add Dog";
             this.Load += new System.EventHandler(this.frmAddDog_Load);

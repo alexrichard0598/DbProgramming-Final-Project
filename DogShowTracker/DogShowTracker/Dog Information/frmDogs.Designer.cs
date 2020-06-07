@@ -745,6 +745,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.grpSearch);
             this.Controls.Add(this.grpDogInfo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmDogs";
             this.Text = "Dogs";
             this.Load += new System.EventHandler(this.frmDogs_Load);

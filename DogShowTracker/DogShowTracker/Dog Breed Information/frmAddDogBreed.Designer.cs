@@ -152,6 +152,7 @@
             this.Controls.Add(this.cmbSecondaryCoat);
             this.Controls.Add(this.cmbPrimaryCoat);
             this.Controls.Add(this.txtBreedName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmAddDogBreed";
             this.Text = "Add Dog Breed";
             this.Load += new System.EventHandler(this.frmAddDogBreed_Load);

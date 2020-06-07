@@ -155,6 +155,7 @@ namespace DogShowTracker
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
             UIMethods.ClearControls(Controls);
             rdoMale.Checked = true;
+            ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
         /// <summary>

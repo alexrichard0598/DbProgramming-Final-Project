@@ -175,6 +175,7 @@
             this.ClientSize = new System.Drawing.Size(675, 223);
             this.Controls.Add(this.grpBreeds);
             this.Controls.Add(this.grpBreedInfo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmUpdateBreed";
             this.Text = "Update Breed";
             this.Load += new System.EventHandler(this.frmUpdateBreed_Load);

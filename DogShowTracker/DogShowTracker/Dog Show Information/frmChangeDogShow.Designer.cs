@@ -186,8 +186,9 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmChangeDogShow";
-            this.Text = "ChangeDogShow";
+            this.Text = "Change Dog Show";
             this.Load += new System.EventHandler(this.frmChangeDogShow_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

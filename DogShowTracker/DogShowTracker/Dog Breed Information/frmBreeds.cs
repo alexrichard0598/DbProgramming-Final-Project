@@ -75,6 +75,7 @@ namespace DogShowTracker
                 Reload();
             }
         }
+        ((frmMDIParent) MdiParent).ReloadAllChildForms();
         #endregion
 
         private void frmBreeds_Load(object sender, EventArgs e)

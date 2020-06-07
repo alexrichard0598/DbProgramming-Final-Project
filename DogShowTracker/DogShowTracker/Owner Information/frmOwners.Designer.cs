@@ -311,6 +311,7 @@
             this.Controls.Add(this.btnNewOwner);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmOwners";
             this.Text = "Owners";
             this.Load += new System.EventHandler(this.frmOwners_Load);

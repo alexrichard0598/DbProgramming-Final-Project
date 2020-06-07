@@ -84,6 +84,7 @@ namespace DogShowTracker
 	                            ({assignDogID}, {dogShowID}, {rank}, {disqualified});";
             int rowsAffected = DatabaseHelper.SendData(sql);
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+            ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
         private void RemoveDogShowDog()
@@ -92,6 +93,7 @@ namespace DogShowTracker
             	            WHERE DogID = {currentDogID} AND DogShowID = {dogShowID};";
             int rowsAffected = DatabaseHelper.SendData(sql);
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
+            ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
         private bool ValidateInsert()
@@ -157,6 +159,7 @@ namespace DogShowTracker
 	                            Disqualified = {disqualified}
 	                            WHERE DogID = {assignDogID} AND DogShowID = {dogShowID};";
             DatabaseHelper.SendData(sql);
+            ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
         private bool VerifyUpdate()

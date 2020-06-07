@@ -86,6 +86,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtColour);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmAddColour";
             this.Text = "Add Colour";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

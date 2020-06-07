@@ -87,7 +87,7 @@ namespace DogShowTracker
 	                    ({ownerID},{dogID},'{startDate}', {endDate});";
                 int rowsAffected = DatabaseHelper.SendData(sql);
                 UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) inserted");
-                Reload();
+                ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
         }
 
@@ -264,7 +264,7 @@ namespace DogShowTracker
                             ";
                 int rowsAffected = DatabaseHelper.SendData(sql);
                 UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) updated");
-                Reload();
+                ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
 
         }
@@ -293,7 +293,7 @@ namespace DogShowTracker
                             ";
                 int rowsAffected = DatabaseHelper.SendData(sql);
                 UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
-                Reload();
+                ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
 
 

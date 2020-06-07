@@ -109,7 +109,7 @@ namespace DogShowTracker
                             WHERE DogID = {id};";
                 int rowsAffected = DatabaseHelper.SendData(sql);
                 UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
-                Reload();
+                ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
 
         }

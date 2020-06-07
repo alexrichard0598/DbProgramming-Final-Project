@@ -391,6 +391,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.grpDogInfo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmUpdateDog";
             this.Text = "Update Dog";
             this.Load += new System.EventHandler(this.frmUpdateDog_Load);

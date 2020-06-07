@@ -120,6 +120,7 @@ namespace DogShowTracker
             string sql = $"DELETE FROM Owners WHERE OwnerID = {currentID};";
             int rowsAffected = DatabaseHelper.SendData(sql);
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+            ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
         #endregion
 

@@ -90,6 +90,7 @@ namespace DogShowTracker
             string sql = $"DELETE FROM DogShows WHERE DogShowID = {id};";
             int rowsAffected = DatabaseHelper.SendData(sql);
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
+            ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
         #endregion
 

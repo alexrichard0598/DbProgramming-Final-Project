@@ -193,6 +193,7 @@
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtMiddleName);
             this.Controls.Add(this.txtFirstName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmAddOwner";
             this.Text = "Add Owner";
             this.groupBox1.ResumeLayout(false);

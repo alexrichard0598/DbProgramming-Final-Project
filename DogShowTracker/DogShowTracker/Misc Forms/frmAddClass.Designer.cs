@@ -86,6 +86,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtClass);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmAddClass";
             this.Text = "Add Class";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

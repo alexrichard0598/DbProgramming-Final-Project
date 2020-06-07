@@ -229,6 +229,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmUpdateOwner";
             this.Text = "Update Owner";
             this.Load += new System.EventHandler(this.frmUpdateOwner_Load);

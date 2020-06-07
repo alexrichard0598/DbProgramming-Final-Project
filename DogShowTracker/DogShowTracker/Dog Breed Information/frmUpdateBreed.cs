@@ -42,7 +42,7 @@ namespace DogShowTracker
             string sql = $"UPDATE Breeds SET Breed = '{name}', [Classification] = {classID}, PrimaryCoatColour = {primaryCoatID}, SecondaryCoatColour = {secondaryCoatID} WHERE BreedID = {id};";
             int rowsAffected = DatabaseHelper.SendData(sql);
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
-            Reload();
+            ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
         private void LoadBreedInfo()

@@ -227,6 +227,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(393, 373);
             this.Controls.Add(this.grpByOwner);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmChangeOwnership";
             this.Text = "Change Ownership";
             this.Load += new System.EventHandler(this.frmChangeOwnership_Load);

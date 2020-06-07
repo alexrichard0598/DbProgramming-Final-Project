@@ -241,6 +241,7 @@
             this.Controls.Add(this.btnNewBreed);
             this.Controls.Add(this.grpBreeds);
             this.Controls.Add(this.grpBreedInfo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmBreeds";
             this.Text = "Breed Info";
             this.Load += new System.EventHandler(this.frmBreeds_Load);

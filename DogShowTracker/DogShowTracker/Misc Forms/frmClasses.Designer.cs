@@ -110,6 +110,7 @@
             this.ClientSize = new System.Drawing.Size(255, 391);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmClasses";
             this.Text = "Classes";
             this.Load += new System.EventHandler(this.frmClasses_Load);

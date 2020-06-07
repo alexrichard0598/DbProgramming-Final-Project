@@ -52,7 +52,7 @@ namespace DogShowTracker
             {
                 int rowsAffected = DatabaseHelper.SendData(sql);
                 UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) deleted");
-                Reload();
+                ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
 
         }
@@ -87,7 +87,7 @@ namespace DogShowTracker
                 string sql = $"UPDATE Classes SET Class = '{className}' WHERE ClassID = {id};";
                 int rowsAffected = DatabaseHelper.SendData(sql);
                 UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) affected");
-                Reload();
+                ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
         }
 

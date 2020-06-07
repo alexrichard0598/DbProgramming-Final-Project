@@ -192,6 +192,7 @@
             this.Controls.Add(this.grpDogShows);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmDogShows";
             this.Text = "Dog Shows";
             this.Load += new System.EventHandler(this.frmDogShows_Load);

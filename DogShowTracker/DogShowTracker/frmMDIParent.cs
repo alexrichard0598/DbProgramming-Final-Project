@@ -19,17 +19,22 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        public void ReloadAllChildForms()
+        {
+            foreach (Form childForm in MdiChildren)
+            {
+                if (childForm.GetType().IsSubclassOf(typeof(DogShowForm)))
+                {
+                    ((DogShowForm)childForm).Reload();
+                }
+            }
+        }
+
         private void btnReloadForm_Click(object sender, EventArgs e)
         {
             try
             {
-                foreach (Form childForm in MdiChildren)
-                {
-                    if (childForm.GetType().IsSubclassOf(typeof(DogShowForm)))
-                    {
-                        ((DogShowForm)childForm).Reload();
-                    }
-                }
+                ReloadAllChildForms()
             }
             catch (Exception ex)
             {

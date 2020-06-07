@@ -31,6 +31,7 @@ namespace DogShowTracker
             int rowsAffected = DatabaseHelper.SendData(sql);
             txtColour.Clear();
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
+            ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
         /// <summary>

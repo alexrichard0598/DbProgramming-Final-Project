@@ -105,5 +105,5 @@
   - Clear field of the form which created (if any)
 - Reload form should keep currently selected id
   - Store the current id in a temp variable and then apply it to the appropriate combobox/listbox
-- Prevent Resize on all forms
-- Check Names on all forms
+- ~~Prevent Resize on all forms~~
+- ~~Check Names on all forms~~
