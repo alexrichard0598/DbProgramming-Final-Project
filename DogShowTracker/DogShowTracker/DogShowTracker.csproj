@@ -19,7 +19,8 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Alex Richard\Github\DbProgramming-Final-Project\Install\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -29,10 +30,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -68,8 +69,27 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Alex-Richard_Cert.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>D9FEA76FA02E5D3B741C7F1D093DC080018747B8</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DogShowTracker_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -88,6 +108,15 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClassLibrary\DatabaseHelper.cs" />
+    <Compile Include="ClassLibrary\DogShowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassLibrary\DogShowForm.Designer.cs">
+      <DependentUpon>DogShowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassLibrary\LoadFormData.cs" />
+    <Compile Include="ClassLibrary\UIMethods.cs" />
     <Compile Include="Dog Show Information\frmChangeDogShow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,7 +332,9 @@
     </EmbeddedResource>
     <None Include="Alex-Richard_Cert.pfx" />
     <None Include="DogShowTracker.ruleset" />
+    <None Include="DogShowTracker_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -316,12 +347,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DogShowTrackerCL\DogShowTrackerCL.csproj">
-      <Project>{0fdaae49-fe72-4820-9492-d88f4a8e0078}</Project>
-      <Name>DogShowTrackerCL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Reload_Icon.png" />

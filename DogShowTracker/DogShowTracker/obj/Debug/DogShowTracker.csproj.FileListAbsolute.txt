@@ -64,3 +64,8 @@ C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowT
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.exe
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.pdb
 C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.frmMDIParent.resources
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTracker.exe.manifest
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\bin\Debug\DogShowTracker.application
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.TrustInfo.xml
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.exe.manifest
+C:\Users\Alex Richard\Github\DbProgramming-Final-Project\DogShowTracker\DogShowTracker\obj\Debug\DogShowTracker.application

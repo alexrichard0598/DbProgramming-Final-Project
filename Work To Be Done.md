@@ -17,7 +17,7 @@
   - ~~A login database table with pre-populated login accounts~~
     - ~~Username~~
     - ~~Password~~
-- OneClick Deployment
+- ~~OneClick Deployment~~
 - Database Seed???
 - PowerPoint Presentation
   - Include Business Rules
