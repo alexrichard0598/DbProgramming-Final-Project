@@ -34,7 +34,7 @@ namespace DogShowTracker
         {
             try
             {
-                ReloadAllChildForms()
+                ReloadAllChildForms();
             }
             catch (Exception ex)
             {
@@ -132,28 +132,28 @@ namespace DogShowTracker
         {
             try
             {
-                ////Hide();
+                Hide();
 
-                ////frmSplashScreen splashScreen = new frmSplashScreen();
-                ////splashScreen.ShowDialog();
-                ////frmLogin login = new frmLogin();
+                frmSplashScreen splashScreen = new frmSplashScreen();
+                splashScreen.ShowDialog();
+                frmLogin login = new frmLogin();
 
-                ////if (splashScreen.DialogResult != DialogResult.OK)
-                ////{
-                ////    Close();
-                ////}
-                ////else
-                ////{
-                ////    login.ShowDialog();
-                ////}
-                ////if (login.DialogResult == DialogResult.OK)
-                ////{
-                ////    Show();
-                ////}
-                ////else
-                ////{
-                ////    Close();
-                ////}
+                if (splashScreen.DialogResult != DialogResult.OK)
+                {
+                    Close();
+                }
+                else
+                {
+                    login.ShowDialog();
+                }
+                if (login.DialogResult == DialogResult.OK)
+                {
+                    Show();
+                }
+                else
+                {
+                    Close();
+                }
             }
             catch (Exception ex)
             {
