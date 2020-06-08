@@ -20,7 +20,10 @@ namespace DogShowTracker
         string name, start, end;
         int numDogs;
 
-
+        #region Helper Methods
+        /// <summary>
+        /// Get the user provided data
+        /// </summary>
         private void GetUserData()
         {
             name = DatabaseHelper.SanitizeUserInput(txtDogShowName.Text);
@@ -80,7 +83,7 @@ namespace DogShowTracker
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), $"{rowsAffected} row(s) added");
             ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
-
+        #endregion
         private void btnAddDogShow_Click(object sender, System.EventArgs e)
         {
             try

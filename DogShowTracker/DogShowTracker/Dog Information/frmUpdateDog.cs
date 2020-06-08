@@ -23,6 +23,10 @@ namespace DogShowTracker
         int id, sex, retired, banned, champion, breedId;
         decimal weight, height;
 
+        #region Helper Methods
+        /// <summary>
+        /// Load the form info
+        /// </summary>
         public override void Reload()
         {
             UIMethods.FillListControl(cmbDogToUpdate, "Name", "DogID", LoadFormData.DogNames());
@@ -68,6 +72,9 @@ namespace DogShowTracker
             cmbBreed.SelectedValue = breedID;
         }
 
+        /// <summary>
+        /// Get all the user provided data
+        /// </summary>
         private void GetValues()
         {
             id = Convert.ToInt32(cmbDogToUpdate.SelectedValue);
@@ -90,6 +97,9 @@ namespace DogShowTracker
             breedId = Convert.ToInt32(cmbBreed.SelectedValue);
         }
 
+        /// <summary>
+        /// Update the dog breed
+        /// </summary>
         private void UpdateDog()
         {
             GetValues();
@@ -117,11 +127,14 @@ namespace DogShowTracker
         {
             bool isValid = true;
             errorProvider.Clear();
+            
+            // Check if the breed name is empty or contains non letter characters
             if (string.IsNullOrEmpty(name) || !name.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
             {
                 isValid = false;
                 errorProvider.SetError(txtName, "Name must not be empty and can only contain letters and spaces");
             }
+
             if (weight < 1)
             {
                 isValid = false;
@@ -132,27 +145,37 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(nudHeight, "Height must be at least 5cm");
             }
+
+            // Check if the date of birth is in the future
             if (dtpDateOfBirth.Value.Date > DateTime.Now)
             {
                 isValid = false;
                 errorProvider.SetError(dtpDateOfBirth, "Date of birth can't be in the future");
             }
+            
+            // If the dog is retired check if the date of retirment is before the date of birth
             if (chkRetired.Checked && dtpDateOfRetirement.Value.Date < dtpDateOfBirth.Value)
             {
                 isValid = false;
                 errorProvider.SetError(dtpDateOfRetirement, "Date of Retirement cannot be before Date of Birth");
             }
+
+            // If the dog is banned check if the date of disqualification is before the date of birth
             if (chkBanned.Checked && dtpDateBanned.Value.Date < dtpDateOfBirth.Value)
             {
                 isValid = false;
                 errorProvider.SetError(dtpDateBanned, "Date Banned cannot be before Date of Birth");
             }
+
+            // check if the dog is banned and retired
             if (chkBanned.Checked && chkRetired.Checked)
             {
                 isValid = false;
                 errorProvider.SetError(chkBanned, "Cannot ban a retired dog");
                 errorProvider.SetError(chkRetired, "A banned dog cannot retired");
             }
+
+            // verify that the champion info is valid
             if (chkChampion.Checked)
             {
                 string errorMsg = "";
@@ -201,6 +224,7 @@ namespace DogShowTracker
                 UIMethods.ErrorHandler(ex);
             }
         }
+        #endregion
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {

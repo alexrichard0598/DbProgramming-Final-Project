@@ -12,44 +12,12 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
-        public void ReloadAllChildForms()
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                if (childForm.GetType().IsSubclassOf(typeof(DogShowForm)))
-                {
-                    ((DogShowForm)childForm).Reload();
-                }
-            }
-        }
-
-        private void btnReloadForm_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ReloadAllChildForms();
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-        }
-
-        private void closeAllOpenFormsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                foreach (Form form in MdiChildren)
-                {
-                    form.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
-        }
-
+        #region Helper Methods
+        /// <summary>
+        /// Handle the opening of the forms
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OpenForm(object sender, EventArgs e)
         {
             try
@@ -121,6 +89,74 @@ namespace DogShowTracker
             }
         }
 
+        /// <summary>
+        /// Return the ToolStripStatusLabel
+        /// </summary>
+        /// <returns></returns>
+        public ToolStripStatusLabel GetStatusLabel()
+        {
+            return toolStripStatusLabel;
+        }
+
+        /// <summary>
+        /// Call the reload method all all of the Mdi child forms
+        /// </summary>
+        public void ReloadAllChildForms()
+        {
+            foreach (Form childForm in MdiChildren)
+            {
+                if (childForm.GetType().IsSubclassOf(typeof(DogShowForm)))
+                {
+                    ((DogShowForm)childForm).Reload();
+                }
+            }
+        }
+        #endregion
+
+        private void btnReloadForm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ReloadAllChildForms();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void closeAllOpenFormsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (Form form in MdiChildren)
+                {
+                    form.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                new AboutBox().ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                UIMethods.ErrorHandler(ex);
+            }
+        }
+
+        /// <summary>
+        /// On form load load, hide the form load the splashscreen and load the login
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MDIParent_Load(object sender, EventArgs e)
         {
             try
@@ -153,23 +189,6 @@ namespace DogShowTracker
                 UIMethods.ErrorHandler(ex);
             }
 
-        }
-
-        public ToolStripStatusLabel GetStatusLabel()
-        {
-            return toolStripStatusLabel;
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                new AboutBox().ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                UIMethods.ErrorHandler(ex);
-            }
         }
     }
 }

@@ -11,6 +11,11 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Load program data on from load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmSplashScreen_Load(object sender, EventArgs e)
         {
             try

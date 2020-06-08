@@ -16,6 +16,7 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        #region Helper Methods
         /// <summary>
         /// Insert the colour into the database
         /// </summary>
@@ -54,6 +55,7 @@ namespace DogShowTracker
             }
             return isValid;
         }
+        #endregion
 
         private void btnAdd_Click(object sender, EventArgs e)
         {

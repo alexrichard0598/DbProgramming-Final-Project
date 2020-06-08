@@ -18,6 +18,10 @@ namespace DogShowTracker
 
         string className;
 
+        #region Helper Methods
+        /// <summary>
+        /// Get the user input
+        /// </summary>
         private void GetUserInput()
         {
             className = DatabaseHelper.SanitizeUserInput(txtClass.Text);
@@ -61,7 +65,7 @@ namespace DogShowTracker
             }
             return isValid;
         }
-
+        #endregion
         private void btnCancel_Click(object sender, EventArgs e)
         {
             try

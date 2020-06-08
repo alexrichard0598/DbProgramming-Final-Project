@@ -77,6 +77,9 @@ namespace DogShowTracker
             }
         }
 
+        /// <summary>
+        /// Delete the dog show from the database
+        /// </summary>
         private void DeleteDogShow()
         {
             int id = Convert.ToInt32(cmbDogShows.SelectedValue);

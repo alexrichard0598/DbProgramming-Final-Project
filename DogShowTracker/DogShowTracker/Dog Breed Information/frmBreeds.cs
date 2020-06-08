@@ -54,6 +54,9 @@ namespace DogShowTracker
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Breed info loaded");
         }
 
+        /// <summary>
+        /// Delete the breed from the database
+        /// </summary>
         private void DeleteBreed()
         {
             int id = Convert.ToInt32(lstBreeds.SelectedValue);

@@ -12,13 +12,19 @@ namespace DogShowTracker
         }
 
         string className;
-
+        #region Helper Method
+        /// <summary>
+        /// Load form Data
+        /// </summary>
         public override void Reload()
         {
             UIMethods.FillListControl(lstClasses, "Class", "ClassID", LoadFormData.ClassNames());
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Classes loaded");
         }
 
+        /// <summary>
+        /// Load info on the selected class
+        /// </summary>
         private void GetClassInfo()
         {
             int id = Convert.ToInt32(lstClasses.SelectedValue);
@@ -27,6 +33,9 @@ namespace DogShowTracker
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Class info loaded");
         }
 
+        /// <summary>
+        /// Delete the class
+        /// </summary>
         private void DeleteClass()
         {
             int id = Convert.ToInt32(lstClasses.SelectedValue);
@@ -72,6 +81,9 @@ namespace DogShowTracker
             return isValid;
         }
 
+        /// <summary>
+        /// Update the class
+        /// </summary>
         private void UpdateClass()
         {
             int id = Convert.ToInt32(lstClasses.SelectedValue);
@@ -83,6 +95,7 @@ namespace DogShowTracker
                 ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
         }
+        #endregion
 
         private void frmClasses_Load(object sender, EventArgs e)
         {

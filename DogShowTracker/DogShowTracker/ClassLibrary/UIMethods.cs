@@ -110,6 +110,10 @@ namespace DogShowTrackerCL
             label.Text = msg;
         }
 
+        /// <summary>
+        /// Clear all of the controls in a ControlCollection
+        /// </summary>
+        /// <param name="controls"></param>
         public static void ClearControls(Control.ControlCollection controls)
         {
             foreach (Control ctrl in controls)

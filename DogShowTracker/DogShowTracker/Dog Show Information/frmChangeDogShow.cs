@@ -18,14 +18,21 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        int id, numDogs;
+        string name, startDate, endDate;
+
+        #region Helper Methods
+        /// <summary>
+        /// Load all of the form data
+        /// </summary>
         public override void Reload()
         {
             UIMethods.FillListControl(cmbSelectedDogShow, "Name", "DogShowID", LoadFormData.DogShowNames());
         }
 
-        int id, numDogs;
-        string name, startDate, endDate;
-
+        /// <summary>
+        /// Load teh infor on the selected dog show
+        /// </summary>
         private void LoadDogShowDetails()
         {
             int id = Convert.ToInt32(cmbSelectedDogShow.SelectedValue);
@@ -42,6 +49,10 @@ namespace DogShowTracker
             nudNumDogs.Value = numDogs;
         }
 
+        /// <summary>
+        /// Get the number of dogs in the dogs show
+        /// </summary>
+        /// <returns></returns>
         private int GetDogShowDogsCount()
         {
             string sql = $@"SELECT COUNT(DogID) FROM DogShows
@@ -51,6 +62,9 @@ namespace DogShowTracker
             return Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
         }
 
+        /// <summary>
+        /// Get all user provider data
+        /// </summary>
         private void GetUserData()
         {
             id = Convert.ToInt32(cmbSelectedDogShow.SelectedValue);
@@ -60,6 +74,10 @@ namespace DogShowTracker
             endDate = dtpEndDate.Value.ToString("yyyy-MM-dd");
         }
 
+        /// <summary>
+        /// Verify user provided info
+        /// </summary>
+        /// <returns></returns>
         private bool VerifyFields()
         {
             bool isValid = true;
@@ -93,6 +111,9 @@ namespace DogShowTracker
             return isValid;
         }
 
+        /// <summary>
+        /// Update the dog show
+        /// </summary>
         private void UpdateDogShow()
         {
             GetUserData();
@@ -104,6 +125,7 @@ namespace DogShowTracker
                 ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
         }
+        #endregion
 
         private void frmChangeDogShow_Load(object sender, EventArgs e)
         {

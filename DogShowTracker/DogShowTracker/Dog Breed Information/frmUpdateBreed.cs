@@ -17,6 +17,10 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        #region Helper Methods
+        /// <summary>
+        /// Update the breed with the user provided info
+        /// </summary>
         private void UpdateBreed()
         {
             string name = DatabaseHelper.SanitizeUserInput(txtName.Text);
@@ -38,6 +42,9 @@ namespace DogShowTracker
             ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
+        /// <summary>
+        /// Load info on the selected breed
+        /// </summary>
         private void LoadBreedInfo()
         {
             int breedID = Convert.ToInt32(lstBreeds.SelectedValue);
@@ -55,6 +62,9 @@ namespace DogShowTracker
             cmbSecondary.SelectedValue = secondaryColourID;
         }
 
+        /// <summary>
+        /// Load all form info
+        /// </summary>
         public override void Reload()
         {
             UIMethods.FillListControl(cmbClass, "Class", "ClassID", LoadFormData.ClassNames());
@@ -62,7 +72,7 @@ namespace DogShowTracker
             UIMethods.FillListControl(cmbSecondary, "Colour", "ColourID", LoadFormData.ColourNames(), true);
             UIMethods.FillListControl(lstBreeds, "Breed", "BreedID", LoadFormData.BreedNames());
         }
-
+        #endregion
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try

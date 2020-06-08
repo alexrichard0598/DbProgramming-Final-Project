@@ -16,11 +16,18 @@ namespace DogShowTracker
         int id, retired, age;
         string fName, mName, lName, dob, dateOfRetirement;
 
+        #region Helper Methods
+        /// <summary>
+        /// Load form data
+        /// </summary>
         public override void Reload()
         {
             UIMethods.FillListControl(lstOwners, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
         }
 
+        /// <summary>
+        /// Get user provided info
+        /// </summary>
         private void GetUserData()
         {
             id = Convert.ToInt32(lstOwners.SelectedValue);
@@ -33,6 +40,10 @@ namespace DogShowTracker
             dateOfRetirement = retired == 0 ? "NULL" : $"'{dtpDateOfRetirement.Value.ToString("yyyy-MM-dd")}'";
         }
 
+        /// <summary>
+        /// Verify user provided info
+        /// </summary>
+        /// <returns></returns>
         private bool VerifyFields()
         {
             GetUserData();
@@ -74,6 +85,9 @@ namespace DogShowTracker
             return isValid;
         }
 
+        /// <summary>
+        /// Update the owner
+        /// </summary>
         private void UpdateOwner()
         {
             GetUserData();
@@ -89,6 +103,9 @@ namespace DogShowTracker
             }
         }
 
+        /// <summary>
+        /// Get the owner info
+        /// </summary>
         private void GetOwnerInfo()
         {
             id = Convert.ToInt32(lstOwners.SelectedValue);
@@ -105,6 +122,7 @@ namespace DogShowTracker
             UIMethods.PickDateTimePicker(dtpDateOfRetirement, row["DateOfRetirement"], false);
             chkRetired.Checked = Convert.ToBoolean(row["Retired"]);
         }
+        #endregion
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {

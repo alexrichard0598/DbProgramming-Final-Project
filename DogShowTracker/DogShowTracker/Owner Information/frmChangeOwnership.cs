@@ -20,12 +20,20 @@ namespace DogShowTracker
         int ownerID, dogID, originalDogID;
         string startDate, endDate, originalStartDate;
 
+        #region Helper Methods
+        /// <summary>
+        /// Load Form data
+        /// </summary>
         public override void Reload()
         {
             UIMethods.FillListControl(cmbDogs, "Name", "DogID", LoadFormData.DogNames());
             UIMethods.FillListControl(cmbOwners, "OwnerName", "OwnerID", LoadFormData.OwnerNamesCombined());
         }
 
+        /// <summary>
+        /// Load user provided data
+        /// </summary>
+        /// <param name="isUpdate"></param>
         private void LoadUserData(bool isUpdate = false)
         {
             ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
@@ -36,6 +44,9 @@ namespace DogShowTracker
             endDate = chkDoesEnd.Checked ? $"'{dtpEndDate.Value.ToString("yyyy-MM-dd")}'" : "NULL";
         }
 
+        /// <summary>
+        /// The selected owner ownership records
+        /// </summary>
         private void LoadOwnership()
         {
             errorProvider.Clear();
@@ -51,6 +62,9 @@ namespace DogShowTracker
             UIMethods.FillListControl(lstOwnership, "Dog", "ID", dt);
         }
 
+        /// <summary>
+        /// Load ownership record details
+        /// </summary>
         private void LoadOwnershipDetails()
         {
             ownerID = Convert.ToInt32(cmbOwners.SelectedValue);
@@ -68,6 +82,9 @@ namespace DogShowTracker
             chkDoesEnd.Checked = dt["EndOfOwnership"] != DBNull.Value;
         }
 
+        /// <summary>
+        /// Insert the ownership record
+        /// </summary>
         private void InsertOwnership()
         {
             LoadUserData();
@@ -84,6 +101,11 @@ namespace DogShowTracker
             }
         }
 
+        /// <summary>
+        /// Validate the user provided info
+        /// </summary>
+        /// <param name="isUpdate"></param>
+        /// <returns></returns>
         private bool VerifyUserData(bool isUpdate = false)
         {
             bool isValid = true;
@@ -240,6 +262,9 @@ namespace DogShowTracker
             return isValid;
         }
 
+        /// <summary>
+        /// Update the ownership record
+        /// </summary>
         private void ModifyOwnership()
         {
             LoadUserData(true);
@@ -262,6 +287,9 @@ namespace DogShowTracker
 
         }
 
+        /// <summary>
+        /// Delete the ownership record
+        /// </summary>
         private void DeleteOwnership()
         {
 
@@ -291,6 +319,7 @@ namespace DogShowTracker
 
 
         }
+        #endregion
 
         private void btnAdd_Click(object sender, EventArgs e)
         {

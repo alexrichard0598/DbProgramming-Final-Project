@@ -22,7 +22,7 @@ namespace DogShowTracker
         int sex, retired, banned, champion, breedId;
         decimal weight, height;
 
-
+        #region Helper Methods
         /// <summary>
         /// Fill the breed and search breed comboboxes
         /// </summary>
@@ -175,6 +175,7 @@ namespace DogShowTracker
                 UIMethods.ErrorHandler(ex);
             }
         }
+#endregion
 
         private void btnAdd_Click(object sender, EventArgs e)
         {

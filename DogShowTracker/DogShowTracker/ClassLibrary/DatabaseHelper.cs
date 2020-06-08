@@ -57,6 +57,11 @@ namespace DogShowTrackerCL
             }
         }
 
+        /// <summary>
+        /// Send the sql data
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public static int SendData(string sql)
         {
             sql = SQLStringCleaner(sql);
@@ -121,6 +126,15 @@ namespace DogShowTrackerCL
             return 0 != Convert.ToInt32(ExecuteScaler($"SELECT COUNT(*) FROM {tableToCheck} WHERE {fieldsToCheck} = {valueToCheck}"));
         }
 
+        /// <summary>
+        /// Check if a value is changed
+        /// </summary>
+        /// <param name="fieldToCheck"></param>
+        /// <param name="valueToCheck"></param>
+        /// <param name="tableToCheck"></param>
+        /// <param name="idColumn"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static bool ValueChanged(string fieldToCheck, string valueToCheck, string tableToCheck, string idColumn, string id)
         {
 

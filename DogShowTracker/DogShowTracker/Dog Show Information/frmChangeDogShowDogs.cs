@@ -22,12 +22,18 @@ namespace DogShowTracker
         string rank;
 
         #region Helper Methods
+        /// <summary>
+        /// Load all of the form data
+        /// </summary>
         public override void Reload()
         {
             UIMethods.FillListControl(cmbDogs, "Name", "DogID", LoadFormData.DogNames(), true);
             UIMethods.FillListControl(cmbDogShow, "Name", "DogShowID", LoadFormData.DogShowNames());
         }
 
+        /// <summary>
+        /// Get all user provided data
+        /// </summary>
         private void GetUserData()
         {
             assignDogID = cmbDogs.SelectedValue != DBNull.Value ? Convert.ToInt32(cmbDogs.SelectedValue) : 0;
@@ -37,6 +43,10 @@ namespace DogShowTracker
             disqualified = chkDisqualified.Checked ? 1 : 0;
         }
 
+        /// <summary>
+        /// Get the total number of dogs in a dog show
+        /// </summary>
+        /// <returns></returns>
         private int GetDogShowDogsCount()
         {
             int id = Convert.ToInt32(cmbDogShow.SelectedValue);
@@ -47,6 +57,10 @@ namespace DogShowTracker
             return Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
         }
 
+        /// <summary>
+        /// Get the max number of dogs in a dog show
+        /// </summary>
+        /// <returns></returns>
         private int GetMaxDogShowDogs()
         {
             int id = Convert.ToInt32(cmbDogShow.SelectedValue);
@@ -54,6 +68,9 @@ namespace DogShowTracker
             return Convert.ToInt32(DatabaseHelper.ExecuteScaler(sql));
         }
 
+        /// <summary>
+        /// Show the count and max number of dogs in a dog show
+        /// </summary>
         private void LoadDogShowDogsCount()
         {
             txtNumDogs.Text = GetDogShowDogsCount().ToString() + "/" + GetMaxDogShowDogs().ToString();
@@ -70,6 +87,9 @@ namespace DogShowTracker
             LoadDogShowDogsCount();
         }
 
+        /// <summary>
+        /// Insert the dog show
+        /// </summary>
         private void InsertDogShowDog()
         {
             string sql = $@"INSERT INTO DogShowDetails
@@ -81,6 +101,9 @@ namespace DogShowTracker
             ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
+        /// <summary>
+        /// Remove the dog show from the database
+        /// </summary>
         private void RemoveDogShowDog()
         {
             string sql = $@"DELETE DogShowDetails
@@ -90,6 +113,10 @@ namespace DogShowTracker
             ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
+        /// <summary>
+        /// Validate teh insertion data
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateInsert()
         {
             bool isValid = true;
@@ -128,6 +155,10 @@ namespace DogShowTracker
             return isValid;
         }
 
+        /// <summary>
+        /// Validate the deletion data
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateDeletion()
         {
             GetUserData();
@@ -145,6 +176,9 @@ namespace DogShowTracker
                                                     $"{dogShowDate.ToString("yyyy MMMM d")}{dogShowName} dog show?");
         }
 
+        /// <summary>
+        /// Update the dog show
+        /// </summary>
         private void UpdateDogShowDog()
         {
             string sql = $@"
@@ -156,6 +190,10 @@ namespace DogShowTracker
             ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
 
+        /// <summary>
+        /// Verify the update info
+        /// </summary>
+        /// <returns></returns>
         private bool VerifyUpdate()
         {
             GetUserData();
@@ -188,6 +226,9 @@ namespace DogShowTracker
             return isValid;
         }
 
+        /// <summary>
+        /// Load the info on the selected dog show
+        /// </summary>
         private void LoadDogShowDogDetails()
         {
             GetUserData();

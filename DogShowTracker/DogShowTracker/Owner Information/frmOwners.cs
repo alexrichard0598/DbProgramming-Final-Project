@@ -110,6 +110,9 @@ namespace DogShowTracker
             }
         }
 
+        /// <summary>
+        /// Delete the owner
+        /// </summary>
         private void DeleteOwner()
         {
             if (DatabaseHelper.ValueExists("OwnerID", currentID.ToString(), "DogOwnership"))

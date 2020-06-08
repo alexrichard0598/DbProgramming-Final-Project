@@ -19,7 +19,9 @@ namespace DogShowTracker
         string breedName, primaryId, secondaryId, classId;
 
         #region Helper Methods
-
+        /// <summary>
+        /// Get all user provided data
+        /// </summary>
         private void GetUserData()
         {
             breedName = DatabaseHelper.SanitizeUserInput(txtBreedName.Text);

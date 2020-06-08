@@ -19,12 +19,19 @@ namespace DogShowTracker
 
         string colourName;
 
+        #region Helper Methods
+        /// <summary>
+        /// Load all of the form data
+        /// </summary>
         public override void Reload()
         {
             UIMethods.FillListControl(lstColours, "Colour", "ColourID", LoadFormData.ColourNames());
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Colours loaded");
         }
 
+        /// <summary>
+        /// Get the info on the selected colour
+        /// </summary>
         private void GetColourInfo()
         {
             int id = Convert.ToInt32(lstColours.SelectedValue);
@@ -33,6 +40,9 @@ namespace DogShowTracker
             UIMethods.DisplayStatusMessage(((frmMDIParent)MdiParent).GetStatusLabel(), "Colour info loaded");
         }
 
+        /// <summary>
+        /// Delete the colour from the database
+        /// </summary>
         private void DeleteColour()
         {
             int id = Convert.ToInt32(lstColours.SelectedValue);
@@ -79,6 +89,9 @@ namespace DogShowTracker
             return isValid;
         }
 
+        /// <summary>
+        /// Update the colour
+        /// </summary>
         private void UpdateColour()
         {
             int id = Convert.ToInt32(lstColours.SelectedValue);
@@ -90,6 +103,7 @@ namespace DogShowTracker
                 ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
         }
+        #endregion
 
         private void frmColours_Load(object sender, EventArgs e)
         {

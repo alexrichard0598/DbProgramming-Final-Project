@@ -21,6 +21,10 @@ namespace DogShowTracker
         int age, isRetired;
         string fName, mName, lName, dob, dateOfRetirement;
 
+        #region Helper Methods
+        /// <summary>
+        /// Get the user provided data
+        /// </summary>
         private void GetUserData()
         {
             age = Convert.ToInt32(DateTime.Now.Subtract(dtpDOB.Value).TotalDays / 365);
@@ -32,6 +36,7 @@ namespace DogShowTracker
             isRetired = chkRetired.Checked ? 1 : 0;
             dateOfRetirement = chkRetired.Checked ? $"'{dtpDateOfRetirement.Value.ToString("yyyy-MM-dd")}'" : "NULL";
         }
+
         /// <summary>
         /// Validate the user provided info
         /// </summary>
@@ -89,7 +94,7 @@ namespace DogShowTracker
             UIMethods.ClearControls(Controls);
             ((frmMDIParent)MdiParent).ReloadAllChildForms();
         }
-
+        #endregion
         private void btnAddOwner_Click(object sender, EventArgs e)
         {
             try

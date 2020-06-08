@@ -11,12 +11,22 @@ namespace DogShowTracker
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Load the login info on start
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmLogin_Load(object sender, EventArgs e)
         {
             Text = Application.ProductName + " - Login";
             txtUsr.Text = Environment.UserName;
         }
 
+        /// <summary>
+        /// Check if user login is valid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
