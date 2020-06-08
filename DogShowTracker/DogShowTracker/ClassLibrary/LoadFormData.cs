@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Data;
 
+/*
+    Alex Richard
+    Dog Show Tracker
+    2020-06-07
+*/
+
 namespace DogShowTrackerCL
 {
     public class LoadFormData

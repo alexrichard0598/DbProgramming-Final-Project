@@ -7,7 +7,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-05
+    2020-06-07
 */
 
 namespace DogShowTracker
@@ -127,7 +127,7 @@ namespace DogShowTracker
         {
             bool isValid = true;
             errorProvider.Clear();
-            
+
             // Check if the breed name is empty or contains non letter characters
             if (string.IsNullOrEmpty(name) || !name.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
             {
@@ -152,7 +152,7 @@ namespace DogShowTracker
                 isValid = false;
                 errorProvider.SetError(dtpDateOfBirth, "Date of birth can't be in the future");
             }
-            
+
             // If the dog is retired check if the date of retirment is before the date of birth
             if (chkRetired.Checked && dtpDateOfRetirement.Value.Date < dtpDateOfBirth.Value)
             {

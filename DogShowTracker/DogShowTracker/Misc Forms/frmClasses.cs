@@ -2,6 +2,12 @@
 using System;
 using System.Windows.Forms;
 
+/*
+    Alex Richard
+    Dog Show Tracker
+    2020-06-07
+*/
+
 namespace DogShowTracker
 {
     public partial class frmClasses : DogShowForm

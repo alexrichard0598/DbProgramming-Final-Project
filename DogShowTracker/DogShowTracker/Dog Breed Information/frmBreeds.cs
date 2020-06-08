@@ -6,7 +6,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-05
+    2020-06-07
 */
 
 
@@ -78,7 +78,7 @@ namespace DogShowTracker
                 ((frmMDIParent)MdiParent).ReloadAllChildForms();
             }
         }
-        
+
         #endregion
 
         private void frmBreeds_Load(object sender, EventArgs e)

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 /*
     Alex Richard
     Dog Show Tracker
-    2020-06-05
+    2020-06-07
 */
 
 namespace DogShowTracker
@@ -175,7 +175,7 @@ namespace DogShowTracker
                 UIMethods.ErrorHandler(ex);
             }
         }
-#endregion
+        #endregion
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
